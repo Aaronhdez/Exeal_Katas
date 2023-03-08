@@ -4,11 +4,14 @@
     {
         public static string FizzBuzz(int number)
         {
-            if (number % 3 == 0) return "fizz";
-            if (number == 6) return "fizz";
-            if (number == 9) return "fizz";
+            if (IsDivisibleBy3(number)) return "fizz";
             if (number == 5) return "buzz";
             return number.ToString();
+        }
+
+        private static bool IsDivisibleBy3(int number)
+        {
+            return number % 3 == 0;
         }
     }
 }
