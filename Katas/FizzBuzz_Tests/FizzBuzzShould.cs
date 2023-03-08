@@ -9,20 +9,14 @@ namespace FizzBuzz_Tests
         {
         }
 
-        [Test]
-        public void Return_1_when_1_is_set_as_parameter()
+        [TestCase(1, "1")]
+        [TestCase(2, "2")]
+        [TestCase(4, "4")]
+        public void Return_a_number_itself_when_is_not_divisible_neither_by_3_or_5(int number, string expectedResult)
         {
-            var result = FizzBuzzGame.FizzBuzz(1);
+            var result = FizzBuzzGame.FizzBuzz(number);
 
-            Assert.AreEqual(result, "1");
-        }
-
-        [Test]
-        public void Return_2_when_2_is_set_as_parameter()
-        {
-            var result = FizzBuzzGame.FizzBuzz(2);
-
-            Assert.AreEqual(result, "2");
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
