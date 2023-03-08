@@ -16,5 +16,13 @@ namespace FizzBuzz_Tests
 
             Assert.AreEqual(result, "1");
         }
+
+        [Test]
+        public void Return_2_when_2_is_set_as_parameter()
+        {
+            var result = FizzBuzzGame.FizzBuzz(2);
+
+            Assert.AreEqual(result, "2");
+        }
     }
 }

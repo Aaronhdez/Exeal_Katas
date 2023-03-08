@@ -2,9 +2,9 @@
 {
     public class FizzBuzzGame
     {
-        public static string FizzBuzz(int s)
+        public static string FizzBuzz(int number)
         {
-            return "1";
+            return (number == 1) ? "1" : "2";
         }
     }
 }
