@@ -12,7 +12,7 @@ namespace FizzBuzz_Tests
         [Test]
         public void Return_1_when_1_is_set_as_parameter()
         {
-            var result = FizzBuzzGame.FizzBuzz("1");
+            var result = FizzBuzzGame.FizzBuzz(1);
 
             Assert.AreEqual(result, "1");
         }

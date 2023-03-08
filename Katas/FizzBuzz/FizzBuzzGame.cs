@@ -2,7 +2,7 @@
 {
     public class FizzBuzzGame
     {
-        public static string FizzBuzz(string s)
+        public static string FizzBuzz(int s)
         {
             return "1";
         }
