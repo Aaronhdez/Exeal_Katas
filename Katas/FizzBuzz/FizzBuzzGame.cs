@@ -6,9 +6,7 @@
         {
             if (number == 15) return "fizz buzz";
             if (IsDivisibleBy3(number)) return "fizz";
-            if (number == 5) return "buzz";
-            if (number == 10) return "buzz";
-            if (number == 20) return "buzz";
+            if (IsDivisibleBy5(number)) return "buzz";
             return number.ToString();
         }
 
@@ -16,5 +14,11 @@
         {
             return number % 3 == 0;
         }
+
+        private static bool IsDivisibleBy5(int number)
+        {
+            return number % 5 == 0;
+        }
+
     }
 }
