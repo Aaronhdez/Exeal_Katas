@@ -1,0 +1,12 @@
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\bin\Debug\net7.0\FizzBuzz.deps.json
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\bin\Debug\net7.0\FizzBuzz.dll
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\bin\Debug\net7.0\FizzBuzz.pdb
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.csproj.AssemblyReference.cache
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.AssemblyInfoInputs.cache
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.AssemblyInfo.cs
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.csproj.CoreCompileInputs.cache
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.dll
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\refint\FizzBuzz.dll
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\FizzBuzz.pdb
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas\FizzBuzz\obj\Debug\net7.0\ref\FizzBuzz.dll
