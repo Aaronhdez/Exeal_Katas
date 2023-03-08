@@ -6,6 +6,7 @@
         {
             if (IsDivisibleBy3(number)) return "fizz";
             if (number == 5) return "buzz";
+            if (number == 10) return "buzz";
             return number.ToString();
         }
 
