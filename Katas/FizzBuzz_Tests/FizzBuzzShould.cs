@@ -21,12 +21,14 @@ namespace FizzBuzz_Tests
             Assert.AreEqual(result, expectedResult);
         }
 
-        [Test]
-        public void Return_fizz_when_3_is_set_as_parameter()
+        [TestCase(3, "fizz")]
+        [TestCase(6, "fizz")]
+        [TestCase(9, "fizz")]
+        public void Return_fizz_when_a_number_is_divisible_by_3(int number, string expectedResult)
         {
-            var result = FizzBuzzGame.FizzBuzz(3);
+            var result = FizzBuzzGame.FizzBuzz(number);
 
-            Assert.AreEqual(result, "fizz");
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
@@ -37,20 +39,5 @@ namespace FizzBuzz_Tests
             Assert.AreEqual(result, "buzz");
         }
 
-        [Test]
-        public void Return_fizz_when_6_is_set_as_parameter()
-        {
-            var result = FizzBuzzGame.FizzBuzz(6);
-
-            Assert.AreEqual(result, "fizz");
-        }
-
-        [Test]
-        public void Return_fizz_when_9_is_set_as_parameter()
-        {
-            var result = FizzBuzzGame.FizzBuzz(9);
-
-            Assert.AreEqual(result, "fizz");
-        }
     }
 }
