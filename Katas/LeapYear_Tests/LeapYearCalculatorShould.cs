@@ -40,5 +40,13 @@ namespace LeapYear_Tests
 
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void Return_false_if_the_year_is_not_divisible_by_4()
+        {
+            var result = LeapYearCalculator.IsALeapYear(2021);
+
+            Assert.IsFalse(result);
+        }
     }
 }
