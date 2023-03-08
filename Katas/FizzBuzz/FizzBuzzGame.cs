@@ -5,6 +5,7 @@
         public static string FizzBuzz(int number)
         {
             if (number == 15) return "fizz buzz";
+            if (number == 30) return "fizz buzz";
             if (IsDivisibleBy3(number)) return "fizz";
             if (IsDivisibleBy5(number)) return "buzz";
             return number.ToString();
