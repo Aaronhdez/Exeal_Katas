@@ -24,5 +24,13 @@ namespace LeapYear_Tests
 
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void Return_false_if_the_year_is_not_divisible_by_400_but_is_divisible_by_100()
+        {
+            var result = LeapYearCalculator.IsALeapYear(1900);
+
+            Assert.IsFalse(result);
+        }
     }
 }
