@@ -12,6 +12,8 @@ namespace FizzBuzz_Tests
         [TestCase(1, "1")]
         [TestCase(2, "2")]
         [TestCase(4, "4")]
+        [TestCase(7, "7")]
+        [TestCase(8, "8")]
         public void Return_a_number_itself_when_is_not_divisible_neither_by_3_or_5(int number, string expectedResult)
         {
             var result = FizzBuzzGame.FizzBuzz(number);
