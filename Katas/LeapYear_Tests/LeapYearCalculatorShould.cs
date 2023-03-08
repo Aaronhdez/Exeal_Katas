@@ -71,5 +71,13 @@ namespace LeapYear_Tests
 
             Assert.IsFalse(result);
         }
+
+        [Test]
+        public void return_false_if_a_year_is_zero()
+        {
+            var result = LeapYearCalculator.IsALeapYear(0);
+
+            Assert.IsFalse(result);
+        }
     }
 }
