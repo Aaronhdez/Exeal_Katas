@@ -49,6 +49,14 @@ namespace LeapYear_Tests
             Assert.IsFalse(result);
         }
 
+        [TestCase(2008)]
+        [TestCase(2012)]
+        [TestCase(2016)]
+        public void return_true_if_is_a_leap_year(int year)
+        {
+            var result = LeapYearCalculator.IsALeapYear(year);
 
+            Assert.IsTrue(result);
+        }
     }
 }
