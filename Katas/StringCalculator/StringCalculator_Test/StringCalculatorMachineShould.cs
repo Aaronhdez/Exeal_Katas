@@ -1,6 +1,6 @@
 namespace StringCalculator_Test;
 
-public class Tests
+public class StringCalculatorMachineShould
 {
     [SetUp]
     public void Setup()
