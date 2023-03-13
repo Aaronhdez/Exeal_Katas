@@ -39,4 +39,14 @@ public class Tests
 
         result.Should().Be("Password must be al least 8 characters\nThe password must contain al least 2 numbers");
     }
+    
+    [Test]
+    public void Return_error_message_if_password_not_fulfill_the_conditions_with_only_numbers()
+    {
+        var passwordValidator = new PasswordValidator();
+
+        var result = passwordValidator.Validate("73763");
+
+        result.Should().Be("Password must be al least 8 characters");
+    }
 }
