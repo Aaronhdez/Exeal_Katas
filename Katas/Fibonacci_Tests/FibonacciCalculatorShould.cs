@@ -28,4 +28,12 @@ public class FibonacciCalculatorShould
         
         result.Should().Be(1);
     }
+    
+    [Test]
+    public void Return_2_if_input_is_3()
+    {
+        var result = FibonacciCalculator.Fibonacci(3);
+        
+        result.Should().Be(2);
+    }
 }
