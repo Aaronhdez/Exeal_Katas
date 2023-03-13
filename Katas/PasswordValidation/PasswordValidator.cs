@@ -17,21 +17,10 @@ public partial class PasswordValidator
         return IsValidPassword(ref validationResults);
     }
 
-    private static bool IsValidPassword(ref string validationResults)
+    private static void HasValidLength(string passwordToValidate, ref string validationResults)
     {
-        if (validationResults.Length != 0) return false;
-        validationResults = "Valid Password";
-        return true;
-    }
-
-    private static void HasAtLeastACapitalLetter(string passwordToValidate, ref string validationResults)
-    {
-        var upperCasesInPassword = UpperCaseRegex()
-            .Replace(passwordToValidate, string.Empty);
-        if (upperCasesInPassword.Length == passwordToValidate.Length)
-            validationResults += validationResults.Length == 0 
-                ? NotEnoughCapitalsError
-                : $"\n{NotEnoughCapitalsError}";
+        if (passwordToValidate.Length < 8)
+            validationResults += NotEnoughCharactersError;
     }
 
     private static void HasAtLeastTwoNumbers(string passwordToValidate, ref string validationResults)
@@ -44,10 +33,21 @@ public partial class PasswordValidator
                 : $"\n{NotEnoughNumbersError}";
     }
 
-    private static void HasValidLength(string passwordToValidate, ref string validationResults)
+    private static void HasAtLeastACapitalLetter(string passwordToValidate, ref string validationResults)
     {
-        if (passwordToValidate.Length < 8)
-            validationResults += NotEnoughCharactersError;
+        var upperCasesInPassword = UpperCaseRegex()
+            .Replace(passwordToValidate, string.Empty);
+        if (upperCasesInPassword.Length == passwordToValidate.Length)
+            validationResults += validationResults.Length == 0 
+                ? NotEnoughCapitalsError
+                : $"\n{NotEnoughCapitalsError}";
+    }
+
+    private static bool IsValidPassword(ref string validationResults)
+    {
+        if (validationResults.Length != 0) return false;
+        validationResults = "Valid Password";
+        return true;
     }
 
     [GeneratedRegex("[^\\d]")]
