@@ -26,4 +26,11 @@ public class FactorialCalculatorShould
         var result = FactorialCalculator.Factorial(2);
         result.Should().Be(2);
     }
+
+    [Test]
+    public void Return_6_if_input_is_3()
+    {
+        var result = FactorialCalculator.Factorial(3);
+        result.Should().Be(6);
+    }
 }
