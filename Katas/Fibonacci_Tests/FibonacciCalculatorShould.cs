@@ -12,4 +12,12 @@ public class FibonacciCalculatorShould
         
         result.Should().Be(0);
     }
+    
+    [Test]
+    public void Return_1_if_input_is_1()
+    {
+        var result = FibonacciCalculator.Fibonacci(1);
+        
+        result.Should().Be(1);
+    }
 }
