@@ -52,7 +52,8 @@ public class Tests
         var result = _passwordValidator.Validate(input, out _validationResults);
 
         _validationResults.Should()
-            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}\n{ErrorPasswordMustContainAlLeastTwoNumbers}");
+            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}" +
+                $"\n{ErrorPasswordMustContainAlLeastTwoNumbers}");
         result.Should().Be(expectedResult);
     }
 
@@ -81,5 +82,17 @@ public class Tests
         
         result.Should().BeFalse();
         _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
+    }
+    
+    [Test]
+    public void Return_false_for_cdefgh1()
+    {
+        var result = _passwordValidator.Validate("cdefgh1", out _validationResults);
+        
+        result.Should().BeFalse(); 
+        _validationResults.Should()
+            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}" +
+                $"\n{ErrorPasswordMustContainAlLeastTwoNumbers}" +
+                $"\n{ErrorPasswordMustContainAtLeastACapitalLetter}");
     }
 }
