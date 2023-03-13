@@ -7,9 +7,9 @@ public class Tests
 {
     private readonly PasswordValidator _passwordValidator = new PasswordValidator();
     private string _validationResults;
-    private const string ErrorPasswordMustBeAlLeastEightCharacters = "Password must be at least 8 characters";
-    private const string ErrorPasswordMustContainAlLeastTwoNumbers = "Password must contain at least 2 numbers";
-    private const string ErrorPasswordMustContainAtLeastACapitalLetter = "Password must contain al least one capital letter";
+    private const string NotEnoughCharactersError = "Password must be at least 8 characters";
+    private const string NotEnoughNumbersError = "Password must contain at least 2 numbers";
+    private const string NotEnoughCapitalsError = "Password must contain al least one capital letter";
 
     [SetUp]
     public void Setup()
@@ -22,7 +22,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("A32erfg", out _validationResults);
 
-        _validationResults.Should().Be(ErrorPasswordMustBeAlLeastEightCharacters);
+        _validationResults.Should().Be(NotEnoughCharactersError);
         result.Should().BeFalse();
     }
 
@@ -31,7 +31,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("Gggg1jjaj", out _validationResults);
 
-        _validationResults.Should().Be(ErrorPasswordMustContainAlLeastTwoNumbers);
+        _validationResults.Should().Be(NotEnoughNumbersError);
         result.Should().BeFalse();
     }
 
@@ -40,7 +40,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("G73763", out _validationResults);
 
-        _validationResults.Should().Be(ErrorPasswordMustBeAlLeastEightCharacters);
+        _validationResults.Should().Be(NotEnoughCharactersError);
         result.Should().BeFalse();
     }
 
@@ -52,8 +52,8 @@ public class Tests
         var result = _passwordValidator.Validate(input, out _validationResults);
 
         _validationResults.Should()
-            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}" +
-                $"\n{ErrorPasswordMustContainAlLeastTwoNumbers}");
+            .Be($"{NotEnoughCharactersError}" +
+                $"\n{NotEnoughNumbersError}");
         result.Should().Be(expectedResult);
     }
 
@@ -63,7 +63,7 @@ public class Tests
         var result = _passwordValidator.Validate("abcdef12", out _validationResults);
         
         result.Should().BeFalse();
-        _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
+        _validationResults.Should().Be(NotEnoughCapitalsError);
     }
 
     [Test]
@@ -72,7 +72,7 @@ public class Tests
         var result = _passwordValidator.Validate("bcdefg12", out _validationResults);
         
         result.Should().BeFalse();
-        _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
+        _validationResults.Should().Be(NotEnoughCapitalsError);
     }
 
     [Test]
@@ -81,7 +81,7 @@ public class Tests
         var result = _passwordValidator.Validate("cdefgh12", out _validationResults);
         
         result.Should().BeFalse();
-        _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
+        _validationResults.Should().Be(NotEnoughCapitalsError);
     }
     
     [Test]
@@ -91,8 +91,18 @@ public class Tests
         
         result.Should().BeFalse(); 
         _validationResults.Should()
-            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}" +
-                $"\n{ErrorPasswordMustContainAlLeastTwoNumbers}" +
-                $"\n{ErrorPasswordMustContainAtLeastACapitalLetter}");
+            .Be($"{NotEnoughCharactersError}" +
+                $"\n{NotEnoughNumbersError}" +
+                $"\n{NotEnoughCapitalsError}");
+    }
+    
+    [Test]
+    public void Return_true_for_Abcde123()
+    {
+        var result = _passwordValidator.Validate("Abcde123", out _validationResults);
+        
+        result.Should().BeTrue(); 
+        _validationResults.Should()
+            .Be($"Valid Password");
     }
 }
