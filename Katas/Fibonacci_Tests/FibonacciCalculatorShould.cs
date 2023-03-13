@@ -44,4 +44,12 @@ public class FibonacciCalculatorShould
         
         result.Should().Be(3);
     }
+    
+    [Test]
+    public void Return_5_if_input_is_5()
+    {
+        var result = FibonacciCalculator.Fibonacci(5);
+        
+        result.Should().Be(5);
+    }
 }
