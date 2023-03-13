@@ -15,4 +15,12 @@ public class FactorialCalculatorShould
         
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void Return_1_is_input_is_negative()
+    {
+        var result = FactorialCalculator.Factorial(-4);
+        
+        result.Should().Be(1);
+    }
 }

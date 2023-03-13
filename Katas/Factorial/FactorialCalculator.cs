@@ -2,9 +2,9 @@
 
 public class FactorialCalculator
 {
-    public static int Factorial(int number)
+    public static int Factorial(int input)
     {
-        if (number != 0) return number * Factorial(number - 1);
+        if (input > 0) return input * Factorial(input - 1);
         return 1;
     }
 }
