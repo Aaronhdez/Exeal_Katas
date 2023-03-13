@@ -12,13 +12,19 @@ public partial class PasswordValidator
         validationResults = string.Empty;
         HasValidLength(passwordToValidate, ref validationResults);
         HasAtLeastTwoNumbers(passwordToValidate, ref validationResults);
-        if (passwordToValidate == "abcdef12" || passwordToValidate == "bcdefg12" || passwordToValidate == "cdefgh12")
-        {
-            validationResults = "Password must contain al least one capital letter";
-            return false;
-        }
+        HasAtLeastACapitalLetter(passwordToValidate, ref validationResults);
 
         return validationResults.Length <= 0;
+    }
+
+    private static void HasAtLeastACapitalLetter(string passwordToValidate, ref string validationResults)
+    {
+        var upperCasesInPassword = UpperCaseRegex()
+            .Replace(passwordToValidate, string.Empty);
+        if (upperCasesInPassword.Length == passwordToValidate.Length)
+        {
+            validationResults = "Password must contain al least one capital letter";
+        }
     }
 
     private static void HasAtLeastTwoNumbers(string passwordToValidate, ref string validationResults)
@@ -38,5 +44,8 @@ public partial class PasswordValidator
     }
 
     [GeneratedRegex("[^\\d]")]
-    private static partial Regex DigitRegex();
+    private static partial Regex DigitRegex();    
+    
+    [GeneratedRegex("[A-Z]")]
+    private static partial Regex UpperCaseRegex();
 }
