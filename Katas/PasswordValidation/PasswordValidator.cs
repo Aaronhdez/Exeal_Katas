@@ -7,6 +7,8 @@ public partial class PasswordValidator
     private const string NotEnoughCharactersError = "Password must be at least 8 characters";
     private const string NotEnoughNumbersError = "Password must contain at least 2 numbers";
     private const string NotEnoughCapitalsError = "Password must contain al least one capital letter";
+    [GeneratedRegex("[^\\d]")] private static partial Regex DigitRegex();
+    [GeneratedRegex("[A-Z]")] private static partial Regex UpperCaseRegex();
 
     public bool Validate(string passwordToValidate, out string validationResults)
     {
@@ -49,10 +51,4 @@ public partial class PasswordValidator
         validationResults = "Valid Password";
         return true;
     }
-
-    [GeneratedRegex("[^\\d]")]
-    private static partial Regex DigitRegex();    
-    
-    [GeneratedRegex("[A-Z]")]
-    private static partial Regex UpperCaseRegex();
 }
