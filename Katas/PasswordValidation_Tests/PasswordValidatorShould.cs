@@ -50,4 +50,14 @@ public class Tests
         _validationResults.Should().Be("Password must be al least 8 characters");
         result.Should().BeFalse();
     }
+    
+    [Test]
+    public void Return_error_message_if_password_not_fulfill_the_conditions_B()
+    {
+        var result = _passwordValidator.Validate("abcde", out _validationResults);
+
+        _validationResults.Should()
+            .Be("Password must be al least 8 characters\nThe password must contain al least 2 numbers");
+        result.Should().BeFalse();
+    }
 }
