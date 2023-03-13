@@ -7,8 +7,8 @@ public class Tests
 {
     private readonly PasswordValidator _passwordValidator = new PasswordValidator();
     private string _validationResults;
-    private readonly string _errorPasswordMustBeAlLeastEightCharacters = "Password must be al least 8 characters";
-    private readonly string _errorPasswordMustContainAlLeastTwoNumbers = "Password must contain al least 2 numbers";
+    private const string ErrorPasswordMustBeAlLeastEightCharacters = "Password must be at least 8 characters";
+    private const string ErrorPasswordMustContainAlLeastTwoNumbers = "Password must contain at least 2 numbers";
 
     [SetUp]
     public void Setup()
@@ -21,7 +21,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("a32erfg", out _validationResults);
 
-        _validationResults.Should().Be(_errorPasswordMustBeAlLeastEightCharacters);
+        _validationResults.Should().Be(ErrorPasswordMustBeAlLeastEightCharacters);
         result.Should().BeFalse();
     }
 
@@ -30,7 +30,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("gggg1jjaj", out _validationResults);
 
-        _validationResults.Should().Be(_errorPasswordMustContainAlLeastTwoNumbers);
+        _validationResults.Should().Be(ErrorPasswordMustContainAlLeastTwoNumbers);
         result.Should().BeFalse();
     }
 
@@ -39,7 +39,7 @@ public class Tests
     {
         var result = _passwordValidator.Validate("73763", out _validationResults);
 
-        _validationResults.Should().Be(_errorPasswordMustBeAlLeastEightCharacters);
+        _validationResults.Should().Be(ErrorPasswordMustBeAlLeastEightCharacters);
         result.Should().BeFalse();
     }
 
@@ -51,7 +51,7 @@ public class Tests
         var result = _passwordValidator.Validate(input, out _validationResults);
 
         _validationResults.Should()
-            .Be($"{_errorPasswordMustBeAlLeastEightCharacters}\n{_errorPasswordMustContainAlLeastTwoNumbers}");
+            .Be($"{ErrorPasswordMustBeAlLeastEightCharacters}\n{ErrorPasswordMustContainAlLeastTwoNumbers}");
         result.Should().Be(expectedResult);
     }
 }

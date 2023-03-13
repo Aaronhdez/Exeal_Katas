@@ -4,8 +4,8 @@ namespace PasswordValidation;
 
 public partial class PasswordValidator
 {
-    private const string PasswordMustBeAlLeastCharacters = "Password must be al least 8 characters";
-    private const string PasswordMustContainAlLeastNumbers = "Password must contain al least 2 numbers";
+    private const string PasswordMustBeAlLeastCharacters = "Password must be at least 8 characters";
+    private const string PasswordMustContainAtLeastNumbers = "Password must contain at least 2 numbers";
 
     public bool Validate(string passwordToValidate, out string validationResults)
     {
@@ -21,8 +21,8 @@ public partial class PasswordValidator
             .Replace(passwordToValidate, string.Empty);
         if (numbersInPassword.Length < 2)
             validationResults += validationResults.Length == 0
-                ? PasswordMustContainAlLeastNumbers
-                : $"\n{PasswordMustContainAlLeastNumbers}";
+                ? PasswordMustContainAtLeastNumbers
+                : $"\n{PasswordMustContainAtLeastNumbers}";
     }
 
     private static void HasValidLength(string passwordToValidate, ref string validationResults)
