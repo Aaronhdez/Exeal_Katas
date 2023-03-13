@@ -14,23 +14,13 @@ public partial class PasswordValidator
         HasValidLength(passwordToValidate, ref validationResults);
         HasAtLeastTwoNumbers(passwordToValidate, ref validationResults);
         HasAtLeastACapitalLetter(passwordToValidate, ref validationResults);
-        if (passwordToValidate == "Abcde123")
-        {
-            validationResults = "Valid Password";
-            return true;
-        }        
-        if (passwordToValidate == "Bcdef123")
-        {
-            validationResults = "Valid Password";
-            return true;
-        }      
-        if (passwordToValidate == "cdEfg323")
+        if (validationResults.Length == 0)
         {
             validationResults = "Valid Password";
             return true;
         }
 
-        return validationResults.Length <= 0;
+        return false;
     }
 
     private static void HasAtLeastACapitalLetter(string passwordToValidate, ref string validationResults)
