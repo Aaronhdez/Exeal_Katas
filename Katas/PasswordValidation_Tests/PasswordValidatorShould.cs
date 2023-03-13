@@ -64,4 +64,13 @@ public class Tests
         result.Should().BeFalse();
         _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
     }
+
+    [Test]
+    public void Return_false_for_bcdefg12()
+    {
+        var result = _passwordValidator.Validate("bcdefg12", out _validationResults);
+        
+        result.Should().BeFalse();
+        _validationResults.Should().Be(ErrorPasswordMustContainAtLeastACapitalLetter);
+    }
 }
