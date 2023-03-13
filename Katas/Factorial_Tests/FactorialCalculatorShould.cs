@@ -19,4 +19,11 @@ public class FactorialCalculatorShould
         result.Should().Be(1);
         
     }
+
+    [Test]
+    public void Return_2_if_input_is_2()
+    {
+        var result = FactorialCalculator.Factorial(2);
+        result.Should().Be(2);
+    }
 }
