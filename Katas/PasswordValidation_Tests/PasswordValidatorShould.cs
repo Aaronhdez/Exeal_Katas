@@ -115,4 +115,14 @@ public class Tests
         _validationResults.Should()
             .Be($"Valid Password");
     }
+    
+    [Test]
+    public void Return_true_for_cdEfg323()
+    {
+        var result = _passwordValidator.Validate("cdEfg323", out _validationResults);
+        
+        result.Should().BeTrue(); 
+        _validationResults.Should()
+            .Be($"Valid Password");
+    }
 }
