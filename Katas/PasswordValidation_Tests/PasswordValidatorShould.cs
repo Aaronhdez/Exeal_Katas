@@ -1,5 +1,5 @@
-using System.Text.RegularExpressions;
 using FluentAssertions;
+using PasswordValidation;
 
 namespace PasswordValidation_Tests;
 
@@ -29,15 +29,14 @@ public class Tests
 
         result.Should().Be("The password must contain al least 2 numbers");
     }
-}
-
-public class PasswordValidator
-{
-    public string Validate(string passwordToValidate)
+    
+    [Test]
+    public void Return_error_message_if_password_not_fulfill_the_conditions()
     {
-        if (passwordToValidate.Length < 8) return "Password must be al least 8 characters";
-        string numbersInPassword = Regex.Replace(passwordToValidate, @"[^\d]", String.Empty); ;
-        if (numbersInPassword.Length < 2) return "The password must contain al least 2 numbers";
-        return "";
+        var passwordValidator = new PasswordValidator();
+
+        var result = passwordValidator.Validate("abcd");
+
+        result.Should().Be("Password must be al least 8 characters\nThe password must contain al least 2 numbers");
     }
 }
