@@ -14,9 +14,7 @@ public partial class PasswordValidator
         HasValidLength(passwordToValidate, ref validationResults);
         HasAtLeastTwoNumbers(passwordToValidate, ref validationResults);
         HasAtLeastACapitalLetter(passwordToValidate, ref validationResults);
-        if (!IsValidPassword(ref validationResults)) return false;
-        return true;
-
+        return IsValidPassword(ref validationResults);
     }
 
     private static bool IsValidPassword(ref string validationResults)
