@@ -4,40 +4,15 @@ using FluentAssertions;
 namespace Factorial_Tests;
 public class FactorialCalculatorShould
 {
-    [Test]
-    public void Return_1_if_input_is_0()
+    [TestCase(0, 1)]
+    [TestCase(1, 1)]
+    [TestCase(2, 2)]
+    [TestCase(3, 6)]
+    [TestCase(4, 24)]
+    public void Return_factorial_of_a_number_when_input_is_that_number(int input, int expectedResult)
     {
-        var result = FactorialCalculator.Factorial(0);
+        var result = FactorialCalculator.Factorial(input);
         
-        result.Should().Be(1);
-    }
-
-    [Test]
-    public void Return_1_if_input_is_1()
-    {
-        var result = FactorialCalculator.Factorial(1);
-        result.Should().Be(1);
-        
-    }
-
-    [Test]
-    public void Return_2_if_input_is_2()
-    {
-        var result = FactorialCalculator.Factorial(2);
-        result.Should().Be(2);
-    }
-
-    [Test]
-    public void Return_6_if_input_is_3()
-    {
-        var result = FactorialCalculator.Factorial(3);
-        result.Should().Be(6);
-    }
-
-    [Test]
-    public void Return_24_if_input_is_4()
-    {
-        var result = FactorialCalculator.Factorial(4);
-        result.Should().Be(24);
+        result.Should().Be(expectedResult);
     }
 }
