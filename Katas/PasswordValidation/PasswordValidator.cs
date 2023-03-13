@@ -10,20 +10,18 @@ public class PasswordValidator
         if (passwordToValidate == "abcd")
         {
             validationResults = "Password must be al least 8 characters\nThe password must contain al least 2 numbers";
-            return false;
         }
 
         if (passwordToValidate.Length < 8)
         {
             validationResults = "Password must be al least 8 characters";
-            return false;
         }
-        string numbersInPassword = Regex.Replace(passwordToValidate, @"[^\d]", String.Empty); ;
+        var numbersInPassword = Regex.Replace(passwordToValidate, @"[^\d]", String.Empty); ;
         if (numbersInPassword.Length < 2)
         {
             validationResults = "The password must contain al least 2 numbers";
-            return false;
         }
-        return true;
+
+        return validationResults.Length <= 0;
     }
 }
