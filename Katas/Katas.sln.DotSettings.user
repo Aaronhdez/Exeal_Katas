@@ -1,4 +1,9 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3238e721_002D6bb2_002D4b51_002D97da_002D766a0b60ef0a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="FactorialCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::EBC3D142-475F-4297-99ED-05412BA94B44::net7.0::Fibonacci_Tests.FibonacciCalculatorShould&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76e51b9f_002Dab1d_002D452a_002D956c_002D031a494de94d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LeapYearCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
