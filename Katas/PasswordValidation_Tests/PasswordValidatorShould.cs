@@ -105,4 +105,14 @@ public class Tests
         _validationResults.Should()
             .Be($"Valid Password");
     }
+    
+    [Test]
+    public void Return_true_for_Bcdef123()
+    {
+        var result = _passwordValidator.Validate("Bcdef123", out _validationResults);
+        
+        result.Should().BeTrue(); 
+        _validationResults.Should()
+            .Be($"Valid Password");
+    }
 }
