@@ -8,7 +8,7 @@ public class Tests
     private readonly PasswordValidator _passwordValidator = new PasswordValidator();
     private string _validationResults;
     private readonly string _errorPasswordMustBeAlLeastEightCharacters = "Password must be al least 8 characters";
-    private readonly string _errorPasswordMustContainAlLeastTwoNumbers = "The password must contain al least 2 numbers";
+    private readonly string _errorPasswordMustContainAlLeastTwoNumbers = "Password must contain al least 2 numbers";
 
     [SetUp]
     public void Setup()
@@ -19,7 +19,7 @@ public class Tests
     [Test]
     public void Return_error_message_if_password_is_not_long_enough()
     {
-        var result = _passwordValidator.Validate("asderfg", out _validationResults);
+        var result = _passwordValidator.Validate("a32erfg", out _validationResults);
 
         _validationResults.Should().Be(_errorPasswordMustBeAlLeastEightCharacters);
         result.Should().BeFalse();
@@ -43,7 +43,6 @@ public class Tests
         result.Should().BeFalse();
     }
 
-    [Test]
     [TestCase("abcd",false)]
     [TestCase("abcde",false)]
     [TestCase("abcdef",false)]
