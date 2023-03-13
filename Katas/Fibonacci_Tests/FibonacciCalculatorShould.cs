@@ -52,4 +52,12 @@ public class FibonacciCalculatorShould
         
         result.Should().Be(5);
     }
+    
+    [Test]
+    public void Return_8_if_input_is_6()
+    {
+        var result = FibonacciCalculator.Fibonacci(6);
+        
+        result.Should().Be(8);
+    }
 }
