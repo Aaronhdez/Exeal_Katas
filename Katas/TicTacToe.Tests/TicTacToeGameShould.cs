@@ -38,4 +38,17 @@ public class TicTacToeGameShould
         
         result.Should().Be("Y");
     }
+    
+    [Test]
+    public void NotWriteASymbolIfCoordinatesAreAlreadyTaken()
+    {
+        var ticTacToeGame = new TicTacToeGame();
+        var coordinates = new Coordinates(0,0);
+        ticTacToeGame.WriteASymbol("Y", coordinates);
+        ticTacToeGame.WriteASymbol("X", coordinates);
+
+        var result = ticTacToeGame.SymbolAt(coordinates); 
+        
+        result.Should().Be("Y");
+    }
 }

@@ -16,7 +16,8 @@ public class TicTacToeGame
 
     public void WriteASymbol(string symbol, Coordinates coordinates)
     {
-        board.Add(coordinates.ToString(), symbol);
+        if (!board.ContainsKey(coordinates.ToString()))
+            board.Add(coordinates.ToString(), symbol);
     }
 
     public string SymbolAt(Coordinates coordinates)
