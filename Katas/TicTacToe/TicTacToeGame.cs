@@ -14,10 +14,10 @@ public class TicTacToeGame
         return board.Count == 0;
     }
 
-    public void WriteASymbol(string symbol, Coordinates coordinates)
+    public void WriteASymbol(Symbol symbol, Coordinates coordinates)
     {
         if (!board.ContainsKey(coordinates.ToString()))
-            board.Add(coordinates.ToString(), symbol);
+            board.Add(coordinates.ToString(), symbol.Value);
     }
 
     public string SymbolAt(Coordinates coordinates)

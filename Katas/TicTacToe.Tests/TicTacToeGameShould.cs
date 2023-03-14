@@ -20,7 +20,7 @@ public class TicTacToeGameShould
     public void NotBeEmptyIfASymbolIsInserted()
     {
         var ticTacToeGame = new TicTacToeGame();
-        ticTacToeGame.WriteASymbol("X", new Coordinates(0, 0));
+        ticTacToeGame.WriteASymbol(new Symbol("X"), new Coordinates(0, 0));
         
         var result = ticTacToeGame.BoardIsEmpty();
         
@@ -32,7 +32,7 @@ public class TicTacToeGameShould
     {
         var ticTacToeGame = new TicTacToeGame();
         var coordinates = new Coordinates(0,0);
-        ticTacToeGame.WriteASymbol("Y", coordinates);
+        ticTacToeGame.WriteASymbol(new Symbol("Y"), coordinates);
 
         var result = ticTacToeGame.SymbolAt(coordinates); 
         
@@ -44,8 +44,8 @@ public class TicTacToeGameShould
     {
         var ticTacToeGame = new TicTacToeGame();
         var coordinates = new Coordinates(0,0);
-        ticTacToeGame.WriteASymbol("Y", coordinates);
-        ticTacToeGame.WriteASymbol("X", coordinates);
+        ticTacToeGame.WriteASymbol(new Symbol("Y"), coordinates);
+        ticTacToeGame.WriteASymbol(new Symbol("X"), coordinates);
 
         var result = ticTacToeGame.SymbolAt(coordinates); 
         
