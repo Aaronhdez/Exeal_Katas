@@ -54,4 +54,13 @@ public class Board
                && SymbolAt(new Coordinates(1, 1)) ==
                SymbolAt(new Coordinates(2, 1));
     }
+
+    public bool SecondColumnIsFilledWithO()
+    {
+        return SymbolAt(new Coordinates(0, 1)) == "O" 
+               && SymbolAt(new Coordinates(0, 1)) ==
+               SymbolAt(new Coordinates(1, 1)) 
+               && SymbolAt(new Coordinates(1, 1)) ==
+               SymbolAt(new Coordinates(2, 1));;
+    }
 }
