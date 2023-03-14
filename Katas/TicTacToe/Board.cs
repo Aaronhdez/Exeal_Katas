@@ -36,4 +36,13 @@ public class Board
                && SymbolAt(new Coordinates(1, 0)) ==
                SymbolAt(new Coordinates(2, 0));
     }
+
+    public bool FirstColumnIsFilledWithO()
+    {
+        return SymbolAt(new Coordinates(0, 0)) == "O" 
+               && SymbolAt(new Coordinates(0, 0)) ==
+               SymbolAt(new Coordinates(1, 0)) 
+               && SymbolAt(new Coordinates(1, 0)) ==
+               SymbolAt(new Coordinates(2, 0));
+    }
 }
