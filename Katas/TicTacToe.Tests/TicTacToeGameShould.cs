@@ -16,8 +16,9 @@ public class TicTacToeGameShould
     public void BeEmptyAtTheBeginningOfTheGame()
     {
         var result = _ticTacToeGame.Board.BoardIsEmpty();
+        var result2 = _ticTacToeGame.CurrentStatus();
         
-        result.Should().BeTrue();
+        result2.Should().Be("The board is empty");
     }
 
     [Test]
