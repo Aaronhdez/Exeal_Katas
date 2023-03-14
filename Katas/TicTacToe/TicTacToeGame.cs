@@ -22,6 +22,8 @@ public class TicTacToeGame
 
     public string SymbolAt(Coordinates coordinates)
     {
-        return "Y";
+        if (board.ContainsKey(coordinates.ToString()))
+            return board[coordinates.ToString()];
+        return string.Empty;
     }
 }

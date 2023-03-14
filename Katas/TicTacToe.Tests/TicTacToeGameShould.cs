@@ -44,11 +44,12 @@ public class TicTacToeGameShould
     {
         var ticTacToeGame = new TicTacToeGame();
         var coordinates = new Coordinates(0,0);
-        ticTacToeGame.WriteASymbol(new Symbol("Y"), coordinates);
         ticTacToeGame.WriteASymbol(new Symbol("X"), coordinates);
+        ticTacToeGame.WriteASymbol(new Symbol("Y"), coordinates);
 
         var result = ticTacToeGame.SymbolAt(coordinates); 
         
-        result.Should().Be("Y");
+        result.Should().Be("X");
     }
+    
 }
