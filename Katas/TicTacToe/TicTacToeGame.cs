@@ -11,6 +11,7 @@ public class TicTacToeGame
 
     public string CurrentStatus()
     {
-        return "The board is empty";
+        if (!Board.BoardIsEmpty()) return "[x][][]\n[][][]\n[][][]";
+        return "[][][]\n[][][]\n[][][]";
     }
 }

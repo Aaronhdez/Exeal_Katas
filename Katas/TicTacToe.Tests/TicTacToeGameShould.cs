@@ -15,10 +15,9 @@ public class TicTacToeGameShould
     [Test]
     public void BeEmptyAtTheBeginningOfTheGame()
     {
-        var result = _ticTacToeGame.Board.BoardIsEmpty();
-        var result2 = _ticTacToeGame.CurrentStatus();
+        var result = _ticTacToeGame.CurrentStatus();
         
-        result2.Should().Be("The board is empty");
+        result.Should().Be("[][][]\n[][][]\n[][][]");
     }
 
     [Test]
@@ -26,9 +25,9 @@ public class TicTacToeGameShould
     {
         _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), new Coordinates(0, 0));
         
-        var result = _ticTacToeGame.Board.BoardIsEmpty();
+        var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().BeFalse();
+        result.Should().Be("[x][][]\n[][][]\n[][][]");
     }
 
     [Test]
