@@ -14,4 +14,16 @@ public class TicTacToeGameShould
         
         result.Should().BeTrue();
     }
+
+
+    [Test]
+    public void NotBeEmptyIfASymbolIsInserted()
+    {
+        TicTacToeGame.WriteASymbol("X",0,0);
+        
+        var result = TicTacToeGame.BoardIsEmpty();
+        
+        result.Should().BeFalse();
+        
+    }
 }
