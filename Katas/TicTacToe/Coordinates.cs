@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.Test;
+﻿namespace TicTacToe;
 
 public class Coordinates
 {
