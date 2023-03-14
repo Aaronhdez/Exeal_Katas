@@ -48,9 +48,9 @@ public class TicTacToeGameShould
         _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), coordinates);
         _ticTacToeGame.Board.WriteASymbol(new Symbol(_ySymbol), coordinates);
 
-        var result = _ticTacToeGame.Board.SymbolAt(coordinates); 
+        var result = _ticTacToeGame.CurrentStatus();  
         
-        result.Should().Be(_xSymbol);
+        result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
     
     
