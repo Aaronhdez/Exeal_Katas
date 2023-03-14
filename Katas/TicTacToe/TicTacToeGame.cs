@@ -4,12 +4,17 @@ public class Coordinates
 {
     public Coordinates(int x, int y)
     {
-        X = x;
-        Y = y;
+        _x = x;
+        _y = y;
     }
 
-    public int X { get; private set; }
-    public int Y { get; private set; }
+    public override string ToString()
+    {
+        return _x + "," + _y;
+    }
+
+    private readonly int _x;
+    private readonly int _y;
 }
 
 public class TicTacToeGame
@@ -23,6 +28,6 @@ public class TicTacToeGame
 
     public static void WriteASymbol(string symbol, Coordinates coordinates)
     {
-        board.Add($"{coordinates.X},{coordinates.Y}", symbol);
+        board.Add(coordinates.ToString(), symbol);
     }
 }
