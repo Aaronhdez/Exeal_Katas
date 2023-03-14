@@ -19,7 +19,7 @@ public class TicTacToeGameShould
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
-        TicTacToeGame.WriteASymbol("X",0,0);
+        TicTacToeGame.WriteASymbol("X", new Coordinates(0, 0));
         
         var result = TicTacToeGame.BoardIsEmpty();
         
