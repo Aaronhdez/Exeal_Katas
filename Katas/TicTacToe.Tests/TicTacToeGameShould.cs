@@ -2,7 +2,7 @@ namespace TicTacToe.Test;
 
 public class TicTacToeGameShould
 {
-    private readonly string _ySymbol = "O";
+    private readonly string _oSymbol = "O";
     private readonly string _xSymbol = "X";
     private TicTacToeGame _ticTacToeGame;
 
@@ -34,7 +34,7 @@ public class TicTacToeGameShould
     public void WriteASymbolIfCoordinatesNotTaken()
     {
         var coordinates = new Coordinates(0,0);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_ySymbol), coordinates);
+        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus(); 
         
@@ -46,7 +46,7 @@ public class TicTacToeGameShould
     {
         var coordinates = new Coordinates(0,0);
         _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), coordinates);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_ySymbol), coordinates);
+        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus();  
         
