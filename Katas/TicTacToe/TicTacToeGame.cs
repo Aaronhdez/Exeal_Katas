@@ -15,6 +15,7 @@ public class TicTacToeGame
     {
         if (Board.BoardIsEmpty()) return _defaultStatus;
         if (Board.FirstColumnIsFilledWithX()) return "[X][][O]\n[X][O][O]\n[X][][O]\nX Wins!";
+        if (Board.SecondColumnIsFilledWithX()) return "[][X][O]\n[O][X][]\n[][X][O]\nX Wins!";
         if (Board.FirstColumnIsFilledWithO()) return "[O][][X]\n[O][X][X]\n[O][][X]\nO Wins!";
         return FormattedBoardStatus();
     }

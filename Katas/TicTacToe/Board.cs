@@ -45,4 +45,13 @@ public class Board
                && SymbolAt(new Coordinates(1, 0)) ==
                SymbolAt(new Coordinates(2, 0));
     }
+
+    public bool SecondColumnIsFilledWithX()
+    {
+        return SymbolAt(new Coordinates(0, 1)) == "X" 
+               && SymbolAt(new Coordinates(0, 1)) ==
+               SymbolAt(new Coordinates(1, 1)) 
+               && SymbolAt(new Coordinates(1, 1)) ==
+               SymbolAt(new Coordinates(2, 1));
+    }
 }
