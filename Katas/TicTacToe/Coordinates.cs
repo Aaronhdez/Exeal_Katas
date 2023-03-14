@@ -18,6 +18,6 @@ public class Coordinates
 
     public bool AreValid()
     {
-        return _y > -1;
+        return _y > -1 && _y < 3;
     }
 }
