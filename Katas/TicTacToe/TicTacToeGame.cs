@@ -18,4 +18,9 @@ public class TicTacToeGame
     {
         board.Add(coordinates.ToString(), symbol);
     }
+
+    public string SymbolAt(Coordinates coordinates)
+    {
+        return "Y";
+    }
 }

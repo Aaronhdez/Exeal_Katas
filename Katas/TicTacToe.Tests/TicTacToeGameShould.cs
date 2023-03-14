@@ -16,7 +16,6 @@ public class TicTacToeGameShould
         result.Should().BeTrue();
     }
 
-
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
@@ -27,6 +26,16 @@ public class TicTacToeGameShould
         
         result.Should().BeFalse();
     }
-    
-    
+
+    [Test]
+    public void WriteASymbolIfCoordinatesAreAlreadyTaken()
+    {
+        var ticTacToeGame = new TicTacToeGame();
+        var coordinates = new Coordinates(0,0);
+        ticTacToeGame.WriteASymbol("Y", coordinates);
+
+        var result = ticTacToeGame.SymbolAt(coordinates); 
+        
+        result.Should().Be("Y");
+    }
 }
