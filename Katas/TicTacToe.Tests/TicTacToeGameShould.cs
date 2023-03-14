@@ -10,7 +10,8 @@ public class TicTacToeGameShould
     [Test]
     public void BeEmptyAtTheBeginningOfTheGame()
     {
-        var result = TicTacToeGame.BoardIsEmpty();
+        var ticTacToeGame = new TicTacToeGame();
+        var result = ticTacToeGame.BoardIsEmpty();
         
         result.Should().BeTrue();
     }
@@ -19,11 +20,13 @@ public class TicTacToeGameShould
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
-        TicTacToeGame.WriteASymbol("X", new Coordinates(0, 0));
+        var ticTacToeGame = new TicTacToeGame();
+        ticTacToeGame.WriteASymbol("X", new Coordinates(0, 0));
         
-        var result = TicTacToeGame.BoardIsEmpty();
+        var result = ticTacToeGame.BoardIsEmpty();
         
         result.Should().BeFalse();
-        
     }
+    
+    
 }

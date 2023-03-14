@@ -2,14 +2,19 @@
 
 public class TicTacToeGame
 {
-    private static readonly Dictionary<string,string> board = new Dictionary<string, string>();
+    private Dictionary<string, string> board;
 
-    public static bool BoardIsEmpty()
+    public TicTacToeGame()
+    {
+        board = new Dictionary<string, string>();
+    }
+
+    public bool BoardIsEmpty()
     {
         return board.Count == 0;
     }
 
-    public static void WriteASymbol(string symbol, Coordinates coordinates)
+    public void WriteASymbol(string symbol, Coordinates coordinates)
     {
         board.Add(coordinates.ToString(), symbol);
     }
