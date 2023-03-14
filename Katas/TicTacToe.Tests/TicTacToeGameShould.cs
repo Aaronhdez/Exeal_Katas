@@ -23,7 +23,7 @@ public class TicTacToeGameShould
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), new Coordinates(0, 0));
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0, 0));
         
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -34,7 +34,7 @@ public class TicTacToeGameShould
     public void WriteASymbolIfCoordinatesNotTaken()
     {
         var coordinates = new Coordinates(0,0);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), coordinates);
+        _ticTacToeGame.Write(new Symbol(_oSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus(); 
         
@@ -45,7 +45,7 @@ public class TicTacToeGameShould
     public void NotWriteASymbolIfCoordinatesAreAlreadyTaken()
     {
         var coordinates = new Coordinates(0,0);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), coordinates);
+        _ticTacToeGame.Write(new Symbol(_xSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus();  
         
@@ -57,8 +57,8 @@ public class TicTacToeGameShould
     {
         var firstCoordinates = new Coordinates(0,0);
         var secondCoordinates = new Coordinates(2,1);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), firstCoordinates);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), secondCoordinates);
+        _ticTacToeGame.Write(new Symbol(_oSymbol), firstCoordinates);
+        _ticTacToeGame.Write(new Symbol(_xSymbol), secondCoordinates);
         
         var result = _ticTacToeGame.CurrentStatus();
         

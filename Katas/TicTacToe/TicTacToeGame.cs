@@ -2,6 +2,8 @@
 
 public class TicTacToeGame
 {
+    private readonly string _defaultStatus = "[][][]\n[][][]\n[][][]";
+
     public TicTacToeGame()
     {
         Board = new Board();
@@ -11,16 +13,21 @@ public class TicTacToeGame
 
     public string CurrentStatus()
     {
-        if (Board.BoardIsEmpty()) return "[][][]\n[][][]\n[][][]";
-        return BoardStatus();
+        if (Board.BoardIsEmpty()) return _defaultStatus;
+        return FormattedBoardStatus();
     }
 
-    private string BoardStatus()
+    public void Write(Symbol symbol, Coordinates coordinates)
+    {
+        Board.WriteASymbol(symbol,coordinates);
+    }
+
+    private string FormattedBoardStatus()
     {
         var boardStatus = string.Empty;
-        for (int i = 0; i < 3; i++)
+        for (var i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (var j = 0; j < 3; j++)
             {
                 boardStatus += "[" + Board.SymbolAt(new Coordinates(i, j)) + "]";
             }
