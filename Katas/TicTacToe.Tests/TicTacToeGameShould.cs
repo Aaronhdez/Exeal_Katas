@@ -135,4 +135,18 @@ public class TicTacToeGameShould
         
         result.Should().Be("[][O][X]\n[X][O][]\n[][O][X]\nO Wins!");
     }
+    
+    [Test]
+    public void DisplayWinningMessageIfXPlayerFillsThirdColumn()
+    {
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,2));
+
+        var result = _ticTacToeGame.CurrentStatus();
+        
+        result.Should().Be("[O][][X]\n[O][][X]\n[][][X]\nX Wins!");
+    }
 }
