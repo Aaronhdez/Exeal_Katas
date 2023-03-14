@@ -21,7 +21,7 @@ public class TicTacToeGame
     {
         try
         {
-            Board.WriteASymbol(symbol,coordinates);
+            Board.WriteASymbol(symbol, coordinates);
         }
         catch (Exception e)
         {
@@ -41,6 +41,7 @@ public class TicTacToeGame
 
             boardStatus += " ";
         }
+
         return boardStatus.Trim().Replace(" ", "\n");
     }
 }

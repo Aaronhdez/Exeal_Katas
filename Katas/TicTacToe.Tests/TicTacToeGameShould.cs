@@ -16,7 +16,7 @@ public class TicTacToeGameShould
     public void BeEmptyAtTheBeginningOfTheGame()
     {
         var result = _ticTacToeGame.CurrentStatus();
-        
+
         result.Should().Be("[][][]\n[][][]\n[][][]");
     }
 
@@ -24,57 +24,55 @@ public class TicTacToeGameShould
     public void NotBeEmptyIfASymbolIsInserted()
     {
         _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0, 0));
-        
+
         var result = _ticTacToeGame.CurrentStatus();
-        
+
         result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
 
     [Test]
     public void WriteASymbolIfCoordinatesNotTaken()
     {
-        var coordinates = new Coordinates(0,0);
+        var coordinates = new Coordinates(0, 0);
         _ticTacToeGame.Write(new Symbol(_oSymbol), coordinates);
 
-        var result = _ticTacToeGame.CurrentStatus(); 
-        
+        var result = _ticTacToeGame.CurrentStatus();
+
         result.Should().Be("[O][][]\n[][][]\n[][][]");
     }
-    
+
     [Test]
     public void NotWriteASymbolIfCoordinatesAreAlreadyTaken()
     {
-        var coordinates = new Coordinates(0,0);
+        var coordinates = new Coordinates(0, 0);
         _ticTacToeGame.Write(new Symbol(_xSymbol), coordinates);
 
-        var result = _ticTacToeGame.CurrentStatus();  
-        
+        var result = _ticTacToeGame.CurrentStatus();
+
         result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
 
     [Test]
     public void WriteASymbolAtAnyPlaceOfTheBoard()
     {
-        var firstCoordinates = new Coordinates(0,0);
-        var secondCoordinates = new Coordinates(2,1);
+        var firstCoordinates = new Coordinates(0, 0);
+        var secondCoordinates = new Coordinates(2, 1);
         _ticTacToeGame.Write(new Symbol(_oSymbol), firstCoordinates);
         _ticTacToeGame.Write(new Symbol(_xSymbol), secondCoordinates);
-        
+
         var result = _ticTacToeGame.CurrentStatus();
-        
+
         result.Should().Be("[O][][]\n[][][]\n[][X][]");
     }
 
-
-    [TestCase(0,-1)]
-    [TestCase(0,3)]
-    [TestCase(-1,-0)]
-    [TestCase(3,0)]
+    [TestCase(0, -1)]
+    [TestCase(0, 3)]
+    [TestCase(-1, -0)]
+    [TestCase(3, 0)]
     public void ThrowExceptionIfAPlayerTriesToWriteOutsideBounds(int x, int y)
     {
         var result = () => _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(x, y));
 
         result.Should().Throw<IndexOutOfRangeException>();
     }
-    
 }

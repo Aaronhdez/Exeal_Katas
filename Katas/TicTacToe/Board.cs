@@ -2,29 +2,29 @@
 
 public class Board
 {
-    private readonly Dictionary<string, string> board;
+    private readonly Dictionary<string, string> _board;
 
     public Board()
     {
-        board = new Dictionary<string, string>();
+        _board = new Dictionary<string, string>();
     }
 
     public bool BoardIsEmpty()
     {
-        return board.Count == 0;
+        return _board.Count == 0;
     }
 
     public void WriteASymbol(Symbol symbol, Coordinates coordinates)
     {
         if (!coordinates.AreValid()) throw new Exception();
-        if (!board.ContainsKey(coordinates.ToString()))
-            board.Add(coordinates.ToString(), symbol.Value);
+        if (!_board.ContainsKey(coordinates.ToString()))
+            _board.Add(coordinates.ToString(), symbol.Value);
     }
 
     public string SymbolAt(Coordinates coordinates)
     {
-        if (board.ContainsKey(coordinates.ToString()))
-            return board[coordinates.ToString()];
+        if (_board.ContainsKey(coordinates.ToString()))
+            return _board[coordinates.ToString()];
         return string.Empty;
     }
 }
