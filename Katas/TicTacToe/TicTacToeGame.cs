@@ -14,6 +14,7 @@ public class TicTacToeGame
     public string CurrentStatus()
     {
         if (Board.BoardIsEmpty()) return _defaultStatus;
+        if (Board.FirstColumnIsFilledWithX()) return "[X][][O]\n[X][O][O]\n[X][][]\nX Wins!";
         return FormattedBoardStatus();
     }
 

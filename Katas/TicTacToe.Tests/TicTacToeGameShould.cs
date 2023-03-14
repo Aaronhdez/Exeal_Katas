@@ -75,4 +75,19 @@ public class TicTacToeGameShould
 
         result.Should().Throw<IndexOutOfRangeException>();
     }
+
+    [Test]
+    public void DisplayWinningMessageIfXPlayerFillsFirstColumn()
+    {
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,0));
+        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,2));
+
+        var result = _ticTacToeGame.CurrentStatus();
+        
+        result.Should().Be("[X][][O]\n[X][O][O]\n[X][][]\nX Wins!");
+    }
 }

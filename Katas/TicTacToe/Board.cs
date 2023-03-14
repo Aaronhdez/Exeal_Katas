@@ -27,4 +27,13 @@ public class Board
             return _board[coordinates.ToString()];
         return string.Empty;
     }
+
+    public bool FirstColumnIsFilledWithX()
+    {
+        return SymbolAt(new Coordinates(0, 0)) == "X" 
+               && SymbolAt(new Coordinates(0, 0)) ==
+               SymbolAt(new Coordinates(1, 0)) 
+               && SymbolAt(new Coordinates(1, 0)) ==
+               SymbolAt(new Coordinates(2, 0));
+    }
 }
