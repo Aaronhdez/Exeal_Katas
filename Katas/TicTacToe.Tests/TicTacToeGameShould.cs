@@ -46,12 +46,23 @@ public class TicTacToeGameShould
     {
         var coordinates = new Coordinates(0,0);
         _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), coordinates);
-        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus();  
         
         result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
-    
+
+    [Test]
+    public void WriteASymbolAtAnyPlaceOfTheBoard()
+    {
+        var firstCoordinates = new Coordinates(0,0);
+        var secondCoordinates = new Coordinates(2,1);
+        _ticTacToeGame.Board.WriteASymbol(new Symbol(_oSymbol), firstCoordinates);
+        _ticTacToeGame.Board.WriteASymbol(new Symbol(_xSymbol), secondCoordinates);
+        
+        var result = _ticTacToeGame.CurrentStatus();
+        
+        result.Should().Be("[O][][]\n[][][]\n[][X][]");
+    }
     
 }

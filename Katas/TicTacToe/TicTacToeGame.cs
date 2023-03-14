@@ -12,8 +12,21 @@ public class TicTacToeGame
     public string CurrentStatus()
     {
         if (Board.BoardIsEmpty()) return "[][][]\n[][][]\n[][][]";
-        if (Board.SymbolAt(new Coordinates(0, 0)) == "O")
-            return "[O][][]\n[][][]\n[][][]";
-        return "[X][][]\n[][][]\n[][][]";
+        return BoardStatus();
+    }
+
+    private string BoardStatus()
+    {
+        var boardStatus = string.Empty;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                boardStatus += "[" + Board.SymbolAt(new Coordinates(i, j)) + "]";
+            }
+
+            boardStatus += " ";
+        }
+        return boardStatus.Trim().Replace(" ", "\n");
     }
 }
