@@ -72,4 +72,13 @@ public class Board
                && SymbolAt(new Coordinates(1, 2)) ==
                SymbolAt(new Coordinates(2, 2));
     }
+
+    public bool ThirdColumnIsFilledWithO()
+    {
+        return SymbolAt(new Coordinates(0, 2)) == "O" 
+               && SymbolAt(new Coordinates(0, 2)) ==
+               SymbolAt(new Coordinates(1, 2)) 
+               && SymbolAt(new Coordinates(1, 2)) ==
+               SymbolAt(new Coordinates(2, 2));
+    }
 }

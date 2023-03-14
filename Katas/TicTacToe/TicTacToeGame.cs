@@ -19,6 +19,7 @@ public class TicTacToeGame
         if (Board.ThirdColumnIsFilledWithX()) return "[O][][X]\n[O][][X]\n[][][X]\nX Wins!";
         if (Board.FirstColumnIsFilledWithO()) return "[O][][X]\n[O][X][X]\n[O][][X]\nO Wins!";
         if (Board.SecondColumnIsFilledWithO()) return "[][O][X]\n[X][O][]\n[][O][X]\nO Wins!";
+        if (Board.ThirdColumnIsFilledWithO()) return "[X][][O]\n[X][][O]\n[][][O]\nO Wins!";
         return FormattedBoardStatus();
     }
 
