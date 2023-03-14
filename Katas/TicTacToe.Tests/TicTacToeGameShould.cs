@@ -89,4 +89,12 @@ public class TicTacToeGameShould
         result.Should().Throw<IndexOutOfRangeException>();
     }
     
+    [Test]
+    public void ThrowExceptionIfAPlayerTriesToWriteOutsideRightBound()
+    {
+        var result = () => _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(3,0));
+
+        result.Should().Throw<IndexOutOfRangeException>();
+    }
+    
 }
