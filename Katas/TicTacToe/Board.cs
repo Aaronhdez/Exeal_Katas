@@ -16,6 +16,7 @@ public class Board
 
     public void WriteASymbol(Symbol symbol, Coordinates coordinates)
     {
+        if (!coordinates.AreValid()) throw new Exception();
         if (!board.ContainsKey(coordinates.ToString()))
             board.Add(coordinates.ToString(), symbol.Value);
     }

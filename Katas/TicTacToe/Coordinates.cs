@@ -15,4 +15,9 @@ public class Coordinates
     {
         return _x + "," + _y;
     }
+
+    public bool AreValid()
+    {
+        return _y > -1;
+    }
 }

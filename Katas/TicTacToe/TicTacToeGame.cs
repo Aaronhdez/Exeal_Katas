@@ -19,7 +19,14 @@ public class TicTacToeGame
 
     public void Write(Symbol symbol, Coordinates coordinates)
     {
-        Board.WriteASymbol(symbol,coordinates);
+        try
+        {
+            Board.WriteASymbol(symbol,coordinates);
+        }
+        catch (Exception e)
+        {
+            throw new IndexOutOfRangeException();
+        }
     }
 
     private string FormattedBoardStatus()

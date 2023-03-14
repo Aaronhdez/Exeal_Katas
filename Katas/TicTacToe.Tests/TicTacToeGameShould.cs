@@ -64,5 +64,13 @@ public class TicTacToeGameShould
         
         result.Should().Be("[O][][]\n[][][]\n[][X][]");
     }
+
+    [Test]
+    public void ThrowExceptionIfAPlayerTriesToWriteOutsideUpperBound()
+    {
+        var result = () => _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,-1));
+
+        result.Should().Throw<IndexOutOfRangeException>();
+    }
     
 }
