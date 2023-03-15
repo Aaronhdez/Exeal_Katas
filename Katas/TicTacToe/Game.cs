@@ -26,7 +26,7 @@ public class Game
             ? OPlayer : XPlayer;
     }
     
-    public string CurrentStatus()
+    public string GetResult()
     {
         return _board.IsEmpty() ? DefaultStatus :
             PlayerXHasWon() ? FormattedBoardStatus() + "\nX Wins!" :

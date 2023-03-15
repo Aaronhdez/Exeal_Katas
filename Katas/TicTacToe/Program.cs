@@ -19,7 +19,7 @@ public static class Program
     {
         if (GameIsOver(game))
         {
-            Console.WriteLine(game.CurrentStatus());
+            Console.WriteLine(game.GetResult());
             return true;
         }
 
@@ -30,7 +30,7 @@ public static class Program
 
     private static void PlayTurn(Game game)
     {
-        Console.WriteLine(game.CurrentStatus());
+        Console.WriteLine(game.GetResult());
         Console.WriteLine($"{game.CurrentPlayer()} Goes...");
         Console.WriteLine("Coordinate X");
         var coordinateX = int.Parse(Console.ReadLine() ?? "0");
@@ -52,6 +52,6 @@ public static class Program
 
     private static bool GameIsOver(Game game)
     {
-        return game.CurrentStatus().Contains("Wins") || game.CurrentStatus().Contains("Draw");
+        return game.GetResult().Contains("Wins") || game.GetResult().Contains("Draw");
     }
 }

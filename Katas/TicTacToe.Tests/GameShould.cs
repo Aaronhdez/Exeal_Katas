@@ -17,7 +17,7 @@ public class GameShould
     [Test]
     public void BeEmptyAtTheBeginningOfTheGame()
     {
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
 
         result.Should().Be("[][][]\n[][][]\n[][][]");
     }
@@ -27,7 +27,7 @@ public class GameShould
     {
         _game.Write(new Symbol(XSymbol), new Coordinates(0, 0));
 
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
 
         result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
@@ -38,7 +38,7 @@ public class GameShould
         var coordinates = new Coordinates(0, 0);
         _game.Write(new Symbol(OSymbol), coordinates);
 
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
 
         result.Should().Be("[O][][]\n[][][]\n[][][]");
     }
@@ -49,7 +49,7 @@ public class GameShould
         var coordinates = new Coordinates(0, 0);
         _game.Write(new Symbol(XSymbol), coordinates);
 
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
 
         result.Should().Be("[X][][]\n[][][]\n[][][]");
     }
@@ -62,7 +62,7 @@ public class GameShould
         _game.Write(new Symbol(OSymbol), firstCoordinates);
         _game.Write(new Symbol(XSymbol), secondCoordinates);
 
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
 
         result.Should().Be("[O][][]\n[][][]\n[][X][]");
     }
@@ -91,7 +91,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(2, 0));
             _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[X][][O]\n[X][O][]\n[X][][O]\nX Wins!");
         }
@@ -106,7 +106,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(2, 1));
             _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[][X][O]\n[O][X][]\n[][X][O]\nX Wins!");
         }
@@ -120,7 +120,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(1, 0));
             _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[O][][X]\n[O][][X]\n[][][X]\nX Wins!");
         }
@@ -135,7 +135,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
             _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[X][X][X]\n[][][O]\n[][O][O]\nX Wins!");
         }
@@ -150,7 +150,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[][][O]\n[X][X][X]\n[][O][O]\nX Wins!");
         }
@@ -165,7 +165,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
             _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[][][O]\n[][O][O]\n[X][X][X]\nX Wins!");
         }
@@ -179,7 +179,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[X][][O]\n[][X][O]\n[][][X]\nX Wins!");
         }
@@ -193,7 +193,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(XSymbol), new Coordinates(2,0));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[O][][X]\n[][X][O]\n[X][][]\nX Wins!");
         }
@@ -212,7 +212,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(2, 0));
             _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[O][][X]\n[O][X][]\n[O][][X]\nO Wins!");
         }
@@ -227,7 +227,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(2, 1));
             _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[][O][X]\n[X][O][]\n[][O][X]\nO Wins!");
         }
@@ -241,7 +241,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(1, 0));
             _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
 
             result.Should().Be("[X][][O]\n[X][][O]\n[][][O]\nO Wins!");
         }
@@ -256,7 +256,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
             _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[O][O][O]\n[][][X]\n[][X][X]\nO Wins!");
         }
@@ -271,7 +271,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[][][X]\n[O][O][O]\n[][X][X]\nO Wins!");
         }
@@ -286,7 +286,7 @@ public class GameShould
             _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
             _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
 
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[][][X]\n[][X][X]\n[O][O][O]\nO Wins!");
         }
@@ -300,7 +300,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
             
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[O][][X]\n[][O][X]\n[][][O]\nO Wins!");
         }
@@ -314,7 +314,7 @@ public class GameShould
             _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
             _game.Write(new Symbol(OSymbol), new Coordinates(2,0));
             
-            var result = _game.CurrentStatus();
+            var result = _game.GetResult();
         
             result.Should().Be("[X][][O]\n[][O][X]\n[O][][]\nO Wins!");
         }
@@ -333,7 +333,7 @@ public class GameShould
         _game.Write(new Symbol(OSymbol), new Coordinates(1, 2));
         _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
         
-        var result = _game.CurrentStatus();
+        var result = _game.GetResult();
         
         result.Should().Be("[O][X][O]\n[X][X][O]\n[X][O][X]\n Draw");
     }
