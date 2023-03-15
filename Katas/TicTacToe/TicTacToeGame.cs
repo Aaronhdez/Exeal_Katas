@@ -53,4 +53,9 @@ public class TicTacToeGame
             $"[{Board.SymbolAt(new Coordinates(1, 0))}][{Board.SymbolAt(new Coordinates(1, 1))}][{Board.SymbolAt(new Coordinates(1, 2))}]\n" +
             $"[{Board.SymbolAt(new Coordinates(2, 0))}][{Board.SymbolAt(new Coordinates(2, 1))}][{Board.SymbolAt(new Coordinates(2, 2))}]";
     }
+
+    public string CurrentPlayer()
+    {
+        return XPlayer;
+    }
 }

@@ -337,4 +337,11 @@ public class TicTacToeGameShould
         
         result.Should().Be("[O][X][O]\n[X][X][O]\n[X][O][X]\n Draw");
     }
+
+    [Test]
+    public void ShowXPlayerTurnAtTheBeginning()
+    {
+        var result = _ticTacToeGame.CurrentPlayer();
+        result.Should().Be("X");
+    }
 }
