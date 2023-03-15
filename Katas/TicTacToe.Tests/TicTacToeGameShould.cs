@@ -342,6 +342,18 @@ public class TicTacToeGameShould
     public void ShowXPlayerTurnAtTheBeginning()
     {
         var result = _ticTacToeGame.CurrentPlayer();
+        
         result.Should().Be("X");
+    }
+
+    [Test]
+    public void ShowOPlayerTurnAfterPlayerXWritesALetter()
+    {
+        var coordinates = new Coordinates(0, 0);
+        _ticTacToeGame.Write(new Symbol("X"), coordinates);
+        
+        var result = _ticTacToeGame.CurrentPlayer();
+        
+        result.Should().Be("O");
     }
 }

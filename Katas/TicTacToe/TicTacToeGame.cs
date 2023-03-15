@@ -4,6 +4,7 @@ namespace TicTacToe;
 
 public class TicTacToeGame
 {
+    private string _currentPlayer;
     private const string DefaultStatus = "[][][]\n[][][]\n[][][]";
     private const string XPlayer = "X";
     private const string OPlayer = "O";
@@ -11,6 +12,7 @@ public class TicTacToeGame
     public TicTacToeGame()
     {
         Board = new Board();
+        _currentPlayer = XPlayer;
     }
 
     private Board Board { get; }
@@ -19,6 +21,7 @@ public class TicTacToeGame
     public void Write(Symbol symbol, Coordinates coordinates)
     {
         Board.WriteASymbol(symbol, coordinates);
+        _currentPlayer = "O";
     }
     
     public string CurrentStatus()
@@ -56,6 +59,6 @@ public class TicTacToeGame
 
     public string CurrentPlayer()
     {
-        return XPlayer;
+        return _currentPlayer;
     }
 }
