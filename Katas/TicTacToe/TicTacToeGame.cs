@@ -21,7 +21,8 @@ public class TicTacToeGame
     public void Write(Symbol symbol, Coordinates coordinates)
     {
         Board.WriteASymbol(symbol, coordinates);
-        _currentPlayer = "O";
+        _currentPlayer = _currentPlayer.Equals(XPlayer) 
+            ? OPlayer : XPlayer;
     }
     
     public string CurrentStatus()

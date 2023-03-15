@@ -356,4 +356,17 @@ public class TicTacToeGameShould
         
         result.Should().Be("O");
     }
+    
+    [Test]
+    public void SwitchTurnToPlayerXAfterPlayerOWritesALetter()
+    {
+        var coordinates = new Coordinates(0, 0);
+        var coordinates2 = new Coordinates(1, 0);
+        _ticTacToeGame.Write(new Symbol("X"), coordinates);
+        _ticTacToeGame.Write(new Symbol("O"), coordinates2);
+        
+        var result = _ticTacToeGame.CurrentPlayer();
+        
+        result.Should().Be("X");
+    }
 }
