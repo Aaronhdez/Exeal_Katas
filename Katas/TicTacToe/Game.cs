@@ -2,7 +2,7 @@
 
 namespace TicTacToe;
 
-public class TicTacToeGame
+public class Game
 {
     private string _currentPlayer;
     private Board _board;
@@ -10,7 +10,7 @@ public class TicTacToeGame
     private const string XPlayer = "X";
     private const string OPlayer = "O";
 
-    public TicTacToeGame()
+    public Game()
     {
         _board = new Board();
         _currentPlayer = XPlayer;

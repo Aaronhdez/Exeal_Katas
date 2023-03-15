@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var ticTacToeGame = new TicTacToeGame();
+        var ticTacToeGame = new Game();
         Console.WriteLine("TicTacToe!");
         while (true)
         {
@@ -15,23 +15,23 @@ public static class Program
         
     }
 
-    private static bool Play(TicTacToeGame ticTacToeGame)
+    private static bool Play(Game game)
     {
-        if (GameIsOver(ticTacToeGame))
+        if (GameIsOver(game))
         {
-            Console.WriteLine(ticTacToeGame.CurrentStatus());
+            Console.WriteLine(game.CurrentStatus());
             return true;
         }
 
-        PlayTurn(ticTacToeGame);
+        PlayTurn(game);
         Console.Clear();
         return false;
     }
 
-    private static void PlayTurn(TicTacToeGame ticTacToeGame)
+    private static void PlayTurn(Game game)
     {
-        Console.WriteLine(ticTacToeGame.CurrentStatus());
-        Console.WriteLine($"{ticTacToeGame.CurrentPlayer()} Goes...");
+        Console.WriteLine(game.CurrentStatus());
+        Console.WriteLine($"{game.CurrentPlayer()} Goes...");
         Console.WriteLine("Coordinate X");
         var coordinateX = int.Parse(Console.ReadLine() ?? "0");
         Console.WriteLine("Coordinate Y");
@@ -39,8 +39,8 @@ public static class Program
         Console.WriteLine();
         try
         {
-            ticTacToeGame.Write(
-                new Symbol(ticTacToeGame.CurrentPlayer()),
+            game.Write(
+                new Symbol(game.CurrentPlayer()),
                 new Coordinates(coordinateX, coordinateY));
         }
         catch (Exception exception)
@@ -50,8 +50,8 @@ public static class Program
         }
     }
 
-    private static bool GameIsOver(TicTacToeGame ticTacToeGame)
+    private static bool GameIsOver(Game game)
     {
-        return ticTacToeGame.CurrentStatus().Contains("Wins") || ticTacToeGame.CurrentStatus().Contains("Draw");
+        return game.CurrentStatus().Contains("Wins") || game.CurrentStatus().Contains("Draw");
     }
 }
