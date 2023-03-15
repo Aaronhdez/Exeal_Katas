@@ -43,51 +43,6 @@ public class Board
         return false;
     }
 
-    public bool FirstColumnIsFilledWithO()
-    {
-        return SymbolAt(new Coordinates(0, 0)) == "O" 
-               && SymbolAt(new Coordinates(0, 0)) ==
-               SymbolAt(new Coordinates(1, 0)) 
-               && SymbolAt(new Coordinates(1, 0)) ==
-               SymbolAt(new Coordinates(2, 0));
-    }
-
-    public bool SecondColumnIsFilledWithX()
-    {
-        return SymbolAt(new Coordinates(0, 1)) == "X" 
-               && SymbolAt(new Coordinates(0, 1)) ==
-               SymbolAt(new Coordinates(1, 1)) 
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(2, 1));
-    }
-
-    public bool SecondColumnIsFilledWithO()
-    {
-        return SymbolAt(new Coordinates(0, 1)) == "O" 
-               && SymbolAt(new Coordinates(0, 1)) ==
-               SymbolAt(new Coordinates(1, 1)) 
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(2, 1));;
-    }
-
-    public bool ThirdColumnIsFilledWithX()
-    {
-        return SymbolAt(new Coordinates(0, 2)) == "X" 
-               && SymbolAt(new Coordinates(0, 2)) ==
-               SymbolAt(new Coordinates(1, 2)) 
-               && SymbolAt(new Coordinates(1, 2)) ==
-               SymbolAt(new Coordinates(2, 2));
-    }
-
-    public bool ThirdColumnIsFilledWithO()
-    {
-        return SymbolAt(new Coordinates(0, 2)) == "O" 
-               && SymbolAt(new Coordinates(0, 2)) ==
-               SymbolAt(new Coordinates(1, 2)) 
-               && SymbolAt(new Coordinates(1, 2)) ==
-               SymbolAt(new Coordinates(2, 2));
-    }
-
     public bool PlayerXHasFilledFirstRow()
     {
         return SymbolAt(new Coordinates(0, 2)) == "X" 
