@@ -14,12 +14,12 @@ public class TicTacToeGame
     public string CurrentStatus()
     {
         if (Board.BoardIsEmpty()) return _defaultStatus;
-        if (Board.FirstColumnIsFilledWithX()) return "[X][][O]\n[X][O][O]\n[X][][O]\nX Wins!";
-        if (Board.SecondColumnIsFilledWithX()) return "[][X][O]\n[O][X][]\n[][X][O]\nX Wins!";
-        if (Board.ThirdColumnIsFilledWithX()) return "[O][][X]\n[O][][X]\n[][][X]\nX Wins!";
-        if (Board.FirstColumnIsFilledWithO()) return "[O][][X]\n[O][X][X]\n[O][][X]\nO Wins!";
-        if (Board.SecondColumnIsFilledWithO()) return "[][O][X]\n[X][O][]\n[][O][X]\nO Wins!";
-        if (Board.ThirdColumnIsFilledWithO()) return "[X][][O]\n[X][][O]\n[][][O]\nO Wins!";
+        if (Board.AColumnIsFilledByPlayerX()) return FormattedBoardStatus()+"\nX Wins!";
+        if (Board.SecondColumnIsFilledWithX()) return FormattedBoardStatus()+"\nX Wins!";
+        if (Board.ThirdColumnIsFilledWithX()) return FormattedBoardStatus()+"\nX Wins!";
+        if (Board.FirstColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
+        if (Board.SecondColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
+        if (Board.ThirdColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
         return FormattedBoardStatus();
     }
 
@@ -37,17 +37,9 @@ public class TicTacToeGame
 
     private string FormattedBoardStatus()
     {
-        var boardStatus = string.Empty;
-        for (var i = 0; i < 3; i++)
-        {
-            for (var j = 0; j < 3; j++)
-            {
-                boardStatus += "[" + Board.SymbolAt(new Coordinates(i, j)) + "]";
-            }
-
-            boardStatus += " ";
-        }
-
-        return boardStatus.Trim().Replace(" ", "\n");
+        return
+            $"[{Board.SymbolAt(new Coordinates(0, 0))}][{Board.SymbolAt(new Coordinates(0, 1))}][{Board.SymbolAt(new Coordinates(0, 2))}]\n" +
+            $"[{Board.SymbolAt(new Coordinates(1, 0))}][{Board.SymbolAt(new Coordinates(1, 1))}][{Board.SymbolAt(new Coordinates(1, 2))}]\n" +
+            $"[{Board.SymbolAt(new Coordinates(2, 0))}][{Board.SymbolAt(new Coordinates(2, 1))}][{Board.SymbolAt(new Coordinates(2, 2))}]";
     }
 }

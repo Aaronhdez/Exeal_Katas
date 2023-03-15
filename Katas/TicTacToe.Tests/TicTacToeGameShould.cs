@@ -84,11 +84,11 @@ public class TicTacToeGameShould
         _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
         _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
         _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[X][][O]\n[X][O][O]\n[X][][O]\nX Wins!");
+        result.Should().Be("[X][][O]\n[X][O][]\n[X][][O]\nX Wins!");
     }
     
     [Test]
@@ -99,11 +99,11 @@ public class TicTacToeGameShould
         _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
         _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
         _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[O][][X]\n[O][X][X]\n[O][][X]\nO Wins!");
+        result.Should().Be("[O][][X]\n[O][X][]\n[O][][X]\nO Wins!");
     }
     
     [Test]

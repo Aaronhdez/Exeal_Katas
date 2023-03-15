@@ -26,17 +26,7 @@
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;And&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::ACDC08DE-B77F-4F96-B2ED-511B4FF6BE4F::net7.0::Factorial_Tests.FactorialCalculatorShould&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-    &lt;Not&gt;&#xD;
-      &lt;And&gt;&#xD;
-        &lt;TestAncestor&gt;&#xD;
-          &lt;TestId&gt;NUnit3x::ACDC08DE-B77F-4F96-B2ED-511B4FF6BE4F::net7.0::Factorial_Tests.FactorialCalculatorShould&lt;/TestId&gt;&#xD;
-        &lt;/TestAncestor&gt;&#xD;
-        &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;Factorial_Kata&amp;gt;" /&gt;&#xD;
-      &lt;/And&gt;&#xD;
-    &lt;/Not&gt;&#xD;
-  &lt;/And&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DC4C5C1D-5C42-405C-B25E-1B16A95B2315::net7.0::TicTacToe.Test.TicTacToeGameShould&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

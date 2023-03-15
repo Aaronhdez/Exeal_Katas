@@ -28,7 +28,7 @@ public class Board
         return string.Empty;
     }
 
-    public bool FirstColumnIsFilledWithX()
+    public bool AColumnIsFilledByPlayerX()
     {
         return SymbolAt(new Coordinates(0, 0)) == "X" 
                && SymbolAt(new Coordinates(0, 0)) ==
