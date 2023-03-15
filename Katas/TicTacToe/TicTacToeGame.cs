@@ -14,13 +14,26 @@ public class TicTacToeGame
     public string CurrentStatus()
     {
         if (Board.BoardIsEmpty()) return _defaultStatus;
-        if (Board.AColumnIsFilledByPlayerX()) return FormattedBoardStatus()+"\nX Wins!";
-        if (Board.SecondColumnIsFilledWithX()) return FormattedBoardStatus()+"\nX Wins!";
-        if (Board.ThirdColumnIsFilledWithX()) return FormattedBoardStatus()+"\nX Wins!";
-        if (Board.FirstColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
-        if (Board.SecondColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
-        if (Board.ThirdColumnIsFilledWithO()) return FormattedBoardStatus()+"\nO Wins!";
+        if (PlayerXHasWon()) return FormattedBoardStatus()+"\nX Wins!";
+        if (PlayerOHasWon()) return FormattedBoardStatus()+"\nO Wins!";
         return FormattedBoardStatus();
+    }
+
+    private bool PlayerXHasWon()
+    {
+        if (Board.AColumnIsFilledBy("X")) return true;
+
+        return false;
+    }
+
+    private bool PlayerOHasWon()
+    {
+        if (Board.AColumnIsFilledBy("O"))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     public void Write(Symbol symbol, Coordinates coordinates)
