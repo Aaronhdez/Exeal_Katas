@@ -32,8 +32,7 @@ public class TicTacToeGame
     {
         if (Board.AColumnHasBeenFilledBy("O")) return true;
         if (Board.ARowHasBeenFilledBy("O")) return true;
-        if (Board.PlayerOHasFilledFirstDiagonalRow()) return true;
-        if (Board.PlayerOHasFilledSecondDiagonalRow()) return true;
+        if (Board.PlayerOHasFilledADiagonalRow()) return true;
 
         return false;
     }
