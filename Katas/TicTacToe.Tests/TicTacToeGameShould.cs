@@ -2,8 +2,8 @@ namespace TicTacToe.Test;
 
 public class TicTacToeGameShould
 {
-    private readonly string _oSymbol = "O";
-    private readonly string _xSymbol = "X";
+    private const string OSymbol = "O";
+    private const string XSymbol = "X";
     private TicTacToeGame _ticTacToeGame;
 
     [SetUp]
@@ -23,7 +23,7 @@ public class TicTacToeGameShould
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0, 0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 0));
 
         var result = _ticTacToeGame.CurrentStatus();
 
@@ -34,7 +34,7 @@ public class TicTacToeGameShould
     public void WriteASymbolIfCoordinatesNotTaken()
     {
         var coordinates = new Coordinates(0, 0);
-        _ticTacToeGame.Write(new Symbol(_oSymbol), coordinates);
+        _ticTacToeGame.Write(new Symbol(OSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus();
 
@@ -45,7 +45,7 @@ public class TicTacToeGameShould
     public void NotWriteASymbolIfCoordinatesAreAlreadyTaken()
     {
         var coordinates = new Coordinates(0, 0);
-        _ticTacToeGame.Write(new Symbol(_xSymbol), coordinates);
+        _ticTacToeGame.Write(new Symbol(XSymbol), coordinates);
 
         var result = _ticTacToeGame.CurrentStatus();
 
@@ -57,8 +57,8 @@ public class TicTacToeGameShould
     {
         var firstCoordinates = new Coordinates(0, 0);
         var secondCoordinates = new Coordinates(2, 1);
-        _ticTacToeGame.Write(new Symbol(_oSymbol), firstCoordinates);
-        _ticTacToeGame.Write(new Symbol(_xSymbol), secondCoordinates);
+        _ticTacToeGame.Write(new Symbol(OSymbol), firstCoordinates);
+        _ticTacToeGame.Write(new Symbol(XSymbol), secondCoordinates);
 
         var result = _ticTacToeGame.CurrentStatus();
 
@@ -71,7 +71,7 @@ public class TicTacToeGameShould
     [TestCase(3, 0)]
     public void ThrowExceptionIfAPlayerTriesToWriteOutsideBounds(int x, int y)
     {
-        var result = () => _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(x, y));
+        var result = () => _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(x, y));
 
         result.Should().Throw<IndexOutOfRangeException>();
     }
@@ -79,12 +79,12 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfXPlayerFillsFirstColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -94,12 +94,12 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfOPlayerFillsFirstColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -109,12 +109,12 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfXPlayerFillsSecondColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(2,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -124,12 +124,12 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfOPlayerFillsSecondColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -139,11 +139,11 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfXPlayerFillsThirdColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(2,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
@@ -153,11 +153,11 @@ public class TicTacToeGameShould
     [Test]
     public void DisplayWinningMessageIfOPlayerFillsThirdColumn()
     {
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(_xSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(_oSymbol), new Coordinates(2,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
         var result = _ticTacToeGame.CurrentStatus();
         
