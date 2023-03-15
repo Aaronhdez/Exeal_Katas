@@ -179,4 +179,19 @@ public class TicTacToeGameShould
         result.Should().Be("[X][X][X]\n[][][O]\n[][O][O]\nX Wins!");
     }
     
+    [Test]
+    public void DisplayWinningMessageIfXPlayerFillsSecondRow()
+    {
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
+
+        var result = _ticTacToeGame.CurrentStatus();
+        
+        result.Should().Be("[][][O]\n[X][X][X]\n[][O][O]\nX Wins!");
+    }
+    
 }
