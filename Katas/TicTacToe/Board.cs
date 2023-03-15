@@ -57,4 +57,13 @@ public class Board
 
         return false;
     }
+
+    public bool PlayerXHasFilledFirstDiagonal()
+    {
+        return SymbolAt(new Coordinates(2, 2)) == "X"
+               && SymbolAt(new Coordinates(2, 2)) ==
+               SymbolAt(new Coordinates(1, 1))
+               && SymbolAt(new Coordinates(1, 1)) ==
+               SymbolAt(new Coordinates(0, 0));
+    }
 }
