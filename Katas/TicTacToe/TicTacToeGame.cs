@@ -13,6 +13,12 @@ public class TicTacToeGame
 
     private Board Board { get; }
 
+
+    public void Write(Symbol symbol, Coordinates coordinates)
+    {
+        Board.WriteASymbol(symbol, coordinates);
+    }
+    
     public string CurrentStatus()
     {
         if (Board.IsEmpty()) return DefaultStatus;
@@ -27,7 +33,6 @@ public class TicTacToeGame
         if (Board.AColumnHasBeenFilledBy(XPlayer)) return true;
         if (Board.ARowHasBeenFilledBy(XPlayer)) return true;
         if (Board.ADiagonalRowHasBeenFilledBy(XPlayer)) return true;
-
         return false;
     }
 
@@ -36,13 +41,7 @@ public class TicTacToeGame
         if (Board.AColumnHasBeenFilledBy(OPlayer)) return true;
         if (Board.ARowHasBeenFilledBy(OPlayer)) return true;
         if (Board.ADiagonalRowHasBeenFilledBy(OPlayer)) return true;
-
         return false;
-    }
-
-    public void Write(Symbol symbol, Coordinates coordinates)
-    {
-        Board.WriteASymbol(symbol, coordinates);
     }
 
     private string FormattedBoardStatus()
