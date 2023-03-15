@@ -18,6 +18,7 @@ public class TicTacToeGame
         if (Board.IsEmpty()) return DefaultStatus;
         if (PlayerXHasWon()) return FormattedBoardStatus() + "\nX Wins!";
         if (PlayerOHasWon()) return FormattedBoardStatus() + "\nO Wins!";
+        if (Board.IsFilled()) return FormattedBoardStatus() + "\n Draw";
         return FormattedBoardStatus();
     }
 

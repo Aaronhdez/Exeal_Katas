@@ -317,5 +317,22 @@ public class TicTacToeGameShould
             result.Should().Be("[X][][O]\n[][O][X]\n[O][][]\nO Wins!");
         }
     }
-    
+
+    [Test]
+    public void DisplayDrawMessageIfNoOneHasWonAndTheBoardIsFull()
+    {
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 0));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 1));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 1));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 0));
+        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 2));
+        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+        
+        var result = _ticTacToeGame.CurrentStatus();
+        
+        result.Should().Be("[O][X][O]\n[X][X][O]\n[X][O][X]\n Draw");
+    }
 }

@@ -14,6 +14,11 @@ public class Board
         return _board.Count == 0;
     }
 
+    public bool IsFilled()
+    {
+        return _board.Count == 9;
+    }
+
     public void WriteASymbol(Symbol symbol, Coordinates coordinates)
     {
         if (!coordinates.AreValid()) throw new IndexOutOfRangeException();
