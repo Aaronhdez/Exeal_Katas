@@ -21,18 +21,16 @@ public class TicTacToeGame
 
     private bool PlayerXHasWon()
     {
-        if (Board.AColumnIsFilledBy("X")) return true;
-        if (Board.PlayerXHasFilledARow()) return true;
+        if (Board.AColumnHasBeenFilledBy("X")) return true;
+        if (Board.ARowHasBeenFilledBy("X")) return true;
 
         return false;
     }
 
     private bool PlayerOHasWon()
     {
-        if (Board.AColumnIsFilledBy("O")) return true;
-        if (Board.PlayerOHasFilledFirstRow()) return true;
-        if (Board.PlayerOHasFilledSecondRow()) return true;
-        if (Board.PlayerOHasFilledSThirdRow()) return true;
+        if (Board.AColumnHasBeenFilledBy("O")) return true;
+        if (Board.ARowHasBeenFilledBy("O")) return true;
 
         return false;
     }
