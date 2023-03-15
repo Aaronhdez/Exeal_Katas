@@ -28,13 +28,19 @@ public class Board
         return string.Empty;
     }
 
-    public bool AColumnIsFilledByPlayerX()
+    public bool AColumnIsFilledBy(string player)
     {
-        return SymbolAt(new Coordinates(0, 0)) == "X" 
-               && SymbolAt(new Coordinates(0, 0)) ==
-               SymbolAt(new Coordinates(1, 0)) 
-               && SymbolAt(new Coordinates(1, 0)) ==
-               SymbolAt(new Coordinates(2, 0));
+        for (var i = 0; i < 3; i++)
+        {
+            if (SymbolAt(new Coordinates(0, i)) == player
+                && SymbolAt(new Coordinates(0, i)) ==
+                SymbolAt(new Coordinates(1, i))
+                && SymbolAt(new Coordinates(1, i)) ==
+                SymbolAt(new Coordinates(2, i)))
+                return true;
+        }
+
+        return false;
     }
 
     public bool FirstColumnIsFilledWithO()
