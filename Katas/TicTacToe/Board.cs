@@ -83,4 +83,13 @@ public class Board
                && SymbolAt(new Coordinates(1, 1)) ==
                SymbolAt(new Coordinates(0, 0));
     }
+
+    public bool PlayerOHasFilledSecondDiagonalRow()
+    {
+        return SymbolAt(new Coordinates(0, 2)) == "O"
+               && SymbolAt(new Coordinates(0, 2)) ==
+               SymbolAt(new Coordinates(1, 1))
+               && SymbolAt(new Coordinates(1, 1)) ==
+               SymbolAt(new Coordinates(2, 0));    
+    }
 }

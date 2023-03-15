@@ -302,6 +302,20 @@ public class TicTacToeGameShould
         
             result.Should().Be("[O][][X]\n[][O][X]\n[][][O]\nO Wins!");
         }
+        
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsSecondDiagonal()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
+            
+            var result = _ticTacToeGame.CurrentStatus();
+        
+            result.Should().Be("[X][][O]\n[][O][X]\n[O][][]\nO Wins!");
+        }
     }
     
 }
