@@ -2,18 +2,20 @@
 
 public class TicTacToeGame
 {
-    private readonly string _defaultStatus = "[][][]\n[][][]\n[][][]";
+    private const string DefaultStatus = "[][][]\n[][][]\n[][][]";
+    private const string XPlayer = "X";
+    private const string OPlayer = "O";
 
     public TicTacToeGame()
     {
         Board = new Board();
     }
 
-    public Board Board { get; }
+    private Board Board { get; }
 
     public string CurrentStatus()
     {
-        if (Board.IsEmpty()) return _defaultStatus;
+        if (Board.IsEmpty()) return DefaultStatus;
         if (PlayerXHasWon()) return FormattedBoardStatus() + "\nX Wins!";
         if (PlayerOHasWon()) return FormattedBoardStatus() + "\nO Wins!";
         return FormattedBoardStatus();
@@ -21,32 +23,25 @@ public class TicTacToeGame
 
     private bool PlayerXHasWon()
     {
-        if (Board.AColumnHasBeenFilledBy("X")) return true;
-        if (Board.ARowHasBeenFilledBy("X")) return true;
-        if (Board.ADiagonalRowHasBeenFilledBy("X")) return true;
+        if (Board.AColumnHasBeenFilledBy(XPlayer)) return true;
+        if (Board.ARowHasBeenFilledBy(XPlayer)) return true;
+        if (Board.ADiagonalRowHasBeenFilledBy(XPlayer)) return true;
 
         return false;
     }
 
     private bool PlayerOHasWon()
     {
-        if (Board.AColumnHasBeenFilledBy("O")) return true;
-        if (Board.ARowHasBeenFilledBy("O")) return true;
-        if (Board.ADiagonalRowHasBeenFilledBy("O")) return true;
+        if (Board.AColumnHasBeenFilledBy(OPlayer)) return true;
+        if (Board.ARowHasBeenFilledBy(OPlayer)) return true;
+        if (Board.ADiagonalRowHasBeenFilledBy(OPlayer)) return true;
 
         return false;
     }
 
     public void Write(Symbol symbol, Coordinates coordinates)
     {
-        try
-        {
-            Board.WriteASymbol(symbol, coordinates);
-        }
-        catch (Exception e)
-        {
-            throw new IndexOutOfRangeException();
-        }
+        Board.WriteASymbol(symbol, coordinates);
     }
 
     private string FormattedBoardStatus()
