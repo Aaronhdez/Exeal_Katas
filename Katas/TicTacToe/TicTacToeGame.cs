@@ -31,6 +31,7 @@ public class TicTacToeGame
     {
         if (Board.AColumnIsFilledBy("O")) return true;
         if (Board.PlayerOHasFilledFirstRow()) return true;
+        if (Board.PlayerOHasFilledSecondRow()) return true;
 
         return false;
     }
