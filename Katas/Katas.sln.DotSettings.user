@@ -1,16 +1,32 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3238e721_002D6bb2_002D4b51_002D97da_002D766a0b60ef0a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="FactorialCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::EBC3D142-475F-4297-99ED-05412BA94B44::net7.0::Fibonacci_Tests.FibonacciCalculatorShould&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;And&gt;&#xD;
+    &lt;Or&gt;&#xD;
+      &lt;TestAncestor&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::EBC3D142-475F-4297-99ED-05412BA94B44::net7.0::Fibonacci_Tests.FibonacciCalculatorShould&lt;/TestId&gt;&#xD;
+      &lt;/TestAncestor&gt;&#xD;
+      &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;TicTacToe_Kata&amp;gt;" /&gt;&#xD;
+    &lt;/Or&gt;&#xD;
+    &lt;Not&gt;&#xD;
+      &lt;And&gt;&#xD;
+        &lt;Or&gt;&#xD;
+          &lt;TestAncestor&gt;&#xD;
+            &lt;TestId&gt;NUnit3x::EBC3D142-475F-4297-99ED-05412BA94B44::net7.0::Fibonacci_Tests.FibonacciCalculatorShould&lt;/TestId&gt;&#xD;
+          &lt;/TestAncestor&gt;&#xD;
+          &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;TicTacToe_Kata&amp;gt;" /&gt;&#xD;
+        &lt;/Or&gt;&#xD;
+        &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;Fibonacci_Kata&amp;gt;" /&gt;&#xD;
+      &lt;/And&gt;&#xD;
+    &lt;/Not&gt;&#xD;
+  &lt;/And&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76e51b9f_002Dab1d_002D452a_002D956c_002D031a494de94d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LeapYearCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76e51b9f_002Dab1d_002D452a_002D956c_002D031a494de94d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LeapYearCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::ACDC08DE-B77F-4F96-B2ED-511B4FF6BE4F::net7.0::Factorial_Tests.FactorialCalculatorShould&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DC4C5C1D-5C42-405C-B25E-1B16A95B2315::net7.0::TicTacToe.Test.TicTacToeGameShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
