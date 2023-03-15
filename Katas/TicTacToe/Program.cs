@@ -7,25 +7,28 @@ public static class Program
     public static void Main(string[] args)
     {
         var ticTacToeGame = new TicTacToeGame();
-        Start();
+        Console.WriteLine("TicTacToe!");
         while (true)
         {
-            if (GameIsOver(ticTacToeGame)){ 
-                Console.WriteLine(ticTacToeGame.CurrentStatus());
-                break;
-            }
-            Play(ticTacToeGame);
-            Console.Clear();
+            if (Play(ticTacToeGame)) break;
         }
         
     }
 
-    private static void Start()
+    private static bool Play(TicTacToeGame ticTacToeGame)
     {
-        Console.WriteLine("TicTacToe!");
+        if (GameIsOver(ticTacToeGame))
+        {
+            Console.WriteLine(ticTacToeGame.CurrentStatus());
+            return true;
+        }
+
+        PlayTurn(ticTacToeGame);
+        Console.Clear();
+        return false;
     }
 
-    private static void Play(TicTacToeGame ticTacToeGame)
+    private static void PlayTurn(TicTacToeGame ticTacToeGame)
     {
         Console.WriteLine(ticTacToeGame.CurrentStatus());
         Console.WriteLine($"{ticTacToeGame.CurrentPlayer()} Goes...");
