@@ -22,9 +22,7 @@ public class TicTacToeGame
     private bool PlayerXHasWon()
     {
         if (Board.AColumnIsFilledBy("X")) return true;
-        if (Board.PlayerXHasFilledFirstRow()) return true;
-        if (Board.PlayerXHasFilledSecondRow()) return true;
-        if (Board.PlayerXHasFilledThirdRow()) return true;
+        if (Board.PlayerXHasFilledARow()) return true;
 
         return false;
     }

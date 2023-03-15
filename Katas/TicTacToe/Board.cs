@@ -30,43 +30,31 @@ public class Board
 
     public bool AColumnIsFilledBy(string player)
     {
-        for (var i = 0; i < 3; i++)
+        for (var y = 0; y < 3; y++)
         {
-            if (SymbolAt(new Coordinates(0, i)) == player
-                && SymbolAt(new Coordinates(0, i)) ==
-                SymbolAt(new Coordinates(1, i))
-                && SymbolAt(new Coordinates(1, i)) ==
-                SymbolAt(new Coordinates(2, i)))
+            if (SymbolAt(new Coordinates(0, y)) == player
+                && SymbolAt(new Coordinates(0, y)) ==
+                SymbolAt(new Coordinates(1, y))
+                && SymbolAt(new Coordinates(1, y)) ==
+                SymbolAt(new Coordinates(2, y)))
                 return true;
         }
 
         return false;
     }
 
-    public bool PlayerXHasFilledFirstRow()
+    public bool PlayerXHasFilledARow()
     {
-        return SymbolAt(new Coordinates(0, 2)) == "X" 
-               && SymbolAt(new Coordinates(0, 2)) ==
-               SymbolAt(new Coordinates(0, 1)) 
-               && SymbolAt(new Coordinates(0, 1)) ==
-               SymbolAt(new Coordinates(0, 0));
-    }
+        for (var x = 0; x < 3; x++)
+        {
+            if (SymbolAt(new Coordinates(x, 2)) == "X"
+                && SymbolAt(new Coordinates(x, 2)) ==
+                SymbolAt(new Coordinates(x, 1))
+                && SymbolAt(new Coordinates(x, 1)) ==
+                SymbolAt(new Coordinates(x, 0)))
+                return true;
+        }
 
-    public bool PlayerXHasFilledSecondRow()
-    {
-        return SymbolAt(new Coordinates(1, 2)) == "X" 
-               && SymbolAt(new Coordinates(1, 2)) ==
-               SymbolAt(new Coordinates(1, 1)) 
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(1, 0));
-    }
-
-    public bool PlayerXHasFilledThirdRow()
-    {
-        return SymbolAt(new Coordinates(2, 2)) == "X" 
-               && SymbolAt(new Coordinates(2, 2)) ==
-               SymbolAt(new Coordinates(2, 1)) 
-               && SymbolAt(new Coordinates(2, 1)) ==
-               SymbolAt(new Coordinates(2, 0));
+        return false;
     }
 }
