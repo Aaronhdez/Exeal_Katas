@@ -58,21 +58,20 @@ public class Board
         return false;
     }
 
-    public bool PlayerXHasFilledFirstDiagonal()
+    public bool PlayerXHasFilledADiagonalRow()
     {
-        return SymbolAt(new Coordinates(2, 2)) == "X"
-               && SymbolAt(new Coordinates(2, 2)) ==
-               SymbolAt(new Coordinates(1, 1))
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(0, 0));
-    }
-
-    public bool PlayerXHasFilledSecondDiagonal()
-    {
-        return SymbolAt(new Coordinates(0, 2)) == "X"
-               && SymbolAt(new Coordinates(0, 2)) ==
-               SymbolAt(new Coordinates(1, 1))
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(2, 0));
+        if (SymbolAt(new Coordinates(2, 2)) == "X"
+            && SymbolAt(new Coordinates(2, 2)) ==
+            SymbolAt(new Coordinates(1, 1))
+            && SymbolAt(new Coordinates(1, 1)) ==
+            SymbolAt(new Coordinates(0, 0)))
+            return true;
+        if (SymbolAt(new Coordinates(0, 2)) == "X"
+            && SymbolAt(new Coordinates(0, 2)) ==
+            SymbolAt(new Coordinates(1, 1))
+            && SymbolAt(new Coordinates(1, 1)) ==
+            SymbolAt(new Coordinates(2, 0)))
+            return true;
+        return false;
     }
 }
