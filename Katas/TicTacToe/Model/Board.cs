@@ -26,7 +26,7 @@ public class Board
             _board.Add(coordinates.ToString(), symbol.Value);
     }
 
-    public string SymbolAt(Coordinates coordinates)
+    public string TokenAt(Coordinates coordinates)
     {
         return _board.ContainsKey(coordinates.ToString()) ? 
             _board[coordinates.ToString()] : string.Empty;
@@ -36,11 +36,11 @@ public class Board
     {
         for (var y = 0; y < 3; y++)
         {
-            if (SymbolAt(new Coordinates(0, y)) == player
-                && SymbolAt(new Coordinates(0, y)) ==
-                SymbolAt(new Coordinates(1, y))
-                && SymbolAt(new Coordinates(1, y)) ==
-                SymbolAt(new Coordinates(2, y)))
+            if (TokenAt(new Coordinates(0, y)) == player
+                && TokenAt(new Coordinates(0, y)) ==
+                TokenAt(new Coordinates(1, y))
+                && TokenAt(new Coordinates(1, y)) ==
+                TokenAt(new Coordinates(2, y)))
                 return true;
         }
         return false;
@@ -50,11 +50,11 @@ public class Board
     {
         for (var x = 0; x < 3; x++)
         {
-            if (SymbolAt(new Coordinates(x, 2)) == player
-                && SymbolAt(new Coordinates(x, 2)) ==
-                SymbolAt(new Coordinates(x, 1))
-                && SymbolAt(new Coordinates(x, 1)) ==
-                SymbolAt(new Coordinates(x, 0)))
+            if (TokenAt(new Coordinates(x, 2)) == player
+                && TokenAt(new Coordinates(x, 2)) ==
+                TokenAt(new Coordinates(x, 1))
+                && TokenAt(new Coordinates(x, 1)) ==
+                TokenAt(new Coordinates(x, 0)))
                 return true;
         }
         return false;
@@ -62,17 +62,17 @@ public class Board
 
     public bool ADiagonalRowHasBeenFilledBy(string player)
     {
-        if (SymbolAt(new Coordinates(2, 2)) == player
-            && SymbolAt(new Coordinates(2, 2)) ==
-            SymbolAt(new Coordinates(1, 1))
-            && SymbolAt(new Coordinates(1, 1)) ==
-            SymbolAt(new Coordinates(0, 0)))
+        if (TokenAt(new Coordinates(2, 2)) == player
+            && TokenAt(new Coordinates(2, 2)) ==
+            TokenAt(new Coordinates(1, 1))
+            && TokenAt(new Coordinates(1, 1)) ==
+            TokenAt(new Coordinates(0, 0)))
             return true;
-        if (SymbolAt(new Coordinates(0, 2)) == player
-            && SymbolAt(new Coordinates(0, 2)) ==
-            SymbolAt(new Coordinates(1, 1))
-            && SymbolAt(new Coordinates(1, 1)) ==
-            SymbolAt(new Coordinates(2, 0)))
+        if (TokenAt(new Coordinates(0, 2)) == player
+            && TokenAt(new Coordinates(0, 2)) ==
+            TokenAt(new Coordinates(1, 1))
+            && TokenAt(new Coordinates(1, 1)) ==
+            TokenAt(new Coordinates(2, 0)))
             return true;
         return false;
     }
