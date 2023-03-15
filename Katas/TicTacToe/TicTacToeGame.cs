@@ -23,7 +23,7 @@ public class TicTacToeGame
     {
         if (Board.AColumnHasBeenFilledBy("X")) return true;
         if (Board.ARowHasBeenFilledBy("X")) return true;
-        if (Board.PlayerXHasFilledADiagonalRow()) return true;
+        if (Board.ADiagonalRowHasBeenFilledBy("X")) return true;
 
         return false;
     }
@@ -32,7 +32,7 @@ public class TicTacToeGame
     {
         if (Board.AColumnHasBeenFilledBy("O")) return true;
         if (Board.ARowHasBeenFilledBy("O")) return true;
-        if (Board.PlayerOHasFilledADiagonalRow()) return true;
+        if (Board.ADiagonalRowHasBeenFilledBy("O")) return true;
 
         return false;
     }

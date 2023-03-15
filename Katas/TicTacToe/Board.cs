@@ -39,7 +39,6 @@ public class Board
                 SymbolAt(new Coordinates(2, y)))
                 return true;
         }
-
         return false;
     }
 
@@ -54,36 +53,18 @@ public class Board
                 SymbolAt(new Coordinates(x, 0)))
                 return true;
         }
-
         return false;
     }
 
-    public bool PlayerXHasFilledADiagonalRow()
+    public bool ADiagonalRowHasBeenFilledBy(string player)
     {
-        if (SymbolAt(new Coordinates(2, 2)) == "X"
+        if (SymbolAt(new Coordinates(2, 2)) == player
             && SymbolAt(new Coordinates(2, 2)) ==
             SymbolAt(new Coordinates(1, 1))
             && SymbolAt(new Coordinates(1, 1)) ==
             SymbolAt(new Coordinates(0, 0)))
             return true;
-        if (SymbolAt(new Coordinates(0, 2)) == "X"
-            && SymbolAt(new Coordinates(0, 2)) ==
-            SymbolAt(new Coordinates(1, 1))
-            && SymbolAt(new Coordinates(1, 1)) ==
-            SymbolAt(new Coordinates(2, 0)))
-            return true;
-        return false;
-    }
-
-    public bool PlayerOHasFilledADiagonalRow()
-    {
-        if( SymbolAt(new Coordinates(2, 2)) == "O"
-               && SymbolAt(new Coordinates(2, 2)) ==
-               SymbolAt(new Coordinates(1, 1))
-               && SymbolAt(new Coordinates(1, 1)) ==
-               SymbolAt(new Coordinates(0, 0)))
-            return true;
-        if (SymbolAt(new Coordinates(0, 2)) == "O"
+        if (SymbolAt(new Coordinates(0, 2)) == player
             && SymbolAt(new Coordinates(0, 2)) ==
             SymbolAt(new Coordinates(1, 1))
             && SymbolAt(new Coordinates(1, 1)) ==
