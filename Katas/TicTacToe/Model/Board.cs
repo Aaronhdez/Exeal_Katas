@@ -28,9 +28,8 @@ public class Board
 
     public string SymbolAt(Coordinates coordinates)
     {
-        if (_board.ContainsKey(coordinates.ToString()))
-            return _board[coordinates.ToString()];
-        return string.Empty;
+        return _board.ContainsKey(coordinates.ToString()) ? 
+            _board[coordinates.ToString()] : string.Empty;
     }
 
     public bool AColumnHasBeenFilledBy(string player)
