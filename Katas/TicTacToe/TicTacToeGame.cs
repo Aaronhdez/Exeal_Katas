@@ -20,6 +20,8 @@ public class TicTacToeGame
 
     public void Write(Symbol symbol, Coordinates coordinates)
     {
+        if (Board.SymbolAt(coordinates) != "") 
+            throw new Exception(message: "That cell is already taken!, try again");
         Board.WriteASymbol(symbol, coordinates);
         _currentPlayer = _currentPlayer.Equals(XPlayer) 
             ? OPlayer : XPlayer;

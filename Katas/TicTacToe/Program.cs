@@ -2,34 +2,53 @@
 
 namespace TicTacToe;
 
-public class Program
+public static class Program
 {
     public static void Main(string[] args)
     {
         var ticTacToeGame = new TicTacToeGame();
-        Console.WriteLine("TicTacToe!");
+        Start();
         while (true)
         {
-            Console.Write($"{ticTacToeGame.CurrentPlayer()} Goes...");
-            Console.WriteLine("Coordinate X");
-            var coodinateX = int.Parse(Console.ReadLine() ?? "0");
-            Console.WriteLine("Coordinate Y");
-            var coodinateY = int.Parse(Console.ReadLine() ?? "0");
-            Console.WriteLine();
-            try
-            {
-                ticTacToeGame.Write(
-                    new Symbol(ticTacToeGame.CurrentPlayer()), 
-                    new Coordinates(coodinateX,coodinateY));
+            if (GameIsOver(ticTacToeGame)){ 
                 Console.WriteLine(ticTacToeGame.CurrentStatus());
+                break;
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("That cell is already taken!, try again");
-                Console.ReadLine();
-                throw;
-            }
+            Play(ticTacToeGame);
+            Console.Clear();
         }
         
+    }
+
+    private static void Start()
+    {
+        Console.WriteLine("TicTacToe!");
+    }
+
+    private static void Play(TicTacToeGame ticTacToeGame)
+    {
+        Console.WriteLine(ticTacToeGame.CurrentStatus());
+        Console.WriteLine($"{ticTacToeGame.CurrentPlayer()} Goes...");
+        Console.WriteLine("Coordinate X");
+        var coordinateX = int.Parse(Console.ReadLine() ?? "0");
+        Console.WriteLine("Coordinate Y");
+        var coordinateY = int.Parse(Console.ReadLine() ?? "0");
+        Console.WriteLine();
+        try
+        {
+            ticTacToeGame.Write(
+                new Symbol(ticTacToeGame.CurrentPlayer()),
+                new Coordinates(coordinateX, coordinateY));
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception.Message);
+            Console.ReadLine();
+        }
+    }
+
+    private static bool GameIsOver(TicTacToeGame ticTacToeGame)
+    {
+        return ticTacToeGame.CurrentStatus().Contains("Wins") || ticTacToeGame.CurrentStatus().Contains("Draw");
     }
 }
