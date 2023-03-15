@@ -1,4 +1,6 @@
-﻿namespace TicTacToe;
+﻿using TicTacToe.Model;
+
+namespace TicTacToe;
 
 public class TicTacToeGame
 {

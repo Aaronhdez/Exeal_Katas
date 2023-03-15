@@ -1,3 +1,5 @@
+using TicTacToe.Model;
+
 namespace TicTacToe.Test;
 
 public class TicTacToeGameShould
