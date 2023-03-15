@@ -30,6 +30,7 @@ public class TicTacToeGame
     private bool PlayerOHasWon()
     {
         if (Board.AColumnIsFilledBy("O")) return true;
+        if (Board.PlayerOHasFilledFirstRow()) return true;
 
         return false;
     }
