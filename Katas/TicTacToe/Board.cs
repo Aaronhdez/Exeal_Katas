@@ -9,7 +9,7 @@ public class Board
         _board = new Dictionary<string, string>();
     }
 
-    public bool BoardIsEmpty()
+    public bool IsEmpty()
     {
         return _board.Count == 0;
     }
@@ -86,5 +86,14 @@ public class Board
                SymbolAt(new Coordinates(1, 2)) 
                && SymbolAt(new Coordinates(1, 2)) ==
                SymbolAt(new Coordinates(2, 2));
+    }
+
+    public bool PlayerXHasFilledFirstRow()
+    {
+        return SymbolAt(new Coordinates(0, 2)) == "X" 
+               && SymbolAt(new Coordinates(0, 2)) ==
+               SymbolAt(new Coordinates(0, 1)) 
+               && SymbolAt(new Coordinates(0, 1)) ==
+               SymbolAt(new Coordinates(0, 0));
     }
 }

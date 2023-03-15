@@ -13,25 +13,23 @@ public class TicTacToeGame
 
     public string CurrentStatus()
     {
-        if (Board.BoardIsEmpty()) return _defaultStatus;
-        if (PlayerXHasWon()) return FormattedBoardStatus()+"\nX Wins!";
-        if (PlayerOHasWon()) return FormattedBoardStatus()+"\nO Wins!";
+        if (Board.IsEmpty()) return _defaultStatus;
+        if (PlayerXHasWon()) return FormattedBoardStatus() + "\nX Wins!";
+        if (PlayerOHasWon()) return FormattedBoardStatus() + "\nO Wins!";
         return FormattedBoardStatus();
     }
 
     private bool PlayerXHasWon()
     {
         if (Board.AColumnIsFilledBy("X")) return true;
+        if (Board.PlayerXHasFilledFirstRow()) return true;
 
         return false;
     }
 
     private bool PlayerOHasWon()
     {
-        if (Board.AColumnIsFilledBy("O"))
-        {
-            return true;
-        }
+        if (Board.AColumnIsFilledBy("O")) return true;
 
         return false;
     }
