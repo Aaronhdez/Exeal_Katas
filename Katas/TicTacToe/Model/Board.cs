@@ -19,11 +19,11 @@ public class Board
         return _cells.Count == 9;
     }
 
-    public void WriteASymbol(Symbol symbol, Coordinates coordinates)
+    public void WriteASymbol(Token token, Coordinates coordinates)
     {
         if (!coordinates.AreValid()) throw new IndexOutOfRangeException();
         if (!_cells.ContainsKey(coordinates.ToString()))
-            _cells.Add(coordinates.ToString(), symbol.Value);
+            _cells.Add(coordinates.ToString(), token.Value);
     }
 
     public string TokenAt(Coordinates coordinates)

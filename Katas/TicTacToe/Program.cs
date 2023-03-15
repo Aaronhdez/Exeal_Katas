@@ -40,7 +40,7 @@ public static class Program
         try
         {
             game.Write(
-                new Symbol(game.CurrentPlayer()),
+                new Token(game.CurrentPlayer()),
                 new Coordinates(coordinateX, coordinateY));
         }
         catch (Exception exception)

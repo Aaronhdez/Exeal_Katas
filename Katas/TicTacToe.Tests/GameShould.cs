@@ -25,7 +25,7 @@ public class GameShould
     [Test]
     public void NotBeEmptyIfASymbolIsInserted()
     {
-        _game.Write(new Symbol(XSymbol), new Coordinates(0, 0));
+        _game.Write(new Token(XSymbol), new Coordinates(0, 0));
 
         var result = _game.GetResult();
 
@@ -36,7 +36,7 @@ public class GameShould
     public void WriteASymbolIfCoordinatesNotTaken()
     {
         var coordinates = new Coordinates(0, 0);
-        _game.Write(new Symbol(OSymbol), coordinates);
+        _game.Write(new Token(OSymbol), coordinates);
 
         var result = _game.GetResult();
 
@@ -47,7 +47,7 @@ public class GameShould
     public void NotWriteASymbolIfCoordinatesAreAlreadyTaken()
     {
         var coordinates = new Coordinates(0, 0);
-        _game.Write(new Symbol(XSymbol), coordinates);
+        _game.Write(new Token(XSymbol), coordinates);
 
         var result = _game.GetResult();
 
@@ -59,8 +59,8 @@ public class GameShould
     {
         var firstCoordinates = new Coordinates(0, 0);
         var secondCoordinates = new Coordinates(2, 1);
-        _game.Write(new Symbol(OSymbol), firstCoordinates);
-        _game.Write(new Symbol(XSymbol), secondCoordinates);
+        _game.Write(new Token(OSymbol), firstCoordinates);
+        _game.Write(new Token(XSymbol), secondCoordinates);
 
         var result = _game.GetResult();
 
@@ -73,7 +73,7 @@ public class GameShould
     [TestCase(3, 0)]
     public void ThrowExceptionIfAPlayerTriesToWriteOutsideBounds(int x, int y)
     {
-        var result = () => _game.Write(new Symbol(XSymbol), new Coordinates(x, y));
+        var result = () => _game.Write(new Token(XSymbol), new Coordinates(x, y));
 
         result.Should().Throw<IndexOutOfRangeException>();
     }
@@ -84,12 +84,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsFirstColumn()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 1));
+            _game.Write(new Token(XSymbol), new Coordinates(2, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -99,12 +99,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsSecondColumn()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2, 1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 1));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 1));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(2, 1));
+            _game.Write(new Token(OSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -114,11 +114,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsThirdColumn()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -128,12 +128,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsFirstRow()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
+            _game.Write(new Token(XSymbol), new Coordinates(0,0));
+            _game.Write(new Token(OSymbol), new Coordinates(1,2));
+            _game.Write(new Token(XSymbol), new Coordinates(0,1));
+            _game.Write(new Token(OSymbol), new Coordinates(2,1));
+            _game.Write(new Token(XSymbol), new Coordinates(0,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,2));
 
             var result = _game.GetResult();
         
@@ -143,12 +143,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsSecondRow()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
+            _game.Write(new Token(XSymbol), new Coordinates(1,0));
+            _game.Write(new Token(OSymbol), new Coordinates(0,2));
+            _game.Write(new Token(XSymbol), new Coordinates(1,1));
+            _game.Write(new Token(OSymbol), new Coordinates(2,1));
+            _game.Write(new Token(XSymbol), new Coordinates(1,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,2));
 
             var result = _game.GetResult();
         
@@ -158,12 +158,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsThirdRow()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,0));
+            _game.Write(new Token(OSymbol), new Coordinates(0,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,1));
+            _game.Write(new Token(OSymbol), new Coordinates(1,1));
+            _game.Write(new Token(XSymbol), new Coordinates(2,2));
+            _game.Write(new Token(OSymbol), new Coordinates(1,2));
 
             var result = _game.GetResult();
         
@@ -173,11 +173,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsFirstDiagonal()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
+            _game.Write(new Token(XSymbol), new Coordinates(0,0));
+            _game.Write(new Token(OSymbol), new Coordinates(0,2));
+            _game.Write(new Token(XSymbol), new Coordinates(1,1));
+            _game.Write(new Token(OSymbol), new Coordinates(1,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,2));
 
             var result = _game.GetResult();
         
@@ -187,11 +187,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfXPlayerFillsSecondDiagonal()
         {
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,0));
+            _game.Write(new Token(XSymbol), new Coordinates(0,2));
+            _game.Write(new Token(OSymbol), new Coordinates(0,0));
+            _game.Write(new Token(XSymbol), new Coordinates(1,1));
+            _game.Write(new Token(OSymbol), new Coordinates(1,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,0));
 
             var result = _game.GetResult();
         
@@ -205,12 +205,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsFirstColumn()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2, 0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 1));
+            _game.Write(new Token(OSymbol), new Coordinates(2, 0));
+            _game.Write(new Token(XSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -220,12 +220,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsSecondColumn()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2, 1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 1));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 1));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(2, 1));
+            _game.Write(new Token(XSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -235,11 +235,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsThirdColumn()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0, 2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1, 2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1, 0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2, 2));
+            _game.Write(new Token(OSymbol), new Coordinates(0, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(0, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(1, 2));
+            _game.Write(new Token(XSymbol), new Coordinates(1, 0));
+            _game.Write(new Token(OSymbol), new Coordinates(2, 2));
 
             var result = _game.GetResult();
 
@@ -249,12 +249,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsFirstRow()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
+            _game.Write(new Token(OSymbol), new Coordinates(0,0));
+            _game.Write(new Token(XSymbol), new Coordinates(1,2));
+            _game.Write(new Token(OSymbol), new Coordinates(0,1));
+            _game.Write(new Token(XSymbol), new Coordinates(2,1));
+            _game.Write(new Token(OSymbol), new Coordinates(0,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,2));
 
             var result = _game.GetResult();
         
@@ -264,12 +264,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsSecondRow()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(2,2));
+            _game.Write(new Token(OSymbol), new Coordinates(1,0));
+            _game.Write(new Token(XSymbol), new Coordinates(0,2));
+            _game.Write(new Token(OSymbol), new Coordinates(1,1));
+            _game.Write(new Token(XSymbol), new Coordinates(2,1));
+            _game.Write(new Token(OSymbol), new Coordinates(1,2));
+            _game.Write(new Token(XSymbol), new Coordinates(2,2));
 
             var result = _game.GetResult();
         
@@ -279,12 +279,12 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsThirdRow()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,0));
+            _game.Write(new Token(XSymbol), new Coordinates(0,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,1));
+            _game.Write(new Token(XSymbol), new Coordinates(1,1));
+            _game.Write(new Token(OSymbol), new Coordinates(2,2));
+            _game.Write(new Token(XSymbol), new Coordinates(1,2));
 
             var result = _game.GetResult();
         
@@ -294,11 +294,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsFirstDiagonal()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,2));
+            _game.Write(new Token(OSymbol), new Coordinates(0,0));
+            _game.Write(new Token(XSymbol), new Coordinates(0,2));
+            _game.Write(new Token(OSymbol), new Coordinates(1,1));
+            _game.Write(new Token(XSymbol), new Coordinates(1,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,2));
             
             var result = _game.GetResult();
         
@@ -308,11 +308,11 @@ public class GameShould
         [Test]
         public void DisplayWinningMessageIfOPlayerFillsSecondDiagonal()
         {
-            _game.Write(new Symbol(OSymbol), new Coordinates(0,2));
-            _game.Write(new Symbol(XSymbol), new Coordinates(0,0));
-            _game.Write(new Symbol(OSymbol), new Coordinates(1,1));
-            _game.Write(new Symbol(XSymbol), new Coordinates(1,2));
-            _game.Write(new Symbol(OSymbol), new Coordinates(2,0));
+            _game.Write(new Token(OSymbol), new Coordinates(0,2));
+            _game.Write(new Token(XSymbol), new Coordinates(0,0));
+            _game.Write(new Token(OSymbol), new Coordinates(1,1));
+            _game.Write(new Token(XSymbol), new Coordinates(1,2));
+            _game.Write(new Token(OSymbol), new Coordinates(2,0));
             
             var result = _game.GetResult();
         
@@ -323,15 +323,15 @@ public class GameShould
     [Test]
     public void DisplayDrawMessageIfNoOneHasWonAndTheBoardIsFull()
     {
-        _game.Write(new Symbol(XSymbol), new Coordinates(0, 1));
-        _game.Write(new Symbol(OSymbol), new Coordinates(0, 0));
-        _game.Write(new Symbol(XSymbol), new Coordinates(1, 0));
-        _game.Write(new Symbol(OSymbol), new Coordinates(0, 2));
-        _game.Write(new Symbol(XSymbol), new Coordinates(1, 1));
-        _game.Write(new Symbol(OSymbol), new Coordinates(2, 1));
-        _game.Write(new Symbol(XSymbol), new Coordinates(2, 0));
-        _game.Write(new Symbol(OSymbol), new Coordinates(1, 2));
-        _game.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+        _game.Write(new Token(XSymbol), new Coordinates(0, 1));
+        _game.Write(new Token(OSymbol), new Coordinates(0, 0));
+        _game.Write(new Token(XSymbol), new Coordinates(1, 0));
+        _game.Write(new Token(OSymbol), new Coordinates(0, 2));
+        _game.Write(new Token(XSymbol), new Coordinates(1, 1));
+        _game.Write(new Token(OSymbol), new Coordinates(2, 1));
+        _game.Write(new Token(XSymbol), new Coordinates(2, 0));
+        _game.Write(new Token(OSymbol), new Coordinates(1, 2));
+        _game.Write(new Token(XSymbol), new Coordinates(2, 2));
         
         var result = _game.GetResult();
         
@@ -350,7 +350,7 @@ public class GameShould
     public void ShowOPlayerTurnAfterPlayerXWritesALetter()
     {
         var coordinates = new Coordinates(0, 0);
-        _game.Write(new Symbol("X"), coordinates);
+        _game.Write(new Token("X"), coordinates);
         
         var result = _game.CurrentPlayer();
         
@@ -362,8 +362,8 @@ public class GameShould
     {
         var coordinates = new Coordinates(0, 0);
         var coordinates2 = new Coordinates(1, 0);
-        _game.Write(new Symbol("X"), coordinates);
-        _game.Write(new Symbol("O"), coordinates2);
+        _game.Write(new Token("X"), coordinates);
+        _game.Write(new Token("O"), coordinates2);
         
         var result = _game.CurrentPlayer();
         

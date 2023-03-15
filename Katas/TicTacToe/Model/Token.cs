@@ -1,8 +1,8 @@
 ﻿namespace TicTacToe.Model;
 
-public class Symbol
+public class Token
 {
-    public Symbol(string symbol)
+    public Token(string symbol)
     {
         Value = symbol;
     }
