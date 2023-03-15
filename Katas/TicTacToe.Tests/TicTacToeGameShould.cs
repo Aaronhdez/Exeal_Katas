@@ -76,182 +76,190 @@ public class TicTacToeGameShould
         result.Should().Throw<IndexOutOfRangeException>();
     }
 
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsFirstColumn()
+    [TestFixture]
+    public class WhenPlayerXHasWon : TicTacToeGameShould
     {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsFirstColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 2));
 
-        var result = _ticTacToeGame.CurrentStatus();
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[X][][O]\n[X][O][]\n[X][][O]\nX Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsSecondColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[][X][O]\n[O][X][]\n[][X][O]\nX Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsThirdColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[O][][X]\n[O][][X]\n[][][X]\nX Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsFirstRow()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
+
+            var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[X][][O]\n[X][O][]\n[X][][O]\nX Wins!");
-    }
+            result.Should().Be("[X][X][X]\n[][][O]\n[][O][O]\nX Wins!");
+        }
     
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsFirstColumn()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsSecondRow()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
 
-        var result = _ticTacToeGame.CurrentStatus();
+            var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[O][][X]\n[O][X][]\n[O][][X]\nO Wins!");
-    }
+            result.Should().Be("[][][O]\n[X][X][X]\n[][O][O]\nX Wins!");
+        }
     
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsSecondColumn()
-    {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
+        [Test]
+        public void DisplayWinningMessageIfXPlayerFillsThirdRow()
+        {
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
 
-        var result = _ticTacToeGame.CurrentStatus();
+            var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[][X][O]\n[O][X][]\n[][X][O]\nX Wins!");
+            result.Should().Be("[][][O]\n[][O][O]\n[X][X][X]\nX Wins!");
+        }
     }
+
+    [TestFixture]
+    public class WhenPlayerOHasWon : TicTacToeGameShould
+    {
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsFirstColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[O][][X]\n[O][X][]\n[O][][X]\nO Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsSecondColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2, 2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[][O][X]\n[X][O][]\n[][O][X]\nO Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsThirdColumn()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0, 2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1, 2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1, 0));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2, 2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+
+            result.Should().Be("[X][][O]\n[X][][O]\n[][][O]\nO Wins!");
+        }
+
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsFirstRow()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
+
+            var result = _ticTacToeGame.CurrentStatus();
+        
+            result.Should().Be("[O][O][O]\n[][][X]\n[][X][X]\nO Wins!");
+        }
     
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsSecondColumn()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsSecondRow()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
 
-        var result = _ticTacToeGame.CurrentStatus();
+            var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[][O][X]\n[X][O][]\n[][O][X]\nO Wins!");
-    }
+            result.Should().Be("[][][X]\n[O][O][O]\n[][X][X]\nO Wins!");
+        }
     
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsThirdColumn()
-    {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
+        [Test]
+        public void DisplayWinningMessageIfOPlayerFillsThirdRow()
+        {
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
+            _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
+            _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
 
-        var result = _ticTacToeGame.CurrentStatus();
+            var result = _ticTacToeGame.CurrentStatus();
         
-        result.Should().Be("[O][][X]\n[O][][X]\n[][][X]\nX Wins!");
-    }
-    
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsThirdColumn()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[X][][O]\n[X][][O]\n[][][O]\nO Wins!");
-    }
-
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsFirstRow()
-    {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[X][X][X]\n[][][O]\n[][O][O]\nX Wins!");
-    }
-    
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsSecondRow()
-    {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[][][O]\n[X][X][X]\n[][O][O]\nX Wins!");
-    }
-    
-    [Test]
-    public void DisplayWinningMessageIfXPlayerFillsThirdRow()
-    {
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[][][O]\n[][O][O]\n[X][X][X]\nX Wins!");
-    }
-
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsFirstRow()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[O][O][O]\n[][][X]\n[][X][X]\nO Wins!");
-    }
-    
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsSecondRow()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(1,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(2,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[][][X]\n[O][O][O]\n[][X][X]\nO Wins!");
-    }
-    
-    [Test]
-    public void DisplayWinningMessageIfOPlayerFillsThirdRow()
-    {
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,0));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(0,2));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,1));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,1));
-        _ticTacToeGame.Write(new Symbol(OSymbol), new Coordinates(2,2));
-        _ticTacToeGame.Write(new Symbol(XSymbol), new Coordinates(1,2));
-
-        var result = _ticTacToeGame.CurrentStatus();
-        
-        result.Should().Be("[][][X]\n[][X][X]\n[O][O][O]\nO Wins!");
+            result.Should().Be("[][][X]\n[][X][X]\n[O][O][O]\nO Wins!");
+        }
     }
     
 }
