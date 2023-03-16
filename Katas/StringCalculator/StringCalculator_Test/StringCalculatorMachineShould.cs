@@ -59,28 +59,14 @@ public class StringCalculatorMachineShould
         result.Should().Be(expectedResult);
     }
     
-    [Test]
-    public void GiveTotalResultForAGroupOfNumbersWithADifferentDelimiter()
+    [TestCase("//;1;2\n3",6)]
+    [TestCase("//:1:2\n3",6)]
+    [TestCase("//@1@2\n3",6)]
+    public void GiveTotalResultForAGroupOfNumbersWithAnyDelimiter(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(new CalculationInput("//;1;2/n3")).Value;
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
         
-        result.Should().Be(6);
-    }
-    
-    [Test]
-    public void GiveTotalResultForOtherGroupOfNumbersWithADifferentDelimiter()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("//:1:2/n3")).Value;
-        
-        result.Should().Be(6);
-    }
-    
-    [Test]
-    public void GiveTotalResultForAnotherGroupOfNumbersWithADifferentDelimiter()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("//@1@2/n3")).Value;
-        
-        result.Should().Be(6);
+        result.Should().Be(expectedResult);
     }
     
 }
