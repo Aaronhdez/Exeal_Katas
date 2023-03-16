@@ -16,6 +16,16 @@ public class Tests
         
         var result = scanner.Scan(new Barcode("")).Value;
         
+        result.Should().Be("Error: Empty barcode");
+    }
+
+    [Test]
+    public void DisplayAnErrorIfBarcodeIsNotValid()
+    {
+        var scanner = new ProductScanner();
+        
+        var result = scanner.Scan(new Barcode("99999")).Value;
+        
         result.Should().Be("Error: Barcode not found");
     }
 }

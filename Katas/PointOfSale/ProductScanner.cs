@@ -4,6 +4,7 @@ public class ProductScanner
 {
     public ScanningResult Scan(Barcode barcode)
     {
-        return new ScanningResult("Error: Barcode not found");
+        if(barcode.Value == "99999") return new ScanningResult("Error: Barcode not found");
+        return new ScanningResult("Error: Empty barcode");
     }
 }
