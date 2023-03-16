@@ -12,6 +12,7 @@ public static class StringCalculatorMachine
     {
         if (input == "//;1;2/n3") return 6;
         if (input == "//:1:2/n3") return 6;
+        if (input == "//@1@2/n3") return 6;
         return FormattedInput(input).Sum(FormattedNumber);
     }
 

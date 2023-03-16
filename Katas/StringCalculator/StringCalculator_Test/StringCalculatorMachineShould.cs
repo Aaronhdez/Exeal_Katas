@@ -66,10 +66,19 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(6);
     }
+    
     [Test]
     public void GiveTotalResultForOtherGroupOfNumbersWithADifferentDelimiter()
     {
         var result = StringCalculatorMachine.Add(new CalculationInput("//:1:2/n3")).Value;
+        
+        result.Should().Be(6);
+    }
+    
+    [Test]
+    public void GiveTotalResultForAnotherGroupOfNumbersWithADifferentDelimiter()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("//@1@2/n3")).Value;
         
         result.Should().Be(6);
     }
