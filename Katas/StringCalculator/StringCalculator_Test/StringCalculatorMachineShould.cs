@@ -39,27 +39,13 @@ public class StringCalculatorMachineShould
         result.Should().Be(expectedResult);
     }
     
-    [Test]
-    public void GiveTotalResultForAGroupOfThreeNumbers()
+    [TestCase("1,2,3",6)]
+    [TestCase("1,3,3",7)]
+    [TestCase("2,3,3",8)]
+    public void GiveTotalResultForAGroupOfThreeNumbers(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1,2,3")).Value;
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
         
-        result.Should().Be(6);
-    }
-    
-    [Test]
-    public void GiveTotalResultForOtherGroupOfThreeNumbers()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1,3,3")).Value;
-        
-        result.Should().Be(7);
-    }
-    
-    [Test]
-    public void GiveTotalResultForAnotherGroupOfThreeNumbers()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("2,3,3")).Value;
-        
-        result.Should().Be(8);
+        result.Should().Be(expectedResult);
     }
 }
