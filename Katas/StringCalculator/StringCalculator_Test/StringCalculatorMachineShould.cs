@@ -46,11 +46,20 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(6);
     }
+    
     [Test]
     public void GiveTotalResultForOtherGroupOfThreeNumbers()
     {
         var result = StringCalculatorMachine.Add(new CalculationInput("1,3,3")).Value;
         
         result.Should().Be(7);
+    }
+    
+    [Test]
+    public void GiveTotalResultForAnotherGroupOfThreeNumbers()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("2,3,3")).Value;
+        
+        result.Should().Be(8);
     }
 }
