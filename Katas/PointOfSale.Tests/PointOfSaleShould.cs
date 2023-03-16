@@ -1,4 +1,6 @@
 namespace PointOfSale.Tests;
+using PointOfSale;
+
 
 public class Tests
 {
@@ -8,8 +10,12 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void DisplayAnErrorIfBarcodeIsEmpty()
     {
-        Assert.Pass();
+        var scanner = new ProductScanner();
+        
+        var result = scanner.Scan("");
+        
+        result.Should().Be("Error: Barcode not found");
     }
 }
