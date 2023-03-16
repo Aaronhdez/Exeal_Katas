@@ -10,10 +10,13 @@ public static class StringCalculatorMachine
 
     private static int SumOfNumbersIn(string input)
     {
-        if (input == "1\n2,3") return 6;
-        if (input == "1,2\n3") return 6;
-        if (input == "1\n2\n3") return 6;
-        return input.Split(",").Sum(FormattedNumber);
+        return FormattedInput(input).Sum(FormattedNumber);
+    }
+
+    private static IEnumerable<string> FormattedInput(string input)
+    {
+        input = input.Replace("\n", ",");
+        return input.Split(",");
     }
 
     private static int FormattedNumber(string input)
