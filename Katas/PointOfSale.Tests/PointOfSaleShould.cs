@@ -40,4 +40,17 @@ public class Tests
         
         result.Should().Be("12,50€");
     }
+
+    [Test]
+    public void DisplayValueOfAGroupOfProducts()
+    {
+        var products = new List<Product>
+        {
+            new Product("12345"),
+            new Product("23456")
+        };
+        var result = ProductScanner.Total(products).Value;
+       
+        result.Should().Be("19,75€");
+    }
 }

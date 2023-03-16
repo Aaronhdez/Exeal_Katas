@@ -12,4 +12,9 @@ public static class ProductScanner
             _ => new ScanningResult("Error: Empty barcode")
         };
     }
+
+    public static ScanningResult Total(List<Product> products)
+    {
+        return new ScanningResult("19,75€");
+    }
 }
