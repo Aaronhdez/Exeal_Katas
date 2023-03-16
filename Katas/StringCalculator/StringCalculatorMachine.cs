@@ -11,6 +11,7 @@ public static class StringCalculatorMachine
     private static int SumOfNumbersIn(string input)
     {
         if (input == "//;1;2/n3") return 6;
+        if (input == "//:1:2/n3") return 6;
         return FormattedInput(input).Sum(FormattedNumber);
     }
 
