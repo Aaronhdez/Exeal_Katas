@@ -1,5 +1,9 @@
 ﻿namespace StringCalculator;
 
-public class StringCalculatorMachine
+public static class StringCalculatorMachine
 {
+    public static int Add(string input)
+    {
+        return 0;
+    }
 }

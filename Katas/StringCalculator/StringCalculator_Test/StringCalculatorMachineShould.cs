@@ -1,3 +1,5 @@
+using StringCalculator;
+
 namespace StringCalculator_Test;
 
 public class StringCalculatorMachineShould
@@ -8,8 +10,10 @@ public class StringCalculatorMachineShould
     }
 
     [Test]
-    public void Test1()
+    public void GiveZeroAsAResultForAnEmptyString()
     {
-        Assert.Pass();
+        var result = StringCalculatorMachine.Add("inputResultValue");
+        
+        result.Should().Be(0);
     }
 }
