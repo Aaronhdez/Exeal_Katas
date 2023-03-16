@@ -48,28 +48,15 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(expectedResult);
     }
-
-    [Test]
-    public void GiveTotalResultForAGroupOfNumbersWithCr()
+    
+    [TestCase("1\n2,3",6)]
+    [TestCase("1\n2\n3",6)]
+    [TestCase("1,2\n3",6)]
+    public void GiveTotalResultForAGroupOfNumbersWithCr(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1\n2,3")).Value;
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
         
-        result.Should().Be(6);
+        result.Should().Be(expectedResult);
     }
     
-    [Test]
-    public void GiveTotalResultForOtherGroupOfNumbersWithCr()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1,2\n3")).Value;
-        
-        result.Should().Be(6);
-    }
-    
-    [Test]
-    public void GiveTotalResultForAnotherGroupOfNumbersWithCr()
-    {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1\n2\n3")).Value;
-        
-        result.Should().Be(6);
-    }
 }
