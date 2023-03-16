@@ -1,6 +1,6 @@
 namespace PointOfSale.Tests;
-using PointOfSale;
 
+using PointOfSale;
 
 public class Tests
 {
@@ -13,7 +13,7 @@ public class Tests
     public void DisplayAnErrorIfBarcodeIsEmpty()
     {
         var result = ProductScanner.Scan(new Product("")).Value;
-        
+
         result.Should().Be("Error: Empty barcode");
     }
 
@@ -21,7 +21,7 @@ public class Tests
     public void DisplayAnErrorIfBarcodeIsNotValid()
     {
         var result = ProductScanner.Scan(new Product("99999")).Value;
-        
+
         result.Should().Be("Error: Barcode not found");
     }
 
@@ -29,7 +29,7 @@ public class Tests
     public void DisplayPriceOfARegisteredBarcode()
     {
         var result = ProductScanner.Scan(new Product("12345")).Value;
-        
+
         result.Should().Be("7,25€");
     }
 
@@ -37,20 +37,20 @@ public class Tests
     public void DisplayPriceOfAnotherRegisteredBarcode()
     {
         var result = ProductScanner.Scan(new Product("23456")).Value;
-        
+
         result.Should().Be("12,50€");
     }
 
-    [Test]
+    [TestCase()]
     public void DisplayValueOfAGroupOfProducts()
     {
-        var products = new List<Product>
+        var products = new Bag(new List<Product>
         {
             new Product("12345"),
             new Product("23456")
-        };
+        });
         var result = ProductScanner.Total(products).Value;
-       
+
         result.Should().Be("19,75€");
     }
 }

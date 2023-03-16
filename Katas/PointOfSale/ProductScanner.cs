@@ -1,5 +1,15 @@
 ﻿namespace PointOfSale;
 
+public class Bag
+{
+    public Bag(List<Product> products)
+    {
+        Products = products;
+    }
+
+    public List<Product> Products { get; private set; }
+}
+
 public static class ProductScanner
 {
     public static ScanningResult Scan(Product product)
@@ -13,7 +23,7 @@ public static class ProductScanner
         };
     }
 
-    public static ScanningResult Total(List<Product> products)
+    public static ScanningResult Total(Bag bag)
     {
         return new ScanningResult("19,75€");
     }
