@@ -27,4 +27,12 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void GiveTotalResultForTwoNumbers()
+    {
+        var result = StringCalculatorMachine.Add("1,2");
+        
+        result.Should().Be(3);
+    }
 }
