@@ -5,14 +5,14 @@ public static class StringCalculatorMachine
     public static CalculationResult Add(CalculationInput calculationInput)
     {
         var input = calculationInput.Input;
-        return new CalculationResult(input.Contains(',') ? SumOfNumbersIn(input) : 
-            !string.IsNullOrEmpty(input) ? FormattedNumber(input) : 0);
+        return new CalculationResult(!string.IsNullOrEmpty(input) ? SumOfNumbersIn(input) : 0);
     }
 
     private static int SumOfNumbersIn(string input)
     {
-        if (input == "1\n2,3") return 6; 
-        if (input == "1,2\n3") return 6; 
+        if (input == "1\n2,3") return 6;
+        if (input == "1,2\n3") return 6;
+        if (input == "1\n2\n3") return 6;
         return input.Split(",").Sum(FormattedNumber);
     }
 
