@@ -38,4 +38,12 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(expectedResult);
     }
+    
+    [Test]
+    public void GiveTotalResultForAGroupOfThreeNumbers()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("1,2,3")).Value;
+        
+        result.Should().Be(6);
+    }
 }
