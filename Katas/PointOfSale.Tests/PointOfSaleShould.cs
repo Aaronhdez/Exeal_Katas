@@ -12,8 +12,6 @@ public class Tests
     [Test]
     public void DisplayAnErrorIfBarcodeIsEmpty()
     {
-        var scanner = new ProductScanner();
-        
         var result = ProductScanner.Scan(new Product("")).Value;
         
         result.Should().Be("Error: Empty barcode");
@@ -22,8 +20,6 @@ public class Tests
     [Test]
     public void DisplayAnErrorIfBarcodeIsNotValid()
     {
-        var scanner = new ProductScanner();
-        
         var result = ProductScanner.Scan(new Product("99999")).Value;
         
         result.Should().Be("Error: Barcode not found");
@@ -32,8 +28,6 @@ public class Tests
     [Test]
     public void DisplayPriceOfARegisteredBarcode()
     {
-        var scanner = new ProductScanner();
-        
         var result = ProductScanner.Scan(new Product("12345")).Value;
         
         result.Should().Be("7,25€");
@@ -42,8 +36,6 @@ public class Tests
     [Test]
     public void DisplayPriceOfAnotherRegisteredBarcode()
     {
-        var scanner = new ProductScanner();
-        
         var result = ProductScanner.Scan(new Product("23456")).Value;
         
         result.Should().Be("12,50€");

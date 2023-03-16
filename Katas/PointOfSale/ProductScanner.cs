@@ -1,6 +1,6 @@
 ﻿namespace PointOfSale;
 
-public class ProductScanner
+public static class ProductScanner
 {
     public static ScanningResult Scan(Product product)
     {
