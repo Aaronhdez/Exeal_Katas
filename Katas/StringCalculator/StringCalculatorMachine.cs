@@ -2,20 +2,21 @@
 
 public static class StringCalculatorMachine
 {
-    public static int Add(string input)
+    public static CalculationResult Add(CalculationInput calculationInput)
     {
-        if (input.Contains(','))
-        {
-            return SumOfNumbersIn(input);
-        }
-
-        if (!string.IsNullOrEmpty(input)) return int.Parse(input);
-        return 0;
+        var input = calculationInput.Input;
+        return new CalculationResult(input.Contains(',') ? SumOfNumbersIn(input) : 
+            !string.IsNullOrEmpty(input) ? FormattedNumber(input) : 0);
     }
 
     private static int SumOfNumbersIn(string input)
     {
         var numbers = input.Split(",");
-        return int.Parse(numbers[0]) + int.Parse(numbers[1]);
+        return FormattedNumber(numbers[0]) + FormattedNumber(numbers[1]);
+    }
+
+    private static int FormattedNumber(string input)
+    {
+        return int.Parse(input);
     }
 }

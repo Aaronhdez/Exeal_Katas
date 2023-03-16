@@ -12,7 +12,7 @@ public class StringCalculatorMachineShould
     [Test]
     public void GiveZeroAsAResultForAnEmptyString()
     {
-        var result = StringCalculatorMachine.Add("");
+        var result = StringCalculatorMachine.Add(new CalculationInput("")).Value;
         
         result.Should().Be(0);
     }
@@ -23,7 +23,7 @@ public class StringCalculatorMachineShould
     [TestCase("121", 121)]
     public void GiveSameNumberAsAResultForASingleNumber(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(input);
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
         
         result.Should().Be(expectedResult);
     }
@@ -34,7 +34,7 @@ public class StringCalculatorMachineShould
     [TestCase("3,3", 6)]
     public void GiveTotalResultForAnyPairOfNumbers(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(input);
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
         
         result.Should().Be(expectedResult);
     }
