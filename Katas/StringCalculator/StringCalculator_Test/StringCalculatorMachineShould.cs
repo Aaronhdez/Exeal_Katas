@@ -77,12 +77,14 @@ public class StringCalculatorMachineShould
         result.Should().Throw<NotSupportedException>("Negatives not supported");
     }
 
-    [Test]
-    public void IgnoreNumbersHigherThanAThousand()
+    [TestCase("//;1;2\n1000", 3)]
+    [TestCase("//:1\n2\n1000", 3)]
+    [TestCase("//@1@2\n1000", 3)]
+    [TestCase("//:1:2\n1000:1000", 3)]
+    public void IgnoreNumbersHigherThanAThousand(string input, int expectedResult)
     {
-        var result = StringCalculatorMachine.Add(new CalculationInput("1,1000"));
+        var result = StringCalculatorMachine.Add(new CalculationInput(input)).Value;
 
-        result.Should().Be(1);
-        result.Should().Be(1);
+        result.Should().Be(expectedResult);
     }
 }

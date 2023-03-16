@@ -38,8 +38,7 @@ public static partial class StringCalculatorMachine
     {
         var candidate = int.Parse(input);
         if (candidate < 0) throw new NotSupportedException("Negatives not supported");
-        if (candidate > 999) return 0;
-        return candidate;
+        return candidate > 999 ? 0 : candidate;
     }
 
     [GeneratedRegex("^//*")]
