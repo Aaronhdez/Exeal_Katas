@@ -11,11 +11,7 @@ public static class StringCalculatorMachine
 
     private static int SumOfNumbersIn(string input)
     {
-        if (input == "1,2,3") return 6;
-        if (input == "1,3,3") return 7;
-        if (input == "2,3,3") return 8;
-        var numbers = input.Split(",");
-        return FormattedNumber(numbers[0]) + FormattedNumber(numbers[1]);
+        return input.Split(",").Sum(FormattedNumber);
     }
 
     private static int FormattedNumber(string input)
