@@ -2,8 +2,8 @@
 
 public class ProductScanner
 {
-    public string Scan(string barcode)
+    public ScanningResult Scan(Barcode barcode)
     {
-        return "Error: Barcode not found";
+        return new ScanningResult("Error: Barcode not found");
     }
 }

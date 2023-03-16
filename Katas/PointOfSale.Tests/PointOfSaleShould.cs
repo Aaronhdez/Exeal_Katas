@@ -14,7 +14,7 @@ public class Tests
     {
         var scanner = new ProductScanner();
         
-        var result = scanner.Scan("");
+        var result = scanner.Scan(new Barcode("")).Value;
         
         result.Should().Be("Error: Barcode not found");
     }
