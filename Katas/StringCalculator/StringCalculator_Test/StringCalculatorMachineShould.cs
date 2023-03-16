@@ -48,4 +48,12 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void GiveTotalResultForAGroupOfNumbersWithCr()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("1\n2,3")).Value;
+        result.Should().Be(6);
+        
+    }
 }
