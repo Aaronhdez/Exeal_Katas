@@ -2,10 +2,10 @@
 
 public class ProductScanner
 {
-    public ScanningResult Scan(Barcode barcode)
+    public ScanningResult Scan(Product product)
     {
-        if (barcode.Value == "12345") return new ScanningResult("12,75€");
-        return barcode.Value == "99999" ? 
+        if (product.Value == "12345") return new ScanningResult("12,75€");
+        return product.Value == "99999" ? 
             new ScanningResult("Error: Barcode not found") : 
             new ScanningResult("Error: Empty barcode");
     }

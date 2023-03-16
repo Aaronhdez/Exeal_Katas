@@ -14,7 +14,7 @@ public class Tests
     {
         var scanner = new ProductScanner();
         
-        var result = scanner.Scan(new Barcode("")).Value;
+        var result = scanner.Scan(new Product("")).Value;
         
         result.Should().Be("Error: Empty barcode");
     }
@@ -24,7 +24,7 @@ public class Tests
     {
         var scanner = new ProductScanner();
         
-        var result = scanner.Scan(new Barcode("99999")).Value;
+        var result = scanner.Scan(new Product("99999")).Value;
         
         result.Should().Be("Error: Barcode not found");
     }
@@ -34,7 +34,7 @@ public class Tests
     {
         var scanner = new ProductScanner();
         
-        var result = scanner.Scan(new Barcode("12345")).Value;
+        var result = scanner.Scan(new Product("12345")).Value;
         
         result.Should().Be("12,75€");
     }

@@ -1,8 +1,8 @@
 ﻿namespace PointOfSale;
 
-public class Barcode
+public class Product
 {
-    public Barcode(string barcode)
+    public Product(string barcode)
     {
         Value = barcode;
     }
