@@ -53,7 +53,15 @@ public class StringCalculatorMachineShould
     public void GiveTotalResultForAGroupOfNumbersWithCr()
     {
         var result = StringCalculatorMachine.Add(new CalculationInput("1\n2,3")).Value;
-        result.Should().Be(6);
         
+        result.Should().Be(6);
+    }
+    
+    [Test]
+    public void GiveTotalResultForOtherGroupOfNumbersWithCr()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("1,2\n3")).Value;
+        
+        result.Should().Be(6);
     }
 }
