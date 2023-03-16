@@ -15,12 +15,7 @@ public static class StringCalculatorMachine
 
     private static int SumOfNumbersIn(string input)
     {
-        return input switch
-        {
-            "1,2" => 3,
-            "2,2" => 4,
-            "2,3" => 5,
-            _ => 0
-        };
+        var numbers = input.Split(",");
+        return int.Parse(numbers[0]) + int.Parse(numbers[1]);
     }
 }

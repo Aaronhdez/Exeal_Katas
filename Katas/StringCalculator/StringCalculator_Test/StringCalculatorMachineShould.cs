@@ -31,6 +31,7 @@ public class StringCalculatorMachineShould
     [TestCase("1,2", 3)]
     [TestCase("2,2", 4)]
     [TestCase("2,3", 5)]
+    [TestCase("3,3", 6)]
     public void GiveTotalResultForAnyPairOfNumbers(string input, int expectedResult)
     {
         var result = StringCalculatorMachine.Add(input);
