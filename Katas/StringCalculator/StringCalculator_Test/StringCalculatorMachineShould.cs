@@ -59,4 +59,12 @@ public class StringCalculatorMachineShould
         result.Should().Be(expectedResult);
     }
     
+    [Test]
+    public void GiveTotalResultForAGroupOfNumbersWithADifferentDelimiter()
+    {
+        var result = StringCalculatorMachine.Add(new CalculationInput("//;1;2/n3")).Value;
+        
+        result.Should().Be(6);
+    }
+    
 }
