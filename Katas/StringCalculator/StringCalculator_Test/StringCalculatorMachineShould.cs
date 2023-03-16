@@ -43,4 +43,12 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(4);
     }
+
+    [Test]
+    public void GiveTotalResultForAnotherTwoNumbers()
+    {
+        var result = StringCalculatorMachine.Add("2,3");
+        
+        result.Should().Be(5);
+    }
 }
