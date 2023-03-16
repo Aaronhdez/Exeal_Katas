@@ -36,7 +36,9 @@ public static partial class StringCalculatorMachine
 
     private static int FormattedNumber(string input)
     {
-        return int.Parse(input);
+        var candidate = int.Parse(input);
+        if (candidate < 0) throw new NotSupportedException("Negatives not supported");
+        return candidate;
     }
 
     [GeneratedRegex("^//*")]

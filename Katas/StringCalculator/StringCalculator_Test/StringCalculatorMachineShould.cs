@@ -68,5 +68,13 @@ public class StringCalculatorMachineShould
         
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void ThrowExceptionWhenNegativeNumbersAreInserted()
+    {
+        var result = () => StringCalculatorMachine.Add(new CalculationInput("1,-1"));
+
+        result.Should().Throw<NotSupportedException>("Negatives not supported");
+    }
     
 }
