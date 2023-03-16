@@ -2,7 +2,7 @@
 
 namespace StringCalculator;
 
-public static class StringCalculatorMachine
+public static partial class StringCalculatorMachine
 {
     public static CalculationResult Add(CalculationInput calculationInput)
     {
@@ -25,12 +25,11 @@ public static class StringCalculatorMachine
     private static string GetSeparator(string input, out string separator)
     {
         separator = ",";
-        if (Regex.IsMatch(input, "^//*"))
-        {
-            input = input.Replace("//", string.Empty);
-            separator = input[..1];
-            input = input[1..];
-        }
+        
+        if (!MyRegex().IsMatch(input)) return input;
+        input = input.Replace("//", string.Empty);
+        separator = input[..1];
+        input = input[1..];
 
         return input;
     }
@@ -39,4 +38,7 @@ public static class StringCalculatorMachine
     {
         return int.Parse(input);
     }
+
+    [GeneratedRegex("^//*")]
+    private static partial Regex MyRegex();
 }
