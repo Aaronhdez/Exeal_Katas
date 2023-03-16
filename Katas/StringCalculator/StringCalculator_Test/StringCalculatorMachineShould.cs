@@ -12,8 +12,16 @@ public class StringCalculatorMachineShould
     [Test]
     public void GiveZeroAsAResultForAnEmptyString()
     {
-        var result = StringCalculatorMachine.Add("inputResultValue");
+        var result = StringCalculatorMachine.Add("");
         
         result.Should().Be(0);
+    }
+    
+    [Test]
+    public void GiveSameNumberAsAResultForASingleNumber()
+    {
+        var result = StringCalculatorMachine.Add("1");
+        
+        result.Should().Be(1);
     }
 }
