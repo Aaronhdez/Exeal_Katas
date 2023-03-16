@@ -41,7 +41,7 @@ public class Tests
         result.Should().Be("12,50€");
     }
 
-    [TestCase()]
+    [Test]
     public void DisplayValueOfAGroupOfProducts()
     {
         var products = new Bag(new List<Product>
@@ -52,5 +52,19 @@ public class Tests
         var result = ProductScanner.Total(products).Value;
 
         result.Should().Be("19,75€");
+    }
+
+    [Test]
+    public void DisplayValueOfAnotherGroupOfProducts()
+    {
+        var products = new Bag(new List<Product>
+        {
+            new Product("12345"),
+            new Product("12345"),
+            new Product("23456")
+        });
+        var result = ProductScanner.Total(products).Value;
+
+        result.Should().Be("27,00€");
     }
 }

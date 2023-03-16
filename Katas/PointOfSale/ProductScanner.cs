@@ -25,6 +25,16 @@ public static class ProductScanner
 
     public static ScanningResult Total(Bag bag)
     {
-        return new ScanningResult("19,75€");
+        var total = bag.Products.Aggregate<Product?, double>(0, 
+                (current, product) => AddAProduct(product, current));
+        return new ScanningResult($"{total:0.00}" +"€");
+    }
+
+    private static double AddAProduct(Product product, double total)
+    {
+        var price = Scan(product).Value;
+        price = price.Replace("€", "");
+        total += double.Parse(price);
+        return total;
     }
 }
