@@ -1,4 +1,6 @@
-﻿namespace StringCalculator;
+﻿using System.Text.RegularExpressions;
+
+namespace StringCalculator;
 
 public static class StringCalculatorMachine
 {
@@ -10,16 +12,27 @@ public static class StringCalculatorMachine
 
     private static int SumOfNumbersIn(string input)
     {
-        if (input == "//;1;2/n3") return 6;
-        if (input == "//:1:2/n3") return 6;
-        if (input == "//@1@2/n3") return 6;
         return FormattedInput(input).Sum(FormattedNumber);
     }
 
     private static IEnumerable<string> FormattedInput(string input)
     {
-        input = input.Replace("\n", ",");
-        return input.Split(",");
+        input = GetSeparator(input, out var separator);
+        input = input.Replace("\n", separator);
+        return input.Split(separator);
+    }
+
+    private static string GetSeparator(string input, out string separator)
+    {
+        separator = ",";
+        if (Regex.IsMatch(input, "^//*"))
+        {
+            input = input.Replace("//", string.Empty);
+            separator = input[..1];
+            input = input[1..];
+        }
+
+        return input;
     }
 
     private static int FormattedNumber(string input)
