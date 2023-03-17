@@ -5,6 +5,7 @@
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76e51b9f_002Dab1d_002D452a_002D956c_002D031a494de94d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="LeapYearCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
