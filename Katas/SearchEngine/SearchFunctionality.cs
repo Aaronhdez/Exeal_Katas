@@ -23,7 +23,7 @@ public class SearchFunctionality
     
     public static IEnumerable<City> Find(string input)
     {
-        if (input == "1" || string.IsNullOrEmpty(input)) return new List<City>();
-        return CitiesList;
+        if (input == "*") return CitiesList;
+        return new List<City>();
     }
 }
