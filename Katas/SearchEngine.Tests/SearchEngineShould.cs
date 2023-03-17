@@ -35,8 +35,17 @@ public class SearchEngineShould
 
         result.Should().BeEquivalentTo(citiesList);
     }
+    
     [Test]
     public void DoNotGiveAnyResultIfInputIsOneCharacterLong()
+    {
+        var result = SearchFunctionality.Find("1");
+
+        result.Should().BeEquivalentTo(new List<City>());
+    }
+    
+    [Test]
+    public void DoNotGiveAnyResultIfInputIsEmpty()
     {
         var result = SearchFunctionality.Find("1");
 
