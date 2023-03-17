@@ -9,8 +9,8 @@
     &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::ACDC08DE-B77F-4F96-B2ED-511B4FF6BE4F::net7.0::Factorial_Tests.FactorialCalculatorShould&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::36433E4B-0D5D-43D6-9D4E-0C8A168E3C6A::net7.0::SearchEngine.Tests.SearchEngineShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
