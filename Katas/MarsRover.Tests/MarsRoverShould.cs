@@ -162,12 +162,12 @@ public class MarsRoverShould
     [TestCase(new[] {Command.B, Command.B, Command.B}, 4, 1)]
     public void MoveBackwardsWhilePointingWest(Command[] commands, int x, int y)
     {
-        var rover = new Rover(new Coordinates(1,1), Direction.East);
+        var rover = new Rover(new Coordinates(1,1), Direction.West);
         var expectedCoordinates = new Coordinates(x, y);
 
         rover.Move(commands);
         
-        rover.Direction.Should().Be(Direction.East);
+        rover.Direction.Should().Be(Direction.West);
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
 }
