@@ -41,7 +41,8 @@ public class Rover
                 }
                 if (Direction == Direction.West)
                 {
-                    Coordinates = new Coordinates(0, 1);
+                    if(commands.Length == 1) Coordinates = new Coordinates(0, 1);
+                    if(commands.Length == 2) Coordinates = new Coordinates(-1, 1);
                 }
             }
         }
