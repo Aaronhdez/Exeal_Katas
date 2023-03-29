@@ -8,7 +8,7 @@ public class Coordinates
         Y = y;
     }
 
-    public int X { get; }
+    private int X { get; set; }
     private int Y { get; set; }
 
     private bool Equals(Coordinates other)
@@ -37,5 +37,10 @@ public class Coordinates
     public void DecreaseY()
     {
         Y -= 1;
+    }
+
+    public void IncreaseX()
+    {
+        X += 1;
     }
 }
