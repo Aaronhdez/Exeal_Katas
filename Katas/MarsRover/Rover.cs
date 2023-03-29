@@ -30,6 +30,10 @@ public class Rover
                 if (Direction == Direction.North)
                 {
                     Coordinates.IncreaseY();
+                } 
+                if (Direction == Direction.South)
+                {
+                    Coordinates = new Coordinates(1, 0);
                 }
             }
         }
