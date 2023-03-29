@@ -24,6 +24,7 @@ public class Rover
             {
                 if(commands.Length == 1) Direction = Direction.East;
                 if(commands.Length == 2) Direction = Direction.South;
+                if(commands.Length == 3) Direction = Direction.West;
             }
         }
 
