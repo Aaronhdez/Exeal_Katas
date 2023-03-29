@@ -1,6 +1,6 @@
 ﻿namespace MarsRover;
 
-public enum Command
+public enum Order
 {
     None = 0,
     L,

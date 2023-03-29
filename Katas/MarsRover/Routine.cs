@@ -2,10 +2,10 @@
 
 public class Routine
 {
-    public Routine(Command[] commands)
+    public Routine(Order[] orders)
     {
-        Commands = commands;
+        Orders = orders;
     }
 
-    public Command[] Commands { get; }
+    public Order[] Orders { get; }
 }

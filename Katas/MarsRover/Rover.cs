@@ -13,26 +13,22 @@ public class Rover
 
     public void Move(Routine routine)
     {
-        foreach (var command in routine.Commands)
+        foreach (var order in routine.Orders)
         {
-            if (command == Command.L)
+            switch (order)
             {
-                TurnLeft();
-            }
-
-            if (command == Command.R)
-            {
-                TurnRight();
-            }
-
-            if (command == Command.F)
-            {
-                MoveForward();
-            }
-            
-            if (command == Command.B)
-            {
-                MoveBackwards();
+                case Order.L:
+                    TurnLeft();
+                    break;
+                case Order.R:
+                    TurnRight();
+                    break;
+                case Order.F:
+                    MoveForward();
+                    break;
+                case Order.B:
+                    MoveBackwards();
+                    break;
             }
         }
 

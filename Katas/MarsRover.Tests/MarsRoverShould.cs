@@ -30,11 +30,11 @@ public class MarsRoverShould
         rover.Direction.Should().Be(Direction.North);
     }
 
-    [TestCase(new[] {Command.L}, Direction.West)]
-    [TestCase(new[] {Command.L, Command.L}, Direction.South)]
-    [TestCase(new[] {Command.L, Command.L, Command.L}, Direction.East)]
-    [TestCase(new[] {Command.L, Command.L, Command.L, Command.L}, Direction.North)]
-    public void ChangeDirectionWhileTuringLeft(Command[] commands, Direction expectedDirection)
+    [TestCase(new[] {Order.L}, Direction.West)]
+    [TestCase(new[] {Order.L, Order.L}, Direction.South)]
+    [TestCase(new[] {Order.L, Order.L, Order.L}, Direction.East)]
+    [TestCase(new[] {Order.L, Order.L, Order.L, Order.L}, Direction.North)]
+    public void ChangeDirectionWhileTuringLeft(Order[] commands, Direction expectedDirection)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
 
@@ -44,11 +44,11 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
 
-    [TestCase(new[] {Command.R}, Direction.East)]
-    [TestCase(new[] {Command.R, Command.R}, Direction.South)]
-    [TestCase(new[] {Command.R, Command.R, Command.R}, Direction.West)]
-    [TestCase(new[] {Command.R, Command.R, Command.R, Command.R}, Direction.North)]
-    public void ChangeDirectionWhileTuringRight(Command[] commands, Direction expectedDirection)
+    [TestCase(new[] {Order.R}, Direction.East)]
+    [TestCase(new[] {Order.R, Order.R}, Direction.South)]
+    [TestCase(new[] {Order.R, Order.R, Order.R}, Direction.West)]
+    [TestCase(new[] {Order.R, Order.R, Order.R, Order.R}, Direction.North)]
+    public void ChangeDirectionWhileTuringRight(Order[] commands, Direction expectedDirection)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
 
@@ -58,10 +58,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
 
-    [TestCase(new[] {Command.F }, 1, 2)]
-    [TestCase(new[] {Command.F, Command.F},1, 3)]
-    [TestCase(new[] {Command.F, Command.F, Command.F}, 1, 4)]
-    public void MoveForwardWhilePointingNorth(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.F }, 1, 2)]
+    [TestCase(new[] {Order.F, Order.F},1, 3)]
+    [TestCase(new[] {Order.F, Order.F, Order.F}, 1, 4)]
+    public void MoveForwardWhilePointingNorth(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
         var expectedCoordinates = new Coordinates(x, y);
@@ -73,10 +73,10 @@ public class MarsRoverShould
     }
     
     
-    [TestCase(new[] {Command.F }, 1, 0)]
-    [TestCase(new[] {Command.F, Command.F},1, -1)]
-    [TestCase(new[] {Command.F, Command.F, Command.F}, 1, -2)]
-    public void MoveForwardWhilePointingSouth(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.F }, 1, 0)]
+    [TestCase(new[] {Order.F, Order.F},1, -1)]
+    [TestCase(new[] {Order.F, Order.F, Order.F}, 1, -2)]
+    public void MoveForwardWhilePointingSouth(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(x, y);
@@ -87,10 +87,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.F }, 2, 1)]
-    [TestCase(new[] {Command.F, Command.F},3, 1)]
-    [TestCase(new[] {Command.F, Command.F, Command.F}, 4, 1)]
-    public void MoveForwardWhilePointingEast(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.F }, 2, 1)]
+    [TestCase(new[] {Order.F, Order.F},3, 1)]
+    [TestCase(new[] {Order.F, Order.F, Order.F}, 4, 1)]
+    public void MoveForwardWhilePointingEast(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.East);
         var expectedCoordinates = new Coordinates(x, y);
@@ -101,10 +101,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.F }, 0, 1)]
-    [TestCase(new[] {Command.F, Command.F},-1, 1)]
-    [TestCase(new[] {Command.F, Command.F, Command.F}, -2, 1)]
-    public void MoveForwardWhilePointingWest(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.F }, 0, 1)]
+    [TestCase(new[] {Order.F, Order.F},-1, 1)]
+    [TestCase(new[] {Order.F, Order.F, Order.F}, -2, 1)]
+    public void MoveForwardWhilePointingWest(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.West);
         var expectedCoordinates = new Coordinates(x, y);
@@ -115,10 +115,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.B }, 1, 0)]
-    [TestCase(new[] {Command.B, Command.B},1, -1)]
-    [TestCase(new[] {Command.B, Command.B, Command.B}, 1, -2)]
-    public void MoveBackwardsWhilePointingNorth(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.B }, 1, 0)]
+    [TestCase(new[] {Order.B, Order.B},1, -1)]
+    [TestCase(new[] {Order.B, Order.B, Order.B}, 1, -2)]
+    public void MoveBackwardsWhilePointingNorth(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
         var expectedCoordinates = new Coordinates(x, y);
@@ -129,10 +129,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.B }, 1, 2)]
-    [TestCase(new[] {Command.B, Command.B},1, 3)]
-    [TestCase(new[] {Command.B, Command.B, Command.B}, 1, 4)]
-    public void MoveBackwardsWhilePointingSouth(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.B }, 1, 2)]
+    [TestCase(new[] {Order.B, Order.B},1, 3)]
+    [TestCase(new[] {Order.B, Order.B, Order.B}, 1, 4)]
+    public void MoveBackwardsWhilePointingSouth(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(x, y);
@@ -143,10 +143,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.B }, 0, 1)]
-    [TestCase(new[] {Command.B, Command.B},-1, 1)]
-    [TestCase(new[] {Command.B, Command.B, Command.B}, -2, 1)]
-    public void MoveBackwardsWhilePointingEast(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.B }, 0, 1)]
+    [TestCase(new[] {Order.B, Order.B},-1, 1)]
+    [TestCase(new[] {Order.B, Order.B, Order.B}, -2, 1)]
+    public void MoveBackwardsWhilePointingEast(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.East);
         var expectedCoordinates = new Coordinates(x, y);
@@ -157,10 +157,10 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [TestCase(new[] {Command.B }, 2, 1)]
-    [TestCase(new[] {Command.B, Command.B},3, 1)]
-    [TestCase(new[] {Command.B, Command.B, Command.B}, 4, 1)]
-    public void MoveBackwardsWhilePointingWest(Command[] commands, int x, int y)
+    [TestCase(new[] {Order.B }, 2, 1)]
+    [TestCase(new[] {Order.B, Order.B},3, 1)]
+    [TestCase(new[] {Order.B, Order.B, Order.B}, 4, 1)]
+    public void MoveBackwardsWhilePointingWest(Order[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.West);
         var expectedCoordinates = new Coordinates(x, y);
