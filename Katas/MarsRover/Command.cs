@@ -3,5 +3,6 @@
 public enum Command
 {
     None = 0,
-    L
+    L,
+    R
 }

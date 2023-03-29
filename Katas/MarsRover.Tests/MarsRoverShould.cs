@@ -43,6 +43,15 @@ public class MarsRoverShould
         rover.Direction.Should().Be(expectedDirection);
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
-    
-    
+
+    [Test]
+    public void ChangeDirectionOnceWhenRightTurningOrderIsReceived()
+    {
+        var rover = new Rover(new Coordinates(1,1), Direction.North);
+        
+        rover.Move(new [] { Command.R });
+        
+        rover.Direction.Should().Be(Direction.East);
+        rover.Coordinates.Should().Be(new Coordinates(1, 1));
+    }
 }
