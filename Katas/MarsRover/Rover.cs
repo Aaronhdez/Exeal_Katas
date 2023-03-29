@@ -32,7 +32,16 @@ public class Rover
             
             if (command == Command.B)
             {
-                Coordinates.DecreaseY();
+                if (Direction == Direction.North)
+                {
+                    Coordinates.DecreaseY();
+                }
+
+                if (Direction == Direction.South)
+                {
+                    Coordinates.IncreaseY();
+                }
+
             }
         }
 
