@@ -2,12 +2,10 @@
 
 public class Rover
 {
-    public int X { get; }
-    public int Y { get; }
+    public Coordinates Coordinates { get; }
 
-    public Rover(int x, int y)
+    public Rover(Coordinates coordinates)
     {
-        X = x;
-        Y = y;
+        Coordinates = coordinates;
     }
 }

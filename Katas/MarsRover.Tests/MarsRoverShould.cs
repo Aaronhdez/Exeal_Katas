@@ -12,12 +12,11 @@ public class MarsRoverShould
     [Test]
     public void LandInSpecificCoordinates()
     {
-        var rover = new Rover(1,1);
+        var rover = new Rover(new Coordinates(1, 1));
 
-        var resultX = rover.X;
-        var resultY = rover.Y;
+        var result = rover.Coordinates;
         
-        resultX.Should().Be(1);
-        resultY.Should().Be(1);
+        result.X.Should().Be(1);
+        result.Y.Should().Be(1);
     }
 }
