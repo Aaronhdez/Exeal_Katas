@@ -71,4 +71,16 @@ public class MarsRoverShould
         rover.Direction.Should().Be(Direction.North);
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
+
+    [Test]
+    public void MoveForwardOneWhilePointingSouth()
+    {
+        var rover = new Rover(new Coordinates(1,1), Direction.South);
+        var expectedCoordinates = new Coordinates(1, 0);
+
+        rover.Move(new[] {Command.F });
+        
+        rover.Direction.Should().Be(Direction.South);
+        rover.Coordinates.Should().Be(expectedCoordinates);
+    }
 }
