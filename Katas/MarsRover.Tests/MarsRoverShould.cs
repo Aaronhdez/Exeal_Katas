@@ -29,5 +29,7 @@ public class Rover
 
     public Rover(int x, int y)
     {
+        X = x;
+        Y = y;
     }
 }
