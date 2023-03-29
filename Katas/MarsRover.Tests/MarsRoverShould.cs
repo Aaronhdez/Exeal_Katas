@@ -115,38 +115,15 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(expectedCoordinates);
     }
     
-    [Test]
-    public void MoveBackwardsOneStepWhilePointingNorth()
+    [TestCase(new[] {Command.B }, 1, 0)]
+    [TestCase(new[] {Command.B, Command.B},1, -1)]
+    [TestCase(new[] {Command.B, Command.B, Command.B}, 1, -2)]
+    public void MoveBackwardsWhilePointingNorth(Command[] commands, int x, int y)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
-        var expectedCoordinates = new Coordinates(1, 0);
+        var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new[] { Command.B });
-        
-        rover.Direction.Should().Be(Direction.North);
-        rover.Coordinates.Should().Be(expectedCoordinates);
-    }
-    
-    
-    [Test]
-    public void MoveBackwardsTwoStepsWhilePointingNorth()
-    {
-        var rover = new Rover(new Coordinates(1,1), Direction.North);
-        var expectedCoordinates = new Coordinates(1, -1);
-
-        rover.Move(new[] { Command.B, Command.B });
-        
-        rover.Direction.Should().Be(Direction.North);
-        rover.Coordinates.Should().Be(expectedCoordinates);
-    }
-    
-    [Test]
-    public void MoveBackwardsThreeStepsWhilePointingNorth()
-    {
-        var rover = new Rover(new Coordinates(1,1), Direction.North);
-        var expectedCoordinates = new Coordinates(1, -2);
-
-        rover.Move(new[] { Command.B, Command.B, Command.B });
+        rover.Move(commands);
         
         rover.Direction.Should().Be(Direction.North);
         rover.Coordinates.Should().Be(expectedCoordinates);
