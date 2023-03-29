@@ -43,4 +43,9 @@ public class Coordinates
     {
         X += 1;
     }
+
+    public void DecreaseX()
+    {
+        X -= 1;
+    }
 }
