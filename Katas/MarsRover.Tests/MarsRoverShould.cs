@@ -39,4 +39,14 @@ public class MarsRoverShould
         
         rover.Direction.Should().Be(Direction.West);
     }
+    
+    [Test]
+    public void ChangeDirectionTwiceWhenLeftTuringOrderIsReceived()
+    {
+        var rover = new Rover(new Coordinates(1,1), Direction.North);
+
+        rover.Move(new[] {'L', 'L'});
+        
+        rover.Direction.Should().Be(Direction.South);
+    }
 }
