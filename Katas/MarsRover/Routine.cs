@@ -7,5 +7,5 @@ public class Routine
         Commands = commands;
     }
 
-    public Command[] Commands { get; private set; }
+    public Command[] Commands { get; }
 }

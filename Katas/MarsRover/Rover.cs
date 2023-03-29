@@ -3,7 +3,7 @@
 public class Rover
 {
     public Direction Direction { get; private set; }
-    public Coordinates Coordinates { get; private set; }
+    public Coordinates Coordinates { get; }
 
     public Rover(Coordinates coordinates, Direction direction)
     {
@@ -32,28 +32,33 @@ public class Rover
             
             if (command == Command.B)
             {
-                if (Direction == Direction.North)
-                {
-                    Coordinates.DecreaseY();
-                }
-
-                if (Direction == Direction.South)
-                {
-                    Coordinates.IncreaseY();
-                }
-
-                if (Direction == Direction.East)
-                {
-                    Coordinates.DecreaseX();
-                }
-
-                if (Direction == Direction.West)
-                {
-                    Coordinates.IncreaseX();
-                }
+                MoveBackwards();
             }
         }
 
+    }
+
+    private void MoveBackwards()
+    {
+        if (Direction == Direction.North)
+        {
+            Coordinates.DecreaseY();
+        }
+
+        if (Direction == Direction.South)
+        {
+            Coordinates.IncreaseY();
+        }
+
+        if (Direction == Direction.East)
+        {
+            Coordinates.DecreaseX();
+        }
+
+        if (Direction == Direction.West)
+        {
+            Coordinates.IncreaseX();
+        }
     }
 
     private void MoveForward()
