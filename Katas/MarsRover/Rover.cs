@@ -11,9 +11,9 @@ public class Rover
         Coordinates = coordinates;
     }
 
-    public void Move(Command[] commands)
+    public void Move(Routine routine)
     {
-        foreach (var command in commands)
+        foreach (var command in routine.Commands)
         {
             if (command == Command.L)
             {
@@ -36,19 +36,21 @@ public class Rover
                 {
                     Coordinates.DecreaseY();
                 }
+
                 if (Direction == Direction.South)
                 {
                     Coordinates.IncreaseY();
                 }
+
                 if (Direction == Direction.East)
                 {
                     Coordinates.DecreaseX();
                 }
+
                 if (Direction == Direction.West)
                 {
                     Coordinates.IncreaseX();
                 }
-                
             }
         }
 
