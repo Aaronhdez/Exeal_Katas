@@ -17,14 +17,24 @@ public class Rover
         {
             if (command == Command.L)
             {
-                Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
+                TurnLeft();
             }
 
             if (command == Command.R)
             {
-                Direction = (Direction == Direction.North) ? Direction.East : Direction - 1;
+                TurnRight();
             }
         }
+        
+    }
 
+    private void TurnRight()
+    {
+        Direction = (Direction == Direction.North) ? Direction.East : Direction - 1;
+    }
+
+    private void TurnLeft()
+    {
+        Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
     }
 }
