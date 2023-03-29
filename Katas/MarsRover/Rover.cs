@@ -35,6 +35,10 @@ public class Rover
                 {
                     Coordinates.DecreaseY();
                 } 
+                if (Direction == Direction.East)
+                {
+                    Coordinates = new Coordinates(2, 1);
+                }
             }
         }
 
