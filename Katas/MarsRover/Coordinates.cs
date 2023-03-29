@@ -9,7 +9,7 @@ public class Coordinates
     }
 
     public int X { get; }
-    public int Y { get; }
+    private int Y { get; set; }
 
     private bool Equals(Coordinates other)
     {
@@ -27,5 +27,10 @@ public class Coordinates
     public override int GetHashCode()
     {
         return HashCode.Combine(X, Y);
+    }
+
+    public void IncreaseY()
+    {
+        Y += 1;
     }
 }
