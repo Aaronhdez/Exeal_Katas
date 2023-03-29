@@ -19,6 +19,12 @@ public class Rover
             {
                 Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
             }
+
+            if (command == Command.R)
+            {
+                Direction = Direction.East;
+            }
         }
+
     }
 }
