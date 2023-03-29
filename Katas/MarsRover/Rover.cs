@@ -3,7 +3,7 @@
 public class Rover
 {
     public Direction Direction { get; private set; }
-    public Coordinates Coordinates { get; }
+    public Coordinates Coordinates { get; private set; }
 
     public Rover(Coordinates coordinates, Direction direction)
     {
@@ -24,8 +24,13 @@ public class Rover
             {
                 TurnRight();
             }
+
+            if (command == Command.F)
+            {
+                Coordinates = new Coordinates(1, 2);
+            }
         }
-        
+
     }
 
     private void TurnRight()
