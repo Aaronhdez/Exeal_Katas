@@ -44,36 +44,17 @@ public class MarsRoverShould
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
 
-    [Test]
-    public void ChangeDirectionOnceWhenRightTurningOrderIsReceived()
+    [TestCase(new[] {Command.R}, Direction.East)]
+    [TestCase(new[] {Command.R, Command.R}, Direction.South)]
+    [TestCase(new[] {Command.R, Command.R, Command.R}, Direction.West)]
+    [TestCase(new[] {Command.R, Command.R, Command.R, Command.R}, Direction.North)]
+    public void ChangeDirectionWhileTuringRight(Command[] commands, Direction expectedDirection)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
+
+        rover.Move(commands);
         
-        rover.Move(new [] { Command.R });
-        
-        rover.Direction.Should().Be(Direction.East);
-        rover.Coordinates.Should().Be(new Coordinates(1, 1));
-    }
-    
-    [Test]
-    public void ChangeDirectionTwiceWhenRightTurningOrderIsReceived()
-    {
-        var rover = new Rover(new Coordinates(1,1), Direction.North);
-        
-        rover.Move(new [] { Command.R, Command.R });
-        
-        rover.Direction.Should().Be(Direction.South);
-        rover.Coordinates.Should().Be(new Coordinates(1, 1));
-    }
-    
-    [Test]
-    public void ChangeDirectionThriceWhenRightTurningOrderIsReceived()
-    {
-        var rover = new Rover(new Coordinates(1,1), Direction.North);
-        
-        rover.Move(new [] { Command.R, Command.R, Command.R });
-        
-        rover.Direction.Should().Be(Direction.West);
+        rover.Direction.Should().Be(expectedDirection);
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
 }
