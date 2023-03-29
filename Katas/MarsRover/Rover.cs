@@ -13,8 +13,12 @@ public class Rover
 
     public void Move(Command[] commands)
     {
-        if(commands.Length == 1) Direction = Direction.West;
-        if(commands.Length == 2) Direction = Direction.South;
-        if(commands.Length == 3) Direction = Direction.East;
+        foreach (var command in commands)
+        {
+            if (command == Command.L)
+            {
+                Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
+            }
+        }
     }
 }

@@ -33,6 +33,7 @@ public class MarsRoverShould
     [TestCase(new[] {Command.L}, Direction.West)]
     [TestCase(new[] {Command.L, Command.L}, Direction.South)]
     [TestCase(new[] {Command.L, Command.L, Command.L}, Direction.East)]
+    [TestCase(new[] {Command.L, Command.L, Command.L, Command.L}, Direction.North)]
     public void ChangeDirectionWhileTuringLeft(Command[] commands, Direction expectedDirection)
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
@@ -40,5 +41,8 @@ public class MarsRoverShould
         rover.Move(commands);
         
         rover.Direction.Should().Be(expectedDirection);
+        rover.Coordinates.Should().Be(new Coordinates(1, 1));
     }
+    
+    
 }
