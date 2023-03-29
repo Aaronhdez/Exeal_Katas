@@ -16,8 +16,7 @@ public class MarsRoverShould
 
         var result = rover.Coordinates;
         
-        result.X.Should().Be(1);
-        result.Y.Should().Be(1);
+        result.Should().Be(new Coordinates(1, 1));
     }
     
     [Test]
@@ -26,9 +25,8 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1, 1), Direction.North);
 
         var result = rover.Coordinates;
-        
-        result.X.Should().Be(1);
-        result.Y.Should().Be(1);
+
+        result.Should().Be(new Coordinates(1, 1));
         rover.Direction.Should().Be(Direction.North);
     }
 }
