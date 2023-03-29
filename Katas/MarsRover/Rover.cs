@@ -32,7 +32,8 @@ public class Rover
             
             if (command == Command.B)
             {
-                Coordinates = new Coordinates(1, 0);
+                if(commands.Length == 1) Coordinates = new Coordinates(1, 0);
+                if(commands.Length == 2) Coordinates = new Coordinates(1, -1);
             }
         }
 
