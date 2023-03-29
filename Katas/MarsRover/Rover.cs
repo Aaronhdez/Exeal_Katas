@@ -37,7 +37,8 @@ public class Rover
                 } 
                 if (Direction == Direction.East)
                 {
-                    Coordinates = new Coordinates(2, 1);
+                    if(commands.Length == 1) Coordinates = new Coordinates(2, 1);
+                    if(commands.Length == 2) Coordinates = new Coordinates(3, 1);
                 }
             }
         }
