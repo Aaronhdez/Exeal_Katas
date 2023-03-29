@@ -7,6 +7,7 @@ public class Rover
 
     public Rover(Coordinates coordinates, Direction direction)
     {
+        Direction = direction;
         Coordinates = coordinates;
     }
 }
