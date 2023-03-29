@@ -39,6 +39,10 @@ public class Rover
                 {
                     Coordinates.IncreaseX();
                 }
+                if (Direction == Direction.West)
+                {
+                    Coordinates = new Coordinates(0, 1);
+                }
             }
         }
 
