@@ -102,7 +102,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(1, -2);
 
-        rover.Move(new[] {Command.F, Command.F});
+        rover.Move(new[] {Command.F, Command.F, Command.F});
         
         rover.Direction.Should().Be(Direction.South);
         rover.Coordinates.Should().Be(expectedCoordinates);
