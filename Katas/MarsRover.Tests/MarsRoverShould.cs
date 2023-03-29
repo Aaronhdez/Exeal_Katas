@@ -73,12 +73,24 @@ public class MarsRoverShould
     }
 
     [Test]
-    public void MoveForwardOneWhilePointingSouth()
+    public void MoveForwardOneStepWhilePointingSouth()
     {
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(1, 0);
 
         rover.Move(new[] {Command.F });
+        
+        rover.Direction.Should().Be(Direction.South);
+        rover.Coordinates.Should().Be(expectedCoordinates);
+    }
+    
+    [Test]
+    public void MoveForwardTwoStepsWhilePointingSouth()
+    {
+        var rover = new Rover(new Coordinates(1,1), Direction.South);
+        var expectedCoordinates = new Coordinates(1, -1);
+
+        rover.Move(new[] {Command.F, Command.F});
         
         rover.Direction.Should().Be(Direction.South);
         rover.Coordinates.Should().Be(expectedCoordinates);
