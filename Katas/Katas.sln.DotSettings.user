@@ -10,7 +10,23 @@
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::36433E4B-0D5D-43D6-9D4E-0C8A168E3C6A::net7.0::SearchEngine.Tests.SearchEngineShould&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;And&gt;&#xD;
+    &lt;Or&gt;&#xD;
+      &lt;TestAncestor&gt;&#xD;
+        &lt;TestId&gt;NUnit3x::36433E4B-0D5D-43D6-9D4E-0C8A168E3C6A::net7.0::SearchEngine.Tests.SearchEngineShould&lt;/TestId&gt;&#xD;
+      &lt;/TestAncestor&gt;&#xD;
+      &lt;ProjectFile&gt;B7065B48-906C-4DCD-B291-F98946A8EF2D/f:MarsRoverShould.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;/Or&gt;&#xD;
+    &lt;Not&gt;&#xD;
+      &lt;And&gt;&#xD;
+        &lt;Or&gt;&#xD;
+          &lt;TestAncestor&gt;&#xD;
+            &lt;TestId&gt;NUnit3x::36433E4B-0D5D-43D6-9D4E-0C8A168E3C6A::net7.0::SearchEngine.Tests.SearchEngineShould&lt;/TestId&gt;&#xD;
+          &lt;/TestAncestor&gt;&#xD;
+          &lt;ProjectFile&gt;B7065B48-906C-4DCD-B291-F98946A8EF2D/f:MarsRoverShould.cs&lt;/ProjectFile&gt;&#xD;
+        &lt;/Or&gt;&#xD;
+        &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;SearchEngine_Kata&amp;gt;" /&gt;&#xD;
+      &lt;/And&gt;&#xD;
+    &lt;/Not&gt;&#xD;
+  &lt;/And&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

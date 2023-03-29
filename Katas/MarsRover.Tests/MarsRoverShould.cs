@@ -35,7 +35,7 @@ public class MarsRoverShould
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
 
-        rover.Move('L');
+        rover.Move(new[] {'L'});
         
         rover.Direction.Should().Be(Direction.West);
     }

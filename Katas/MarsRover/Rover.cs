@@ -2,7 +2,7 @@
 
 public class Rover
 {
-    public Direction Direction { get; }
+    public Direction Direction { get; private set; }
     public Coordinates Coordinates { get; }
 
     public Rover(Coordinates coordinates, Direction direction)
@@ -11,7 +11,8 @@ public class Rover
         Coordinates = coordinates;
     }
 
-    public void Move(char command)
+    public void Move(char[] command)
     {
+        Direction = Direction.West;
     }
 }
