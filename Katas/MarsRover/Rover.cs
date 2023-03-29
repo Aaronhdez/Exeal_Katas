@@ -29,6 +29,11 @@ public class Rover
             {
                 MoveForward();
             }
+            
+            if (command == Command.B)
+            {
+                Coordinates = new Coordinates(1, 0);
+            }
         }
 
     }
