@@ -10,4 +10,8 @@ public class Rover
         Direction = direction;
         Coordinates = coordinates;
     }
+
+    public void Move(char command)
+    {
+    }
 }
