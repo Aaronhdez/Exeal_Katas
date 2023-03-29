@@ -36,10 +36,13 @@ public class Rover
                 {
                     Coordinates.DecreaseY();
                 }
-
                 if (Direction == Direction.South)
                 {
                     Coordinates.IncreaseY();
+                }
+                if (Direction == Direction.East)
+                {
+                    Coordinates.DecreaseX();
                 }
                 
             }
