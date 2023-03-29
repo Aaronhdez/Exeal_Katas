@@ -27,25 +27,33 @@ public class Rover
 
             if (command == Command.F)
             {
-                if (Direction == Direction.North)
-                {
-                    Coordinates.IncreaseY();
-                } 
-                if (Direction == Direction.South)
-                {
-                    Coordinates.DecreaseY();
-                } 
-                if (Direction == Direction.East)
-                {
-                    Coordinates.IncreaseX();
-                }
-                if (Direction == Direction.West)
-                {
-                    Coordinates.DecreaseX();
-                }
+                MoveForward();
             }
         }
 
+    }
+
+    private void MoveForward()
+    {
+        if (Direction == Direction.North)
+        {
+            Coordinates.IncreaseY();
+        }
+
+        if (Direction == Direction.South)
+        {
+            Coordinates.DecreaseY();
+        }
+
+        if (Direction == Direction.East)
+        {
+            Coordinates.IncreaseX();
+        }
+
+        if (Direction == Direction.West)
+        {
+            Coordinates.DecreaseX();
+        }
     }
 
     private void TurnRight()

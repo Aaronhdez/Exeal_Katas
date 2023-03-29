@@ -5,5 +5,6 @@ public enum Command
     None = 0,
     L,
     R,
-    F
+    F,
+    B
 }
