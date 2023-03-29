@@ -11,7 +11,7 @@ public class Rover
         Coordinates = coordinates;
     }
 
-    public void Move(char[] commands)
+    public void Move(Command[] commands)
     {
         if(commands.Length == 1) Direction = Direction.West;
         if(commands.Length == 2) Direction = Direction.South;
