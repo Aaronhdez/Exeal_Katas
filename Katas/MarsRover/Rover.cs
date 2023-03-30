@@ -31,16 +31,16 @@ public class Rover
             switch (order)
             {
                 case Order.L:
-                    _state = _state.TurnLeft(this);
+                    _state = _state.TurnLeft();
                     break;
                 case Order.R:
-                    _state = _state.TurnRight(this);
+                    _state = _state.TurnRight();
                     break;
                 case Order.F:
-                    _state.MoveForward(this);
+                    _state.MoveForward();
                     break;
                 case Order.B:
-                    _state.MoveBackwards(this);
+                    _state.MoveBackwards();
                     break;
             }
         }
@@ -58,17 +58,13 @@ public abstract class State
         Rover = rover;
     }
 
-    public abstract void MoveForward(Rover rover);
+    public abstract void MoveForward();
 
-    public abstract void MoveBackwards(Rover rover);
+    public abstract void MoveBackwards();
 
-    public abstract State TurnRight(Rover rover);
+    public abstract State TurnRight();
 
-    public virtual State TurnLeft(Rover rover)
-    {
-        rover.Direction = (rover.Direction == Direction.East) ? Direction.North : rover.Direction + 1;
-        return null;
-    }
+    public abstract State TurnLeft();
 }
 
 public class North : State
@@ -77,24 +73,24 @@ public class North : State
     {
     }
 
-    public override void MoveForward(Rover rover)
+    public override void MoveForward()
     {
         Rover.Coordinates.IncreaseY();
     }
 
-    public override void MoveBackwards(Rover rover)
+    public override void MoveBackwards()
     {
-        rover.Coordinates.DecreaseY();
+        Rover.Coordinates.DecreaseY();
     }
 
-    public override State TurnRight(Rover rover)
+    public override State TurnRight()
     {
-        return new East(rover);
+        return new East(Rover);
     }
 
-    public override State TurnLeft(Rover rover)
+    public override State TurnLeft()
     {
-        return new West(rover);
+        return new West(Rover);
     }
 }
 
@@ -104,24 +100,24 @@ public class East : State
     {
     }
 
-    public override void MoveForward(Rover rover)
+    public override void MoveForward()
     {
-        rover.Coordinates.IncreaseX();
+        Rover.Coordinates.IncreaseX();
     }
 
-    public override void MoveBackwards(Rover rover)
+    public override void MoveBackwards()
     {
-        rover.Coordinates.DecreaseX();
+        Rover.Coordinates.DecreaseX();
     }
 
-    public override State TurnRight(Rover rover)
+    public override State TurnRight()
     {
-        return new South(rover);
+        return new South(Rover);
     }
 
-    public override State TurnLeft(Rover rover)
+    public override State TurnLeft()
     {
-        return new North(rover);
+        return new North(Rover);
     }
 }
 
@@ -131,24 +127,24 @@ public class South : State
     {
     }
 
-    public override void MoveForward(Rover rover)
+    public override void MoveForward()
     {
-        rover.Coordinates.DecreaseY();
+        Rover.Coordinates.DecreaseY();
     }
 
-    public override void MoveBackwards(Rover rover)
+    public override void MoveBackwards()
     {
-        rover.Coordinates.IncreaseY();
+        Rover.Coordinates.IncreaseY();
     }
 
-    public override State TurnRight(Rover rover)
+    public override State TurnRight()
     {
-        return new West(rover);
+        return new West(Rover);
     }
 
-    public override State TurnLeft(Rover rover)
+    public override State TurnLeft()
     {
-        return new East(rover);
+        return new East(Rover);
     }
 }
 
@@ -158,23 +154,23 @@ public class West : State
     {
     }
 
-    public override void MoveForward(Rover rover)
+    public override void MoveForward()
     {
-        rover.Coordinates.DecreaseX();
+        Rover.Coordinates.DecreaseX();
     }
 
-    public override void MoveBackwards(Rover rover)
+    public override void MoveBackwards()
     {
-        rover.Coordinates.IncreaseX();
+        Rover.Coordinates.IncreaseX();
     }
 
-    public override State TurnRight(Rover rover)
+    public override State TurnRight()
     {
-        return new North(rover);
+        return new North(Rover);
     }
 
-    public override State TurnLeft(Rover rover)
+    public override State TurnLeft()
     {
-        return new South(rover);
+        return new South(Rover);
     }
 }
