@@ -12,12 +12,13 @@ public class Rover
     public Rover(Coordinates coordinates, Direction direction)
     {
         Coordinates = coordinates;
-        State = direction switch
+        var statesDictionary = new Dictionary<Direction, IState>
         {
-            Direction.North => new North(this),
-            Direction.East => new East(this),
-            Direction.South => new South(this),
-            Direction.West => new West(this)
+            { Direction.North, new North(this) },
+            { Direction.East, new East(this) },
+            { Direction.South, new South(this) },
+            { Direction.West, new West(this) }
         };
+        State = statesDictionary[direction];
     }
 }
