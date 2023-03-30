@@ -1,8 +1,77 @@
 ﻿namespace MarsRover;
 
+public interface ICommand
+{
+    void Execute();
+}
+
+public class MoveBackwardsCommand : ICommand
+{
+    private readonly Rover _rover;
+
+    public MoveBackwardsCommand(Rover rover)
+    {
+        _rover = rover;
+    }
+
+    public void Execute()
+    {
+        _rover._state.MoveBackwards();
+    }
+}
+
+public class MoveForwardCommand : ICommand
+{
+    private readonly Rover _rover;
+
+    public MoveForwardCommand(Rover rover)
+    {
+        _rover = rover;
+    }
+
+    public void Execute()
+    {
+        _rover._state.MoveForward();
+    }
+}
+
+public class TurnRightCommand : ICommand
+{
+    private readonly Rover _rover;
+
+    public TurnRightCommand(Rover rover)
+    {
+        _rover = rover;
+    }
+
+    public void Execute()
+    {
+        _rover._state = _rover._state.TurnRight();
+    }
+}
+
+public class TurnLeftCommand : ICommand
+{
+    private readonly Rover _rover;
+
+    public TurnLeftCommand(Rover rover)
+    {
+        _rover = rover;
+    }
+
+    public void Execute()
+    {
+        _rover._state = _rover._state.TurnLeft();
+    }
+}
+
 public class Rover
 {
-    private IState _state;
+    public IState _state;
+    private readonly MoveBackwardsCommand _moveBackwardsCommand;
+    private readonly MoveForwardCommand _moveForwardCommand;
+    private readonly TurnRightCommand _turnRightCommand;
+    private readonly TurnLeftCommand _turnLeftCommand;
 
     public Direction Direction => _state.Direction;
 
@@ -18,6 +87,10 @@ public class Rover
             Direction.South => new South(this),
             Direction.West => new West(this)
         };
+        _moveBackwardsCommand = new MoveBackwardsCommand(this);
+        _moveForwardCommand = new MoveForwardCommand(this);
+        _turnRightCommand = new TurnRightCommand(this);
+        _turnLeftCommand = new TurnLeftCommand(this);
     }
 
     public void Move(Routine routine)
@@ -27,38 +100,18 @@ public class Rover
             switch (order)
             {
                 case Order.L:
-                    ExecuteTurnLeft();
+                    _turnLeftCommand.Execute();
                     break;
                 case Order.R:
-                    ExecuteTurnRight();
+                    _turnRightCommand.Execute();
                     break;
                 case Order.F:
-                    ExecuteMoveForward();
+                    _moveForwardCommand.Execute();
                     break;
                 case Order.B:
-                    ExecuteMoveBackwards();
+                    _moveBackwardsCommand.Execute();
                     break;
             }
         }
-    }
-
-    private void ExecuteMoveBackwards()
-    {
-        _state.MoveBackwards();
-    }
-
-    private void ExecuteMoveForward()
-    {
-        _state.MoveForward();
-    }
-
-    private void ExecuteTurnRight()
-    {
-        _state = _state.TurnRight();
-    }
-
-    private void ExecuteTurnLeft()
-    {
-        _state = _state.TurnLeft();
     }
 }
