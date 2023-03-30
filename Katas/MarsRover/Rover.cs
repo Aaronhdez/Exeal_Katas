@@ -3,6 +3,7 @@
 public class Rover
 {
     private readonly State _state;
+
     public Direction Direction
     {
         get => _state.Direction;
@@ -14,7 +15,13 @@ public class Rover
     public Rover(Coordinates coordinates, Direction direction)
     {
         Coordinates = coordinates;
-        _state = new North(direction);
+        _state = direction switch
+        {
+            Direction.North => new North(this),
+            Direction.East => new East(this),
+            Direction.South => new South(this),
+            Direction.West => new West(this)
+        };
     }
 
     public void Move(Routine routine)
@@ -30,14 +37,13 @@ public class Rover
                     TurnRight();
                     break;
                 case Order.F:
-                    MoveForward(this);
+                    _state.MoveForward(this);
                     break;
                 case Order.B:
                     MoveBackwards();
                     break;
             }
         }
-
     }
 
     private void MoveBackwards()
@@ -63,29 +69,6 @@ public class Rover
         }
     }
 
-    public static void MoveForward(Rover rover)
-    {
-        if (rover.Direction == Direction.North)
-        {
-            rover.Coordinates.IncreaseY();
-        }
-
-        if (rover.Direction == Direction.South)
-        {
-            rover.Coordinates.DecreaseY();
-        }
-
-        if (rover.Direction == Direction.East)
-        {
-            rover.Coordinates.IncreaseX();
-        }
-
-        if (rover.Direction == Direction.West)
-        {
-            rover.Coordinates.DecreaseX();
-        }
-    }
-
     private void TurnRight()
     {
         Direction = (Direction == Direction.North) ? Direction.East : Direction - 1;
@@ -99,38 +82,62 @@ public class Rover
 
 public abstract class State
 {
+    protected readonly Rover Rover;
     public Direction Direction { get; set; }
 
-    public State(Direction direction)
+    protected State(Direction direction, Rover rover)
     {
         Direction = direction;
+        Rover = rover;
+    }
+
+    public abstract void MoveForward(Rover rover);
+}
+
+public class North : State
+{
+    public North(Rover rover) : base(Direction.North, rover)
+    {
+    }
+
+    public override void MoveForward(Rover rover)
+    {
+        Rover.Coordinates.IncreaseY();
     }
 }
 
-class North : State
+public class East : State
 {
-    public North(Direction direction) : base(direction)
+    public East(Rover rover) : base(Direction.East, rover)
     {
+    }
+
+    public override void MoveForward(Rover rover)
+    {
+        rover.Coordinates.IncreaseX();
     }
 }
 
-class East : State
+public class South : State
 {
-    public East(Direction direction) : base(direction)
+    public South(Rover rover) : base(Direction.South, rover)
     {
     }
-}
-class South : State
-{
-    public South(Direction direction) : base(direction)
+
+    public override void MoveForward(Rover rover)
     {
+        rover.Coordinates.DecreaseY();
     }
 }
 
-class West : State
+public class West : State
 {
-    public West(Direction direction) : base(direction)
+    public West(Rover rover) : base(Direction.West, rover)
     {
     }
-}
 
+    public override void MoveForward(Rover rover)
+    {
+        rover.Coordinates.DecreaseX();
+    }
+}
