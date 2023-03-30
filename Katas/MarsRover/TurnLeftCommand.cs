@@ -11,6 +11,6 @@ public class TurnLeftCommand : ICommand
 
     public void Execute()
     {
-        _rover._state = _rover._state.TurnLeft();
+        _rover.State = _rover.State.TurnLeft();
     }
 }

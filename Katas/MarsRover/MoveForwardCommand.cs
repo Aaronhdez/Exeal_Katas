@@ -11,6 +11,6 @@ public class MoveForwardCommand : ICommand
 
     public void Execute()
     {
-        _rover._state.MoveForward();
+        _rover.State.MoveForward();
     }
 }

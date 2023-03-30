@@ -38,7 +38,7 @@ public class MarsRoverShould
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(expectedDirection);
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
@@ -52,7 +52,7 @@ public class MarsRoverShould
     {
         var rover = new Rover(new Coordinates(1,1), Direction.North);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(expectedDirection);
         rover.Coordinates.Should().Be(new Coordinates(1, 1));
@@ -66,7 +66,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.North);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.North);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -81,7 +81,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.South);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -95,7 +95,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.East);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.East);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -109,7 +109,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.West);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.West);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -123,7 +123,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.North);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.North);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -137,7 +137,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.South);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.South);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -151,7 +151,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.East);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.East);
         rover.Coordinates.Should().Be(expectedCoordinates);
@@ -165,7 +165,7 @@ public class MarsRoverShould
         var rover = new Rover(new Coordinates(1,1), Direction.West);
         var expectedCoordinates = new Coordinates(x, y);
 
-        rover.Move(new Routine(commands));
+        rover.Execute(new Routine(commands));
         
         rover.Direction.Should().Be(Direction.West);
         rover.Coordinates.Should().Be(expectedCoordinates);
