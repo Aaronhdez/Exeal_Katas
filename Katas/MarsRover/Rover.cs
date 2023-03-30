@@ -14,7 +14,7 @@ public class Rover
     public Rover(Coordinates coordinates, Direction direction)
     {
         Coordinates = coordinates;
-        _state = new State(direction);
+        _state = new North(direction);
     }
 
     public void Move(Routine routine)
@@ -30,7 +30,7 @@ public class Rover
                     TurnRight();
                     break;
                 case Order.F:
-                    MoveForward();
+                    MoveForward(this);
                     break;
                 case Order.B:
                     MoveBackwards();
@@ -63,26 +63,26 @@ public class Rover
         }
     }
 
-    private void MoveForward()
+    public static void MoveForward(Rover rover)
     {
-        if (Direction == Direction.North)
+        if (rover.Direction == Direction.North)
         {
-            Coordinates.IncreaseY();
+            rover.Coordinates.IncreaseY();
         }
 
-        if (Direction == Direction.South)
+        if (rover.Direction == Direction.South)
         {
-            Coordinates.DecreaseY();
+            rover.Coordinates.DecreaseY();
         }
 
-        if (Direction == Direction.East)
+        if (rover.Direction == Direction.East)
         {
-            Coordinates.IncreaseX();
+            rover.Coordinates.IncreaseX();
         }
 
-        if (Direction == Direction.West)
+        if (rover.Direction == Direction.West)
         {
-            Coordinates.DecreaseX();
+            rover.Coordinates.DecreaseX();
         }
     }
 
@@ -97,7 +97,7 @@ public class Rover
     }
 }
 
-public class State
+public abstract class State
 {
     public Direction Direction { get; set; }
 
@@ -106,3 +106,31 @@ public class State
         Direction = direction;
     }
 }
+
+class North : State
+{
+    public North(Direction direction) : base(direction)
+    {
+    }
+}
+
+class East : State
+{
+    public East(Direction direction) : base(direction)
+    {
+    }
+}
+class South : State
+{
+    public South(Direction direction) : base(direction)
+    {
+    }
+}
+
+class West : State
+{
+    public West(Direction direction) : base(direction)
+    {
+    }
+}
+
