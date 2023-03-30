@@ -2,7 +2,7 @@
 
 public class Rover
 {
-    private readonly State _state;
+    private State _state;
 
     public Direction Direction
     {
@@ -34,7 +34,7 @@ public class Rover
                     TurnLeft();
                     break;
                 case Order.R:
-                    TurnRight();
+                    _state = _state.TurnRight(this);
                     break;
                 case Order.F:
                     _state.MoveForward(this);
@@ -44,11 +44,6 @@ public class Rover
                     break;
             }
         }
-    }
-
-    private void TurnRight()
-    {
-        Direction = (Direction == Direction.North) ? Direction.East : Direction - 1;
     }
 
     private void TurnLeft()
@@ -71,6 +66,8 @@ public abstract class State
     public abstract void MoveForward(Rover rover);
 
     public abstract void MoveBackwards(Rover rover);
+
+    public abstract State TurnRight(Rover rover);
 }
 
 public class North : State
@@ -87,6 +84,11 @@ public class North : State
     public override void MoveBackwards(Rover rover)
     {
         rover.Coordinates.DecreaseY();
+    }
+
+    public override State TurnRight(Rover rover)
+    {
+        return new East(rover);
     }
 }
 
@@ -105,6 +107,11 @@ public class East : State
     {
         rover.Coordinates.DecreaseX();
     }
+
+    public override State TurnRight(Rover rover)
+    {
+        return new South(rover);
+    }
 }
 
 public class South : State
@@ -122,6 +129,11 @@ public class South : State
     {
         rover.Coordinates.IncreaseY();
     }
+
+    public override State TurnRight(Rover rover)
+    {
+        return new West(rover);
+    }
 }
 
 public class West : State
@@ -138,5 +150,10 @@ public class West : State
     public override void MoveBackwards(Rover rover)
     {
         rover.Coordinates.IncreaseX();
+    }
+
+    public override State TurnRight(Rover rover)
+    {
+        return new North(rover);
     }
 }
