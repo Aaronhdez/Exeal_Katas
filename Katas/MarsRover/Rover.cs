@@ -31,7 +31,7 @@ public class Rover
             switch (order)
             {
                 case Order.L:
-                    TurnLeft();
+                    _state = _state.TurnLeft(this);
                     break;
                 case Order.R:
                     _state = _state.TurnRight(this);
@@ -44,11 +44,6 @@ public class Rover
                     break;
             }
         }
-    }
-
-    private void TurnLeft()
-    {
-        Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
     }
 }
 
@@ -68,6 +63,12 @@ public abstract class State
     public abstract void MoveBackwards(Rover rover);
 
     public abstract State TurnRight(Rover rover);
+
+    public virtual State TurnLeft(Rover rover)
+    {
+        rover.Direction = (rover.Direction == Direction.East) ? Direction.North : rover.Direction + 1;
+        return null;
+    }
 }
 
 public class North : State
@@ -89,6 +90,11 @@ public class North : State
     public override State TurnRight(Rover rover)
     {
         return new East(rover);
+    }
+
+    public override State TurnLeft(Rover rover)
+    {
+        return new West(rover);
     }
 }
 
@@ -112,6 +118,11 @@ public class East : State
     {
         return new South(rover);
     }
+
+    public override State TurnLeft(Rover rover)
+    {
+        return new North(rover);
+    }
 }
 
 public class South : State
@@ -134,6 +145,11 @@ public class South : State
     {
         return new West(rover);
     }
+
+    public override State TurnLeft(Rover rover)
+    {
+        return new East(rover);
+    }
 }
 
 public class West : State
@@ -155,5 +171,10 @@ public class West : State
     public override State TurnRight(Rover rover)
     {
         return new North(rover);
+    }
+
+    public override State TurnLeft(Rover rover)
+    {
+        return new South(rover);
     }
 }
