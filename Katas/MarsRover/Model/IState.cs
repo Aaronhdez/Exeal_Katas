@@ -1,3 +1,5 @@
+using MarsRover.Model.Infra;
+
 namespace MarsRover.Model;
 
 public interface IState

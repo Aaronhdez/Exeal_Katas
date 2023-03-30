@@ -1,4 +1,4 @@
-﻿namespace MarsRover.Model;
+﻿namespace MarsRover.Control;
 
 public enum Order
 {

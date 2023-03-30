@@ -1,4 +1,4 @@
-﻿namespace MarsRover.Model;
+﻿namespace MarsRover.Model.Infra;
 
 public class Coordinates
 {

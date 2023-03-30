@@ -1,7 +1,7 @@
-using MarsRover.Model;
+using MarsRover.Model.Infra;
 using MarsRover.Model.States;
 
-namespace MarsRover;
+namespace MarsRover.Model;
 
 public class Rover
 {

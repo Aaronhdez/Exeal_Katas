@@ -1,5 +1,7 @@
 using FluentAssertions;
+using MarsRover.Control;
 using MarsRover.Model;
+using MarsRover.Model.Infra;
 
 namespace MarsRover.Tests;
 

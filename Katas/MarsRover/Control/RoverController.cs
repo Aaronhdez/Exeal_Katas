@@ -1,7 +1,8 @@
-﻿using MarsRover.Model;
-using MarsRover.Model.Commands;
+﻿using MarsRover.Control.Commands;
+using MarsRover.Model;
+using MarsRover.Model.Infra;
 
-namespace MarsRover;
+namespace MarsRover.Control;
 
 
 public class RoverController

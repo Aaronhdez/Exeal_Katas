@@ -1,4 +1,6 @@
-namespace MarsRover.Model.Commands;
+using MarsRover.Model;
+
+namespace MarsRover.Control.Commands;
 
 public class TurnRight : ICommand
 {
