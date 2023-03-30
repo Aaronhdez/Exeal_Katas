@@ -27,18 +27,38 @@ public class Rover
             switch (order)
             {
                 case Order.L:
-                    _state = _state.TurnLeft();
+                    ExecuteTurnLeft();
                     break;
                 case Order.R:
-                    _state = _state.TurnRight();
+                    ExecuteTurnRight();
                     break;
                 case Order.F:
-                    _state.MoveForward();
+                    ExecuteMoveForward();
                     break;
                 case Order.B:
-                    _state.MoveBackwards();
+                    ExecuteMoveBackwards();
                     break;
             }
         }
+    }
+
+    private void ExecuteMoveBackwards()
+    {
+        _state.MoveBackwards();
+    }
+
+    private void ExecuteMoveForward()
+    {
+        _state.MoveForward();
+    }
+
+    private void ExecuteTurnRight()
+    {
+        _state = _state.TurnRight();
+    }
+
+    private void ExecuteTurnLeft()
+    {
+        _state = _state.TurnLeft();
     }
 }
