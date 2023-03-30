@@ -40,32 +40,9 @@ public class Rover
                     _state.MoveForward(this);
                     break;
                 case Order.B:
-                    MoveBackwards();
+                    _state.MoveBackwards(this);
                     break;
             }
-        }
-    }
-
-    private void MoveBackwards()
-    {
-        if (Direction == Direction.North)
-        {
-            Coordinates.DecreaseY();
-        }
-
-        if (Direction == Direction.South)
-        {
-            Coordinates.IncreaseY();
-        }
-
-        if (Direction == Direction.East)
-        {
-            Coordinates.DecreaseX();
-        }
-
-        if (Direction == Direction.West)
-        {
-            Coordinates.IncreaseX();
         }
     }
 
@@ -92,6 +69,8 @@ public abstract class State
     }
 
     public abstract void MoveForward(Rover rover);
+
+    public abstract void MoveBackwards(Rover rover);
 }
 
 public class North : State
@@ -103,6 +82,11 @@ public class North : State
     public override void MoveForward(Rover rover)
     {
         Rover.Coordinates.IncreaseY();
+    }
+
+    public override void MoveBackwards(Rover rover)
+    {
+        rover.Coordinates.DecreaseY();
     }
 }
 
@@ -116,6 +100,11 @@ public class East : State
     {
         rover.Coordinates.IncreaseX();
     }
+
+    public override void MoveBackwards(Rover rover)
+    {
+        rover.Coordinates.DecreaseX();
+    }
 }
 
 public class South : State
@@ -128,6 +117,11 @@ public class South : State
     {
         rover.Coordinates.DecreaseY();
     }
+
+    public override void MoveBackwards(Rover rover)
+    {
+        rover.Coordinates.IncreaseY();
+    }
 }
 
 public class West : State
@@ -139,5 +133,10 @@ public class West : State
     public override void MoveForward(Rover rover)
     {
         rover.Coordinates.DecreaseX();
+    }
+
+    public override void MoveBackwards(Rover rover)
+    {
+        rover.Coordinates.IncreaseX();
     }
 }
