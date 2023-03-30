@@ -1,10 +1,10 @@
-namespace MarsRover;
+namespace MarsRover.Model.Commands;
 
-public class MoveForwardCommand : ICommand
+public class MoveForward : ICommand
 {
     private readonly Rover _rover;
 
-    public MoveForwardCommand(Rover rover)
+    public MoveForward(Rover rover)
     {
         _rover = rover;
     }

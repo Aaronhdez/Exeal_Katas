@@ -1,10 +1,10 @@
-namespace MarsRover;
+namespace MarsRover.Model.Commands;
 
-public class TurnLeftCommand : ICommand
+public class TurnLeft : ICommand
 {
     private readonly Rover _rover;
 
-    public TurnLeftCommand(Rover rover)
+    public TurnLeft(Rover rover)
     {
         _rover = rover;
     }

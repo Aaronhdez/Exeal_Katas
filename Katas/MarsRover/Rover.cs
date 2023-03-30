@@ -1,4 +1,8 @@
-﻿namespace MarsRover;
+﻿using MarsRover.Model;
+using MarsRover.Model.Commands;
+using MarsRover.Model.States;
+
+namespace MarsRover;
 
 public class Rover
 {
@@ -21,10 +25,10 @@ public class Rover
         };
         _commands = new Dictionary<Order, Action>
         {
-            {Order.B, new MoveBackwardsCommand(this).Execute},
-            {Order.F, new MoveForwardCommand(this).Execute},
-            {Order.R, new TurnRightCommand(this).Execute},
-            {Order.L, new TurnLeftCommand(this).Execute},
+            {Order.B, new MoveBackwards(this).Execute},
+            {Order.F, new MoveForward(this).Execute},
+            {Order.R, new TurnRight(this).Execute},
+            {Order.L, new TurnLeft(this).Execute},
         };
     }
 

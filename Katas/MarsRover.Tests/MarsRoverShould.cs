@@ -1,4 +1,5 @@
 using FluentAssertions;
+using MarsRover.Model;
 
 namespace MarsRover.Tests;
 
