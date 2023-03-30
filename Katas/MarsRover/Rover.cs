@@ -2,13 +2,19 @@
 
 public class Rover
 {
-    public Direction Direction { get; private set; }
+    private readonly State _state;
+    public Direction Direction
+    {
+        get => _state.Direction;
+        set => _state.Direction = value;
+    }
+
     public Coordinates Coordinates { get; }
 
     public Rover(Coordinates coordinates, Direction direction)
     {
-        Direction = direction;
         Coordinates = coordinates;
+        _state = new State(direction);
     }
 
     public void Move(Routine routine)
@@ -88,5 +94,15 @@ public class Rover
     private void TurnLeft()
     {
         Direction = (Direction == Direction.East) ? Direction.North : Direction + 1;
+    }
+}
+
+public class State
+{
+    public Direction Direction { get; set; }
+
+    public State(Direction direction)
+    {
+        Direction = direction;
     }
 }
