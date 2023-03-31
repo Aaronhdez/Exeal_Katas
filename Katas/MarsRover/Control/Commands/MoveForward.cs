@@ -13,6 +13,6 @@ public class MoveForward : ICommand
 
     public void Execute()
     {
-        _rover.State.MoveForward();
+        _rover.MoveForward();
     }
 }

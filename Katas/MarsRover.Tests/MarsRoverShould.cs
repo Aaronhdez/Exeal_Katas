@@ -15,9 +15,9 @@ public class MarsRoverShould
     [Test]
     public void LandInSpecificCoordinates()
     {
-        var roverController = new RoverController(new Coordinates(1, 1), Direction.North);
+        var rover = new Rover(new Coordinates(1, 1), Direction.North);
 
-        var result = roverController.Rover.Coordinates;
+        var result = rover.Coordinates;
         
         result.Should().Be(new Coordinates(1, 1));
     }
@@ -25,14 +25,21 @@ public class MarsRoverShould
     [Test]
     public void PointingAnSpecificDirectionOnLanding()
     {
-        var roverController = new RoverController(new Coordinates(1, 1), Direction.North);
+        var rover = new Rover(new Coordinates(1, 1), Direction.North);
 
-        var result = roverController.Rover.Coordinates;
-
-        result.Should().Be(new Coordinates(1, 1));
-        roverController.Rover.Direction.Should().Be(Direction.North);
+        rover.Direction.Should().Be(Direction.North);
     }
 
+    [Test]
+    public void ChangeDirectionWhileTuringLeft()
+    {
+        var rover = new Rover(new Coordinates(1, 1), Direction.North);
+        
+        rover.TurnLeft();
+        
+        rover.Direction.Should().Be(Direction.West);
+    }
+    
     [TestCase(new[] {Order.L}, Direction.West)]
     [TestCase(new[] {Order.L, Order.L}, Direction.South)]
     [TestCase(new[] {Order.L, Order.L, Order.L}, Direction.East)]

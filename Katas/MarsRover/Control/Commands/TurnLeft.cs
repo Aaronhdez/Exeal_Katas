@@ -13,6 +13,6 @@ public class TurnLeft : ICommand
 
     public void Execute()
     {
-        _rover.State = _rover.State.TurnLeft();
+        _rover.TurnLeft();
     }
 }

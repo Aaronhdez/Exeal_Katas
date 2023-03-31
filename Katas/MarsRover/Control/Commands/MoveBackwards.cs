@@ -13,6 +13,6 @@ public class MoveBackwards : ICommand
 
     public void Execute()
     {
-        _rover.State.MoveBackwards();
+        _rover.MoveBackwards();
     }
 }

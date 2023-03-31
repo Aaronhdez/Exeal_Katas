@@ -21,4 +21,24 @@ public class Rover
         };
         State = statesDictionary[direction];
     }
+
+    public void MoveBackwards()
+    {
+        State.MoveBackwards();
+    }
+
+    public void MoveForward()
+    {
+        State.MoveForward();
+    }
+
+    public void TurnLeft()
+    {
+        State = State.TurnLeft();
+    }
+
+    public void TurnRight()
+    {
+        State = State.TurnRight();
+    }
 }
