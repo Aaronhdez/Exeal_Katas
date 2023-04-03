@@ -22,7 +22,7 @@ public class SearchEngine
         if (input == "*") return _citiesRepository.GetCities();
 
         return _citiesRepository.GetCities()
-            .Where(city => Regex.IsMatch(city.Name, $"(?i)^{input}(?-i)"))
+            .Where(city => Regex.IsMatch(city.Name, $"(?i){input}(?-i)"))
             .ToList();
     }
 }
