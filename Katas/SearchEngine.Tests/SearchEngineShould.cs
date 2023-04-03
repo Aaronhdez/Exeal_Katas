@@ -99,4 +99,17 @@ public class SearchEngineShould
 
         result.Should().BeEquivalentTo(expectedList);
     }
+    
+    [Test]
+    public void ReturnValenciaViennaAndVancouverIfInputIsv()
+    {
+        var expectedList = new List<City>{
+            new("Valencia"), 
+            new("Vienna"), 
+            new("Vancouver")};
+        
+        var result = _searchEngine.Find("v");
+
+        result.Should().BeEquivalentTo(expectedList);
+    }
 }
