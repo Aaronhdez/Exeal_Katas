@@ -13,7 +13,8 @@ public class SearchEngine
 
     public IEnumerable<City> Find(string input)
     {
-        return !string.IsNullOrEmpty(input) ? FindResults(input) : new List<City>();
+        return !string.IsNullOrEmpty(input) ? 
+            FindResults(input) : new List<City>();
     }
 
     private IEnumerable<City> FindResults(string input)
@@ -21,7 +22,7 @@ public class SearchEngine
         if (input == "*") return _citiesRepository.GetCities();
 
         return _citiesRepository.GetCities()
-            .Where(city => Regex.IsMatch(city.Name, $"^{input}"))
+            .Where(city => Regex.IsMatch(city.Name, $"(?i)^{input}(?-i)"))
             .ToList();
     }
 }
