@@ -2,5 +2,5 @@
 
 public interface IRepository
 {
-    List<City> GetCities();
+    IEnumerable<City> GetCities();
 }

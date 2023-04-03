@@ -21,7 +21,7 @@ public class CitiesRepository : IRepository
         new City("Istanbul"),
     };
 
-    public List<City> GetCities()
+    public IEnumerable<City> GetCities()
     {
         return _citiesList;
     }
