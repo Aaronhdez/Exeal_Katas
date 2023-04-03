@@ -37,6 +37,11 @@ public class SearchFunctionality
                 new("Vienna"), 
                 new("Vancouver")
             };
+        if (input == "Lo")
+            return new List<City>
+            {
+                new("London"),
+            };
         return new List<City>();
     }
 }
