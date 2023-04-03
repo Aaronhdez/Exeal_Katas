@@ -123,4 +123,15 @@ public class SearchEngineShould
 
         result.Should().BeEquivalentTo(expectedList);
     }
+    
+    [Test]
+    public void ReturnRotterdamInputIsOtt()
+    {
+        var expectedList = new List<City>{
+            new("Rotterdam")};
+        
+        var result = _searchEngine.Find("Ott");
+
+        result.Should().BeEquivalentTo(expectedList);
+    }
 }
