@@ -19,10 +19,10 @@ public class SearchEngine
 
     private IEnumerable<City> CitiesFoundWith(string input)
     {
-        if (input == "*") return _citiesRepository.GetCities();
-
-        return _citiesRepository.GetCities()
-            .Where(city => Regex.IsMatch(city.Name, $"(?i){input}(?-i)"))
-            .ToList();
+        return input == "*"
+            ? _citiesRepository.GetCities()
+            : _citiesRepository.GetCities()
+                .Where(city => Regex.IsMatch(city.Name, $"(?i){input}(?-i)"))
+                .ToList();
     }
 }
