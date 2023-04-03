@@ -14,10 +14,10 @@ public class SearchEngine
     public IEnumerable<City> Find(string input)
     {
         return !string.IsNullOrEmpty(input) ? 
-            FindResults(input) : new List<City>();
+            CitiesFoundWith(input) : new List<City>();
     }
 
-    private IEnumerable<City> FindResults(string input)
+    private IEnumerable<City> CitiesFoundWith(string input)
     {
         if (input == "*") return _citiesRepository.GetCities();
 
