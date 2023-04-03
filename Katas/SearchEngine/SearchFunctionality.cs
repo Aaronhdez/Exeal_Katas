@@ -30,6 +30,13 @@ public class SearchFunctionality
                 new("Valencia"),
                 new("Vancouver")
             };
+        if (input == "V")
+            return new List<City>
+            {
+                new("Valencia"),
+                new("Vienna"), 
+                new("Vancouver")
+            };
         return new List<City>();
     }
 }
