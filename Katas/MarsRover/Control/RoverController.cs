@@ -9,7 +9,7 @@ public class RoverController
 {
     private readonly Dictionary<Order, Action> _commands;
 
-    public Rover Rover { get; }
+    private Rover Rover { get; }
 
     public RoverController(Coordinates coordinates, Direction direction)
     {
