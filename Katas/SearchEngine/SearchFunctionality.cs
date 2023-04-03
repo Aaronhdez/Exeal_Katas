@@ -25,11 +25,8 @@ public class SearchFunctionality
 
     public static IEnumerable<City> Find(string input)
     {
-        if (!string.IsNullOrEmpty(input))
-        {
-            return FindResults(input);
-        }
-        return new List<City>();
+        return !string.IsNullOrEmpty(input) ? 
+            FindResults(input) : new List<City>();
     }
 
     private static IEnumerable<City> FindResults(string input)
