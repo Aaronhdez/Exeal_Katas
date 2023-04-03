@@ -112,4 +112,15 @@ public class SearchEngineShould
 
         result.Should().BeEquivalentTo(expectedList);
     }
+    
+    [Test]
+    public void ReturnBudapestInputIsApe()
+    {
+        var expectedList = new List<City>{
+            new("Budapest")};
+        
+        var result = _searchEngine.Find("ape");
+
+        result.Should().BeEquivalentTo(expectedList);
+    }
 }
