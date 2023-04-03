@@ -50,4 +50,29 @@ public class MarsRoverShould
         
         rover.Direction.Should().Be(Direction.South);
     }
+    
+    [Test]
+    public void ChangeDirectionWhileTuringLeftThrice()
+    {
+        var rover = new Rover(new Coordinates(1, 1), Direction.North);
+        
+        rover.TurnLeft();
+        rover.TurnLeft();
+        rover.TurnLeft();
+        
+        rover.Direction.Should().Be(Direction.East);
+    }
+    
+    [Test]
+    public void ChangeDirectionWhileTuringLeftFourTimes()
+    {
+        var rover = new Rover(new Coordinates(1, 1), Direction.North);
+        
+        rover.TurnLeft();
+        rover.TurnLeft();
+        rover.TurnLeft();
+        rover.TurnLeft();
+        
+        rover.Direction.Should().Be(Direction.North);
+    }
 }
