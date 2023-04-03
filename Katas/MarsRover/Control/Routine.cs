@@ -7,5 +7,10 @@ public class Routine
         Orders = orders;
     }
 
-    public Order[] Orders { get; }
+    private Order[] Orders { get; }
+
+    public List<Order> ListOfOrders()
+    {
+        return Orders.ToList();
+    }
 }
