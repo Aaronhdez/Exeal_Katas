@@ -30,4 +30,14 @@ public class RoverController
             _commands[order]();
         }
     }
+
+    public Direction Direction()
+    {
+        return Rover.Direction;
+    }
+
+    public Coordinates CurrentCoordinates()
+    {
+        return Rover.Coordinates;
+    }
 }
