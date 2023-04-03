@@ -71,4 +71,15 @@ public class SearchEngineShould
 
         result.Should().BeEquivalentTo(expectedList);
     }
+    
+    [Test]
+    public void ReturnLondonIfInputIsLo()
+    {
+        var expectedList = new List<City>{
+            new("London")};
+        
+        var result = SearchFunctionality.Find("Lo");
+
+        result.Should().BeEquivalentTo(expectedList);
+    }
 }
