@@ -20,10 +20,16 @@ public class SearchFunctionality
         new City("Rome"),
         new City("Istanbul"),
     };
-    
+
     public static IEnumerable<City> Find(string input)
     {
         if (input == "*") return CitiesList;
+        if (input == "Va")
+            return new List<City>
+            {
+                new("Valencia"),
+                new("Vancouver")
+            };
         return new List<City>();
     }
 }
