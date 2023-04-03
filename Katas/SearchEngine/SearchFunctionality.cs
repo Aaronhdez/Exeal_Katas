@@ -1,4 +1,6 @@
-﻿namespace SearchEngine;
+﻿using System.Text.RegularExpressions;
+
+namespace SearchEngine;
 
 public class SearchFunctionality
 {
@@ -23,25 +25,19 @@ public class SearchFunctionality
 
     public static IEnumerable<City> Find(string input)
     {
-        if (input == "*") return CitiesList;
-        if (input == "Va")
-            return new List<City>
-            {
-                new("Valencia"),
-                new("Vancouver")
-            };
-        if (input == "V")
-            return new List<City>
-            {
-                new("Valencia"),
-                new("Vienna"), 
-                new("Vancouver")
-            };
-        if (input == "Lo")
-            return new List<City>
-            {
-                new("London"),
-            };
+        if (!string.IsNullOrEmpty(input))
+        {
+            return FindResults(input);
+        }
         return new List<City>();
+    }
+
+    private static IEnumerable<City> FindResults(string input)
+    {
+        if (input == "*") return CitiesList;
+
+        return CitiesList
+            .Where(city => Regex.IsMatch(city.Name, $"^{input}"))
+            .ToList();
     }
 }
