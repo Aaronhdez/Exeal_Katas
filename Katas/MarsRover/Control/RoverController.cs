@@ -25,10 +25,7 @@ public class RoverController
 
     public void Execute(Routine routine)
     {
-        foreach (var order in routine.Orders)
-        {
-            _commands[order]();
-        }
+        routine.ListOfOrders().ForEach(order => _commands[order]());
     }
 
     public Direction Direction()

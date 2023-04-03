@@ -8,4 +8,9 @@ public class Routine
     }
 
     public Order[] Orders { get; }
+
+    public List<Order> ListOfOrders()
+    {
+        return Orders.ToList();
+    }
 }
