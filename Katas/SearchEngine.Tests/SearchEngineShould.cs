@@ -4,9 +4,14 @@ namespace SearchEngine.Tests;
 
 public class SearchEngineShould
 {
+    private SearchEngine? _searchEngine;
+    private CitiesRepository _citiesRepository;
+
     [SetUp]
     public void Setup()
     {
+        _citiesRepository = new CitiesRepository();
+        _searchEngine = new SearchEngine(_citiesRepository);
     }
 
     [Test]
@@ -14,24 +19,24 @@ public class SearchEngineShould
     {
         var citiesList = new List<City>
         {
-            new City("Paris"),
-            new City("Budapest"),
-            new City("Skopje"),
-            new City("Rotterdam"),
-            new City("Valencia"),
-            new City("Amsterdam"),
-            new City("Sydney"),
-            new City("Vienna"),
-            new City("Vancouver"),
-            new City("New York City"),
-            new City("London"),
-            new City("Bangkok"),
-            new City("Dubai"),
-            new City("Rome"),
-            new City("Istanbul"),
+            new("Paris"),
+            new("Budapest"),
+            new("Skopje"),
+            new("Rotterdam"),
+            new("Valencia"),
+            new("Amsterdam"),
+            new("Sydney"),
+            new("Vienna"),
+            new("Vancouver"),
+            new("New York City"),
+            new("London"),
+            new("Bangkok"),
+            new("Dubai"),
+            new("Rome"),
+            new("Istanbul"),
         };
-        
-        var result = SearchFunctionality.Find("*");
+
+        var result = _searchEngine.Find("*");
 
         result.Should().BeEquivalentTo(citiesList);
     }
@@ -42,7 +47,7 @@ public class SearchEngineShould
     {
         var expectedList = new List<City>();
         
-        var result = SearchFunctionality.Find(input);
+        var result = _searchEngine.Find(input);
         
         result.Should().BeEquivalentTo(expectedList);
     }
@@ -54,7 +59,7 @@ public class SearchEngineShould
             new("Valencia"), 
             new("Vancouver")};
         
-        var result = SearchFunctionality.Find("Va");
+        var result = _searchEngine.Find("Va");
 
         result.Should().BeEquivalentTo(expectedList);
     }
@@ -67,7 +72,7 @@ public class SearchEngineShould
             new("Vienna"), 
             new("Vancouver")};
         
-        var result = SearchFunctionality.Find("V");
+        var result = _searchEngine.Find("V");
 
         result.Should().BeEquivalentTo(expectedList);
     }
@@ -78,7 +83,7 @@ public class SearchEngineShould
         var expectedList = new List<City>{
             new("London")};
         
-        var result = SearchFunctionality.Find("Lo");
+        var result = _searchEngine.Find("Lo");
 
         result.Should().BeEquivalentTo(expectedList);
     }
