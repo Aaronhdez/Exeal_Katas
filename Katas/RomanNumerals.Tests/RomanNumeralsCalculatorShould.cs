@@ -38,4 +38,15 @@ public class Tests
         
         result.Should().Be(3);
     }
+    
+
+    [Test]
+    public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = () => romanNumeralsCalculator.ToDigit("IIII");
+        
+        result.Should().Throw<InvalidDataException>();
+    }
 }
