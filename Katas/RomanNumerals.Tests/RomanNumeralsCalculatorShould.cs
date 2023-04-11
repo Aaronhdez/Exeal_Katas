@@ -20,11 +20,21 @@ public class Tests
     }
 
     [Test]
-    public void ReturnTwoForTwoStroke()
+    public void ReturnTwoForTwoStrokes()
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
         var result = romanNumeralsCalculator.ToDigit("II");
+        
+        result.Should().Be(2);
+    }
+
+    [Test]
+    public void ReturnThreeForThreeStrokes()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit("III");
         
         result.Should().Be(2);
     }
