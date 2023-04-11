@@ -18,4 +18,14 @@ public class Tests
         
         result.Should().Be(1);
     }
+
+    [Test]
+    public void ReturnTwoForTwoStroke()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit("II");
+        
+        result.Should().Be(2);
+    }
 }
