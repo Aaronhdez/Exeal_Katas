@@ -36,6 +36,6 @@ public class Tests
         
         var result = romanNumeralsCalculator.ToDigit("III");
         
-        result.Should().Be(2);
+        result.Should().Be(3);
     }
 }
