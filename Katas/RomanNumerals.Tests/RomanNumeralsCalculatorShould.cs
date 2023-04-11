@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace RomanNumerals.Tests;
 
 public class Tests
@@ -8,7 +10,12 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void ReturnOneForAStroke()
     {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.Calculate("I");
+        
+        result.Should().Be(1);
     }
 }
