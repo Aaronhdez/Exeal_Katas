@@ -14,7 +14,7 @@ public class Tests
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
-        var result = romanNumeralsCalculator.Calculate("I");
+        var result = romanNumeralsCalculator.ToDigit("I");
         
         result.Should().Be(1);
     }

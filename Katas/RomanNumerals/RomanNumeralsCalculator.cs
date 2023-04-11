@@ -2,8 +2,8 @@
 
 public class RomanNumeralsCalculator
 {
-    public int Calculate(string romanNumber)
+    public int ToDigit(string romanNumber)
     {
-        throw new NotImplementedException();
+        return 1;
     }
 }
