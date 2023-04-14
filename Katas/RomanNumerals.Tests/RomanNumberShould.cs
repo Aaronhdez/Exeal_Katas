@@ -82,6 +82,7 @@ public class RomanNumberShould
     [TestCase("CCCC")]
     [TestCase("VV")]
     [TestCase("LL")]
+    [TestCase("DD")]
     public void ThrowExceptionWhenValueProvidedIsNotValid(string input)
     {
         _romanNumber = new RomanNumber(input);
