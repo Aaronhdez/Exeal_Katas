@@ -55,40 +55,13 @@ public class RomanNumberShould
         result.Should().Be(50);
     }
 
-    [Test]
-    public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
+    [TestCase("IIII")]
+    [TestCase("XXXX")]
+    [TestCase("VV")]
+    [TestCase("LL")]
+    public void ThrowExceptionWhenValueProvidedIsNotValid(string input)
     {
-        _romanNumber = new RomanNumber("IIII");
-        
-        var result = () => _romanNumber.ToDigit();
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-    
-    [Test]
-    public void ThrowExceptionWhenMoreThanThreeXsAreDisplayed()
-    {
-        _romanNumber = new RomanNumber("XXXX");
-        
-        var result = () => _romanNumber.ToDigit();
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-    
-    [Test]
-    public void ThrowExceptionWhenMoreThanTwoLsAreDisplayed()
-    {
-        _romanNumber = new RomanNumber("LL");
-        
-        var result = () => _romanNumber.ToDigit();
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-    
-    [Test]
-    public void ThrowExceptionWhenMoreThanOneVIsDisplayed()
-    {
-        _romanNumber = new RomanNumber("VV");
+        _romanNumber = new RomanNumber(input);
         
         var result = () => _romanNumber.ToDigit();
         
