@@ -70,12 +70,22 @@ public class Tests
     }
     
     [Test]
-    public void ReturnTenForX()
+    public void ReturnTenForAX()
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
         var result = romanNumeralsCalculator.ToDigit("X");
         
         result.Should().Be(10);
+    }
+    
+    [Test]
+    public void ReturnTenForTwoX()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit("XX");
+        
+        result.Should().Be(20);
     }
 }
