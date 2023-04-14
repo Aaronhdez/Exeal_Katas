@@ -29,12 +29,16 @@ public class RomanNumber
 
     private static bool ValidMultipleOf5(string value)
     {
-        return value.Count(c => c == 'V') <= 1 && value.Count(c => c == 'L') <= 1 && value.Count(c => c == 'D') <= 1;
+        return value.Count(c => c == 'V') <= 1 
+               && value.Count(c => c == 'L') <= 1 
+               && value.Count(c => c == 'D') <= 1;
     }
 
     private static bool ValidMultipleOf10(string value)
     {
-        return value.Count(c => c == 'I') <= 3 && value.Count(c => c == 'X') <= 3 && value.Count(c => c == 'C') <= 3;
+        return value.Count(c => c == 'I') <= 3 
+               && value.Count(c => c == 'X') <= 3 
+               && value.Count(c => c == 'C') <= 3;
     }
 
     private int SumOfNumbers(string value)
