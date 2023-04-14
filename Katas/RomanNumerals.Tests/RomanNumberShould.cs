@@ -36,6 +36,16 @@ public class RomanNumberShould
     }
     
     [Test]
+    public void Return100ForAC()
+    {
+        _romanNumber = new RomanNumber("C");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(100);
+    }
+    
+    [Test]
     public void ReturnFiveForAV()
     {
         _romanNumber = new RomanNumber("V");
