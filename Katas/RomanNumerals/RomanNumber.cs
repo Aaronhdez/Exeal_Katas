@@ -20,6 +20,7 @@ public class RomanNumber
         if (!ValidMultipleOf10(value)) return false;
         if (value.Count(c => c == 'V') > 1) return false;
         if (value.Count(c => c == 'L') > 1) return false;
+        if (value.Count(c => c == 'D') > 1) return false;
         return true;
     }
 
