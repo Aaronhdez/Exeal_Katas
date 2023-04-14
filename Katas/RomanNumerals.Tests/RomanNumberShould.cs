@@ -46,6 +46,16 @@ public class RomanNumberShould
     }
     
     [Test]
+    public void Return200ForTwoCs()
+    {
+        _romanNumber = new RomanNumber("CC");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(200);
+    }
+    
+    [Test]
     public void ReturnFiveForAV()
     {
         _romanNumber = new RomanNumber("V");
