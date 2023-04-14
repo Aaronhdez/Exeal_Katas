@@ -84,4 +84,14 @@ public class RomanNumberShould
         
         result.Should().Throw<InvalidDataException>();
     }
+    
+    [Test]
+    public void ThrowExceptionWhenMoreThanTwoLsAreDisplayed()
+    {
+        _romanNumber = new RomanNumber("LL");
+        
+        var result = () => _romanNumber.ToDigit();
+        
+        result.Should().Throw<InvalidDataException>();
+    }
 }
