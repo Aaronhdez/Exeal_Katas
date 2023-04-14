@@ -11,6 +11,7 @@ public class RomanNumeralsCalculator
     {
         if (string.IsNullOrEmpty(romanNumber)) return 0;
         if (romanNumber == "IIII") throw new InvalidDataException();
+        if (romanNumber == "XXXX") throw new InvalidDataException();
         if (romanNumber == "VV") throw new InvalidDataException();
         return CurrentNumberToDigit(romanNumber[0]) + SumOfNumbers(romanNumber[1..]);
     }
