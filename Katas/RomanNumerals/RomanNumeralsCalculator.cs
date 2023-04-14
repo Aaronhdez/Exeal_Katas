@@ -2,18 +2,24 @@
 
 public class RomanNumeralsCalculator
 {
-    public int ToDigit(string romanNumber)
+    public int ToDigit(string value)
     {
-        return SumOfNumbers(romanNumber);
+        if (!IsValid(value)) throw new InvalidDataException();
+        return SumOfNumbers(value);
     }
 
-    private int SumOfNumbers(string romanNumber)
+    private int SumOfNumbers(string value)
     {
-        if (string.IsNullOrEmpty(romanNumber)) return 0;
-        if (romanNumber == "IIII") throw new InvalidDataException();
-        if (romanNumber == "XXXX") throw new InvalidDataException();
-        if (romanNumber == "VV") throw new InvalidDataException();
-        return CurrentNumberToDigit(romanNumber[0]) + SumOfNumbers(romanNumber[1..]);
+        if (string.IsNullOrEmpty(value)) return 0;
+        return CurrentNumberToDigit(value[0]) + SumOfNumbers(value[1..]);
+    }
+
+    private static bool IsValid(string value)
+    {
+        if (value.Count(c => c == 'I') > 3) return false;
+        if (value.Count(c => c == 'X') > 3) return false;
+        if (value.Count(c => c == 'V') > 1) return false;
+        return true;
     }
 
     private int CurrentNumberToDigit(char c)
