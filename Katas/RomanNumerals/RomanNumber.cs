@@ -18,6 +18,12 @@ public class RomanNumber
     private bool IsValid(string value)
     {
         if (!ValidMultipleOf10(value)) return false;
+        if (!ValidMultipleOf5(value)) return false;
+        return true;
+    }
+
+    private static bool ValidMultipleOf5(string value)
+    {
         if (value.Count(c => c == 'V') > 1) return false;
         if (value.Count(c => c == 'L') > 1) return false;
         if (value.Count(c => c == 'D') > 1) return false;
