@@ -88,4 +88,14 @@ public class Tests
         
         result.Should().Be(20);
     }
+    
+    [Test]
+    public void ReturnTenForThreeX()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit("XX");
+        
+        result.Should().Be(20);
+    }
 }
