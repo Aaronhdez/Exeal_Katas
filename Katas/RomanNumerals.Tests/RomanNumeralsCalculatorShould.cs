@@ -62,4 +62,14 @@ public class Tests
         
         result.Should().Throw<InvalidDataException>();
     }
+    
+    [Test]
+    public void ThrowExceptionWhenMoreThanThreeXsAreDisplayed()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = () => romanNumeralsCalculator.ToDigit("XXXX");
+        
+        result.Should().Throw<InvalidDataException>();
+    }
 }
