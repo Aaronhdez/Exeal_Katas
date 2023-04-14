@@ -49,6 +49,15 @@ public class Tests
         result.Should().Be(5);
     }
     
+    [Test]
+    public void ThrowExceptionWhenMoreThanOneVIsDisplayed()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = () => romanNumeralsCalculator.ToDigit("VV");
+        
+        result.Should().Throw<InvalidDataException>();
+    }
 
     [Test]
     public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
