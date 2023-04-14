@@ -39,6 +39,16 @@ public class Tests
         result.Should().Be(3);
     }
     
+    [Test]
+    public void ReturnFiveForAV()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit("V");
+        
+        result.Should().Be(5);
+    }
+    
 
     [Test]
     public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
