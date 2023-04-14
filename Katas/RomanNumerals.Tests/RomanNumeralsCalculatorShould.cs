@@ -9,34 +9,16 @@ public class Tests
     {
     }
 
-    [Test]
-    public void ReturnOneForAStroke()
+    [TestCase("I", 1)]
+    [TestCase("II", 1)]
+    [TestCase("III", 1)]
+    public void ReturnOneForAStroke(string input, int expectedResult)
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
-        var result = romanNumeralsCalculator.ToDigit("I");
+        var result = romanNumeralsCalculator.ToDigit(input);
         
-        result.Should().Be(1);
-    }
-
-    [Test]
-    public void ReturnTwoForTwoStrokes()
-    {
-        var romanNumeralsCalculator = new RomanNumeralsCalculator();
-        
-        var result = romanNumeralsCalculator.ToDigit("II");
-        
-        result.Should().Be(2);
-    }
-
-    [Test]
-    public void ReturnThreeForThreeStrokes()
-    {
-        var romanNumeralsCalculator = new RomanNumeralsCalculator();
-        
-        var result = romanNumeralsCalculator.ToDigit("III");
-        
-        result.Should().Be(3);
+        result.Should().Be(expectedResult);
     }
 
     [Test]
