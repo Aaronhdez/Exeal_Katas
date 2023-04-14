@@ -4,6 +4,11 @@ public class RomanNumber
 {
     private readonly string _value;
 
+    private Dictionary<char, int> _intEquivalences = new()
+    {
+        { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 },
+    };
+
     public RomanNumber(string value)
     {
         _value = value;
@@ -40,11 +45,6 @@ public class RomanNumber
 
     private int ToInt(char character)
     {
-        if (character == 'V') return 5;
-        if (character == 'X') return 10;
-        if (character == 'L') return 50;
-        if (character == 'C') return 100;
-        if (character == 'D') return 500;
-        return 1;
+        return _intEquivalences[character];
     }
 }
