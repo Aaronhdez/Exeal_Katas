@@ -56,6 +56,16 @@ public class RomanNumberShould
     }
     
     [Test]
+    public void Return300ForThreeCs()
+    {
+        _romanNumber = new RomanNumber("CCC");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(300);
+    }
+    
+    [Test]
     public void ReturnFiveForAV()
     {
         _romanNumber = new RomanNumber("V");
