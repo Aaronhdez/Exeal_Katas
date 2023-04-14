@@ -8,7 +8,7 @@ public class RomanNumber
     {
         _value = value;
     }
-    
+
     public int ToDigit()
     {
         if (!IsValid(_value)) throw new InvalidDataException();
@@ -24,18 +24,12 @@ public class RomanNumber
 
     private static bool ValidMultipleOf5(string value)
     {
-        if (value.Count(c => c == 'V') > 1) return false;
-        if (value.Count(c => c == 'L') > 1) return false;
-        if (value.Count(c => c == 'D') > 1) return false;
-        return true;
+        return value.Count(c => c == 'V') <= 1 && value.Count(c => c == 'L') <= 1 && value.Count(c => c == 'D') <= 1;
     }
 
     private static bool ValidMultipleOf10(string value)
     {
-        if (value.Count(c => c == 'I') > 3) return false;
-        if (value.Count(c => c == 'X') > 3) return false;
-        if (value.Count(c => c == 'C') > 3) return false;
-        return true;
+        return value.Count(c => c == 'I') <= 3 && value.Count(c => c == 'X') <= 3 && value.Count(c => c == 'C') <= 3;
     }
 
     private int SumOfNumbers(string value)
@@ -48,7 +42,7 @@ public class RomanNumber
     {
         if (character == 'V') return 5;
         if (character == 'X') return 10;
-        if (character == 'L') return 50;        
+        if (character == 'L') return 50;
         if (character == 'C') return 100;
         if (character == 'D') return 500;
         return 1;
