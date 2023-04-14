@@ -18,7 +18,7 @@ public class RomanNumber
 
     public int ToDigit()
     {
-        if (!_validator.Validate(_value));
+        if (!_validator.Validate(_value)) throw new InvalidDataException();
         return SumOfNumbers(_value);
     }
 
