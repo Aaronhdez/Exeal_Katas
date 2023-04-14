@@ -16,6 +16,7 @@ public class RomanNumeralsCalculator
 
     private int CurrentNumberToDigit(char c)
     {
+        if (c == 'V') return 5;
         return 1;
     }
 }
