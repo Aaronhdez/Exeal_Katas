@@ -17,10 +17,17 @@ public class RomanNumber
 
     private bool IsValid(string value)
     {
-        if (value.Count(c => c == 'I') > 3) return false;
-        if (value.Count(c => c == 'X') > 3) return false;
+        if (!ValidMultipleOf10(value)) return false;
         if (value.Count(c => c == 'V') > 1) return false;
         if (value.Count(c => c == 'L') > 1) return false;
+        return true;
+    }
+
+    private static bool ValidMultipleOf10(string value)
+    {
+        if (value.Count(c => c == 'I') > 3) return false;
+        if (value.Count(c => c == 'X') > 3) return false;
+        if (value.Count(c => c == 'C') > 3) return false;
         return true;
     }
 
