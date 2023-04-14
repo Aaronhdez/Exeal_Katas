@@ -38,6 +38,16 @@ public class Tests
         
         result.Should().Be(3);
     }
+
+    [Test]
+    public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = () => romanNumeralsCalculator.ToDigit("IIII");
+        
+        result.Should().Throw<InvalidDataException>();
+    }
     
     [Test]
     public void ReturnFiveForAV()
@@ -58,14 +68,14 @@ public class Tests
         
         result.Should().Throw<InvalidDataException>();
     }
-
+    
     [Test]
-    public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
+    public void ReturnTenForX()
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
-        var result = () => romanNumeralsCalculator.ToDigit("IIII");
+        var result = romanNumeralsCalculator.ToDigit("X");
         
-        result.Should().Throw<InvalidDataException>();
+        result.Should().Be(10);
     }
 }
