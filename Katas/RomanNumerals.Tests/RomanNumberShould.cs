@@ -66,6 +66,16 @@ public class RomanNumberShould
         
         result.Should().Be(50);
     }
+    
+    [Test]
+    public void Return500ForAD()
+    {
+        _romanNumber = new RomanNumber("D");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(500);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
