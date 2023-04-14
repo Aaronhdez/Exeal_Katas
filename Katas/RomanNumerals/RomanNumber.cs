@@ -20,6 +20,7 @@ public class RomanNumber
         if (value.Count(c => c == 'I') > 3) return false;
         if (value.Count(c => c == 'X') > 3) return false;
         if (value.Count(c => c == 'V') > 1) return false;
+        if (value.Count(c => c == 'L') > 1) return false;
         return true;
     }
 
