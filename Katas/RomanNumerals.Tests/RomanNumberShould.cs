@@ -4,6 +4,8 @@ namespace RomanNumerals.Tests;
 
 public class RomanNumberShould
 {
+    private RomanNumber _romanNumber;
+
     [SetUp]
     public void Setup()
     {
@@ -14,9 +16,9 @@ public class RomanNumberShould
     [TestCase("III", 3)]
     public void ReturnResultsForStrokes(string input, int expectedResult)
     {
-        var romanNumeralsCalculator = new RomanNumber(input);
+        _romanNumber = new RomanNumber(input);
         
-        var result = romanNumeralsCalculator.ToDigit();
+        var result = _romanNumber.ToDigit();
         
         result.Should().Be(expectedResult);
     }
@@ -26,9 +28,9 @@ public class RomanNumberShould
     [TestCase("XXX", 30)]
     public void ReturnResultsForX(string input, int expectedResult)
     {
-        var romanNumeralsCalculator = new RomanNumber(input);
+        _romanNumber = new RomanNumber(input);
         
-        var result = romanNumeralsCalculator.ToDigit();
+        var result = _romanNumber.ToDigit();
         
         result.Should().Be(expectedResult);
     }
@@ -36,9 +38,9 @@ public class RomanNumberShould
     [Test]
     public void ReturnFiveForAV()
     {
-        var romanNumeralsCalculator = new RomanNumber("V");
+        _romanNumber = new RomanNumber("V");
         
-        var result = romanNumeralsCalculator.ToDigit();
+        var result = _romanNumber.ToDigit();
         
         result.Should().Be(5);
     }
@@ -46,9 +48,9 @@ public class RomanNumberShould
     [Test]
     public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
     {
-        var romanNumeralsCalculator = new RomanNumber("IIII");
+        _romanNumber = new RomanNumber("IIII");
         
-        var result = () => romanNumeralsCalculator.ToDigit();
+        var result = () => _romanNumber.ToDigit();
         
         result.Should().Throw<InvalidDataException>();
     }
@@ -56,9 +58,9 @@ public class RomanNumberShould
     [Test]
     public void ThrowExceptionWhenMoreThanOneVIsDisplayed()
     {
-        var romanNumeralsCalculator = new RomanNumber("VV");
+        _romanNumber = new RomanNumber("VV");
         
-        var result = () => romanNumeralsCalculator.ToDigit();
+        var result = () => _romanNumber.ToDigit();
         
         result.Should().Throw<InvalidDataException>();
     }
@@ -66,9 +68,9 @@ public class RomanNumberShould
     [Test]
     public void ThrowExceptionWhenMoreThanThreeXsAreDisplayed()
     {
-        var romanNumeralsCalculator = new RomanNumber("XXXX");
+        _romanNumber = new RomanNumber("XXXX");
         
-        var result = () => romanNumeralsCalculator.ToDigit();
+        var result = () => _romanNumber.ToDigit();
         
         result.Should().Throw<InvalidDataException>();
     }
