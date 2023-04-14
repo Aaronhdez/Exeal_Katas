@@ -34,35 +34,17 @@ public class RomanNumberShould
         
         result.Should().Be(expectedResult);
     }
-    
-    [Test]
-    public void Return100ForAC()
+
+    [TestCase("C", 100)]
+    [TestCase("CC", 200)]
+    [TestCase("CCC", 300)]
+    public void ReturnResultsForC(string input, int expectedResult)
     {
-        _romanNumber = new RomanNumber("C");
+        _romanNumber = new RomanNumber(input);
         
         var result = _romanNumber.ToDigit();
         
-        result.Should().Be(100);
-    }
-    
-    [Test]
-    public void Return200ForTwoCs()
-    {
-        _romanNumber = new RomanNumber("CC");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(200);
-    }
-    
-    [Test]
-    public void Return300ForThreeCs()
-    {
-        _romanNumber = new RomanNumber("CCC");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(300);
+        result.Should().Be(expectedResult);
     }
     
     [Test]
