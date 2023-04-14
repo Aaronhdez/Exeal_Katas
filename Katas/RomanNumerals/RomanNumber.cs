@@ -34,16 +34,16 @@ public class RomanNumber
     private int SumOfNumbers(string value)
     {
         if (string.IsNullOrEmpty(value)) return 0;
-        return CurrentNumberToDigit(value[0]) + SumOfNumbers(value[1..]);
+        return ToInt(value[0]) + SumOfNumbers(value[1..]);
     }
 
-    private int CurrentNumberToDigit(char c)
+    private int ToInt(char character)
     {
-        if (c == 'V') return 5;
-        if (c == 'X') return 10;
-        if (c == 'L') return 50;        
-        if (c == 'C') return 100;
-        if (c == 'D') return 500;
+        if (character == 'V') return 5;
+        if (character == 'X') return 10;
+        if (character == 'L') return 50;        
+        if (character == 'C') return 100;
+        if (character == 'D') return 500;
         return 1;
     }
 }
