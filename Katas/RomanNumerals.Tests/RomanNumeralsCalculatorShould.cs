@@ -10,9 +10,21 @@ public class Tests
     }
 
     [TestCase("I", 1)]
-    [TestCase("II", 1)]
-    [TestCase("III", 1)]
-    public void ReturnOneForAStroke(string input, int expectedResult)
+    [TestCase("II", 2)]
+    [TestCase("III", 3)]
+    public void ReturnResultsForStrokes(string input, int expectedResult)
+    {
+        var romanNumeralsCalculator = new RomanNumeralsCalculator();
+        
+        var result = romanNumeralsCalculator.ToDigit(input);
+        
+        result.Should().Be(expectedResult);
+    }
+    
+    [TestCase("X", 10)]
+    [TestCase("XX", 20)]
+    [TestCase("XXX", 30)]
+    public void ReturnResultsForX(string input, int expectedResult)
     {
         var romanNumeralsCalculator = new RomanNumeralsCalculator();
         
@@ -49,35 +61,5 @@ public class Tests
         var result = () => romanNumeralsCalculator.ToDigit("VV");
         
         result.Should().Throw<InvalidDataException>();
-    }
-    
-    [Test]
-    public void ReturnTenForAX()
-    {
-        var romanNumeralsCalculator = new RomanNumeralsCalculator();
-        
-        var result = romanNumeralsCalculator.ToDigit("X");
-        
-        result.Should().Be(10);
-    }
-    
-    [Test]
-    public void ReturnTenForTwoX()
-    {
-        var romanNumeralsCalculator = new RomanNumeralsCalculator();
-        
-        var result = romanNumeralsCalculator.ToDigit("XX");
-        
-        result.Should().Be(20);
-    }
-    
-    [Test]
-    public void ReturnTenForThreeX()
-    {
-        var romanNumeralsCalculator = new RomanNumeralsCalculator();
-        
-        var result = romanNumeralsCalculator.ToDigit("XX");
-        
-        result.Should().Be(20);
     }
 }
