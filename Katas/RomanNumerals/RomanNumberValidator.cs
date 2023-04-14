@@ -5,20 +5,20 @@ public class RomanNumberValidator
     private readonly char[] _multiplesOf5 = { 'V', 'L', 'D' };
     private readonly char[] _multiplesOf10 = { 'I', 'X', 'C' };
 
-    public bool Validate(string value)
+    public bool Validate(string romanNumber)
     {
-        return ValidAmountsOfMultiplesOf5(value) && ValidAmountsOfMultiplesOf10(value);
+        return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
     }
 
-    private bool ValidAmountsOfMultiplesOf5(string value)
+    private bool ValidAmountsOfMultiplesOf5(string romanNumber)
     {
-        return _multiplesOf5.Where(value.Contains)
-            .All(character => value.Count(c => c == character) <= 1);
+        return _multiplesOf5.Where(romanNumber.Contains)
+            .All(character => romanNumber.Count(c => c == character) <= 1);
     }
 
-    private bool ValidAmountsOfMultiplesOf10(string value)
+    private bool ValidAmountsOfMultiplesOf10(string romanNumber)
     {
-        return _multiplesOf10.Where(value.Contains)
-            .All(character => value.Count(c => c == character) <= 3);
+        return _multiplesOf10.Where(romanNumber.Contains)
+            .All(character => romanNumber.Count(c => c == character) <= 3);
     }
 }
