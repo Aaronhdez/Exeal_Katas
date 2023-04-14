@@ -5,21 +5,9 @@
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=76e51b9f_002Dab1d_002D452a_002D956c_002D031a494de94d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="LeapYearCalculatorShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;And&gt;&#xD;
-    &lt;TestAncestor&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
-      &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.Tests&lt;/TestId&gt;&#xD;
-    &lt;/TestAncestor&gt;&#xD;
-    &lt;Not&gt;&#xD;
-      &lt;And&gt;&#xD;
-        &lt;TestAncestor&gt;&#xD;
-          &lt;TestId&gt;NUnit3x::99B59059-A097-42E3-AE54-26BD13398237::net7.0::LeapYear_Tests.LeapYearCalculatorShould&lt;/TestId&gt;&#xD;
-          &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.Tests&lt;/TestId&gt;&#xD;
-        &lt;/TestAncestor&gt;&#xD;
-        &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas" Presentation="&amp;lt;LeapYear_Kata&amp;gt;" /&gt;&#xD;
-      &lt;/And&gt;&#xD;
-    &lt;/Not&gt;&#xD;
-  &lt;/And&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.RomanNumberShould&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8464b02b_002D4640_002D4fdf_002Dbc81_002Dccd06306cf65/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;

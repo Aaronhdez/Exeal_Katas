@@ -44,6 +44,16 @@ public class RomanNumberShould
         
         result.Should().Be(5);
     }
+    
+    [Test]
+    public void Return50ForAL()
+    {
+        _romanNumber = new RomanNumber("L");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(50);
+    }
 
     [Test]
     public void ThrowExceptionWhenMoreThanThreeStrokesAreDisplayed()
