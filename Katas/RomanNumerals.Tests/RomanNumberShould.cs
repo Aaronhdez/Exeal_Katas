@@ -85,9 +85,7 @@ public class RomanNumberShould
     [TestCase("DD")]
     public void ThrowExceptionWhenValueProvidedIsNotValid(string input)
     {
-        _romanNumber = new RomanNumber(input);
-        
-        var result = () => _romanNumber.ToDigit();
+        var result = () => new RomanNumber(input);;
         
         result.Should().Throw<InvalidDataException>();
     }

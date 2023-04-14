@@ -12,13 +12,13 @@ public class RomanNumber
 
     public RomanNumber(string value)
     {
-        _value = value;
         _validator = new RomanNumberValidator();
+        if (!_validator.Validate(value)) throw new InvalidDataException();
+        _value = value;
     }
 
     public int ToDigit()
     {
-        if (!_validator.Validate(_value)) throw new InvalidDataException();
         return SumOfNumbers(_value);
     }
 
