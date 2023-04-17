@@ -89,34 +89,17 @@ public class RomanNumberShould
         result.Should().Be(500);
     }
     
-    [Test]
-    public void Return6ForVI()
-    {
-        _romanNumber = new RomanNumber("VI");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(6);
-    }
     
-    [Test]
-    public void Return7ForVII()
+    [TestCase("VI", 6)]
+    [TestCase("VII", 7)]
+    [TestCase("VIII", 8)]
+    public void ReturnSumOfCharacters(string input, int expectedResult)
     {
-        _romanNumber = new RomanNumber("VII");
+        _romanNumber = new RomanNumber(input);
         
         var result = _romanNumber.ToDigit();
         
-        result.Should().Be(7);
-    }
-    
-    [Test]
-    public void Return8ForVIII()
-    {
-        _romanNumber = new RomanNumber("VIII");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(8);
+        result.Should().Be(expectedResult);
     }
 
     [TestCase("IIII")]
