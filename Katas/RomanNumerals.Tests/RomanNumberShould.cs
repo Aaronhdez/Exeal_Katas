@@ -108,6 +108,16 @@ public class RomanNumberShould
         
         result.Should().Be(7);
     }
+    
+    [Test]
+    public void Return8ForVIII()
+    {
+        _romanNumber = new RomanNumber("VIII");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(8);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
