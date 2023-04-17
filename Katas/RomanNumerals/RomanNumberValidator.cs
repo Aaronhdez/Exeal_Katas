@@ -3,7 +3,7 @@
 public class RomanNumberValidator
 {
     private readonly char[] _multiplesOf5 = { 'V', 'L', 'D' };
-    private readonly char[] _multiplesOf10 = { 'I', 'X', 'C' };
+    private readonly char[] _multiplesOf10 = { 'I', 'X', 'C', 'M' };
 
     public bool Validate(string romanNumber)
     {
