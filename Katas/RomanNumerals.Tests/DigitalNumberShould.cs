@@ -28,4 +28,15 @@ public class DigitalNumberShould
 
         result.Should().Be("IV");
     }
+    
+
+    [Test]
+    public void ReturnVForA5()
+    {
+        _digitalNumber = new DigitalNumber("5");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("V");
+    }
 }
