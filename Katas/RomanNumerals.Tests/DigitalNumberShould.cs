@@ -49,4 +49,14 @@ public class DigitalNumberShould
 
         result.Should().Be("IX");
     }
+    
+    [Test]
+    public void ReturnXFor10()
+    {
+        _digitalNumber = new DigitalNumber("10");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("X");
+    }
 }
