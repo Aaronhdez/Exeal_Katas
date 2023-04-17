@@ -5,6 +5,7 @@ namespace RomanNumerals.Tests;
 public class RomanNumberShould
 {
     private RomanNumber _romanNumber;
+    private readonly RomanNumberValidatorShould _romanNumberValidatorShould = new RomanNumberValidatorShould();
 
     [SetUp]
     public void Setup()
@@ -85,19 +86,5 @@ public class RomanNumberShould
         var result = _romanNumber.ToDigit();
         
         result.Should().Be(500);
-    }
-
-    [TestCase("IIII")]
-    [TestCase("XXXX")]
-    [TestCase("CCCC")]
-    [TestCase("MMMM")]
-    [TestCase("VV")]
-    [TestCase("LL")]
-    [TestCase("DD")]
-    public void ThrowExceptionWhenValueProvidedIsNotValid(string input)
-    {
-        var result = () => new RomanNumber(input);
-        
-        result.Should().Throw<InvalidDataException>();
     }
 }
