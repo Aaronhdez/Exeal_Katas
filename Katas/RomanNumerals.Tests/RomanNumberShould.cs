@@ -48,6 +48,18 @@ public class RomanNumberShould
         result.Should().Be(expectedResult);
     }
     
+    [TestCase("M", 1000)]
+    [TestCase("MM", 2000)]
+    [TestCase("MMM", 3000)]
+    public void ReturnResultsForAM(string input, int expectedResult)
+    {
+        _romanNumber = new RomanNumber(input);
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(expectedResult);
+    }
+    
     [Test]
     public void ReturnFiveForAV()
     {
@@ -56,16 +68,6 @@ public class RomanNumberShould
         var result = _romanNumber.ToDigit();
         
         result.Should().Be(5);
-    }
-    
-    [Test]
-    public void Return1000ForAM()
-    {
-        _romanNumber = new RomanNumber("M");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(1000);
     }
     
     [Test]
