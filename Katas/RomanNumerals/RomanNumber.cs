@@ -1,9 +1,10 @@
-﻿namespace RomanNumerals;
+﻿using System.Text.RegularExpressions;
+
+namespace RomanNumerals;
 
 public class RomanNumber
 {
     private readonly string _value;
-    private readonly RomanNumberValidator _validator;
 
     private readonly Dictionary<char, int> _intEquivalences = new()
     {
@@ -12,8 +13,7 @@ public class RomanNumber
 
     public RomanNumber(string value)
     {
-        _validator = new RomanNumberValidator();
-        if (!_validator.Validate(value)) throw new InvalidDataException();
+        if (!FormatIsCorrect(value)) throw new InvalidDataException();
         _value = value;
     }
 
@@ -31,5 +31,11 @@ public class RomanNumber
     private int ToInt(char character)
     {
         return _intEquivalences[character];
+    }
+
+    private bool FormatIsCorrect(string romanNumber)
+    {
+        var romanNumeralFormat = @"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+        return new Regex(romanNumeralFormat).IsMatch(romanNumber);
     }
 }
