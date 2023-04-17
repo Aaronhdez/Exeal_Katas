@@ -101,6 +101,16 @@ public class RomanNumberShould
         
         result.Should().Be(expectedResult);
     }
+    
+    [Test]
+    public void Return9ForIX()
+    {
+        _romanNumber = new RomanNumber("IX");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(9);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
