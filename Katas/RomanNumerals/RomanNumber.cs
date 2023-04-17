@@ -13,7 +13,7 @@ public class RomanNumber
 
     public RomanNumber(string value)
     {
-        if (!FormatIsCorrect(value)) throw new InvalidDataException();
+        if (!IsValid(value)) throw new InvalidDataException();
         _value = value;
     }
 
@@ -37,5 +37,5 @@ public class RomanNumber
 
     private bool IsLowerThan(char currentChar, char nextChar) => ToInt(currentChar) < ToInt(nextChar);
     private int ToInt(char character) => _intEquivalences[character];
-    private bool FormatIsCorrect(string romanNumber) => new Regex(RomanNumeralFormat).IsMatch(romanNumber);
+    private bool IsValid(string romanNumber) => new Regex(RomanNumeralFormat).IsMatch(romanNumber);
 }

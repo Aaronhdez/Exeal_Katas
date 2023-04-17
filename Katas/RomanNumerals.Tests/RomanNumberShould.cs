@@ -108,7 +108,7 @@ public class RomanNumberShould
     [TestCase("IIX")]
     [TestCase("IIIX")]
     [TestCase("XXL")]
-    public static void ThrowExceptionWhenFormatIsNotCorrect(string input)
+    public static void ThrowExceptionWhenInputIsNotValid(string input)
     {
         var result = () => new RomanNumber(input);
 
@@ -121,7 +121,7 @@ public class RomanNumberShould
     [TestCase("XC")]
     [TestCase("CD")]
     [TestCase("CM")]
-    public static void NotThrowExceptionWhenFormatIsCorrect(string input)
+    public static void NotThrowExceptionWhenInputIsValid(string input)
     {
         var result = () => new RomanNumber(input);
 
