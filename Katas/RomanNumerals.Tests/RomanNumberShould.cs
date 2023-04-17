@@ -58,6 +58,16 @@ public class RomanNumberShould
     }
     
     [Test]
+    public void Return1000ForAM()
+    {
+        _romanNumber = new RomanNumber("M");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(1000);
+    }
+    
+    [Test]
     public void Return50ForAL()
     {
         _romanNumber = new RomanNumber("L");
