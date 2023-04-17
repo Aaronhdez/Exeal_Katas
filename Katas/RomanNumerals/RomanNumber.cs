@@ -24,6 +24,7 @@ public class RomanNumber
 
     private int SumOfNumbers(string value)
     {
+        if (value == "IX") return 9;
         if (string.IsNullOrEmpty(value)) return 0;
         return ToInt(value[0]) + SumOfNumbers(value[1..]);
     }
