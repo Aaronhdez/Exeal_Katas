@@ -1,4 +1,6 @@
-﻿namespace RomanNumerals;
+﻿using System.Text.RegularExpressions;
+
+namespace RomanNumerals;
 
 public class RomanNumberValidator
 {
@@ -13,10 +15,8 @@ public class RomanNumberValidator
 
     private static bool OrderIsCorrect(string romanNumber)
     {
-        if (romanNumber == "IIV") return false;
-        if (romanNumber == "IIIV") return false;
-        if (romanNumber == "IIX") return false;
-        return true;
+        var romanNumeralFormat = @"^M{0,3}(D?C{0,3})(L?X{0,3})(IX|IV|V?I{0,3})$";
+        return new Regex(romanNumeralFormat).IsMatch(romanNumber);
     }
 
     private bool ValidAmountsOfMultiplesOf5(string romanNumber)
