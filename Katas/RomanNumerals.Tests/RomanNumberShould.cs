@@ -102,34 +102,16 @@ public class RomanNumberShould
         result.Should().Be(expectedResult);
     }
     
-    [Test]
-    public void Return9ForIX()
+    [TestCase("IV" , 4)]
+    [TestCase("IX", 9)]
+    [TestCase("XC", 90)]
+    public void ReturnSubstractionOfCharacters(string input, int expectedResult)
     {
-        _romanNumber = new RomanNumber("IX");
+        _romanNumber = new RomanNumber(input);
         
         var result = _romanNumber.ToDigit();
         
-        result.Should().Be(9);
-    }
-    
-    [Test]
-    public void Return90ForXC()
-    {
-        _romanNumber = new RomanNumber("XC");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(90);
-    }
-    
-    [Test]
-    public void Return4ForIV()
-    {
-        _romanNumber = new RomanNumber("IV");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(4);
+        result.Should().Be(expectedResult);
     }
 
     [TestCase("IIII")]
