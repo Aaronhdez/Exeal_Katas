@@ -111,6 +111,16 @@ public class RomanNumberShould
         
         result.Should().Be(9);
     }
+    
+    [Test]
+    public void Return90ForXC()
+    {
+        _romanNumber = new RomanNumber("XC");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(90);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
