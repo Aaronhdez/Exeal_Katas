@@ -59,4 +59,14 @@ public class DigitalNumberShould
 
         result.Should().Be("X");
     }
+    
+    [Test]
+    public void ReturnXLFor40()
+    {
+        _digitalNumber = new DigitalNumber("40");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("XL");
+    }
 }
