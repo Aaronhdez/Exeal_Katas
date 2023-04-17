@@ -11,8 +11,12 @@ public class DigitalNumber
 
     public string ToRomanNumeral()
     {
-        if (_value == 3) return "III";
-        if (_value == 2) return "II";
+        return ToRoman(_value);
+    }
+
+    private string ToRoman(int value)
+    {
+        if (value > 1) return "I" + ToRoman(value - 1);
         return "I";
     }
 }
