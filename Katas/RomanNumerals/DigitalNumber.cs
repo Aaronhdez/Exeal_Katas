@@ -11,6 +11,7 @@ public class DigitalNumber
 
     public string ToRomanNumeral()
     {
+        if (_value == 3) return "III";
         if (_value == 2) return "II";
         return "I";
     }
