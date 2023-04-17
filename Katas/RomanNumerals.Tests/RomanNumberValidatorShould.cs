@@ -38,35 +38,15 @@ public class RomanNumberValidatorShould
         result.Should().Throw<InvalidDataException>();
     }
     
-    [Test]
-    public void NotThrowExceptionForXL()
+    [TestCase("IV")]
+    [TestCase("IX")]
+    [TestCase("XL")]
+    [TestCase("XC")]
+    [TestCase("CD")]
+    [TestCase("CM")]
+    public void NotThrowExceptionWhenFormatIsCorrect(string input)
     {
-        var result = () => new RomanNumber("XL");
-        
-        result.Should().NotThrow<InvalidDataException>();
-    }
-    
-    
-    [Test]
-    public void NotThrowExceptionForXC()
-    {
-        var result = () => new RomanNumber("XC");
-        
-        result.Should().NotThrow<InvalidDataException>();
-    }
-    
-    [Test]
-    public void NotThrowExceptionForCD()
-    {
-        var result = () => new RomanNumber("CD");
-        
-        result.Should().NotThrow<InvalidDataException>();
-    }
-    
-    [Test]
-    public void NotThrowExceptionForCM()
-    {
-        var result = () => new RomanNumber("CM");
+        var result = () => new RomanNumber(input);
         
         result.Should().NotThrow<InvalidDataException>();
     }
