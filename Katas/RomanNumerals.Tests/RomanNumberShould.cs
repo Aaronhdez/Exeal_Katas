@@ -98,6 +98,16 @@ public class RomanNumberShould
         
         result.Should().Be(6);
     }
+    
+    [Test]
+    public void Return7ForVII()
+    {
+        _romanNumber = new RomanNumber("VII");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(7);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
