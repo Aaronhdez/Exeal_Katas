@@ -15,7 +15,7 @@ public class RomanNumberValidator
 
     private static bool OrderIsCorrect(string romanNumber)
     {
-        var romanNumeralFormat = @"^M{0,3}(D?C{0,3})(XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+        var romanNumeralFormat = @"^M{0,3}(D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
         return new Regex(romanNumeralFormat).IsMatch(romanNumber);
     }
 
