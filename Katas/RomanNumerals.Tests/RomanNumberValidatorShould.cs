@@ -45,7 +45,7 @@ public class RomanNumberValidatorShould
     [Test]
     public void ThrowExceptionForIIX()
     {
-        var result = () => new RomanNumber("IIIV");
+        var result = () => new RomanNumber("IIX");
         
         result.Should().Throw<InvalidDataException>();
     }

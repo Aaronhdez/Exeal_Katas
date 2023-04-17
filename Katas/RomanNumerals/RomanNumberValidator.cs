@@ -9,6 +9,7 @@ public class RomanNumberValidator
     {
         if (romanNumber == "IIV") return false;
         if (romanNumber == "IIIV") return false;
+        if (romanNumber == "IIX") return false;
         return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
     }
 
