@@ -20,9 +20,7 @@ public class RomanNumber
     public int ToDigit()
     {
         if (string.IsNullOrEmpty(_value)) return 0;
-        return _value.Length == 1 ? 
-            ToInt(_value[0]) : 
-            SumOfNumbers(_value[0], _value[1..]);
+        return _value.Length == 1 ? ToInt(_value[0]) : SumOfNumbers(_value[0], _value[1..]);
     }
 
     private int SumOfNumbers(char currentChar, string remainingChars)
