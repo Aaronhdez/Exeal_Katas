@@ -18,4 +18,14 @@ public class DigitalNumberShould
 
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void ReturnIVForA4()
+    {
+        _digitalNumber = new DigitalNumber("4");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("IV");
+    }
 }
