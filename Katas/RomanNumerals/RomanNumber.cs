@@ -5,7 +5,7 @@ namespace RomanNumerals;
 public class RomanNumber
 {
     private readonly string _value;
-
+    private const string RomanNumeralFormat = @"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
     private readonly Dictionary<char, int> _intEquivalences = new()
     {
         { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 },
@@ -46,9 +46,5 @@ public class RomanNumber
         return _intEquivalences[character];
     }
 
-    private bool FormatIsCorrect(string romanNumber)
-    {
-        var romanNumeralFormat = @"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
-        return new Regex(romanNumeralFormat).IsMatch(romanNumber);
-    }
+    private bool FormatIsCorrect(string romanNumber) => new Regex(RomanNumeralFormat).IsMatch(romanNumber);
 }
