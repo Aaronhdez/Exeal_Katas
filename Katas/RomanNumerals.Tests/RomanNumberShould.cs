@@ -121,6 +121,16 @@ public class RomanNumberShould
         
         result.Should().Be(90);
     }
+    
+    [Test]
+    public void Return4ForIV()
+    {
+        _romanNumber = new RomanNumber("IV");
+        
+        var result = _romanNumber.ToDigit();
+        
+        result.Should().Be(4);
+    }
 
     [TestCase("IIII")]
     [TestCase("XXXX")]
