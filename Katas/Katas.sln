@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.Tests", "Roma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals", "RomanNumerals\RomanNumerals.csproj", "{AFF9193A-9500-4654-B9F5-E01A81DC77ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.Example", "RomanNumerals.Example\RomanNumerals.Example.csproj", "{FDD00976-1F32-4986-B0E6-2742E3E436CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +165,10 @@ Global
 		{AFF9193A-9500-4654-B9F5-E01A81DC77ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFF9193A-9500-4654-B9F5-E01A81DC77ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFF9193A-9500-4654-B9F5-E01A81DC77ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD00976-1F32-4986-B0E6-2742E3E436CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD00976-1F32-4986-B0E6-2742E3E436CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD00976-1F32-4986-B0E6-2742E3E436CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD00976-1F32-4986-B0E6-2742E3E436CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,6 +196,7 @@ Global
 		{B7065B48-906C-4DCD-B291-F98946A8EF2D} = {288E3050-24D9-449D-A546-337E7D3F1F50}
 		{1F24C422-4445-41DC-A656-874A184F4CDD} = {17A16841-27F5-4729-B2C3-BDA7806EE5D2}
 		{AFF9193A-9500-4654-B9F5-E01A81DC77ED} = {17A16841-27F5-4729-B2C3-BDA7806EE5D2}
+		{FDD00976-1F32-4986-B0E6-2742E3E436CD} = {17A16841-27F5-4729-B2C3-BDA7806EE5D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B91EC20F-D599-4386-9370-37CDC801780D}
