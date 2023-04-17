@@ -36,15 +36,7 @@ public class RomanNumber
                 : ToInt(currentChar) + SumOfNumbers(remainingChars[0], remainingChars[1..]);
     }
 
-    private bool IsLowerThan(char currentChar, char nextChar)
-    {
-        return ToInt(currentChar) < ToInt(nextChar);
-    }
-
-    private int ToInt(char character)
-    {
-        return _intEquivalences[character];
-    }
-
+    private bool IsLowerThan(char currentChar, char nextChar) => ToInt(currentChar) < ToInt(nextChar);
+    private int ToInt(char character) => _intEquivalences[character];
     private bool FormatIsCorrect(string romanNumber) => new Regex(RomanNumeralFormat).IsMatch(romanNumber);
 }
