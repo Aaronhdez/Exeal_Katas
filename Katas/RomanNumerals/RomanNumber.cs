@@ -20,20 +20,27 @@ public class RomanNumber
     public int ToDigit()
     {
         if (string.IsNullOrEmpty(_value)) return 0;
-        return _value.Length == 1 ? ToInt(_value[0]) : AdditionOf(_value[0], _value[1..]);
+        return _value.Length == 1 ? 
+            ToInt(_value[0]) : AdditionOf(_value[0], _value[1..]);
     }
 
     private int AdditionOf(char currentChar, string remainingChars)
     {
         var firstRemainingChar = remainingChars[0];
         return remainingChars.Length == 1
-            ? IsLowerThan(currentChar, firstRemainingChar)
-                ? -ToInt(currentChar) + ToInt(firstRemainingChar)
-                : ToInt(currentChar) + ToInt(firstRemainingChar)
-            : IsLowerThan(currentChar, firstRemainingChar)
-                ? -ToInt(currentChar) + AdditionOf(firstRemainingChar, remainingChars[1..])
-                : ToInt(currentChar) + AdditionOf(firstRemainingChar, remainingChars[1..]);
+            ? AddLastCharacterValue(currentChar, firstRemainingChar)
+            : AddCharacterValue(currentChar, firstRemainingChar, remainingChars);
     }
+
+    private int AddCharacterValue(char currentChar, char firstRemainingChar, string remainingChars) =>
+        IsLowerThan(currentChar, firstRemainingChar)
+            ? -ToInt(currentChar) + AdditionOf(firstRemainingChar, remainingChars[1..])
+            : ToInt(currentChar) + AdditionOf(firstRemainingChar, remainingChars[1..]);
+
+    private int AddLastCharacterValue(char currentChar, char firstRemainingChar) =>
+        IsLowerThan(currentChar, firstRemainingChar)
+            ? -ToInt(currentChar) + ToInt(firstRemainingChar)
+            : ToInt(currentChar) + ToInt(firstRemainingChar);
 
     private bool IsLowerThan(char currentChar, char nextChar) => ToInt(currentChar) < ToInt(nextChar);
     private int ToInt(char character) => _intEquivalences[character];
