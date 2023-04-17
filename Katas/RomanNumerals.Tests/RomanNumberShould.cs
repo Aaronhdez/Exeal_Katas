@@ -14,43 +14,16 @@ public class RomanNumberShould
     [TestCase("I", 1)]
     [TestCase("II", 2)]
     [TestCase("III", 3)]
-    public void ReturnResultsForStrokes(string input, int expectedResult)
-    {
-        _romanNumber = new RomanNumber(input);
-
-        var result = _romanNumber.ToDigit();
-
-        result.Should().Be(expectedResult);
-    }
-
     [TestCase("X", 10)]
     [TestCase("XX", 20)]
     [TestCase("XXX", 30)]
-    public void ReturnResultsForX(string input, int expectedResult)
-    {
-        _romanNumber = new RomanNumber(input);
-
-        var result = _romanNumber.ToDigit();
-
-        result.Should().Be(expectedResult);
-    }
-
     [TestCase("C", 100)]
     [TestCase("CC", 200)]
     [TestCase("CCC", 300)]
-    public void ReturnResultsForC(string input, int expectedResult)
-    {
-        _romanNumber = new RomanNumber(input);
-
-        var result = _romanNumber.ToDigit();
-
-        result.Should().Be(expectedResult);
-    }
-
     [TestCase("M", 1000)]
     [TestCase("MM", 2000)]
     [TestCase("MMM", 3000)]
-    public void ReturnResultsForAM(string input, int expectedResult)
+    public void ReturnResultsForMultiplesOf10(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
 
@@ -58,7 +31,6 @@ public class RomanNumberShould
 
         result.Should().Be(expectedResult);
     }
-
 
     [TestCase("V", 5)]
     [TestCase("L", 50)]
