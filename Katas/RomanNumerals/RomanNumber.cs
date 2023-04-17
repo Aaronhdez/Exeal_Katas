@@ -19,16 +19,26 @@ public class RomanNumber
 
     public int ToDigit()
     {
-        return SumOfNumbers(_value);
+        if (string.IsNullOrEmpty(_value)) return 0;
+        return _value.Length == 1 ? 
+            ToInt(_value[0]) : 
+            SumOfNumbers(_value[0], _value[1..]);
     }
 
-    private int SumOfNumbers(string value)
+    private int SumOfNumbers(char currentChar, string remainingChars)
     {
-        if (value == "IV") return 4;
-        if (value == "IX") return 9;
-        if (value == "XC") return 90;
-        if (string.IsNullOrEmpty(value)) return 0;
-        return ToInt(value[0]) + SumOfNumbers(value[1..]);
+        return remainingChars.Length == 1
+            ? IsLowerThan(currentChar, remainingChars[0])
+                ? -ToInt(currentChar) + ToInt(remainingChars[0])
+                : ToInt(currentChar) + ToInt(remainingChars[0])
+            : IsLowerThan(currentChar, remainingChars[0])
+                ? -ToInt(currentChar) + SumOfNumbers(remainingChars[0], remainingChars[1..])
+                : ToInt(currentChar) + SumOfNumbers(remainingChars[0], remainingChars[1..]);
+    }
+
+    private bool IsLowerThan(char currentChar, char nextChar)
+    {
+        return ToInt(currentChar) < ToInt(nextChar);
     }
 
     private int ToInt(char character)
