@@ -15,4 +15,14 @@ public class DigitalNumberShould
 
         result.Should().Be("I");
     }
+    
+    [Test]
+    public void ReturnTwoStrokesFor2()
+    {
+        _digitalNumber = new DigitalNumber("2");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("II");
+    }
 }
