@@ -9,8 +9,7 @@ public class RomanNumberValidator
 
     public bool Validate(string romanNumber)
     {
-        if (!OrderIsCorrect(romanNumber)) return false;
-        return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
+        return OrderIsCorrect(romanNumber);
     }
 
     private static bool OrderIsCorrect(string romanNumber)

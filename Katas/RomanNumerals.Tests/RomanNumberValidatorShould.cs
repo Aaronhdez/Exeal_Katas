@@ -9,23 +9,9 @@ public class RomanNumberValidatorShould
     [TestCase("XXXX")]
     [TestCase("CCCC")]
     [TestCase("MMMM")]
-    public void ThrowExceptionWhenAMultipleOf10IsRepeatedMoreThanThrice(string input)
-    {
-        var result = () => new RomanNumber(input);
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-    
     [TestCase("VV")]
     [TestCase("LL")]
     [TestCase("DD")]
-    public void ThrowExceptionWhenAMultipleOf5IsRepeatedMoreThanOnce(string input)
-    {
-        var result = () => new RomanNumber(input);
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-    
     [TestCase("IIV")]
     [TestCase("IIIV")]
     [TestCase("IIX")]
