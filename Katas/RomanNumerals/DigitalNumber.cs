@@ -16,6 +16,7 @@ public class DigitalNumber
 
     private string ToRoman(int value)
     {
+        if (value >= 9) return "IX" + ToRoman(value - 9);
         if (value >= 5) return "V" + ToRoman(value - 5);
         if (value >= 4) return "IV" + ToRoman(value - 4);
         if (value >= 1) return "I" + ToRoman(value - 1);
