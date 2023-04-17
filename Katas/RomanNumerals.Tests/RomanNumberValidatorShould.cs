@@ -69,4 +69,12 @@ public class RomanNumberValidatorShould
         
         result.Should().NotThrow<InvalidDataException>();
     }
+    
+    [Test]
+    public void NotThrowExceptionForCM()
+    {
+        var result = () => new RomanNumber("CM");
+        
+        result.Should().NotThrow<InvalidDataException>();
+    }
 }
