@@ -25,4 +25,14 @@ public class DigitalNumberShould
 
         result.Should().Be("II");
     }
+    
+    [Test]
+    public void ReturnThreeStrokesFor3()
+    {
+        _digitalNumber = new DigitalNumber("3");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("III");
+    }
 }
