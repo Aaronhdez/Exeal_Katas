@@ -22,6 +22,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a010c31b_002Dbc90_002D434b_002Db7ec_002D011d90b0b71a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RomanNumberShould #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.RomanNumberShould&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.RomanNumberValidatorShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ee43eef6_002De516_002D4068_002D949e_002Dc12960b5cb89/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RomanNumberShould" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
