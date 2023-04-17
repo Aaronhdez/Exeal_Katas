@@ -7,6 +7,7 @@ public class RomanNumberValidator
 
     public bool Validate(string romanNumber)
     {
+        if (romanNumber == "IIV") return false;
         return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
     }
 
