@@ -7,10 +7,16 @@ public class RomanNumberValidator
 
     public bool Validate(string romanNumber)
     {
+        if (!OrderIsCorrect(romanNumber)) return false;
+        return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
+    }
+
+    private static bool OrderIsCorrect(string romanNumber)
+    {
         if (romanNumber == "IIV") return false;
         if (romanNumber == "IIIV") return false;
         if (romanNumber == "IIX") return false;
-        return ValidAmountsOfMultiplesOf5(romanNumber) && ValidAmountsOfMultiplesOf10(romanNumber);
+        return true;
     }
 
     private bool ValidAmountsOfMultiplesOf5(string romanNumber)
