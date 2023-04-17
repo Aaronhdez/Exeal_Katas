@@ -93,7 +93,7 @@ public class RomanNumberShould
     [TestCase("VI", 6)]
     [TestCase("VII", 7)]
     [TestCase("VIII", 8)]
-    public void ReturnSumOfCharacters(string input, int expectedResult)
+    public void ReturnAdditionOfCharacters(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
         
