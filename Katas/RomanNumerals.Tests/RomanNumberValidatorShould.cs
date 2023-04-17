@@ -36,4 +36,12 @@ public class RomanNumberValidatorShould
         
         result.Should().Throw<InvalidDataException>();
     }
+
+    [Test]
+    public void ThrowExceptionForXXL()
+    {
+        var result = () => new RomanNumber("XXL");
+        
+        result.Should().Throw<InvalidDataException>();
+    }
 }
