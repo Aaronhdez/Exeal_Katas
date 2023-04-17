@@ -6,11 +6,6 @@ public class RomanNumberShould
 {
     private RomanNumber _romanNumber;
 
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [TestCase("I", 1)]
     [TestCase("II", 2)]
     [TestCase("III", 3)]
