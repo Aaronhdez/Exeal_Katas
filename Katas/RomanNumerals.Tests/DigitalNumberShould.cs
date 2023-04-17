@@ -39,4 +39,14 @@ public class DigitalNumberShould
 
         result.Should().Be("V");
     }
+    
+    [Test]
+    public void ReturnIXForA9()
+    {
+        _digitalNumber = new DigitalNumber("9");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("IX");
+    }
 }
