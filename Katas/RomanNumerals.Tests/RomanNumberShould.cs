@@ -17,21 +17,21 @@ public class RomanNumberShould
     public void ReturnResultsForStrokes(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
-    
+
     [TestCase("X", 10)]
     [TestCase("XX", 20)]
     [TestCase("XXX", 30)]
     public void ReturnResultsForX(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
 
@@ -41,76 +41,58 @@ public class RomanNumberShould
     public void ReturnResultsForC(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
-    
+
     [TestCase("M", 1000)]
     [TestCase("MM", 2000)]
     [TestCase("MMM", 3000)]
     public void ReturnResultsForAM(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
-    
-    [Test]
-    public void ReturnFiveForAV()
+
+
+    [TestCase("V", 5)]
+    [TestCase("L", 50)]
+    [TestCase("D", 500)]
+    public void ReturnResultsForMultiplesOf5(string input, int expectedResult)
     {
-        _romanNumber = new RomanNumber("V");
-        
+        _romanNumber = new RomanNumber(input);
+
         var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(5);
+
+        result.Should().Be(expectedResult);
     }
-    
-    [Test]
-    public void Return50ForAL()
-    {
-        _romanNumber = new RomanNumber("L");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(50);
-    }
-    
-    [Test]
-    public void Return500ForAD()
-    {
-        _romanNumber = new RomanNumber("D");
-        
-        var result = _romanNumber.ToDigit();
-        
-        result.Should().Be(500);
-    }
-    
-    
+
     [TestCase("VI", 6)]
     [TestCase("VII", 7)]
     [TestCase("VIII", 8)]
     public void ReturnAdditionOfCharacters(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
-    
-    [TestCase("IV" , 4)]
+
+    [TestCase("IV", 4)]
     [TestCase("IX", 9)]
     [TestCase("XC", 90)]
     public void ReturnSubstractionOfCharacters(string input, int expectedResult)
     {
         _romanNumber = new RomanNumber(input);
-        
+
         var result = _romanNumber.ToDigit();
-        
+
         result.Should().Be(expectedResult);
     }
 
@@ -129,7 +111,7 @@ public class RomanNumberShould
     public static void ThrowExceptionWhenFormatIsNotCorrect(string input)
     {
         var result = () => new RomanNumber(input);
-        
+
         result.Should().Throw<InvalidDataException>();
     }
 
@@ -142,7 +124,7 @@ public class RomanNumberShould
     public static void NotThrowExceptionWhenFormatIsCorrect(string input)
     {
         var result = () => new RomanNumber(input);
-        
+
         result.Should().NotThrow<InvalidDataException>();
     }
 }
