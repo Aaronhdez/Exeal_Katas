@@ -19,16 +19,17 @@ public class DigitalNumberShould
         result.Should().Be(expectedResult);
     }
 
-    [Test]
-    public void ReturnIVForA4()
+    [TestCase("4", "IV")]
+    [TestCase("9", "IX")]
+    [TestCase("40", "XL")]
+    public void ReturnEquivalencesToEdgeCombinations(string input, string expectedResult)
     {
-        _digitalNumber = new DigitalNumber("4");
+        _digitalNumber = new DigitalNumber(input);
 
         var result = _digitalNumber.ToRomanNumeral();
 
-        result.Should().Be("IV");
+        result.Should().Be(expectedResult);
     }
-    
 
     [Test]
     public void ReturnVForA5()
@@ -39,16 +40,7 @@ public class DigitalNumberShould
 
         result.Should().Be("V");
     }
-    
-    [Test]
-    public void ReturnIXForA9()
-    {
-        _digitalNumber = new DigitalNumber("9");
 
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("IX");
-    }
     
     [Test]
     public void ReturnXFor10()
@@ -59,17 +51,6 @@ public class DigitalNumberShould
 
         result.Should().Be("X");
     }
-    
-    [Test]
-    public void ReturnXLFor40()
-    {
-        _digitalNumber = new DigitalNumber("40");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("XL");
-    }
-    
     [Test]
     public void ReturnLFor50()
     {
