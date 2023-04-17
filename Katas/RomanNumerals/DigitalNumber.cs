@@ -16,11 +16,14 @@ public class DigitalNumber
 
     private string ToRoman(int value)
     {
-        if (value >= 10) return "X" + ToRoman(value - 10);
-        if (value >= 9) return "IX" + ToRoman(value - 9);
-        if (value >= 5) return "V" + ToRoman(value - 5);
-        if (value >= 4) return "IV" + ToRoman(value - 4);
-        if (value >= 1) return "I" + ToRoman(value - 1);
-        return "";
+        return value switch
+        {
+            >= 10 => "X" + ToRoman(value - 10),
+            >= 9 => "IX" + ToRoman(value - 9),
+            >= 5 => "V" + ToRoman(value - 5),
+            >= 4 => "IV" + ToRoman(value - 4),
+            >= 1 => "I" + ToRoman(value - 1),
+            _ => ""
+        };
     }
 }
