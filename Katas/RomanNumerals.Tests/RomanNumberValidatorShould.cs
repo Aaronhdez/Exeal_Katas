@@ -30,17 +30,10 @@ public class RomanNumberValidatorShould
     [TestCase("IIIV")]
     [TestCase("IIX")]
     [TestCase("IIIX")]
+    [TestCase("XXL")]
     public void ThrowExceptionWhenFormatIsNotCorrect(string input)
     {
         var result = () => new RomanNumber(input);
-        
-        result.Should().Throw<InvalidDataException>();
-    }
-
-    [Test]
-    public void ThrowExceptionForXXL()
-    {
-        var result = () => new RomanNumber("XXL");
         
         result.Should().Throw<InvalidDataException>();
     }
