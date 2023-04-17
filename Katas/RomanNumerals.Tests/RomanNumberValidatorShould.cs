@@ -29,6 +29,7 @@ public class RomanNumberValidatorShould
     [TestCase("IIV")]
     [TestCase("IIIV")]
     [TestCase("IIX")]
+    [TestCase("IIIX")]
     public void ThrowExceptionWhenFormatIsNotCorrect(string input)
     {
         var result = () => new RomanNumber(input);
