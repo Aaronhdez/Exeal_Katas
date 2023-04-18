@@ -71,4 +71,14 @@ public class DigitalNumberShould
 
         result.Should().Be("C");
     }
+    
+    [Test]
+    public void ReturnCDFor400()
+    {
+        _digitalNumber = new DigitalNumber("400");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("CD");
+    }
 }
