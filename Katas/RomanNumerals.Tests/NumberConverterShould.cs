@@ -33,7 +33,7 @@ public class NumberConverterShould
     [Test]
     public void ReturnIntegerValueForAnotherRomanNumber()
     {
-        var result = NumberConverter.ToInteger("MCMCCII");
+        var result = NumberConverter.ToInteger("MCMII");
         
         result.Should().Be(1902);
     }
