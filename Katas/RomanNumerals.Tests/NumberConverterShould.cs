@@ -12,11 +12,3 @@ public class NumberConverterShould
         result.Should().Be("MMXXIII");
     }
 }
-
-public static class NumberConverter
-{
-    public static string ToRomanNumeral(int number)
-    {
-        return "MMXXIII";
-    }
-}
