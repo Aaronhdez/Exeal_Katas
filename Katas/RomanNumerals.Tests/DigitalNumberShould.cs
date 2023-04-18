@@ -22,6 +22,7 @@ public class DigitalNumberShould
     [TestCase("4", "IV")]
     [TestCase("9", "IX")]
     [TestCase("40", "XL")]
+    [TestCase("90", "XC")]
     public void ReturnEquivalencesToEdgeCombinations(string input, string expectedResult)
     {
         _digitalNumber = new DigitalNumber(input);
@@ -59,15 +60,5 @@ public class DigitalNumberShould
         var result = _digitalNumber.ToRomanNumeral();
 
         result.Should().Be("L");
-    }
-    
-    [Test]
-    public void ReturnXCFor90()
-    {
-        _digitalNumber = new DigitalNumber("90");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("XC");
     }
 }
