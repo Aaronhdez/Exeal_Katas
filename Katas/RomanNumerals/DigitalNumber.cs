@@ -12,7 +12,7 @@ public class DigitalNumber
 
     private bool IsValid(string digit)
     {
-        return int.Parse(digit) < 3000;
+        return int.Parse(digit) < 3000 && int.Parse(digit) >= 1;
     }
 
     public string ToRomanNumeral()
