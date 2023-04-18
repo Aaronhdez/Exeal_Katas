@@ -55,4 +55,12 @@ public class DigitalNumberShould
 
         result.Should().Throw<InvalidDataException>();
     }
+
+    [Test]
+    public void ThrowExceptionIfValueIsLowerThan1()
+    {
+        var result = () => new DigitalNumber("0");
+
+        result.Should().Throw<InvalidDataException>();
+    }
 }
