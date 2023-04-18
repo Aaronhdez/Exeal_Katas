@@ -18,6 +18,7 @@ public class DigitalNumber
     {
         return value switch
         {
+            >= 400 => "CD" + ToRoman(value - 400),
             >= 100 => "C" + ToRoman(value - 100),
             >= 90 => "XC" + ToRoman(value - 90),
             >= 50 => "L" + ToRoman(value - 50),
