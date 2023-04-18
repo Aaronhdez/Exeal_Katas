@@ -4,27 +4,13 @@ namespace RomanNumerals.Tests;
 
 public class NumberConverterShould
 {
-    [Test]
-    public void ReturnRomanValueForAnInteger()
+    [TestCase(2023, "MMXXIII")]
+    [TestCase(2024, "MMXXIV")]
+    [TestCase(1924, "MCMXXIV")]
+    public void ReturnRomanValueForIntegers(int number, string expectedConversion)
     {
-        var result = NumberConverter.ToRomanNumeral(2023);
+        var result = NumberConverter.ToRomanNumeral(number);
         
-        result.Should().Be("MMXXIII");
-    }
-    
-    [Test]
-    public void ReturnRomanValueForOtherInteger()
-    {
-        var result = NumberConverter.ToRomanNumeral(2024);
-        
-        result.Should().Be("MMXXIV");
-    }
-    
-    [Test]
-    public void ReturnRomanValueForAnotherInteger()
-    {
-        var result = NumberConverter.ToRomanNumeral(1924);
-        
-        result.Should().Be("MCMXXIV");
+        result.Should().Be(expectedConversion);
     }
 }
