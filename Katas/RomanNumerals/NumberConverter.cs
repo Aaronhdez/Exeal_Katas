@@ -6,4 +6,9 @@ public static class NumberConverter
     {
         return new DigitalNumber(number).ToRomanNumeral();
     }
+
+    public static object ToInteger(string romanNumeral)
+    {
+        return "";
+    }
 }
