@@ -20,7 +20,7 @@ public class DigitalNumber
         {
             >= 1000 => "M" + ToRoman(value - 1000),
             >= 900 => "CM" + ToRoman(value - 900),
-            >= 500 => "C" + ToRoman(value - 500),
+            >= 500 => "D" + ToRoman(value - 500),
             >= 400 => "CD" + ToRoman(value - 400),
             >= 100 => "C" + ToRoman(value - 100),
             >= 90 => "XC" + ToRoman(value - 90),

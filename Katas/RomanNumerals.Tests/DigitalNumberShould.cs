@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace RomanNumerals.Tests;
 
@@ -45,33 +44,16 @@ public class DigitalNumberShould
 
         result.Should().Be(expectedResult);
     }
-
-    [Test]
-    public void ReturnVForA5()
-    {
-        _digitalNumber = new DigitalNumber("5");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("V");
-    }
     
-    [Test]
-    public void ReturnLFor50()
+    [TestCase("5", "V")]
+    [TestCase("50", "L")]
+    [TestCase("500", "D")]
+    public void ReturnEquivalencesToMutiplesOf5(string input, string expectedResult)
     {
-        _digitalNumber = new DigitalNumber("50");
+        _digitalNumber = new DigitalNumber(input);
 
         var result = _digitalNumber.ToRomanNumeral();
 
-        result.Should().Be("L");
-    }
-    [Test]
-    public void ReturnCFor500()
-    {
-        _digitalNumber = new DigitalNumber("500");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("C");
+        result.Should().Be(expectedResult);
     }
 }
