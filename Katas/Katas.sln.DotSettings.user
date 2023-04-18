@@ -30,5 +30,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.RomanNumberShould&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.DigitalNumberShould&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::1F24C422-4445-41DC-A656-874A184F4CDD::net7.0::RomanNumerals.Tests.NumberConverterShould&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -4,23 +4,15 @@ public class DigitalNumber
 {
     private readonly int _value;
 
-    public DigitalNumber(string digit)
+    public DigitalNumber(int digit)
     {
         if (!IsValid(digit)) throw new InvalidDataException();
-        _value = int.Parse(digit);
+        _value = digit;
     }
 
-    private bool IsValid(string digit)
+    private bool IsValid(int digit)
     {
-        try
-        {
-            var digitAsInt = int.Parse(digit);
-            return digitAsInt is <= 3000 and >= 1;
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
+        return digit is <= 3000 and >= 1;
     }
 
     public string ToRomanNumeral()
