@@ -27,7 +27,7 @@ public class DigitalNumberShould
     [TestCase("10", "X")]
     [TestCase("100", "C")]
     [TestCase("1000", "M")]
-    public void ReturnEquivalencesToMutiplesOf10(string input, string expectedResult)
+    public void ReturnEquivalencesToMultiplesOf10(string input, string expectedResult)
     {
         _digitalNumber = new DigitalNumber(input);
 
@@ -39,7 +39,7 @@ public class DigitalNumberShould
     [TestCase("5", "V")]
     [TestCase("50", "L")]
     [TestCase("500", "D")]
-    public void ReturnEquivalencesToMutiplesOf5(string input, string expectedResult)
+    public void ReturnEquivalencesToMultiplesOf5(string input, string expectedResult)
     {
         _digitalNumber = new DigitalNumber(input);
 
