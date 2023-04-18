@@ -63,4 +63,12 @@ public class DigitalNumberShould
 
         result.Should().Throw<InvalidDataException>();
     }
+
+    [Test]
+    public void ThrowExceptionIfValueIsNotANumber()
+    {
+        var result = () => new DigitalNumber("a");
+
+        result.Should().Throw<InvalidDataException>();
+    }
 }
