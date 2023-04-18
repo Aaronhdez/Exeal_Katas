@@ -23,6 +23,8 @@ public class DigitalNumberShould
     [TestCase("9", "IX")]
     [TestCase("40", "XL")]
     [TestCase("90", "XC")]
+    [TestCase("400", "CD")]
+    [TestCase("900", "CM")]
     public void ReturnEquivalencesToEdgeCombinations(string input, string expectedResult)
     {
         _digitalNumber = new DigitalNumber(input);
@@ -71,17 +73,6 @@ public class DigitalNumberShould
 
         result.Should().Be("C");
     }
-    
-    [Test]
-    public void ReturnCDFor400()
-    {
-        _digitalNumber = new DigitalNumber("400");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("CD");
-    }
-    
     [Test]
     public void ReturnCFor500()
     {
@@ -90,16 +81,6 @@ public class DigitalNumberShould
         var result = _digitalNumber.ToRomanNumeral();
 
         result.Should().Be("C");
-    }
-    
-    [Test]
-    public void ReturnCMFor900()
-    {
-        _digitalNumber = new DigitalNumber("900");
-
-        var result = _digitalNumber.ToRomanNumeral();
-
-        result.Should().Be("CM");
     }
     
     [Test]
