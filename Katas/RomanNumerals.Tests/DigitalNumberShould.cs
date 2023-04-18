@@ -61,4 +61,14 @@ public class DigitalNumberShould
 
         result.Should().Be("L");
     }
+    
+    [Test]
+    public void ReturnCFor100()
+    {
+        _digitalNumber = new DigitalNumber("100");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("C");
+    }
 }
