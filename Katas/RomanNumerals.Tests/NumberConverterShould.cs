@@ -21,4 +21,12 @@ public class NumberConverterShould
         
         result.Should().Be(2201);
     }
+
+    [Test]
+    public void ReturnIntegerValueForOtherRomanNumber()
+    {
+        var result = NumberConverter.ToInteger("MMCCII");
+        
+        result.Should().Be(2202);
+    }
 }
