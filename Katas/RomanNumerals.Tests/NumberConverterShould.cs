@@ -19,4 +19,12 @@ public class NumberConverterShould
         
         result.Should().Be("MMXXIV");
     }
+    
+    [Test]
+    public void ReturnRomanValueForAnotherInteger()
+    {
+        var result = NumberConverter.ToRomanNumeral(1924);
+        
+        result.Should().Be("MCMXXIV");
+    }
 }
