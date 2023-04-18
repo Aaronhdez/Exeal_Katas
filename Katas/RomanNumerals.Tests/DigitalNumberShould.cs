@@ -101,4 +101,14 @@ public class DigitalNumberShould
 
         result.Should().Be("CM");
     }
+    
+    [Test]
+    public void ReturnMFor1000()
+    {
+        _digitalNumber = new DigitalNumber("1000");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("M");
+    }
 }
