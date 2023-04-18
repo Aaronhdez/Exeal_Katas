@@ -47,4 +47,12 @@ public class DigitalNumberShould
 
         result.Should().Be(expectedResult);
     }
+
+    [Test]
+    public void ThrowExceptionIfValueIsHigherThan3000()
+    {
+        var result = () => new DigitalNumber("3001");
+
+        result.Should().Throw<InvalidDataException>();
+    }
 }
