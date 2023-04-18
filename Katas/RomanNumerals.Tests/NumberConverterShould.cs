@@ -29,4 +29,12 @@ public class NumberConverterShould
         
         result.Should().Be(2202);
     }
+
+    [Test]
+    public void ReturnIntegerValueForAnotherRomanNumber()
+    {
+        var result = NumberConverter.ToInteger("MCMCCII");
+        
+        result.Should().Be(1902);
+    }
 }
