@@ -13,28 +13,14 @@ public class NumberConverterShould
         
         result.Should().Be(expectedConversion);
     }
-
-    [Test]
-    public void ReturnIntegerValueForARomanNumber()
+    
+    [TestCase( "MMCCII",2202)]
+    [TestCase("MMCCI", 2201)]
+    [TestCase("MCMII", 1902)]
+    public void ReturnIntegerValueForRomanNumerals(string number, int expectedConversion)
     {
-        var result = NumberConverter.ToInteger("MMCCI");
+        var result = NumberConverter.ToInteger(number);
         
-        result.Should().Be(2201);
-    }
-
-    [Test]
-    public void ReturnIntegerValueForOtherRomanNumber()
-    {
-        var result = NumberConverter.ToInteger("MMCCII");
-        
-        result.Should().Be(2202);
-    }
-
-    [Test]
-    public void ReturnIntegerValueForAnotherRomanNumber()
-    {
-        var result = NumberConverter.ToInteger("MCMII");
-        
-        result.Should().Be(1902);
+        result.Should().Be(expectedConversion);
     }
 }
