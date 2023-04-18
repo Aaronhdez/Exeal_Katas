@@ -91,4 +91,14 @@ public class DigitalNumberShould
 
         result.Should().Be("C");
     }
+    
+    [Test]
+    public void ReturnCMFor900()
+    {
+        _digitalNumber = new DigitalNumber("900");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("CM");
+    }
 }
