@@ -6,7 +6,13 @@ public class DigitalNumber
 
     public DigitalNumber(string digit)
     {
+        if (!IsValid(digit)) throw new InvalidDataException();
         _value = int.Parse(digit);
+    }
+
+    private bool IsValid(string digit)
+    {
+        return int.Parse(digit) < 3000;
     }
 
     public string ToRomanNumeral()
