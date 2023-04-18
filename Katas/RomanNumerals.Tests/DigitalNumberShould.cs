@@ -41,7 +41,6 @@ public class DigitalNumberShould
         result.Should().Be("V");
     }
 
-    
     [Test]
     public void ReturnXFor10()
     {
@@ -51,6 +50,7 @@ public class DigitalNumberShould
 
         result.Should().Be("X");
     }
+    
     [Test]
     public void ReturnLFor50()
     {
@@ -59,5 +59,15 @@ public class DigitalNumberShould
         var result = _digitalNumber.ToRomanNumeral();
 
         result.Should().Be("L");
+    }
+    
+    [Test]
+    public void ReturnXCFor90()
+    {
+        _digitalNumber = new DigitalNumber("90");
+
+        var result = _digitalNumber.ToRomanNumeral();
+
+        result.Should().Be("XC");
     }
 }
