@@ -8,5 +8,7 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Acceptance.DisplayFeature&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithoutProductsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithAProductsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateAnOrderWithoutProducts&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

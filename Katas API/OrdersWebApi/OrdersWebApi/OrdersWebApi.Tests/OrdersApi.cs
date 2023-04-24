@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace OrdersWebApi.Tests;
 
 public class OrdersApi : WebApplicationFactory<Api>
 {
-    //private readonly IClock _clock;
+    private readonly IClock _clock;
     //private SQLiteConnection _sqLiteConnection;
     
-    public OrdersApi()
+    public OrdersApi(IClock clock)
     {
-        //_clock = clock;
+        _clock = clock;
         //_sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         //_sqLiteConnection.Open();
         //_sqLiteConnection.Execute(@"Create Table if not exists Messages(
@@ -26,7 +27,7 @@ public class OrdersApi : WebApplicationFactory<Api>
     {
         builder.ConfigureServices(services =>
         {
-            //services.AddSingleton(_clock);
+            services.AddSingleton(_clock);
             //services.AddSingleton(_sqLiteConnection);
             //services.AddSingleton<IMessagesRepository, InMemoryMessagesRepository>();
             //services.AddSingleton<ISubscriptionRepository, InMemorySubscriptionRepository>();

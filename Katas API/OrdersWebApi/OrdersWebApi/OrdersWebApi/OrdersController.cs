@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+#pragma warning disable CS8602
 
 namespace OrdersWebApi;
 
-#pragma warning disable CS8602
+
+[ApiController]
+[Route("[controller]")]
 public class OrdersController : ControllerBase
 {
     private readonly CreateOrderCommand _createOrderCommand;
@@ -13,7 +16,8 @@ public class OrdersController : ControllerBase
         _createOrderCommand = createOrderCommand;
         _clock = clock;
     }
-
+    
+    [HttpPost("{orderId}")]
     public Task Post(string orderId, CreateOrderRequest createOrderRequest)
     {
         var createOrderDto = new CreateOrderDto(orderId, _clock.Timestamp(), createOrderRequest.Customer, createOrderRequest.Address,

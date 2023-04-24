@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
+using NSubstitute;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -8,7 +9,9 @@ public class DisplayFeature
     [Test]
     public async Task DisplayBasicInformationOfAnOrder()
     {
-        var socialNetworkApp = new OrdersApi();
+        var clock = Substitute.For<IClock>();
+        clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+        var socialNetworkApp = new OrdersApi(clock);
         var client = socialNetworkApp.CreateClient();
         var jsonPost = "{\"id\": \"ORD123456\"," +
                             "\"customer\": \"John Doe\"," +
