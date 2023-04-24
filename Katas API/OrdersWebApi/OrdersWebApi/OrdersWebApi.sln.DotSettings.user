@@ -7,5 +7,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6993bd3_002D3bc4_002D44c1_002Dbcd3_002D207340b19370/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DisplayFeature #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Acceptance.DisplayFeature&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithoutProductsSuccess&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
