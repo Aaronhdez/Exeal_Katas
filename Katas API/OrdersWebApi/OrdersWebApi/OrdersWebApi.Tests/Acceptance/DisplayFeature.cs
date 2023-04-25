@@ -15,22 +15,22 @@ public class DisplayFeature
         var client = ordersApi.CreateClient();
         var jsonstring = "{"+
                                     "\"id\": \"ORD123456\","+ 
-                                    "\"customer\": \"string\","+
-                                    "\"address\": \"string\","+
+                                    "\"customer\": \"John Doe\","+
+                                    "\"address\": \"A Simple Address, 123\","+
                                     "\"products\": ["+
                                     "{"+
-                                        "\"name\": \"string\","+
-                                        "\"value\": 0"+
+                                        "\"name\": \"Computer Monitor\","+
+                                        "\"value\": 100"+
                                     "}"+
                                     "]"+
                                 "}";
         
         var postResponse = await client.PostAsync("/Orders", new StringContent(jsonstring, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
-        var response = await client.GetAsync("/Orders/ORD123456");
-        response.EnsureSuccessStatusCode();
+        var getResponse = await client.GetAsync("/Orders/ORD123456");
+        getResponse.EnsureSuccessStatusCode();
         
-        var content = await response.Content.ReadAsStringAsync();
+        var content = await getResponse.Content.ReadAsStringAsync();
         var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
         
         await Verifier.Verify(json);

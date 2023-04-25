@@ -14,7 +14,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IClock, SystemClock>();
-builder.Services.AddScoped<IOrderRepository, InMemoryOrdersRepository>();
+builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
 builder.Services.AddScoped<CreateOrderCommand>();
 builder.Services.AddScoped<GetOrderByIdQuery>();
 
