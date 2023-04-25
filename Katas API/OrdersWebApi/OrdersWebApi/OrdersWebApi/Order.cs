@@ -21,7 +21,7 @@ public class Order
     private bool Equals(Order other)
     {
         return _id == other._id && _timestamp == other._timestamp && _customer == other._customer &&
-               _address == other._address; 
+               _address == other._address && _products.Equals(other._products);
     }
 
     public override bool Equals(object? obj)
