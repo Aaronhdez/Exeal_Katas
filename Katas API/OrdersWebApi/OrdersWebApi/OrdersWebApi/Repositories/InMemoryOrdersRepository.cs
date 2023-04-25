@@ -1,6 +1,6 @@
-using OrdersWebApi.Model.Orders;
+using OrdersWebApi.Models.Orders;
 
-namespace OrdersWebApi.Tests.Integration;
+namespace OrdersWebApi.Repositories;
 
 public class InMemoryOrdersRepository : IOrderRepository
 {

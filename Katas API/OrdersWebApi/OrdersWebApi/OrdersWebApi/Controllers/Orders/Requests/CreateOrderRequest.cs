@@ -1,13 +1,14 @@
-using OrdersWebApi.Model.Orders;
+using System.Text.Json.Serialization;
+using OrdersWebApi.Models.Orders;
 
 namespace OrdersWebApi.Controllers.Orders.Requests;
 
 #pragma warning disable CS8602
 public class CreateOrderRequest
 {
-    public readonly string Customer;
-    public readonly string Address;
-    public readonly Product[] Products;
+    public string Customer { get; set; }
+    public string Address { get; set; }
+    public Product[] Products { get; set; }
 
     public CreateOrderRequest(string customer, string address, Product[] products)
     {

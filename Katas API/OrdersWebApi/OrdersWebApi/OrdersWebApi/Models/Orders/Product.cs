@@ -1,10 +1,10 @@
-namespace OrdersWebApi.Model.Orders;
+namespace OrdersWebApi.Models.Orders;
 
 #pragma warning disable CS8602
 public class Product
 {
-    private string Name { get; }
-    private int Value { get; }
+    public string Name { get; }
+    public int Value { get; }
 
     public Product(string name, int value)
     {

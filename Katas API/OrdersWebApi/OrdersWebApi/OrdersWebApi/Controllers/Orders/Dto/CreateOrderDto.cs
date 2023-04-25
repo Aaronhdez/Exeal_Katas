@@ -1,4 +1,4 @@
-using OrdersWebApi.Model.Orders;
+using OrdersWebApi.Models.Orders;
 
 namespace OrdersWebApi.Controllers.Orders.Dto;
 

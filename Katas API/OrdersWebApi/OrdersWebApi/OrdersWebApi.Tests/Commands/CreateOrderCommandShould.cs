@@ -1,7 +1,7 @@
 ﻿using NSubstitute;
 using OrdersWebApi.Commands.Orders;
 using OrdersWebApi.Controllers.Orders.Dto;
-using OrdersWebApi.Model.Orders;
+using OrdersWebApi.Models.Orders;
 
 namespace OrdersWebApi.Tests.Commands;
 

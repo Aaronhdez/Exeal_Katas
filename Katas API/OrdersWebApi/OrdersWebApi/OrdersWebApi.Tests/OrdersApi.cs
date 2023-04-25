@@ -1,36 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OrdersWebApi.Commands.Orders;
+using OrdersWebApi.Models.Orders;
+using OrdersWebApi.Repositories;
 
 namespace OrdersWebApi.Tests;
 
-public class OrdersApi : WebApplicationFactory<Api>
+public class OrdersApi : WebApplicationFactory<Program>
 {
     private readonly IClock _clock;
-    //private SQLiteConnection _sqLiteConnection;
     
     public OrdersApi(IClock clock)
     {
         _clock = clock;
-        //_sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
-        //_sqLiteConnection.Open();
-        //_sqLiteConnection.Execute(@"Create Table if not exists Messages(
-        //        Author VARCHAR(100) NOT NULL,
-        //        Content VARCHAR(144) NOT NULL,
-        //        Timestamp DATETIME NOT NULL)");
-        //_sqLiteConnection.Execute(@"Create Table if not exists Subscriptions(
-        //        User VARCHAR(100) NOT NULL,
-        //        Subscriber VARCHAR(100) NOT NULL)");
     }
     
     protected override IHost CreateHost(IHostBuilder builder)
     {
         builder.ConfigureServices(services =>
         {
-            services.AddSingleton(_clock);
-            //services.AddSingleton(_sqLiteConnection);
-            //services.AddSingleton<IMessagesRepository, InMemoryMessagesRepository>();
-            //services.AddSingleton<ISubscriptionRepository, InMemorySubscriptionRepository>();
+            //services.AddSingleton(_clock);
+            //services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
+            //services.AddScoped<CreateOrderCommand>();
         });
     
         return base.CreateHost(builder);

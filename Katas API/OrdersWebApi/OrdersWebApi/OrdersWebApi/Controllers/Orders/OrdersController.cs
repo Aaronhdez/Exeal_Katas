@@ -21,12 +21,12 @@ public class OrdersController : ControllerBase
         _clock = clock;
     }
     
-    [HttpPost("{orderId}")]
-    public Task Post(string orderId, CreateOrderRequest createOrderRequest)
+    [HttpPost("{id}")]
+    public Task Post(string id, CreateOrderRequest createOrderRequest)
     {
-        var createOrderDto = new CreateOrderDto(orderId, _clock.Timestamp(), createOrderRequest.Customer, createOrderRequest.Address,
+        var createOrderDto = new CreateOrderDto(id, _clock.Timestamp(), createOrderRequest.Customer, createOrderRequest.Address,
             createOrderRequest.Products);
         _createOrderCommand.Execute(createOrderDto);
-        return Task.FromResult(Task.CompletedTask);
+        return Task.CompletedTask;
     }
 }

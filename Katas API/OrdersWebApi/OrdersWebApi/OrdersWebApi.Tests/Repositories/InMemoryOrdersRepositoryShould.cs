@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
-using OrdersWebApi.Model.Orders;
+using OrdersWebApi.Models.Orders;
+using OrdersWebApi.Repositories;
 
 namespace OrdersWebApi.Tests.Integration;
 

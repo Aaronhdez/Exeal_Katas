@@ -4,7 +4,7 @@ using OrdersWebApi.Commands.Orders;
 using OrdersWebApi.Controllers.Orders;
 using OrdersWebApi.Controllers.Orders.Dto;
 using OrdersWebApi.Controllers.Orders.Requests;
-using OrdersWebApi.Model.Orders;
+using OrdersWebApi.Models.Orders;
 
 #pragma warning disable CS8602
 

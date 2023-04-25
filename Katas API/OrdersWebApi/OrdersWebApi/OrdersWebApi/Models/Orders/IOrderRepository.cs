@@ -1,4 +1,4 @@
-namespace OrdersWebApi.Model.Orders;
+namespace OrdersWebApi.Models.Orders;
 
 #pragma warning disable CS8602
 public interface IOrderRepository
