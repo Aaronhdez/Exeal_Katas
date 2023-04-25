@@ -13,7 +13,7 @@ public class CreateOrderCommand
         _orderRepository = orderRepository;
     }
 
-    public void Execute(CreateOrderDto createOrderDto)
+    public string Execute(CreateOrderDto createOrderDto)
     {
         var orderModel = new Order(
             createOrderDto.Id,
@@ -22,5 +22,6 @@ public class CreateOrderCommand
             createOrderDto.Address, 
             new Products(createOrderDto.Products));
         _orderRepository.Create(orderModel);
+        return createOrderDto.Id;
     }
 }

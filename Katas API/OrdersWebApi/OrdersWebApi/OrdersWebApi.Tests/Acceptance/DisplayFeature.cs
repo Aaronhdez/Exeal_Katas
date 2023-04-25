@@ -14,6 +14,7 @@ public class DisplayFeature
         var ordersApi = new OrdersApi(clock);
         var client = ordersApi.CreateClient();
         var jsonstring = "{"+
+                                    "\"id\": \"ORD123456\","+ 
                                     "\"customer\": \"string\","+
                                     "\"address\": \"string\","+
                                     "\"products\": ["+
@@ -24,12 +25,9 @@ public class DisplayFeature
                                     "]"+
                                 "}";
         
-        var response = await client.GetAsync("/swagger/index.html");
-        response.EnsureSuccessStatusCode();
-        
-        var postResponse = await client.PostAsync("/Orders/ORD123456", new StringContent(jsonstring, Encoding.Default, "application/json"));
+        var postResponse = await client.PostAsync("/Orders", new StringContent(jsonstring, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
-        response = await client.GetAsync("/Orders/ORD123456");
+        var response = await client.GetAsync("/Orders/ORD123456");
         response.EnsureSuccessStatusCode();
         
         var content = await response.Content.ReadAsStringAsync();

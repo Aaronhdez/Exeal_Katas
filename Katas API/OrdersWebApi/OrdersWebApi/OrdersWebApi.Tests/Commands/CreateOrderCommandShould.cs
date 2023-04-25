@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using FluentAssertions;
+using NSubstitute;
 using OrdersWebApi.Commands.Orders;
 using OrdersWebApi.Controllers.Orders.Dto;
 using OrdersWebApi.Models.Orders;
@@ -25,7 +26,7 @@ public class CreateOrderCommandShould
 
         var expectedOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
             new Products(Array.Empty<Product>()));
-        _createOrderCommand.Execute(givenCreateOrderDto);
+        var id = _createOrderCommand.Execute(givenCreateOrderDto);
 
         _orderRepository.Received(1).Create(Arg.Is<Order>(o => o.Equals(expectedOrderModel)));
     }
@@ -38,7 +39,7 @@ public class CreateOrderCommandShould
 
         var expectedOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
             new Products( new[] { new Product("computerMonitor", 70) }));
-        _createOrderCommand.Execute(givenCreateOrderDto);
+        var id = _createOrderCommand.Execute(givenCreateOrderDto);
 
         _orderRepository.Received(1).Create(Arg.Is<Order>(o => o.Equals(expectedOrderModel)));
     }
