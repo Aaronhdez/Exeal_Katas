@@ -4,24 +4,24 @@ namespace OrdersWebApi.Models.Orders;
 public class Order
 {
     public readonly string Id;
-    private readonly string _timestamp;
-    private readonly string _customer;
-    private readonly string _address;
-    private readonly Products _products;
+    public readonly string Timestamp;
+    public readonly string Customer;
+    public readonly string Address;
+    public readonly Products Products;
 
     public Order(string id, string timestamp, string customer, string address, Products products)
     {
         Id = id;
-        _timestamp = timestamp;
-        _customer = customer;
-        _address = address;
-        _products = products;
+        Timestamp = timestamp;
+        Customer = customer;
+        Address = address;
+        Products = products;
     }
 
     private bool Equals(Order other)
     {
-        return Id == other.Id && _timestamp == other._timestamp && _customer == other._customer &&
-               _address == other._address && _products.Equals(other._products);
+        return Id == other.Id && Timestamp == other.Timestamp && Customer == other.Customer &&
+               Address == other.Address && Products.Equals(other.Products);
     }
 
     public override bool Equals(object? obj)
@@ -34,6 +34,6 @@ public class Order
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Id, _timestamp, _customer, _address, _products);
+        return HashCode.Combine(Id, Timestamp, Customer, Address, Products);
     }
 }

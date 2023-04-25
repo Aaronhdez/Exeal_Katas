@@ -1,6 +1,7 @@
 using OrdersWebApi;
 using OrdersWebApi.Commands.Orders;
 using OrdersWebApi.Models.Orders;
+using OrdersWebApi.Queries;
 using OrdersWebApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddScoped<IOrderRepository, InMemoryOrdersRepository>();
 builder.Services.AddScoped<CreateOrderCommand>();
+builder.Services.AddScoped<GetOrderByIdQuery>();
 
 
 var app = builder.Build();

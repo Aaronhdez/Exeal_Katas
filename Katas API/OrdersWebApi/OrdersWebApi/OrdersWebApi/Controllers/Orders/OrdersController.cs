@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Commands.Orders;
 using OrdersWebApi.Controllers.Orders.Dto;
 using OrdersWebApi.Controllers.Orders.Requests;
+using OrdersWebApi.Queries;
 
 #pragma warning disable CS8602
 
@@ -12,12 +13,14 @@ namespace OrdersWebApi.Controllers.Orders;
 [Route("[controller]")]
 public class OrdersController : ControllerBase
 {
-    private readonly CreateOrderCommand _createOrderCommand;
     private readonly IClock _clock;
+    private readonly CreateOrderCommand _createOrderCommand;
+    private readonly GetOrderByIdQuery _getOrderByIdQuery;
 
-    public OrdersController(IClock clock, CreateOrderCommand createOrderCommand)
+    public OrdersController(IClock clock, CreateOrderCommand createOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
     {
         _createOrderCommand = createOrderCommand;
+        _getOrderByIdQuery = getOrderByIdQuery;
         _clock = clock;
     }
     
@@ -30,12 +33,9 @@ public class OrdersController : ControllerBase
         return Task.CompletedTask;
     }
 
-    public ActionResult<OrderResponseDto> Get(string id)
+    [HttpGet("{id}")]
+    public ActionResult<OrderResponse> Get(string id)
     {
-        throw new NotImplementedException();
+        return _getOrderByIdQuery.Execute(id);
     }
-}
-
-public class OrderResponseDto
-{
 }

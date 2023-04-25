@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using OrdersWebApi.Commands.Orders;
-using OrdersWebApi.Models.Orders;
-using OrdersWebApi.Repositories;
 
 namespace OrdersWebApi.Tests;
 
