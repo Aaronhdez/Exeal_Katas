@@ -4,7 +4,7 @@ namespace OrdersWebApi;
 public class CreateOrderDto
 {
     public string Id { get; }
-    DateTime Timestamp { get; }
+    public DateTime Timestamp { get; }
     public string Customer { get; }
     public string Address { get; }
     public Product[] Products { get; }

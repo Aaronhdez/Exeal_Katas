@@ -10,12 +10,14 @@ public class OrdersControllerShould
     private OrdersController? _ordersController;
     private IClock? _clock;
     private CreateOrderCommand? _createOrderCommand;
+    private IOrderRepository _ordersRepository;
 
     [SetUp]
     public void SetUp()
     {
         _clock = Substitute.For<IClock>();
-        _createOrderCommand = Substitute.For<CreateOrderCommand>();
+        _ordersRepository = Substitute.For<IOrderRepository>();
+        _createOrderCommand = Substitute.For<CreateOrderCommand>(_ordersRepository);
         _ordersController = new OrdersController(_clock, _createOrderCommand);
     }
 

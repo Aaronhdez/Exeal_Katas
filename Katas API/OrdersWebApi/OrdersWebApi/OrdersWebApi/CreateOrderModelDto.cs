@@ -16,4 +16,22 @@ public class CreateOrderModelDto
         Address = address;
         Products = products;
     }
+
+    private bool Equals(CreateOrderModelDto other)
+    {
+        return Id == other.Id && Timestamp == other.Timestamp && Customer == other.Customer && Address == other.Address && Products.Equals(other.Products);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((CreateOrderModelDto)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Id, Timestamp, Customer, Address, Products);
+    }
 }

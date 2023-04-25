@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9h91KrckCgT/M4nt7nJP+TmZt2oS4/+fIxImNAo8fI8JyuNu8pVwc0BVr3R1GOyUM4fU2vFNeO2It+HstXdtzw==",
+  "dgSpecHash": "k+XnOUuP99uaNitufTGfZnTQ7jARu67YChaEBser/4oFEwa5hGfHlFqjtpIHo3hwWv00oLgyKov609uSstH+cA==",
   "success": true,
   "projectFilePath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.Tests\\OrdersWebApi.Tests.csproj",
   "expectedPackageFiles": [
