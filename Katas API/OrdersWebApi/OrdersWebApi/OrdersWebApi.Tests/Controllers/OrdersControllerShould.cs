@@ -38,4 +38,21 @@ public class OrdersControllerShould
             "A Simple Street, 123", new Product[] { });
         _createOrderCommand.Received().Execute(expectedCreateOrderDto);
     }
+    
+
+    [Test]
+    public async Task PostAnOrderWithProductsSuccess()
+    {
+        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+
+        var createOrderRequest = new CreateOrderRequest("ORD123456","John Doe", "A Simple Street, 123", new Product[]
+        {
+            new ("Computer Monitor", 100)
+        });
+        await _ordersController.Post(createOrderRequest);
+
+        var expectedCreateOrderDto = new CreateOrderDto("ORD123456", new DateTime(2023, 04, 24), "John Doe",
+            "A Simple Street, 123", new Product[] { new ("Computer Monitor", 100) });
+        _createOrderCommand.Received().Execute(expectedCreateOrderDto);
+    }
 }

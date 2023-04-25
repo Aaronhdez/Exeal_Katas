@@ -27,4 +27,8 @@
       <ProjectReference Include="..\OrdersWebApi\OrdersWebApi.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Queries" />
+    </ItemGroup>
+
 </Project>
