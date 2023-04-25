@@ -1,4 +1,4 @@
-namespace OrdersWebApi;
+namespace OrdersWebApi.Model.Orders;
 
 #pragma warning disable CS8602
 public class Product

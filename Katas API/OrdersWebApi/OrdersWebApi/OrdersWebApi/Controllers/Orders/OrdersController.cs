@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using OrdersWebApi.Commands.Orders;
+using OrdersWebApi.Controllers.Orders.Dto;
+using OrdersWebApi.Controllers.Orders.Requests;
+
 #pragma warning disable CS8602
 
-namespace OrdersWebApi;
+namespace OrdersWebApi.Controllers.Orders;
 
 
 [ApiController]

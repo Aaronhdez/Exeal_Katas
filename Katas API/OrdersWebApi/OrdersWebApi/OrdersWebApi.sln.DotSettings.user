@@ -6,6 +6,7 @@
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithAProductsSuccess&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateAnOrderWithoutProducts&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateANewOrder&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateANewOrderWithProductList&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e5fc7589_002D1f28_002D4694_002Da331_002Dc59d3ece77bb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DisplayFeature #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

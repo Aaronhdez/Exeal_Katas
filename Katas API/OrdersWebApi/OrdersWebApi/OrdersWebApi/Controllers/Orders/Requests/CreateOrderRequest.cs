@@ -1,4 +1,6 @@
-namespace OrdersWebApi;
+using OrdersWebApi.Model.Orders;
+
+namespace OrdersWebApi.Controllers.Orders.Requests;
 
 #pragma warning disable CS8602
 public class CreateOrderRequest
