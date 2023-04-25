@@ -3,7 +3,7 @@ namespace OrdersWebApi.Model.Orders;
 
 public class Order
 {
-    private readonly string _id;
+    public readonly string Id;
     private readonly string _timestamp;
     private readonly string _customer;
     private readonly string _address;
@@ -11,7 +11,7 @@ public class Order
 
     public Order(string id, string timestamp, string customer, string address, Products products)
     {
-        _id = id;
+        Id = id;
         _timestamp = timestamp;
         _customer = customer;
         _address = address;
@@ -20,7 +20,7 @@ public class Order
 
     private bool Equals(Order other)
     {
-        return _id == other._id && _timestamp == other._timestamp && _customer == other._customer &&
+        return Id == other.Id && _timestamp == other._timestamp && _customer == other._customer &&
                _address == other._address && _products.Equals(other._products);
     }
 
@@ -34,6 +34,6 @@ public class Order
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(_id, _timestamp, _customer, _address, _products);
+        return HashCode.Combine(Id, _timestamp, _customer, _address, _products);
     }
 }

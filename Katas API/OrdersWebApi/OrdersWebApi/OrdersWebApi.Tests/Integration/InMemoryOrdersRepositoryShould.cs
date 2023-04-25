@@ -25,16 +25,3 @@ public class InMemoryOrdersRepositoryShould
         retrievedOrder.Should().Be(expectedOrder);
     }
 }
-
-public class InMemoryOrdersRepository : IOrderRepository
-{
-    public void Create(Order order)
-    {
-        
-    }
-
-    public Order GetById(string id)
-    {
-        return null;
-    }
-}
