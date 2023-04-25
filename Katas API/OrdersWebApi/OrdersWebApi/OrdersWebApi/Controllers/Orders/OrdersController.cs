@@ -29,4 +29,13 @@ public class OrdersController : ControllerBase
         _createOrderCommand.Execute(createOrderDto);
         return Task.CompletedTask;
     }
+
+    public ActionResult<OrderResponseDto> Get(string id)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class OrderResponseDto
+{
 }

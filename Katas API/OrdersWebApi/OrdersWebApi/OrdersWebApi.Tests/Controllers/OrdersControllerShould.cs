@@ -15,6 +15,7 @@ public class OrdersControllerShould
     private OrdersController? _ordersController;
     private IClock? _clock;
     private CreateOrderCommand? _createOrderCommand;
+    private GetOrderByIdQuery? _getOrderByIdQuery;
     private IOrderRepository _ordersRepository;
 
     [SetUp]
@@ -23,6 +24,7 @@ public class OrdersControllerShould
         _clock = Substitute.For<IClock>();
         _ordersRepository = Substitute.For<IOrderRepository>();
         _createOrderCommand = Substitute.For<CreateOrderCommand>(_ordersRepository);
+        _getOrderByIdQuery = Substitute.For<GetOrderByIdQuery>();
         _ordersController = new OrdersController(_clock, _createOrderCommand);
     }
 
@@ -31,7 +33,8 @@ public class OrdersControllerShould
     {
         _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
 
-        var createOrderRequest = new CreateOrderRequest("ORD123456","John Doe", "A Simple Street, 123", new Product[] { });
+        var createOrderRequest =
+            new CreateOrderRequest("ORD123456", "John Doe", "A Simple Street, 123", new Product[] { });
         await _ordersController.Post(createOrderRequest);
 
         var expectedCreateOrderDto = new CreateOrderDto("ORD123456", new DateTime(2023, 04, 24), "John Doe",
@@ -39,20 +42,37 @@ public class OrdersControllerShould
         _createOrderCommand.Received().Execute(expectedCreateOrderDto);
     }
     
-
     [Test]
     public async Task PostAnOrderWithProductsSuccess()
     {
         _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
 
-        var createOrderRequest = new CreateOrderRequest("ORD123456","John Doe", "A Simple Street, 123", new Product[]
+        var createOrderRequest = new CreateOrderRequest("ORD123456", "John Doe", "A Simple Street, 123", new Product[]
         {
-            new ("Computer Monitor", 100)
+            new("Computer Monitor", 100)
         });
         await _ordersController.Post(createOrderRequest);
 
         var expectedCreateOrderDto = new CreateOrderDto("ORD123456", new DateTime(2023, 04, 24), "John Doe",
-            "A Simple Street, 123", new Product[] { new ("Computer Monitor", 100) });
+            "A Simple Street, 123", new Product[] { new("Computer Monitor", 100) });
         _createOrderCommand.Received().Execute(expectedCreateOrderDto);
+    }
+
+    [Test]
+    public async Task GetAnOrderById()
+    {
+        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+
+        _ordersController.Get("ORD123456");
+        
+        _getOrderByIdQuery.Received().Execute("ORD123456");
+    }
+}
+
+public class GetOrderByIdQuery
+{
+    public void Execute(string orderId)
+    {
+        
     }
 }
