@@ -4,4 +4,5 @@ namespace OrdersWebApi.Model.Orders;
 public interface IOrderRepository
 {
     void Create(Order order);
+    Order GetById(string id);
 }
