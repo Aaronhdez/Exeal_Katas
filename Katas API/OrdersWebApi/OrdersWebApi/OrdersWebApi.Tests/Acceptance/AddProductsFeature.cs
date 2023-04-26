@@ -25,7 +25,7 @@ public class AddProductsFeature
                     "]" +
                     "}";
 
-        string newProducts = "{[" +
+        string newProducts = "{\"products\" : [" +
                              "{" +
                              "\"name\": \"Keyboard\"," +
                              "\"value\": 20" +
