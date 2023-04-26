@@ -66,7 +66,7 @@ public class OrdersControllerShould
     }
 
     [Test]
-    public async Task PutAnOrderWithANewProduct()
+    public async Task PutAnEmptyOrderWithANewProduct()
     {
         _ordersRepository.GetById("ORD123456").Returns(new Order(
             "ORD123456",
@@ -77,6 +77,28 @@ public class OrdersControllerShould
         _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
         var addProductsRequest = new AddProductsRequest(new Product[]
         {
+            new("Computer Monitor", 100)
+        });
+
+        await _ordersController.Put(_defaultOrderId, addProductsRequest);
+
+        var expectedAddProductsDto = new AddProductsDto(_defaultOrderId, addProductsRequest.Products);
+        _addProductsToOrderCommand.Received().Execute(expectedAddProductsDto);
+    }
+    
+    [Test]
+    public async Task PutAnEmptyOrderWithMultipleProducts()
+    {
+        _ordersRepository.GetById("ORD123456").Returns(new Order(
+            "ORD123456",
+            "24/04/2023",
+            "John Doe",
+            "A Simple Street, 123",
+            new Products(new List<Product>())));
+        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+        var addProductsRequest = new AddProductsRequest(new Product[]
+        {
+            new("Computer Monitor", 100),
             new("Computer Monitor", 100)
         });
 
