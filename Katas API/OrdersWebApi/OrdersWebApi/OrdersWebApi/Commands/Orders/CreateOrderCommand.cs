@@ -20,7 +20,7 @@ public class CreateOrderCommand
             createOrderDto.Timestamp.ToString("dd/MM/yyyy"),
             createOrderDto.Customer, 
             createOrderDto.Address, 
-            new Products(createOrderDto.Products));
+            new Products(createOrderDto.Products.ToList()));
         _orderRepository.Create(orderModel);
         return createOrderDto.Id;
     }

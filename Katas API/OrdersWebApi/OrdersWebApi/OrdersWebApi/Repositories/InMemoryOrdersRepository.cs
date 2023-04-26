@@ -20,4 +20,9 @@ public class InMemoryOrdersRepository : IOrderRepository
     {
         return _ordersList.Where(o => o.Id == id).ToList()[0];
     }
+
+    public void Update(Order orderModel)
+    {
+        
+    }
 }

@@ -2,16 +2,16 @@ namespace OrdersWebApi.Models.Orders;
 
 public class Products
 {
-    public Product[] ProductsList { get; }
+    public List<Product> ProductsList { get; }
 
-    public Products(Product[] products)
+    public Products(List<Product> products)
     {
         ProductsList = products;
     }
     
     private bool Equals(Products other)
     {
-        return !ProductsList.Where((t, i) => t.Equals(other.ProductsList[i])).Any();
+        return ProductsList.SequenceEqual(other.ProductsList);
     }
 
     public override bool Equals(object? obj)
@@ -25,5 +25,13 @@ public class Products
     public override int GetHashCode()
     {
         return ProductsList.GetHashCode();
+    }
+
+    public void Add(List<Product> newProducts)
+    {
+        foreach (var product in newProducts)
+        {
+            ProductsList.Add(product);
+        }
     }
 }

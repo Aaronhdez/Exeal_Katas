@@ -5,4 +5,5 @@ public interface IOrderRepository
 {
     void Create(Order order);
     Order GetById(string id);
+    void Update(Order orderModel);
 }

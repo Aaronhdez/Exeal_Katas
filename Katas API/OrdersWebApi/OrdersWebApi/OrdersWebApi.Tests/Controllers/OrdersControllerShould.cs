@@ -68,6 +68,12 @@ public class OrdersControllerShould
     [Test]
     public async Task PutAnOrderWithANewProduct()
     {
+        _ordersRepository.GetById("ORD123456").Returns(new Order(
+            "ORD123456",
+            "24/04/2023",
+            "John Doe",
+            "A Simple Street, 123",
+            new Products(new List<Product>())));
         _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
         var addProductsRequest = new AddProductsRequest(new Product[]
         {

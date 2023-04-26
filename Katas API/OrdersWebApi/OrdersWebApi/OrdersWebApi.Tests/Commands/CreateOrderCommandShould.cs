@@ -25,22 +25,22 @@ public class CreateOrderCommandShould
             "A Simple Street, 123", new Product[] { });
 
         var expectedOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(Array.Empty<Product>()));
+            new Products(new List<Product>()));
         var id = _createOrderCommand.Execute(givenCreateOrderDto);
 
-        _orderRepository.Received(1).Create(Arg.Is<Order>(o => o.Equals(expectedOrderModel)));
+        _orderRepository.Received(1).Create(expectedOrderModel);
     }
 
     [Test]
     public void CreateANewOrderWithProductList()
     {
         var givenCreateOrderDto = new CreateOrderDto("ORD123456", new DateTime(2023, 04, 24), "John Doe",
-            "A Simple Street, 123", new Product[] { });
+            "A Simple Street, 123", new Product[] { new("computerMonitor", 70) });
 
         var expectedOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products( new[] { new Product("computerMonitor", 70) }));
+            new Products( new List<Product> { new("computerMonitor", 70) }));
         var id = _createOrderCommand.Execute(givenCreateOrderDto);
 
-        _orderRepository.Received(1).Create(Arg.Is<Order>(o => o.Equals(expectedOrderModel)));
+        _orderRepository.Received(1).Create(expectedOrderModel);
     }
 }

@@ -36,4 +36,9 @@ public class Order
     {
         return HashCode.Combine(Id, Timestamp, Customer, Address, Products);
     }
+
+    public void AddProducts(List<Product> newProducts)
+    {
+        Products.Add(newProducts);
+    }
 }
