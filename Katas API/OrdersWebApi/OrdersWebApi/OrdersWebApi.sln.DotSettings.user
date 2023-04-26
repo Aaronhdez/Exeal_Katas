@@ -1,27 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=94109bde_002De8cc_002D4336_002Dbe96_002Df43433c22609/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DisplayFeature #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=58db5649_002D9d82_002D4d0e_002Db6f3_002Dd3f9dc8b1b6a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;OrdersWebApi.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi.Tests" Presentation="&amp;lt;OrdersWebApi.Tests&amp;gt;" /&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e5fc7589_002D1f28_002D4694_002Da331_002Dc59d3ece77bb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DisplayFeature #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Acceptance.DisplayFeature&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithoutProductsSuccess&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithAProductsSuccess&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateAnOrderWithoutProducts&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateANewOrder&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ea206088_002D62fa_002D478b_002D8ee4_002Dc0342d2c748e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DisplayFeature" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Acceptance.DisplayFeature&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6993bd3_002D3bc4_002D44c1_002Dbcd3_002D207340b19370/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DisplayFeature #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Acceptance.DisplayFeature&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithoutProductsSuccess&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Controllers.OrdersControllerShould.PostAnOrderWithAProductsSuccess&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateAnOrderWithoutProducts&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::B340C0F1-BE29-40CB-B3A5-B6AF4DD58855::net7.0::OrdersWebApi.Tests.Commands.CreateOrderCommandShould.CreateANewOrder&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

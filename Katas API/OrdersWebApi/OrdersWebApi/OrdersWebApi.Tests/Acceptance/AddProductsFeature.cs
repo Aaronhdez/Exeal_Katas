@@ -41,7 +41,7 @@ public class AddProductsFeature
         postResponse.EnsureSuccessStatusCode();
         var getResponse = await client.GetAsync("/Orders/ORD123456");
         getResponse.EnsureSuccessStatusCode();
-        var putResponse = await client.PostAsync("/Orders/ORD123456/Products",
+        var putResponse = await client.PutAsync("/Orders/ORD123456/Products",
             new StringContent(newProducts, Encoding.Default, "application/json"));
         putResponse.EnsureSuccessStatusCode();
         getResponse = await client.GetAsync("/Orders/ORD123456");

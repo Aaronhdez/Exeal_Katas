@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
 builder.Services.AddScoped<CreateOrderCommand>();
+builder.Services.AddScoped<AddProductsToOrderCommand>();
 builder.Services.AddScoped<GetOrderByIdQuery>();
 
 

@@ -17,7 +17,8 @@ public class OrdersController : ControllerBase
     private readonly CreateOrderCommand _createOrderCommand;
     private readonly GetOrderByIdQuery _getOrderByIdQuery;
 
-    public OrdersController(IClock clock, CreateOrderCommand createOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
+    public OrdersController(IClock clock, CreateOrderCommand createOrderCommand,
+        AddProductsToOrderCommand addProductsToOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
     {
         _createOrderCommand = createOrderCommand;
         _getOrderByIdQuery = getOrderByIdQuery;
@@ -31,6 +32,13 @@ public class OrdersController : ControllerBase
             createOrderRequest.Products);
         _createOrderCommand.Execute(createOrderDto);
         return Task.CompletedTask;
+    }
+    
+    [HttpPut("{id}/Products")]
+    public Task Put(string id, AddProductsRequest addProductsRequest)
+    {
+        var addProductsDto = new AddProductsDto(id, addProductsRequest.Products);
+        return null;
     }
 
     [HttpGet("{id}")]
