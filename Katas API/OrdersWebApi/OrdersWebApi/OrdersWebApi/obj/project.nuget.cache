@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "vLcfkNdyth79pbNA2+tJ15rAa+j7ZEklRVHQNIudIXRyivqiZALobkIyc5dt9HG3lqP35rzEE591XXoW73/R2g==",
+  "dgSpecHash": "d8l6hrmkNcTMjoPuRN6+CjJV9VcuZxfqsYpH4HPR92s1M6+2inqpjnOcDD5eyZUnhMdPcOH9ciT+M/qdLViXow==",
   "success": true,
   "projectFilePath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",

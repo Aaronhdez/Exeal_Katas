@@ -1,7 +1,6 @@
-using OrdersWebApi.Controllers.Orders;
-using OrdersWebApi.Models.Orders;
+using OrdersWebApi.Orders.Controllers.Responses;
 
-namespace OrdersWebApi.Queries;
+namespace OrdersWebApi.Orders.Queries;
 
 public class GetOrderByIdQuery
 {

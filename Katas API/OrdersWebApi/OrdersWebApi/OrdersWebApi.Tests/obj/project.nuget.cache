@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "k+XnOUuP99uaNitufTGfZnTQ7jARu67YChaEBser/4oFEwa5hGfHlFqjtpIHo3hwWv00oLgyKov609uSstH+cA==",
+  "dgSpecHash": "0GKzva3hJjqkCy7ISYXc+TgigGxYri2GpTAPkS29GrrLwDDlt+Q5Q5te5nTA+bcvNUHBtLKwgYB7fJiICUy8bw==",
   "success": true,
   "projectFilePath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.Tests\\OrdersWebApi.Tests.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,8 @@
     "C:\\Users\\aahernandez\\.nuget\\packages\\emptyfiles\\4.4.0\\emptyfiles.4.4.0.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\fluentassertions\\6.11.0\\fluentassertions.6.11.0.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
+    "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.aspnetcore.mvc.testing\\7.0.5\\microsoft.aspnetcore.mvc.testing.7.0.5.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\microsoft.aspnetcore.testhost\\7.0.5\\microsoft.aspnetcore.testhost.7.0.5.nupkg.sha512",

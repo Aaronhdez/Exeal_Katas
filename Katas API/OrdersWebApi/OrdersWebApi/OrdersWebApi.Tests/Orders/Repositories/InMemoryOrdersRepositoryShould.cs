@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using OrdersWebApi.Models.Orders;
-using OrdersWebApi.Repositories;
+using OrdersWebApi.Orders;
+using OrdersWebApi.Orders.Repositories;
 
-namespace OrdersWebApi.Tests.Integration;
+namespace OrdersWebApi.Tests.Orders.Repositories;
 
 public class InMemoryOrdersRepositoryShould 
 {

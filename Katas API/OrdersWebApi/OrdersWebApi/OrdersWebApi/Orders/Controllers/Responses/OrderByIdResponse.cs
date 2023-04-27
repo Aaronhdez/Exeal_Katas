@@ -1,6 +1,4 @@
-using OrdersWebApi.Models.Orders;
-
-namespace OrdersWebApi.Controllers.Orders;
+namespace OrdersWebApi.Orders.Controllers.Responses;
 
 #pragma warning disable CS8602
 public class OrderResponse

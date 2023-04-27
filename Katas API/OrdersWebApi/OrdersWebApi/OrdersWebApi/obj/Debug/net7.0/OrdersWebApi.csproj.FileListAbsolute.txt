@@ -31,3 +31,5 @@ C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\O
 C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi\obj\Debug\net7.0\OrdersWebApi.pdb
 C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi\obj\Debug\net7.0\OrdersWebApi.genruntimeconfig.cache
 C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi\obj\Debug\net7.0\ref\OrdersWebApi.dll
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi\bin\Debug\net7.0\MediatR.dll
+C:\Users\aahernandez\source\repos_formacion\Exeal_Katas\Katas API\OrdersWebApi\OrdersWebApi\OrdersWebApi\bin\Debug\net7.0\MediatR.Contracts.dll

@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using OrdersWebApi.Models.Orders;
-using OrdersWebApi.Queries;
+using OrdersWebApi.Orders;
+using OrdersWebApi.Orders.Queries;
 
-namespace OrdersWebApi.Tests.Queries;
+namespace OrdersWebApi.Tests.Orders.Queries;
 
 public class GetOrderByIdShould
 {

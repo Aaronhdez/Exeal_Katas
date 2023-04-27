@@ -1,4 +1,4 @@
-namespace OrdersWebApi.Models.Orders;
+namespace OrdersWebApi.Orders;
 
 public class Products
 {

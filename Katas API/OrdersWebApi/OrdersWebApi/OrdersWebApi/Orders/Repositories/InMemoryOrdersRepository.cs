@@ -1,6 +1,4 @@
-using OrdersWebApi.Models.Orders;
-
-namespace OrdersWebApi.Repositories;
+namespace OrdersWebApi.Orders.Repositories;
 
 public class InMemoryOrdersRepository : IOrderRepository
 {
@@ -11,9 +9,10 @@ public class InMemoryOrdersRepository : IOrderRepository
         _ordersList = new List<Order>();
     }
     
-    public void Create(Order order)
+    public Task Create(Order order)
     {
         _ordersList.Add(order);
+        return Task.CompletedTask;
     }
 
     public Order GetById(string id)
@@ -21,8 +20,8 @@ public class InMemoryOrdersRepository : IOrderRepository
         return _ordersList.Where(o => o.Id == id).ToList()[0];
     }
 
-    public void Update(Order orderModel)
-    {
-        
+    public Task Update(Order orderModel)
+    {   
+        return Task.CompletedTask;
     }
 }
