@@ -22,7 +22,7 @@ public class CreateOrderCommandHandlerShould
     }
 
     [Test]
-    public async Task CreateANewOrderWithoutProductsSuccess()
+    public async Task CreateANewOrderWithoutProducts()
     {
         var createOrderCommand = new CreateOrderCommand(
             "ORD123456", new CreateOrderDto("John Doe", "A Simple Street, 123", new Product[] { }));
@@ -36,7 +36,7 @@ public class CreateOrderCommandHandlerShould
     }
 
     [Test]
-    public async Task CreateANewOrderWithProductListSuccess()
+    public async Task CreateANewOrderWithProductList()
     {
         var createOrderCommand = new CreateOrderCommand("ORD123456", new CreateOrderDto("John Doe",
             "A Simple Street, 123", new Product[] { new("computerMonitor", 70) }));
