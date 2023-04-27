@@ -1,22 +1,18 @@
-﻿using OrdersWebApi.Controllers.Orders.Dto;
-using OrdersWebApi.Models.Orders;
+﻿using MediatR;
+using OrdersWebApi.Orders.Commands.Dto;
 
-namespace OrdersWebApi.Commands.Orders;
+namespace OrdersWebApi.Orders.Commands;
 
 #pragma warning disable CS8602
-public class AddProductsToOrderCommand
-{
-    private readonly IOrderRepository _orderRepository;
 
-    public AddProductsToOrderCommand(IOrderRepository orderRepository)
+public class AddProductsToOrderCommand : IRequest
+{
+    public AddProductsToOrderCommand(AddProductsDto addProductsDto)
     {
-        _orderRepository = orderRepository;
+        Id = addProductsDto.Id;
+        Products = addProductsDto.Products.ToList();
     }
-    
-    public void Execute(AddProductsDto addProductsDto)
-    {
-        var order = _orderRepository.GetById(addProductsDto.Id);
-        order.AddProducts(addProductsDto.Products.ToList());
-        _orderRepository.Update(order);
-    }
+
+    public string Id { get; }
+    public List<Product> Products { get; }
 }

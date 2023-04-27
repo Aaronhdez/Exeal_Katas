@@ -1,6 +1,4 @@
-﻿using OrdersWebApi.Models.Orders;
-
-namespace OrdersWebApi.Controllers.Orders.Dto;
+﻿namespace OrdersWebApi.Orders.Commands.Dto;
 
 #pragma warning disable CS8602
 public class AddProductsDto

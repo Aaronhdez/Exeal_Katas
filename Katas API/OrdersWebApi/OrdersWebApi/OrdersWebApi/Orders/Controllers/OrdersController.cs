@@ -31,11 +31,9 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPut("{id}/Products")]
-    public Task Put(string id, AddProductsRequest addProductsRequest)
+    public async Task Put(string id, AddProductsRequest request)
     {
-        var addProductsDto = new AddProductsDto(id, addProductsRequest.Products);
-        _addProductsToOrderCommand.Execute(addProductsDto);
-        return Task.CompletedTask;
+        await _sender.Send(new AddProductsToOrderCommand(new AddProductsDto(id, request.Products)));
     }
 
     [HttpGet("{id}")]
