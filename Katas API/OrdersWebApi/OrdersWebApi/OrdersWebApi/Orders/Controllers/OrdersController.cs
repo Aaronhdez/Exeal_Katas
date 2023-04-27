@@ -1,7 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Orders.Commands;
-using OrdersWebApi.Orders.Commands.Dto;
+using OrdersWebApi.Orders.Commands.AddProductsToOrder;
+using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Orders.Controllers.Responses;
 using OrdersWebApi.Orders.Queries;

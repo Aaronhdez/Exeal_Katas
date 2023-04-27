@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace OrdersWebApi.Orders.Commands;
+namespace OrdersWebApi.Orders.Commands.CreateOrder;
 
 #pragma warning disable CS8602
 public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>

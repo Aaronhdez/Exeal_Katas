@@ -1,9 +1,8 @@
 ﻿using NSubstitute;
 using OrdersWebApi.Orders;
-using OrdersWebApi.Orders.Commands;
-using OrdersWebApi.Orders.Commands.Dto;
+using OrdersWebApi.Orders.Commands.CreateOrder;
 
-namespace OrdersWebApi.Tests.Orders.Commands;
+namespace OrdersWebApi.Tests.Orders.CommandHandlers;
 
 public class CreateOrderCommandHandlerShould
 {

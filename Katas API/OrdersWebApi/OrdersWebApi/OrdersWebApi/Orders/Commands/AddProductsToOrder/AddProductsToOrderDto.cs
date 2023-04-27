@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Orders.Commands.Dto;
+﻿namespace OrdersWebApi.Orders.Commands.AddProductsToOrder;
 
 #pragma warning disable CS8602
 public class AddProductsDto
