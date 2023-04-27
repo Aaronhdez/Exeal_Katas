@@ -27,4 +27,14 @@
       <ProjectReference Include="..\OrdersWebApi\OrdersWebApi.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Orders" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Acceptance\AddProductsFeature.AddProductsToAnOrder.verified.txt">
+        <DependentUpon>AddProductsToOrderFeature.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
 </Project>

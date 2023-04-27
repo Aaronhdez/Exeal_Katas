@@ -4,7 +4,7 @@ using NSubstitute;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
-public class AddProductsFeature
+public class AddProductsToOrderFeature
 {
     [Test]
     public async Task AddProductsToAnOrder()
