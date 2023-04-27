@@ -1,27 +1,18 @@
-using OrdersWebApi.Controllers.Orders.Dto;
-using OrdersWebApi.Models.Orders;
+using MediatR;
+using OrdersWebApi.Orders.Commands.Dto;
 
-namespace OrdersWebApi.Commands.Orders;
+namespace OrdersWebApi.Orders.Commands;
 
 #pragma warning disable CS8602
-public class CreateOrderCommand
+
+public class CreateOrderCommand : IRequest
 {
-    private readonly IOrderRepository _orderRepository;
+    public CreateOrderDto OrderData { get; }
+    public string Id { get; }
 
-    public CreateOrderCommand(IOrderRepository orderRepository)
+    public CreateOrderCommand(string id, CreateOrderDto orderData)
     {
-        _orderRepository = orderRepository;
-    }
-
-    public string Execute(CreateOrderDto createOrderDto)
-    {
-        var orderModel = new Order(
-            createOrderDto.Id,
-            createOrderDto.Timestamp.ToString("dd/MM/yyyy"),
-            createOrderDto.Customer, 
-            createOrderDto.Address, 
-            new Products(createOrderDto.Products.ToList()));
-        _orderRepository.Create(orderModel);
-        return createOrderDto.Id;
+        OrderData = orderData;
+        Id = id;
     }
 }

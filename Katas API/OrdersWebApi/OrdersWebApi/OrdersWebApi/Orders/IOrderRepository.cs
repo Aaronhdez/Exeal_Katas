@@ -1,9 +1,9 @@
-namespace OrdersWebApi.Models.Orders;
+namespace OrdersWebApi.Orders;
 
 #pragma warning disable CS8602
 public interface IOrderRepository
 {
-    void Create(Order order);
+    Task Create(Order order);
     Order GetById(string id);
     void Update(Order orderModel);
 }

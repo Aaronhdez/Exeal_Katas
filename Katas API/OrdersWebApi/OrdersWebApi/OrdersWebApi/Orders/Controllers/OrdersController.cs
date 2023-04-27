@@ -1,42 +1,33 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OrdersWebApi.Commands.Orders;
-using OrdersWebApi.Controllers.Orders.Dto;
-using OrdersWebApi.Controllers.Orders.Requests;
-using OrdersWebApi.Queries;
+using OrdersWebApi.Orders.Commands;
+using OrdersWebApi.Orders.Commands.Dto;
+using OrdersWebApi.Orders.Controllers.Requests;
+using OrdersWebApi.Orders.Controllers.Responses;
+using OrdersWebApi.Orders.Queries;
 
 #pragma warning disable CS8602
 
-namespace OrdersWebApi.Controllers.Orders;
+namespace OrdersWebApi.Orders.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class OrdersController : ControllerBase
 {
-    private readonly IClock _clock;
-    private readonly CreateOrderCommand _createOrderCommand;
-    private readonly AddProductsToOrderCommand _addProductsToOrderCommand;
     private readonly GetOrderByIdQuery _getOrderByIdQuery;
+    private readonly ISender _sender;
 
-    public OrdersController(IClock clock, CreateOrderCommand createOrderCommand,
-        AddProductsToOrderCommand addProductsToOrderCommand, GetOrderByIdQuery getOrderByIdQuery)
+    public OrdersController(GetOrderByIdQuery getOrderByIdQuery, ISender sender)
     {
-        _createOrderCommand = createOrderCommand;
-        _addProductsToOrderCommand = addProductsToOrderCommand;
         _getOrderByIdQuery = getOrderByIdQuery;
-        _clock = clock;
+        _sender = sender;
     }
 
     [HttpPost]
-    public Task Post(CreateOrderRequest createOrderRequest)
+    public async Task Post(CreateOrderRequest request)
     {
-        var createOrderDto = new CreateOrderDto(
-            createOrderRequest.Id,
-            _clock.Timestamp(),
-            createOrderRequest.Customer,
-            createOrderRequest.Address,
-            createOrderRequest.Products);
-        _createOrderCommand.Execute(createOrderDto);
-        return Task.CompletedTask;
+        await _sender.Send(new CreateOrderCommand(request.Id, new CreateOrderDto(request.Customer,
+            request.Address, request.Products)));
     }
 
     [HttpPut("{id}/Products")]

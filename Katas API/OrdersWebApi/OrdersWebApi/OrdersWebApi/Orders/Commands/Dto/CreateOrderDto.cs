@@ -1,16 +1,14 @@
-namespace OrdersWebApi.Orders.Controllers.Requests;
+namespace OrdersWebApi.Orders.Commands.Dto;
 
 #pragma warning disable CS8602
-public class CreateOrderRequest
+public class CreateOrderDto
 {
-    public string Id { get; }
     public string Customer { get; }
     public string Address { get; }
     public Product[] Products { get; }
 
-    public CreateOrderRequest(string id, string customer, string address, Product[] products)
+    public CreateOrderDto(string customer, string address, Product[] products)
     {
-        Id = id;
         Customer = customer;
         Address = address;
         Products = products;
