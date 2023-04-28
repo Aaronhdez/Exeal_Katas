@@ -15,13 +15,16 @@ public class InMemoryOrdersRepository : IOrderRepository
         return Task.CompletedTask;
     }
 
-    public Order GetById(string id)
+    public Task<Order> GetById(string id)
     {
-        return _ordersList.Where(o => o.Id == id).ToList()[0];
+        return Task.FromResult(_ordersList.Where(o => o.Id == id).ToList()[0]);
     }
 
     public Task Update(Order orderModel)
-    {   
+    {
+        var currentOrder = _ordersList.First(o => o.Id == orderModel.Id);
+        _ordersList.Remove(currentOrder);
+        _ordersList.Add(orderModel);
         return Task.CompletedTask;
     }
 }

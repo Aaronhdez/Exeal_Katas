@@ -40,7 +40,7 @@ public class InMemoryOrdersRepositoryShould
             }));
         
         _inMemoryOrdersRepository.Create(expectedOrder);
-        _inMemoryOrdersRepository.Update(expectedOrder);
+        _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
         
         var retrievedOrder = _inMemoryOrdersRepository.GetById("ORD123456").Result;
         retrievedOrder.Should().Be(expectedUpdatedOrder);
