@@ -4,7 +4,7 @@ public class Products
 {
     public List<Product> ProductsList { get; }
 
-    public Products(List<Product> products)
+    public Products(List<Product>? products)
     {
         ProductsList = products;
     }

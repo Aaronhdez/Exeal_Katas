@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2vXnJoXcjFkiVfYAXyLwChwyOBUkriGMuuOp2SQDtoAC5QY1BCIlOlOiViYskAJQVbs2Fl7UPVvFSa4LrBnN9g==",
+  "dgSpecHash": "AcBhGNvHFGiuLVHtQVv8OIFxBR0oOFTAvoNhv8h3mKSoD2pss8iX31HI3NAJV82d0HY1spKdYSVjCn5UkygMZw==",
   "success": true,
   "projectFilePath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\aahernandez\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\aahernandez\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

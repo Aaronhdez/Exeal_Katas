@@ -15,9 +15,9 @@ public class InMemoryOrdersRepository : IOrderRepository
         return Task.CompletedTask;
     }
 
-    public Task<Order> GetById(string id)
+    public Task<Order> GetById(string orderId)
     {
-        return Task.FromResult(_ordersList.Where(o => o.Id == id).ToList()[0]);
+        return Task.FromResult(_ordersList.Where(o => o.Id == orderId).ToList()[0]);
     }
 
     public Task Update(Order orderModel)

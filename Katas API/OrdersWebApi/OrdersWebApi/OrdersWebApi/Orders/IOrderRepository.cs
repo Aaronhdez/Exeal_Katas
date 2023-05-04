@@ -4,6 +4,6 @@ namespace OrdersWebApi.Orders;
 public interface IOrderRepository
 {
     Task Create(Order order);
-    Task<Order> GetById(string id);
+    Task<Order> GetById(string orderId);
     Task Update(Order orderModel);
 }
