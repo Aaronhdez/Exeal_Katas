@@ -71,11 +71,10 @@ public class SQLiteOrdersRepository : IOrderRepository
 
     public Task Create(Order order)
     {
-        //return _connection.ExecuteAsync(
-        //    $"INSERT INTO " +
-        //    $"Orders(ID, CreationDate, Customer, Address) " +
-        //    $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
-        throw new NotImplementedException();
+        return _connection.ExecuteAsync(
+            $"INSERT INTO " +
+            $"Orders(ID, CreationDate, Customer, Address) " +
+            $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
     }
 
     public Task<Order> GetById(string id)
