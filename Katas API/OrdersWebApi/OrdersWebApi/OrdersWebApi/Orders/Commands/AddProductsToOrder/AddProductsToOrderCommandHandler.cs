@@ -14,7 +14,7 @@ public class AddProductsToOrderCommandHandler : IRequestHandler<AddProductsToOrd
 
     public Task Handle(AddProductsToOrderCommand request, CancellationToken cancellationToken)
     {
-        var order = _orderRepository.GetById(request.Id);
+        var order = _orderRepository.GetById(request.Id).Result;
         order.AddProducts(request.Products);
         return _orderRepository.Update(order);
     }

@@ -1,3 +1,4 @@
+using MediatR;
 using OrdersWebApi;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Queries;
@@ -16,8 +17,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(OrdersWebApi.Program).Assembly));
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
-builder.Services.AddScoped<GetOrderByIdQuery>();
-
 
 var app = builder.Build();
 

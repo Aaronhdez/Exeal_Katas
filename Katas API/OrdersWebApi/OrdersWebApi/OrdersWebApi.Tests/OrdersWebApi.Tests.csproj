@@ -35,6 +35,10 @@
       <None Update="Acceptance\AddProductsFeature.AddProductsToAnOrder.verified.txt">
         <DependentUpon>AddProductsToOrderFeature.cs</DependentUpon>
       </None>
+      <None Update="Acceptance\DisplayFeature.DisplayBasicInformationOfAnOrder.received.txt">
+        <ParentFile>DisplayFeature</ParentFile>
+        <DependentUpon>DisplayFeature.cs</DependentUpon>
+      </None>
     </ItemGroup>
 
 </Project>

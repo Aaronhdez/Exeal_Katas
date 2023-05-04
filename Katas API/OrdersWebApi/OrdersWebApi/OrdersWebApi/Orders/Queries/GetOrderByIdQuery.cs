@@ -1,25 +1,13 @@
-using OrdersWebApi.Orders.Controllers.Responses;
+using MediatR;
 
 namespace OrdersWebApi.Orders.Queries;
 
-public class GetOrderByIdQuery
+public class GetOrderByIdQuery : IRequest<Order>
 {
-    private readonly IOrderRepository _ordersRepository;
+    public string OrderId { get; }
 
-    public GetOrderByIdQuery(IOrderRepository ordersRepository)
+    public GetOrderByIdQuery(string orderId)
     {
-        _ordersRepository = ordersRepository;
-    }
-    public OrderResponse Execute(string orderId)
-    {
-        var order = _ordersRepository.GetById(orderId);
-        return new OrderResponse
-        {
-            Id = order.Id,
-            CreationDate = order.Timestamp,
-            Address = order.Address,
-            Customer = order.Customer,
-            Products = order.Products
-        };
+        OrderId = orderId;
     }
 }

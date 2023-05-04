@@ -3,16 +3,16 @@ namespace OrdersWebApi.Orders;
 
 public class Order
 {
-    public readonly string Id;
-    public readonly string Timestamp;
-    public readonly string Customer;
-    public readonly string Address;
-    public readonly Products Products;
+    public string Id { get; }
+    public string CreationDate { get; }
+    public string Customer { get; }
+    public string Address { get; }
+    public Products Products { get; }
 
-    public Order(string id, string timestamp, string customer, string address, Products products)
+    public Order(string id, string creationDate, string customer, string address, Products products)
     {
         Id = id;
-        Timestamp = timestamp;
+        CreationDate = creationDate;
         Customer = customer;
         Address = address;
         Products = products;
@@ -20,7 +20,7 @@ public class Order
 
     private bool Equals(Order other)
     {
-        return Id == other.Id && Timestamp == other.Timestamp && Customer == other.Customer &&
+        return Id == other.Id && CreationDate == other.CreationDate && Customer == other.Customer &&
                Address == other.Address && Products.Equals(other.Products);
     }
 
@@ -34,7 +34,7 @@ public class Order
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Id, Timestamp, Customer, Address, Products);
+        return HashCode.Combine(Id, CreationDate, Customer, Address, Products);
     }
 
     public void AddProducts(List<Product> newProducts)

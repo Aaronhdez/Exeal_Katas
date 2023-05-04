@@ -1,10 +1,9 @@
+using System.Text.Json;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using OrdersWebApi.Orders.Commands;
 using OrdersWebApi.Orders.Commands.AddProductsToOrder;
 using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
-using OrdersWebApi.Orders.Controllers.Responses;
 using OrdersWebApi.Orders.Queries;
 
 #pragma warning disable CS8602
@@ -15,12 +14,10 @@ namespace OrdersWebApi.Orders.Controllers;
 [Route("[controller]")]
 public class OrdersController : ControllerBase
 {
-    private readonly GetOrderByIdQuery _getOrderByIdQuery;
     private readonly ISender _sender;
 
-    public OrdersController(GetOrderByIdQuery getOrderByIdQuery, ISender sender)
+    public OrdersController(ISender sender)
     {
-        _getOrderByIdQuery = getOrderByIdQuery;
         _sender = sender;
     }
 
@@ -38,8 +35,8 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<OrderResponse> Get(string id)
+    public Task<Order> Get(string id)
     {
-        return _getOrderByIdQuery.Execute(id);
+        return _sender.Send(new GetOrderByIdQuery(id));
     }
 }
