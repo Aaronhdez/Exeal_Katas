@@ -19,26 +19,10 @@ public class SQLiteOrdersRepositoryShould
             new Products(new List<Product>()));
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _sqLiteConnection.Open();
-        await _sqLiteConnection.ExecuteAsync(
-            @"Create Table if not exists Orders(
-                ID VARCHAR(100) UNIQUE,
-                CreationDate VARCHAR(100) NOT NULL,
-                Customer VARCHAR(100) NOT NULL,
-                Address VARCHAR(100) NOT NULL)");
-        
-        await _sqLiteConnection.ExecuteAsync(
-            @"Create Table if not exists Products(
-                ID VARCHAR(100) UNIQUE,
-                Name VARCHAR(100) NOT NULL,
-                Value INTEGER NOT NULL)");
-        
-        await _sqLiteConnection.ExecuteAsync(
-            @"Create Table if not exists OrdersProducts(
-                OrderID VARCHAR(100) NOT NULL,
-                ProductID VARCHAR(100) NOT NULL)");
+        await LoadDatabaseInstance();
         _sqLiteOrdersRepository = new SQLiteOrdersRepository(_sqLiteConnection);
     }
-
+    
     [TearDown]
     public void Teardown()
     {
@@ -73,7 +57,7 @@ public class SQLiteOrdersRepositoryShould
         _order.Products = new Products(new List<Product> { product });
         GivenAnOrderInDB(_order);
         GivenAProductInDB(product);
-        GivenAProductAssignedToAnOrderInDB(product.Id, _order.Id);
+        GivenAProductAssignedToAnOrderInDB("PROD000001", _order.Id);
         
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
         
@@ -103,4 +87,26 @@ public class SQLiteOrdersRepositoryShould
             $"Orders(ID, CreationDate, Customer, Address) " +
             $"VALUES('{expectedOrder.Id}','{expectedOrder.CreationDate}','{expectedOrder.Customer}','{expectedOrder.Address}')");
     }
+
+    private async Task LoadDatabaseInstance()
+    {
+        await _sqLiteConnection.ExecuteAsync(
+            @"Create Table if not exists Orders(
+                ID VARCHAR(100) UNIQUE,
+                CreationDate VARCHAR(100) NOT NULL,
+                Customer VARCHAR(100) NOT NULL,
+                Address VARCHAR(100) NOT NULL)");
+
+        await _sqLiteConnection.ExecuteAsync(
+            @"Create Table if not exists Products(
+                ID VARCHAR(100) UNIQUE,
+                Name VARCHAR(100) NOT NULL,
+                Value INTEGER NOT NULL)");
+
+        await _sqLiteConnection.ExecuteAsync(
+            @"Create Table if not exists OrdersProducts(
+                OrderID VARCHAR(100) NOT NULL,
+                ProductID VARCHAR(100) NOT NULL)");
+    }
+
 }
