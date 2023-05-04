@@ -80,7 +80,9 @@ public class SQLiteOrdersRepository : IOrderRepository
 
     public Task<Order> GetById(string id)
     {
-        throw new NotImplementedException();
+         var queryResult = _connection.QueryFirstOrDefaultAsync<dynamic?>($"SELECT * FROM Orders WHERE ID = '{id}'").Result;
+         var retrievedOrder = new Order(queryResult.ID, queryResult.CreationDate, queryResult.Customer, queryResult.Address, new Products(new List<Product>()));
+         return Task.FromResult(retrievedOrder);
     }
 
     public Task Update(Order orderModel)

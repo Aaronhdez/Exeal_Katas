@@ -9,7 +9,7 @@ public class Order
     public string Address { get; }
     public Products Products { get; }
 
-    public Order(string id, string creationDate, string customer, string address, Products products)
+    public Order(string id, string creationDate, string customer, string address, Products? products = null)
     {
         Id = id;
         CreationDate = creationDate;
