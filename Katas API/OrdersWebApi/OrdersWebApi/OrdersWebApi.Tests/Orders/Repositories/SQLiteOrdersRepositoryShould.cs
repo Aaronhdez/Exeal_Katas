@@ -10,10 +10,13 @@ public class SQLiteOrdersRepositoryShould
 {
     private SQLiteOrdersRepository _sqLiteOrdersRepository;
     private SQLiteConnection _sqLiteConnection;
+    private Order _order;
 
     [SetUp]
     public async Task SetUp()
     {
+        _order = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
+            new Products(new List<Product>()));
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _sqLiteConnection.Open();
         await _sqLiteConnection.ExecuteAsync(
@@ -46,41 +49,35 @@ public class SQLiteOrdersRepositoryShould
     [Test]
     public void RetrieveAnOrderWithoutProductsWhileRequested()
     {
-        var order = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(new List<Product>()));
-        GivenAnOrderInDB(order);
+        GivenAnOrderInDB(_order);
 
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
 
-        retrievedOrder.Should().Be(order);
+        retrievedOrder.Should().Be(_order);
     }
 
 
     [Test]
     public void InsertNewOrderWithoutProductsWhileRequested()
     {
-        var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(new List<Product>()));
-
-        _sqLiteOrdersRepository.Create(expectedOrder);
+        _sqLiteOrdersRepository.Create(_order);
 
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
-        retrievedOrder.Should().Be(expectedOrder);
+        retrievedOrder.Should().Be(_order);
     }
 
     [Test]
     public void RetrieveAnListOfProductsForAnOrderWhileRequested()
     {
         var product = new Product("PROD000001","Computer", 750);
-        var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(new List<Product>{ product }));
-        GivenAnOrderInDB(expectedOrder);
+        _order.Products = new Products(new List<Product> { product });
+        GivenAnOrderInDB(_order);
         GivenAProductInDB(product);
-        GivenAProductAssignedToAnOrderInDB(product.Id, expectedOrder.Id);
+        GivenAProductAssignedToAnOrderInDB(product.Id, _order.Id);
         
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
         
-        retrievedOrder.Should().Be(expectedOrder);
+        retrievedOrder.Should().Be(_order);
     }
 
     private void GivenAProductAssignedToAnOrderInDB(string productId, string expectedOrderId)

@@ -7,7 +7,7 @@ public class Order
     public string CreationDate { get; }
     public string Customer { get; }
     public string Address { get; }
-    public Products Products { get; }
+    public Products Products { get; set; }
 
     public Order(string id, string creationDate, string customer, string address, Products products)
     {
