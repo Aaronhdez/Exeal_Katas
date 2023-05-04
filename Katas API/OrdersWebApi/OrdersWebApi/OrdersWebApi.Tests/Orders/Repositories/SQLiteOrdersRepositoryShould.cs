@@ -47,17 +47,17 @@ public class SQLiteOrdersRepositoryShould
     }
     
 
-    //[Test]
-    //public void InsertNewOrderWithoutProductsWhileRequested()
-    //{
-    //    var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-    //        new Products(new List<Product>()));
-    //
-    //    _inMemoryOrdersRepository.Create(expectedOrder);
-    //
-    //    var retrievedOrder = _inMemoryOrdersRepository.GetById("ORD123456").Result;
-    //    retrievedOrder.Should().Be(expectedOrder);
-    //}
+    [Test]
+    public void InsertNewOrderWithoutProductsWhileRequested()
+    {
+        var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
+            new Products(new List<Product>()));
+    
+        _inMemoryOrdersRepository.Create(expectedOrder);
+    
+        var retrievedOrder = _inMemoryOrdersRepository.GetById("ORD123456").Result;
+        retrievedOrder.Should().Be(expectedOrder);
+    }
 }
 
 public class SQLiteOrdersRepository : IOrderRepository
