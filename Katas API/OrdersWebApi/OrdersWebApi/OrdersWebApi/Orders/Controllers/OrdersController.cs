@@ -1,4 +1,3 @@
-using System.Text.Json;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Orders.Commands.AddProductsToOrder;

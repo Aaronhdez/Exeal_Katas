@@ -32,16 +32,13 @@ public class SQLiteProductsRepositoryShould
     [Test]
     public void RetrieveAProductWhileRequested()
     {
-        _sqLiteConnection.ExecuteAsync(
-            $"INSERT INTO " +
-            $"Products(ID, [Name], [Value]) " +
-            $"VALUES('{_product.Id}', '{_product.Name}','{_product.Value}')");
+        GivenAProductInDB();
 
         var retrievedOrder = _sqLiteProductsRepository.GetById(_product.Id).Result;
 
         retrievedOrder.Should().Be(_product);
     }
-    
+
     [Test]
     public void InsertNewProductWhileRequested()
     {
@@ -51,6 +48,14 @@ public class SQLiteProductsRepositoryShould
         
         retrievedOrder.Should().Be(_product);
     }
+
+    private void GivenAProductInDB()
+    {
+        _sqLiteConnection.ExecuteAsync(
+            $"INSERT INTO " +
+            $"Products(ID, [Name], [Value]) " +
+            $"VALUES('{_product.Id}', '{_product.Name}','{_product.Value}')");
+    }
     
     private async Task LoadDatabaseInstance()
     {
@@ -59,28 +64,5 @@ public class SQLiteProductsRepositoryShould
                 ID VARCHAR(100) UNIQUE,
                 Name VARCHAR(100) NOT NULL,
                 Value INTEGER NOT NULL)");
-    }
-}
-
-public class SQLiteProductsRepository
-{
-    private readonly SQLiteConnection _connection;
-
-    public SQLiteProductsRepository(SQLiteConnection connection)
-    {
-        _connection = connection;
-    }
-
-    public Task<Product> GetById(string productId)
-    {
-        return _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
-    }
-
-    public Task Create(Product product)
-    {
-        return _connection.ExecuteAsync(
-            $"INSERT INTO " +
-            $"Products(ID, Name, Value) " +
-            $"VALUES('{product.Id}','{product.Name}',{product.Value})");
     }
 }
