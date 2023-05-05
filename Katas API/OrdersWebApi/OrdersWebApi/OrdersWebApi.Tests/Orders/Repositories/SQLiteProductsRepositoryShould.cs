@@ -63,6 +63,6 @@ public class SQLiteProductsRepository
 
     public Task<Product> GetById(string productId)
     {
-        throw new NotImplementedException();
+        return _sqLiteConnection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }   
 }
