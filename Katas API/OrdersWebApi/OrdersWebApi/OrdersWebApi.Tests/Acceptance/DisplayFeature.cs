@@ -19,6 +19,7 @@ public class DisplayFeature
                                     "\"address\": \"A Simple Address, 123\","+
                                     "\"products\": ["+
                                     "{"+
+                                        "\"id\": \"PROD000001\","+
                                         "\"name\": \"Computer Monitor\","+
                                         "\"value\": 100"+
                                     "}"+
@@ -28,7 +29,6 @@ public class DisplayFeature
         var postResponse = await client.PostAsync("/Orders", new StringContent(jsonstring, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
         var getResponse = await client.GetAsync("/Orders/ORD123456");
-        //Content Vacío Aquí
         getResponse.EnsureSuccessStatusCode();
         
         var content = await getResponse.Content.ReadAsStringAsync();
