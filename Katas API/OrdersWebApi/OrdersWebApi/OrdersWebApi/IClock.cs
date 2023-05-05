@@ -1,6 +1,5 @@
 namespace OrdersWebApi;
 
-public interface IClock
-{
+public interface IClock {
     DateTime Timestamp();
 }

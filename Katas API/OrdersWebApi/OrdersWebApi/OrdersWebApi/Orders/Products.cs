@@ -1,37 +1,28 @@
 namespace OrdersWebApi.Orders;
 
-public class Products
-{
-    public List<Product> ProductsList { get; }
-
-    public Products(List<Product>? products)
-    {
+public class Products {
+    public Products(List<Product>? products) {
         ProductsList = products;
     }
-    
-    private bool Equals(Products other)
-    {
+
+    public List<Product> ProductsList { get; }
+
+    private bool Equals(Products other) {
         return ProductsList.SequenceEqual(other.ProductsList);
     }
 
-    public override bool Equals(object? obj)
-    {
+    public override bool Equals(object? obj) {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((Products)obj);
     }
 
-    public override int GetHashCode()
-    {
+    public override int GetHashCode() {
         return ProductsList.GetHashCode();
     }
 
-    public void Add(List<Product> newProducts)
-    {
-        foreach (var product in newProducts)
-        {
-            ProductsList.Add(product);
-        }
+    public void Add(List<Product> newProducts) {
+        foreach (var product in newProducts) ProductsList.Add(product);
     }
 }

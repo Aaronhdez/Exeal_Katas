@@ -4,11 +4,9 @@ using NSubstitute;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
-public class AddProductsToOrderFeature
-{
+public class AddProductsToOrderFeature {
     [Test]
-    public async Task AddProductsToAnOrder()
-    {
+    public async Task AddProductsToAnOrder() {
         var clock = Substitute.For<IClock>();
         clock.Timestamp().Returns(new DateTime(2023, 04, 24));
         var ordersApi = new OrdersApi(clock);
@@ -26,20 +24,21 @@ public class AddProductsToOrderFeature
                     "]" +
                     "}";
 
-        string newProducts = "{\"products\" : [" +
-                             "{" +
-                             "\"id\": \"PROD000002\"," +
-                             "\"name\": \"Keyboard\"," +
-                             "\"value\": 20" +
-                             "}," +
-                             "{" +
-                             "\"id\": \"PROD000003\"," +
-                             "\"name\": \"Mouse\"," +
-                             "\"value\": 15" +
-                             "}" +
-                             "]}";
+        var newProducts = "{\"products\" : [" +
+                          "{" +
+                          "\"id\": \"PROD000002\"," +
+                          "\"name\": \"Keyboard\"," +
+                          "\"value\": 20" +
+                          "}," +
+                          "{" +
+                          "\"id\": \"PROD000003\"," +
+                          "\"name\": \"Mouse\"," +
+                          "\"value\": 15" +
+                          "}" +
+                          "]}";
 
-        var postResponse = await client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+        var postResponse =
+            await client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
         var getResponse = await client.GetAsync("/Orders/ORD123456");
         getResponse.EnsureSuccessStatusCode();
@@ -52,6 +51,6 @@ public class AddProductsToOrderFeature
         var content = await getResponse.Content.ReadAsStringAsync();
         var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
 
-        await Verifier.Verify(json);
+        await Verify(json);
     }
 }

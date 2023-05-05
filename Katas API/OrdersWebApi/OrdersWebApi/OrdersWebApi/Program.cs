@@ -16,16 +16,17 @@ builder.Services.AddSwaggerGen();
 
 CreateDatabase();
 
-builder.Services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(typeof(OrdersWebApi.Program).Assembly));
+builder.Services.AddMediatR(configuration =>
+    configuration.RegisterServicesFromAssembly(typeof(OrdersWebApi.Program).Assembly));
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddScoped(_ => new SQLiteConnection("Data Source=./OrdersApi.db"));
-builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
+builder.Services.AddTransient<IOrderRepository, SQLiteOrdersRepository>();
+builder.Services.AddTransient<IProductsRepository, SQLiteProductsRepository>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -35,8 +36,7 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
-void CreateDatabase()
-{
+void CreateDatabase() {
     var sqLiteConnection = new SQLiteConnection("Data Source=./OrdersApi.db");
     sqLiteConnection.ExecuteAsync(
         @"Create Table if not exists Orders(
@@ -55,13 +55,11 @@ void CreateDatabase()
         @"Create Table if not exists OrdersProducts(
                 OrderID VARCHAR(100) NOT NULL,
                 ProductID VARCHAR(100) NOT NULL)");
+
     sqLiteConnection.Close();
     sqLiteConnection.Dispose();
 }
 
-namespace OrdersWebApi
-{
-    public partial class Program
-    {
-    }
+namespace OrdersWebApi {
+    public class Program { }
 }

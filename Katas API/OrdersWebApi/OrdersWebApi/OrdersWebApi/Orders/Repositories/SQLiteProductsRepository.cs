@@ -3,25 +3,21 @@ using Dapper;
 
 namespace OrdersWebApi.Orders.Repositories;
 
-public class SQLiteProductsRepository : IProductsRepository
-{
+public class SQLiteProductsRepository : IProductsRepository {
     private readonly SQLiteConnection _connection;
 
-    public SQLiteProductsRepository(SQLiteConnection connection)
-    {
+    public SQLiteProductsRepository(SQLiteConnection connection) {
         _connection = connection;
     }
 
-    public Task<Product> GetById(string productId)
-    {
+    public Task<Product> GetById(string productId) {
         return _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 
-    public Task Create(Product product)
-    {
+    public Task Create(Product product) {
         return _connection.ExecuteAsync(
-            $"INSERT INTO " +
-            $"Products(ID, Name, Value) " +
+            "INSERT INTO " +
+            "Products(ID, Name, Value) " +
             $"VALUES('{product.Id}','{product.Name}',{product.Value})");
     }
 }

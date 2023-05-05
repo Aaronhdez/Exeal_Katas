@@ -12,13 +12,18 @@ public class SQLiteOrdersRepository : IOrderRepository {
 
     public Task Create(Order order) {
         return _connection.ExecuteAsync(
-            $"INSERT INTO " +
-            $"Orders(ID, CreationDate, Customer, Address) " +
+            "INSERT INTO " +
+            "Orders(ID, CreationDate, Customer, Address) " +
             $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
     }
 
     public Task<Order> GetById(string orderId) {
         return Task.FromResult(RetrievedOrder(OrderFound(orderId), ProductsAssociated(orderId)));
+    }
+
+    public Task Update(Order updatedOrder) {
+        UpdateOrderData(updatedOrder);
+        return UpdateProducts(updatedOrder);
     }
 
     private dynamic? OrderFound(string orderId) {
@@ -28,15 +33,10 @@ public class SQLiteOrdersRepository : IOrderRepository {
 
     private List<Product?> ProductsAssociated(string orderId) {
         return _connection.QueryAsync<Product?>(
-                $"SELECT Products.Id as [id], Products.Name as name, Products.Value as [value] FROM Products " +
-                $"JOIN OrdersProducts ON Products.ID = OrdersProducts.ProductID " +
+                "SELECT Products.Id as [id], Products.Name as name, Products.Value as [value] FROM Products " +
+                "JOIN OrdersProducts ON Products.ID = OrdersProducts.ProductID " +
                 $"WHERE OrdersProducts.OrderID = '{orderId}'")
             .Result.ToList();
-    }
-
-    public Task Update(Order updatedOrder) {
-        UpdateOrderData(updatedOrder);
-        return UpdateProducts(updatedOrder);
     }
 
     private void UpdateOrderData(Order updatedOrder) {
@@ -49,9 +49,9 @@ public class SQLiteOrdersRepository : IOrderRepository {
         _connection.ExecuteAsync(
             $"DELETE FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'");
 
-        foreach (var product in updatedOrder.Products.ProductsList) {
-            _connection.ExecuteAsync($"INSERT INTO OrdersProducts(ProductID, OrderId) VALUES('{product.Id}', '{updatedOrder.Id}')");
-        }
+        foreach (var product in updatedOrder.Products.ProductsList)
+            _connection.ExecuteAsync(
+                $"INSERT INTO OrdersProducts(ProductID, OrderId) VALUES('{product.Id}', '{updatedOrder.Id}')");
         return _connection.ExecuteAsync($"Insert FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'");
     }
 

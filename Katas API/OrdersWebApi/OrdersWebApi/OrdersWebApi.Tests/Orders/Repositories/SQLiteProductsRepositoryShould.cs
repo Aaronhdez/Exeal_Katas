@@ -6,32 +6,28 @@ using OrdersWebApi.Orders.Repositories;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
-public class SQLiteProductsRepositoryShould
-{
-    private SQLiteProductsRepository _sqLiteProductsRepository;
-    private SQLiteConnection _sqLiteConnection;
+public class SQLiteProductsRepositoryShould {
     private Product _product;
+    private SQLiteConnection _sqLiteConnection;
+    private SQLiteProductsRepository _sqLiteProductsRepository;
 
     [SetUp]
-    public async Task SetUp()
-    {
+    public async Task SetUp() {
         _product = new Product("PROD000001", "Computer", 150);
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _sqLiteConnection.Open();
         await LoadDatabaseInstance();
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);
     }
-    
+
     [TearDown]
-    public void Teardown()
-    {
+    public void Teardown() {
         _sqLiteConnection.Close();
         _sqLiteConnection.Dispose();
     }
-    
+
     [Test]
-    public void RetrieveAProductWhileRequested()
-    {
+    public void RetrieveAProductWhileRequested() {
         GivenAProductInDB();
 
         var retrievedOrder = _sqLiteProductsRepository.GetById(_product.Id).Result;
@@ -40,25 +36,22 @@ public class SQLiteProductsRepositoryShould
     }
 
     [Test]
-    public void InsertNewProductWhileRequested()
-    {
+    public void InsertNewProductWhileRequested() {
         _sqLiteProductsRepository.Create(_product);
 
         var retrievedOrder = _sqLiteProductsRepository.GetById("PROD000001").Result;
-        
+
         retrievedOrder.Should().Be(_product);
     }
 
-    private void GivenAProductInDB()
-    {
+    private void GivenAProductInDB() {
         _sqLiteConnection.ExecuteAsync(
-            $"INSERT INTO " +
-            $"Products(ID, [Name], [Value]) " +
+            "INSERT INTO " +
+            "Products(ID, [Name], [Value]) " +
             $"VALUES('{_product.Id}', '{_product.Name}','{_product.Value}')");
     }
-    
-    private async Task LoadDatabaseInstance()
-    {
+
+    private async Task LoadDatabaseInstance() {
         await _sqLiteConnection.ExecuteAsync(
             @"Create Table if not exists Products(
                 ID VARCHAR(100) UNIQUE,

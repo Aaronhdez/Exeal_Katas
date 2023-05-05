@@ -1,7 +1,6 @@
 namespace OrdersWebApi.Orders;
 
-public interface IProductsRepository
-{
+public interface IProductsRepository {
     Task<Product> GetById(string productId);
     Task Create(Product product);
 }
