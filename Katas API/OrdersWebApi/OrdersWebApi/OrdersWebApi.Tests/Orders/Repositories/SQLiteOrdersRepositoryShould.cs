@@ -11,10 +11,12 @@ public class SQLiteOrdersRepositoryShould
     private SQLiteOrdersRepository _sqLiteOrdersRepository;
     private SQLiteConnection _sqLiteConnection;
     private Order _order;
+    private Product _defaultProduct;
 
     [SetUp]
     public async Task SetUp()
     {
+        _defaultProduct = new Product("PROD000001","Computer", 750);
         _order = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
             new Products(new List<Product>()));
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
@@ -53,14 +55,31 @@ public class SQLiteOrdersRepositoryShould
     [Test]
     public void RetrieveAnListOfProductsForAnOrderWhileRequested()
     {
-        var product = new Product("PROD000001","Computer", 750);
-        _order.Products = new Products(new List<Product> { product });
+        _order.Products = new Products(new List<Product> { _defaultProduct });
         GivenAnOrderInDB(_order);
-        GivenAProductInDB(product);
+        GivenAProductInDB(_defaultProduct);
         GivenAProductAssignedToAnOrderInDB("PROD000001", _order.Id);
         
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
         
+        retrievedOrder.Should().Be(_order);
+    }
+    
+    
+
+    [Test]
+    public void AddANewProductToAnExistentOrderWhileRequested()
+    {
+        var product = new Product("PROD000003","Computer_3", 750);
+        _order.Products = new Products(new List<Product> { _defaultProduct, product });
+        GivenAnOrderInDB(_order);
+        GivenAProductInDB(product);
+        GivenAProductInDB(_defaultProduct);
+        GivenAProductAssignedToAnOrderInDB("PROD000001", _order.Id);
+        
+        _sqLiteOrdersRepository.Update(_order);
+        
+        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
         retrievedOrder.Should().Be(_order);
     }
 
