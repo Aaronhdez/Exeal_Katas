@@ -30,7 +30,7 @@ public class SQLiteProductsRepositoryShould
     }
     
     [Test]
-    public void RetrieveAnOrderWithoutProductsWhileRequested()
+    public void RetrieveAProductWhileRequested()
     {
         _sqLiteConnection.ExecuteAsync(
             $"INSERT INTO " +
@@ -39,6 +39,15 @@ public class SQLiteProductsRepositoryShould
 
         var retrievedOrder = _sqLiteProductsRepository.GetById(_product.Id).Result;
 
+        retrievedOrder.Should().Be(_product);
+    }
+    
+    [Test]
+    public void InsertNewProductWhileRequested()
+    {
+        _sqLiteProductsRepository.Create(_product);
+
+        var retrievedOrder = _sqLiteProductsRepository.GetById("PROD000001").Result;
         retrievedOrder.Should().Be(_product);
     }
     
@@ -64,5 +73,10 @@ public class SQLiteProductsRepository
     public Task<Product> GetById(string productId)
     {
         return _sqLiteConnection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
-    }   
+    }
+
+    public void Create(Product product)
+    {
+        throw new NotImplementedException();
+    }
 }
