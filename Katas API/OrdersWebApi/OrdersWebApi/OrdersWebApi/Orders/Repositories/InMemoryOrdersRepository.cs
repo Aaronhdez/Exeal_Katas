@@ -20,11 +20,11 @@ public class InMemoryOrdersRepository : IOrderRepository
         return Task.FromResult(_ordersList.Where(o => o.Id == orderId).ToList()[0]);
     }
 
-    public Task Update(Order orderModel)
+    public Task Update(Order updatedOrder)
     {
-        var currentOrder = _ordersList.First(o => o.Id == orderModel.Id);
+        var currentOrder = _ordersList.First(o => o.Id == updatedOrder.Id);
         _ordersList.Remove(currentOrder);
-        _ordersList.Add(orderModel);
+        _ordersList.Add(updatedOrder);
         return Task.CompletedTask;
     }
 }

@@ -65,8 +65,6 @@ public class SQLiteOrdersRepositoryShould
         retrievedOrder.Should().Be(_order);
     }
     
-    
-
     [Test]
     public void AddANewProductToAnExistentOrderWhileRequested()
     {

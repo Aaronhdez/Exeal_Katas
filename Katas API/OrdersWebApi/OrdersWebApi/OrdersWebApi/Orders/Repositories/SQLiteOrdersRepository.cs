@@ -26,6 +26,22 @@ public class SQLiteOrdersRepository : IOrderRepository
         var productsAssociated = GetProductsAssociatedTo(orderId);
         return Task.FromResult(RetrievedOrder(orderQuery, productsAssociated));
     }
+    
+    public Task Update(Order updatedOrder)
+    {
+        //Obtener el Pedido
+        var orderQuery = GetOrderFrom(updatedOrder.Id);
+        var productsAssociated = GetProductsAssociatedTo(updatedOrder.Id);
+        var orderInDb = (Order) RetrievedOrder(orderQuery, productsAssociated);
+        orderInDb.Address = updatedOrder.Address;
+        orderInDb.Customer = updatedOrder.Customer;
+        orderInDb.Products = updatedOrder.Products;
+        _connection.ExecuteAsync($"DELETE FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'" );
+        foreach (var product in updatedOrder.Products.ProductsList) {
+            _connection.ExecuteAsync($"INSERT INTO OrdersProducts(ProductID, OrderId) VALUES('{product.Id}', '{updatedOrder.Id}')" );
+        }
+        return _connection.ExecuteAsync($"Insert FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'" );
+    }
 
     private dynamic? GetOrderFrom(string orderId)
     {
@@ -51,10 +67,5 @@ public class SQLiteOrdersRepository : IOrderRepository
             orderFound.Address,
             new Products(productsAssociated));
         return order;
-    }
-
-    public Task Update(Order orderModel)
-    {
-        throw new NotImplementedException();
     }
 }
