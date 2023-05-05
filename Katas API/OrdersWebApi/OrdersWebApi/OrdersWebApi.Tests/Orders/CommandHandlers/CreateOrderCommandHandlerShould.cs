@@ -38,12 +38,12 @@ public class CreateOrderCommandHandlerShould
     public async Task CreateANewOrderWithProductList()
     {
         var createOrderCommand = new CreateOrderCommand("ORD123456", new CreateOrderDto("John Doe",
-            "A Simple Street, 123", new Product[] { new("computerMonitor", 70) }));
+            "A Simple Street, 123", new Product[] { new("PROD000001","computerMonitor", 70) }));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
         var expectedOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(new List<Product> { new("computerMonitor", 70) }));
+            new Products(new List<Product> { new("PROD000001","computerMonitor", 70) }));
         
         _orderRepository.Received(1).Create(expectedOrderModel);
     }

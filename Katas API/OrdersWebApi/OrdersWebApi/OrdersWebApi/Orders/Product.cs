@@ -7,12 +7,6 @@ public class Product
     public string Name { get; }
     public long Value { get; }
 
-    public Product(string name, long value)
-    {
-        Name = name;
-        Value = value;
-    }
-
     public Product(string id, string name, long value)
     {
         Id = id;

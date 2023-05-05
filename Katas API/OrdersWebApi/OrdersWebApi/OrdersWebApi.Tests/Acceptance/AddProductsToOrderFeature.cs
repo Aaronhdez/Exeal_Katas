@@ -19,6 +19,7 @@ public class AddProductsToOrderFeature
                     "\"address\": \"A Simple Address, 123\"," +
                     "\"products\": [" +
                     "{" +
+                    "\"id\": \"PROD000001\"," +
                     "\"name\": \"Computer Monitor\"," +
                     "\"value\": 100" +
                     "}" +
@@ -27,17 +28,18 @@ public class AddProductsToOrderFeature
 
         string newProducts = "{\"products\" : [" +
                              "{" +
+                             "\"id\": \"PROD000002\"," +
                              "\"name\": \"Keyboard\"," +
                              "\"value\": 20" +
                              "}," +
                              "{" +
+                             "\"id\": \"PROD000003\"," +
                              "\"name\": \"Mouse\"," +
                              "\"value\": 15" +
                              "}" +
                              "]}";
 
-        var postResponse =
-            await client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+        var postResponse = await client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
         var getResponse = await client.GetAsync("/Orders/ORD123456");
         getResponse.EnsureSuccessStatusCode();
