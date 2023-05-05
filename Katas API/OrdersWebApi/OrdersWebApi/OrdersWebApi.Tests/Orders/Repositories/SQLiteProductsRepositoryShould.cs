@@ -48,6 +48,7 @@ public class SQLiteProductsRepositoryShould
         _sqLiteProductsRepository.Create(_product);
 
         var retrievedOrder = _sqLiteProductsRepository.GetById("PROD000001").Result;
+        
         retrievedOrder.Should().Be(_product);
     }
     
@@ -63,20 +64,23 @@ public class SQLiteProductsRepositoryShould
 
 public class SQLiteProductsRepository
 {
-    private readonly SQLiteConnection _sqLiteConnection;
+    private readonly SQLiteConnection _connection;
 
-    public SQLiteProductsRepository(SQLiteConnection sqLiteConnection)
+    public SQLiteProductsRepository(SQLiteConnection connection)
     {
-        _sqLiteConnection = sqLiteConnection;
+        _connection = connection;
     }
 
     public Task<Product> GetById(string productId)
     {
-        return _sqLiteConnection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
+        return _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 
-    public void Create(Product product)
+    public Task Create(Product product)
     {
-        throw new NotImplementedException();
+        return _connection.ExecuteAsync(
+            $"INSERT INTO " +
+            $"Products(ID, Name, Value) " +
+            $"VALUES('{product.Id}','{product.Name}',{product.Value})");
     }
 }
