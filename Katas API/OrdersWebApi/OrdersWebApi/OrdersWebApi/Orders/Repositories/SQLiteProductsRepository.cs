@@ -10,14 +10,14 @@ public class SQLiteProductsRepository : IProductsRepository {
         _connection = connection;
     }
 
-    public Task<Product> GetById(string productId) {
-        return _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
+    public Task<Item> GetById(string productId) {
+        return _connection.QueryFirstOrDefaultAsync<Item>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 
-    public Task Create(Product product) {
+    public Task Create(Item item) {
         return _connection.ExecuteAsync(
             "INSERT INTO " +
             "Products(ID, Name, Value) " +
-            $"VALUES('{product.Id}','{product.Name}',{product.Value})");
+            $"VALUES('{item.Id}','{item.Name}',{item.Value})");
     }
 }

@@ -7,14 +7,14 @@ using OrdersWebApi.Orders.Repositories;
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
 public class SQLiteProductsRepositoryShould {
-    private Product _product;
+    private Item _item;
     private SQLiteConnection _sqLiteConnection;
     private SQLiteProductsRepository _sqLiteProductsRepository;
     private TestDBLoader _testDBLoader;
 
     [SetUp]
     public async Task SetUp() {
-        _product = new Product("PROD000001", "Computer", 150);
+        _item = new Item("PROD000001", "Computer", 150);
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);
@@ -23,26 +23,27 @@ public class SQLiteProductsRepositoryShould {
     }
 
     [TearDown]
-    public void Teardown() {
+    public async Task Teardown() {
+        await _testDBLoader.ClearDatabase(_sqLiteConnection);
         _sqLiteConnection.Close();
         _sqLiteConnection.Dispose();
     }
 
     [Test]
     public void RetrieveAProductWhileRequested() {
-        _testDBLoader.GivenAProductInDb(_product);
+        _testDBLoader.GivenAProductInDb(_item);
 
-        var retrievedOrder = _sqLiteProductsRepository.GetById(_product.Id).Result;
+        var retrievedOrder = _sqLiteProductsRepository.GetById(_item.Id).Result;
 
-        retrievedOrder.Should().Be(_product);
+        retrievedOrder.Should().Be(_item);
     }
 
     [Test]
     public void InsertNewProductWhileRequested() {
-        _sqLiteProductsRepository.Create(_product);
+        _sqLiteProductsRepository.Create(_item);
 
         var retrievedOrder = _sqLiteProductsRepository.GetById("PROD000001").Result;
 
-        retrievedOrder.Should().Be(_product);
+        retrievedOrder.Should().Be(_item);
     }
 }

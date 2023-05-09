@@ -1,8 +1,8 @@
 namespace OrdersWebApi.Orders;
 
 #pragma warning disable CS8602
-public class Product {
-    public Product(string id, string name, long value) {
+public class Item {
+    public Item(string id, string name, long value) {
         Id = id;
         Name = name;
         Value = value;
@@ -12,7 +12,7 @@ public class Product {
     public string Name { get; }
     public long Value { get; }
 
-    private bool Equals(Product other) {
+    private bool Equals(Item other) {
         return Id == other.Id && Name == other.Name && Value == other.Value;
     }
 
@@ -20,7 +20,7 @@ public class Product {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != GetType()) return false;
-        return Equals((Product)obj);
+        return Equals((Item)obj);
     }
 
     public override int GetHashCode() {

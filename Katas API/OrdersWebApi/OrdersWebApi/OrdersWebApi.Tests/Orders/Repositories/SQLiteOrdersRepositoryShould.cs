@@ -6,7 +6,7 @@ using OrdersWebApi.Orders.Repositories;
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
 public class SQLiteOrdersRepositoryShould {
-    private Product _defaultProduct;
+    private Item _defaultItem;
     private Order _order;
     private SQLiteConnection _sqLiteConnection;
     private SQLiteOrdersRepository _sqLiteOrdersRepository;
@@ -14,9 +14,9 @@ public class SQLiteOrdersRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _defaultProduct = new Product("PROD000001", "Computer", 750);
+        _defaultItem = new Item("PROD000001", "Computer", 750);
         _order = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new Products(new List<Product>()));
+            new List<Item>());
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteOrdersRepository = new SQLiteOrdersRepository(_sqLiteConnection);
@@ -25,7 +25,9 @@ public class SQLiteOrdersRepositoryShould {
     }
 
     [TearDown]
-    public void Teardown() {
+    
+    public async Task Teardown() {
+        await _testDBLoader.ClearDatabase(_sqLiteConnection);
         _sqLiteConnection.Close();
         _sqLiteConnection.Dispose();
     }
@@ -50,9 +52,9 @@ public class SQLiteOrdersRepositoryShould {
 
     [Test]
     public void RetrieveAnListOfProductsForAnOrderWhileRequested() {
-        _order.Products = new Products(new List<Product> { _defaultProduct });
+        _order.Products = new List<Item> { _defaultItem };
         _testDBLoader.GivenAnOrderInDb(_order);
-        _testDBLoader.GivenAProductInDb(_defaultProduct);
+        _testDBLoader.GivenAProductInDb(_defaultItem);
         _testDBLoader.GivenAProductAssignedToAnOrderInDb("PROD000001", _order.Id);
 
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
@@ -62,11 +64,11 @@ public class SQLiteOrdersRepositoryShould {
 
     [Test]
     public void AddANewProductToAnExistentOrderWhileRequested() {
-        var product = new Product("PROD000003", "Computer_3", 750);
-        _order.Products = new Products(new List<Product> { _defaultProduct, product });
+        var product = new Item("PROD000003", "Computer_3", 750);
+        _order.Products = new List<Item> { _defaultItem, product };
         _testDBLoader.GivenAnOrderInDb(_order);
         _testDBLoader.GivenAProductInDb(product);
-        _testDBLoader.GivenAProductInDb(_defaultProduct);
+        _testDBLoader.GivenAProductInDb(_defaultItem);
         _testDBLoader.GivenAProductAssignedToAnOrderInDb("PROD000001", _order.Id);
 
         _sqLiteOrdersRepository.Update(_order);

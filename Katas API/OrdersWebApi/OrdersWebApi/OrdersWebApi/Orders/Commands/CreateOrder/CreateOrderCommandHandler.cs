@@ -18,6 +18,6 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand> {
             _clock.Timestamp().ToString("dd/MM/yyyy"),
             request.OrderData.Customer,
             request.OrderData.Address,
-            new Products(request.OrderData.Products.ToList())));
+            request.OrderData.Products.ToList()));
     }
 }

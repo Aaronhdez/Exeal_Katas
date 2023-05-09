@@ -11,6 +11,7 @@ public class SQLiteOrdersRepository : IOrderRepository {
     }
 
     public Task Create(Order order) {
+        UpdateProducts(order);
         return _connection.ExecuteAsync(
             "INSERT INTO " +
             "Orders(ID, CreationDate, Customer, Address) " +
@@ -31,8 +32,8 @@ public class SQLiteOrdersRepository : IOrderRepository {
             $"SELECT * FROM Orders WHERE ID = '{orderId}'").Result;
     }
 
-    private List<Product?> ProductsAssociated(string orderId) {
-        return _connection.QueryAsync<Product?>(
+    private List<Item?> ProductsAssociated(string orderId) {
+        return _connection.QueryAsync<Item?>(
                 "SELECT Products.Id as [id], Products.Name as name, Products.Value as [value] FROM Products " +
                 "JOIN OrdersProducts ON Products.ID = OrdersProducts.ProductID " +
                 $"WHERE OrdersProducts.OrderID = '{orderId}'")
@@ -41,22 +42,22 @@ public class SQLiteOrdersRepository : IOrderRepository {
 
     private void UpdateOrderData(Order updatedOrder) {
         _connection.ExecuteAsync(
-            $"UPDATE ORDERS SET (Address = '{updatedOrder.Address}', Customer = '{updatedOrder.Customer}') " +
-            $"WHERE OrderId = '{updatedOrder.Id}'");
+            $"UPDATE Orders SET Address = '{updatedOrder.Address}', Customer = '{updatedOrder.Customer}' " +
+            $"WHERE Id = '{updatedOrder.Id}'");
     }
 
     private Task UpdateProducts(Order updatedOrder) {
         _connection.ExecuteAsync(
             $"DELETE FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'");
 
-        foreach (var product in updatedOrder.Products.ProductsList)
+        foreach (var product in updatedOrder.Products)
             _connection.ExecuteAsync(
                 $"INSERT INTO OrdersProducts(ProductID, OrderId) VALUES('{product.Id}', '{updatedOrder.Id}')");
-        return _connection.ExecuteAsync($"Insert FROM OrdersProducts WHERE OrderId = '{updatedOrder.Id}'");
+        return Task.CompletedTask;
     }
 
-    private static Order RetrievedOrder(dynamic? orderFound, List<Product?> productsAssociated) {
+    private static Order RetrievedOrder(dynamic? orderFound, List<Item?> productsAssociated) {
         return new Order(orderFound.ID, orderFound.CreationDate, orderFound.Customer, orderFound.Address,
-            new Products(productsAssociated));
+            productsAssociated);
     }
 }
