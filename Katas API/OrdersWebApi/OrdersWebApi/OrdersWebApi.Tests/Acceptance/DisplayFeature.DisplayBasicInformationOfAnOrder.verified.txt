@@ -1,0 +1,13 @@
+﻿{
+  "id": "ORD123458",
+  "creationDate": "10/05/2023",
+  "customer": "John Doe",
+  "address": "A Simple Address, 123",
+  "products": [
+    {
+      "id": "PROD000001",
+      "name": "Computer Monitor",
+      "value": 100
+    }
+  ]
+}
