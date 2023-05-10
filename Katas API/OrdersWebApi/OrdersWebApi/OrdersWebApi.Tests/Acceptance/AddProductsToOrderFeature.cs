@@ -5,12 +5,20 @@ using NSubstitute;
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class AddProductsToOrderFeature {
+    private IClock? _clock;
+    private OrdersApi _ordersApi;
+    private HttpClient _client;
+
+    [SetUp]
+    public void SetUp() {
+        _clock = Substitute.For<IClock>();
+        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+        _ordersApi = new OrdersApi(_clock);
+        _client = _ordersApi.CreateClient();
+    }
+
     [Test]
     public async Task AddProductsToAnOrder() {
-        var clock = Substitute.For<IClock>();
-        clock.Timestamp().Returns(new DateTime(2023, 04, 24));
-        var ordersApi = new OrdersApi(clock);
-        var client = ordersApi.CreateClient();
         var order = "{" +
                     "\"id\": \"ORD123456\"," +
                     "\"customer\": \"John Doe\"," +
@@ -38,14 +46,14 @@ public class AddProductsToOrderFeature {
                           "]}";
 
         var postResponse =
-            await client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+            await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
-        var getResponse = await client.GetAsync("/Orders/ORD123456");
+        var getResponse = await _client.GetAsync("/Orders/ORD123456");
         getResponse.EnsureSuccessStatusCode();
-        var putResponse = await client.PutAsync("/Orders/ORD123456/Products",
+        var putResponse = await _client.PutAsync("/Orders/ORD123456/Products",
             new StringContent(newProducts, Encoding.Default, "application/json"));
         putResponse.EnsureSuccessStatusCode();
-        getResponse = await client.GetAsync("/Orders/ORD123456");
+        getResponse = await _client.GetAsync("/Orders/ORD123456");
         getResponse.EnsureSuccessStatusCode();
 
         var content = await getResponse.Content.ReadAsStringAsync();

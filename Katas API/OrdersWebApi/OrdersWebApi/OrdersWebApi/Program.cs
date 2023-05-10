@@ -14,6 +14,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+ResetDatabase();
 CreateDatabase();
 
 builder.Services.AddMediatR(configuration =>
@@ -55,11 +56,33 @@ void CreateDatabase() {
         @"Create Table if not exists OrdersProducts(
                 OrderID VARCHAR(100),
                 ProductID VARCHAR(100))");
+    
+    sqLiteConnection.ExecuteAsync(
+        "INSERT INTO " +
+        "Products(ID, Name, Value) " +
+        $"VALUES('PROD000001','Computer Monitor',100)");
+    sqLiteConnection.ExecuteAsync(
+        "INSERT INTO " +
+        "Products(ID, Name, Value) " +
+        $"VALUES('PROD000002','Keyboard',20)");
+    sqLiteConnection.ExecuteAsync(
+        "INSERT INTO " +
+        "Products(ID, Name, Value) " +
+        $"VALUES('PROD000003','Mouse',15)");
 
     sqLiteConnection.Close();
     sqLiteConnection.Dispose();
 }
 
+void ResetDatabase() {
+    var sqLiteConnection = new SQLiteConnection("Data Source=./Orders.db");
+    sqLiteConnection.ExecuteAsync("DELETE FROM Orders");
+    sqLiteConnection.ExecuteAsync("DELETE FROM Products");
+    sqLiteConnection.ExecuteAsync("DELETE FROM OrdersProducts");
+
+    sqLiteConnection.Close();
+    sqLiteConnection.Dispose();
+}
 namespace OrdersWebApi {
     public class Program { }
 }
