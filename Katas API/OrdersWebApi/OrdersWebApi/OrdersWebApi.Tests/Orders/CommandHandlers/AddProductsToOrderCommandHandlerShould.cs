@@ -13,7 +13,7 @@ public class AddProductsToOrderCommandHandlerShould {
     public void SetUp() {
         _orderRepository = Substitute.For<IOrderRepository>();
         _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository);
-        _givenOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",new List<Item>());
+        _givenOrderModel = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123", new List<Item>());
     }
 
     [Test]

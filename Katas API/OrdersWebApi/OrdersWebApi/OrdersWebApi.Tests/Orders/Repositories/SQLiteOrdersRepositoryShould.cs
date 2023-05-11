@@ -25,7 +25,6 @@ public class SQLiteOrdersRepositoryShould {
     }
 
     [TearDown]
-    
     public async Task Teardown() {
         await _testDBLoader.ClearDatabase(_sqLiteConnection);
         _sqLiteConnection.Close();
@@ -46,7 +45,7 @@ public class SQLiteOrdersRepositoryShould {
         _sqLiteOrdersRepository.Create(_order);
 
         var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
-        
+
         retrievedOrder.Should().Be(_order);
     }
 
@@ -72,8 +71,8 @@ public class SQLiteOrdersRepositoryShould {
         _testDBLoader.GivenAProductAssignedToAnOrderInDb("PROD000001", _order.Id);
 
         _sqLiteOrdersRepository.Update(_order);
-        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result; 
-        
+        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
+
         retrievedOrder.Should().Be(_order);
     }
 }

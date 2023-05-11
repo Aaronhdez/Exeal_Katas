@@ -1,13 +1,10 @@
-﻿using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Orders;
-using OrdersWebApi.Tests.Orders.Repositories;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class DisplayFeature {
-    private const string OrderId = "ORD123458";
     private IClock? _clock;
     private OrdersApi _ordersApi;
     private OrdersClient _ordersClient;
@@ -22,20 +19,20 @@ public class DisplayFeature {
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
-        var order = GivenAnOrderToBeCreated(OrderId);
-        
-        var createdOrder = await WhenUserRequestsToCreateIt(order, OrderId);
-        
+        var order = GivenAnOrderToBeCreated(TestDefaultValues.OrderId);
+
+        var createdOrder = await WhenUserRequestsToCreateIt(order, TestDefaultValues.OrderId);
+
         await ThenItIsCreatedProperly(createdOrder);
     }
 
     private static string GivenAnOrderToBeCreated(string orderId) {
         return JsonConvert.SerializeObject(new {
-            id = orderId,
-            customer = "John Doe",
-            address = "A Simple Address, 123",
-            products = new List<Item>() {
-                new("PROD000001", "Computer Monitor", 100),
+            id = TestDefaultValues.OrderId,
+            customer = TestDefaultValues.CustomerName,
+            address = TestDefaultValues.CustomerAddress,
+            products = new List<Item> {
+                TestDefaultValues.ComputerMonitor
             }
         });
     }

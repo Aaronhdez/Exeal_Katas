@@ -6,7 +6,7 @@ using OrdersWebApi.Orders;
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
 public class TestDBLoader {
-    private SQLiteConnection _sqLiteConnection;
+    private readonly SQLiteConnection _sqLiteConnection;
 
     public TestDBLoader(SQLiteConnection sqLiteConnection) {
         _sqLiteConnection = sqLiteConnection;
@@ -29,7 +29,7 @@ public class TestDBLoader {
 
     public async Task LoadDatabase(IDbConnection sqLiteConnection) {
         await sqLiteConnection.ExecuteAsync(
-            $@"Create Table if not exists Orders(
+            @"Create Table if not exists Orders(
                 ID VARCHAR(100),
                 CreationDate VARCHAR(100),
                 Customer VARCHAR(100),

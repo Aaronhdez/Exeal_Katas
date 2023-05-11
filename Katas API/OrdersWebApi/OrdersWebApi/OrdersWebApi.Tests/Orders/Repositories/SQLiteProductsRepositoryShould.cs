@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using Dapper;
 using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;

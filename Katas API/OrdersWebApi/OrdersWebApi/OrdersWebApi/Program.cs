@@ -56,19 +56,19 @@ void CreateDatabase() {
         @"Create Table if not exists OrdersProducts(
                 OrderID VARCHAR(100),
                 ProductID VARCHAR(100))");
-    
+
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        $"VALUES('PROD000001','Computer Monitor',100)");
+        "VALUES('PROD000001','Computer Monitor',100)");
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        $"VALUES('PROD000002','Keyboard',20)");
+        "VALUES('PROD000002','Keyboard',20)");
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        $"VALUES('PROD000003','Mouse',15)");
+        "VALUES('PROD000003','Mouse',15)");
 
     sqLiteConnection.Close();
     sqLiteConnection.Dispose();
@@ -83,6 +83,7 @@ void ResetDatabase() {
     sqLiteConnection.Close();
     sqLiteConnection.Dispose();
 }
+
 namespace OrdersWebApi {
     public class Program { }
 }

@@ -5,11 +5,10 @@ using OrdersWebApi.Orders;
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class AddProductsToOrderFeature {
-    private const string OrderId = "ORD123456";
     private IClock? _clock;
     private OrdersApi _ordersApi;
     private OrdersClient _ordersClient;
-    
+
     [SetUp]
     public void SetUp() {
         _clock = Substitute.For<IClock>();
@@ -21,28 +20,28 @@ public class AddProductsToOrderFeature {
     [Test]
     public async Task AddProductsToAnOrder() {
         await GivenAStoredOrder();
-        
-        var editedOrder = await WhenUserAddsANewProductsToIt(OrderId);
-        
+
+        var editedOrder = await WhenUserAddsANewProductsToIt(TestDefaultValues.OrderId);
+
         await ThenTheOrderItemsListIsUpdated(editedOrder);
     }
 
     private async Task GivenAStoredOrder() {
         var order = JsonConvert.SerializeObject(new {
-            id = OrderId,
-            customer = "John Doe",
-            address = "A Simple Address, 123",
-            products = new List<Item>() {
-                new("PROD000001", "Computer Monitor", 100),
+            id = TestDefaultValues.OrderId,
+            customer = TestDefaultValues.CustomerName,
+            address = TestDefaultValues.CustomerAddress,
+            products = new List<Item> {
+                TestDefaultValues.ComputerMonitor
             }
         });
         await _ordersClient.PostAnOrder(order);
     }
 
     private async Task<string> WhenUserAddsANewProductsToIt(string orderId) {
-        var addedItems = OrdersClient.GenerateAListOfProducts(new List<Item>() {
-            new("PROD000002", "Keyboard", 20),
-            new("PROD000003", "Mouse", 15),
+        var addedItems = OrdersClient.GenerateAListOfProducts(new List<Item> {
+            TestDefaultValues.Keyboard,
+            TestDefaultValues.Mouse
         });
         await _ordersClient.PutAnOrder(orderId, addedItems);
         var editedOrder = await _ordersClient.GetAnOrder(orderId);
