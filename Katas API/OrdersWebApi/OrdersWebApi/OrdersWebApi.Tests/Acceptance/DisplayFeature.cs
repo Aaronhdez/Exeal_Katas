@@ -19,14 +19,14 @@ public class DisplayFeature {
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
-        var order = GivenAnOrderToBeCreated(TestDefaultValues.OrderId);
+        var order = GivenAnOrderToBeCreated();
 
-        var createdOrder = await WhenUserRequestsToCreateIt(order, TestDefaultValues.OrderId);
+        var createdOrder = await WhenUserRequestsToCreateIt(order);
 
         await ThenItIsCreatedProperly(createdOrder);
     }
 
-    private static string GivenAnOrderToBeCreated(string orderId) {
+    private static string GivenAnOrderToBeCreated() {
         return JsonConvert.SerializeObject(new {
             id = TestDefaultValues.OrderId,
             customer = TestDefaultValues.CustomerName,
@@ -37,8 +37,8 @@ public class DisplayFeature {
         });
     }
 
-    private async Task<string> WhenUserRequestsToCreateIt(string order2, string orderId) {
-        await _ordersClient.PostAnOrder(order2);
+    private async Task<string> WhenUserRequestsToCreateIt(string order) {
+        var orderId = await _ordersClient.PostAnOrder(order);
         var createdOrder = await _ordersClient.GetAnOrder(orderId);
         return createdOrder;
     }

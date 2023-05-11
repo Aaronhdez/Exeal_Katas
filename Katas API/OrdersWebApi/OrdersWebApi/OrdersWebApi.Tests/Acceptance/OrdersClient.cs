@@ -31,9 +31,10 @@ public class OrdersClient {
         return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
     }
 
-    public async Task PostAnOrder(string order) {
-        var postResponse =
-            await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+    public async Task<string> PostAnOrder(string order) {
+        var postResponse = await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
+        var content = await postResponse.Content.ReadAsStringAsync();
+        return content;
     }
 }

@@ -19,9 +19,10 @@ public class OrdersController : ControllerBase {
     }
 
     [HttpPost]
-    public async Task Post(CreateOrderRequest request) {
+    public async Task<string> Post(CreateOrderRequest request) {
         await _sender.Send(new CreateOrderCommand(request.Id, new CreateOrderDto(request.Customer,
             request.Address, request.Products)));
+        return await Task.FromResult(request.Id);
     }
 
     [HttpPut("{id}/Products")]
