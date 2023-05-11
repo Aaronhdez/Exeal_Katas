@@ -2,7 +2,7 @@ using MediatR;
 
 namespace OrdersWebApi.Orders.Queries;
 
-public class GetOrderByIdQuery : IRequest<Order> {
+public class GetOrderByIdQuery : IRequest<ReadOrderDto> {
     public GetOrderByIdQuery(string orderId) {
         OrderId = orderId;
     }

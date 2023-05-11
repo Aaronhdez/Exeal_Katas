@@ -31,7 +31,7 @@ public class OrdersController : ControllerBase {
     }
 
     [HttpGet("{id}")]
-    public Task<Order> Get(string id) {
+    public Task<ReadOrderDto> Get(string id) {
         return _sender.Send(new GetOrderByIdQuery(id));
     }
 }
