@@ -23,8 +23,8 @@ public class GetBillByOrderIdQueryHandlerShould {
         var receivedBillResponse = await _handler.Handle(new GetBillByOrderIdQuery(TestDefaultValues.OrderId), default);
 
         var expectedBillResponse = new ReadBillDto {
-            Company = "Computer Stuff Inc.",
-            CompanyAddress = "A company Address",
+            Company = TestDefaultValues.CompanyName,
+            CompanyAddress = TestDefaultValues.CompanyAddress,
             Customer = TestDefaultValues.CustomerName,
             CustomerAddress = TestDefaultValues.CustomerAddress,
             Items = new List<BillRow> {

@@ -21,7 +21,7 @@ public class GettingABillOfAnOrderFeature {
     }
 
     [Test]
-    public async Task GetABillForAnOrderStoredInDb() {
+    public async Task GetABillForAnOrderStored() {
         var orderId = await GivenAStoredOrder();
     
         var bill = await WhenUserRequestsItsBill(orderId);

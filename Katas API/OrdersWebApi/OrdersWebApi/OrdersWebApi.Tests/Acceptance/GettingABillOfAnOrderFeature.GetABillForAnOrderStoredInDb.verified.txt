@@ -1,0 +1,21 @@
+﻿{
+  "company": "Computer Stuff Inc.",
+  "companyAddress": "A company Address",
+  "customer": "John Doe",
+  "customerAddress": "A Simple Address, 123",
+  "items": [
+    {
+      "concept": "2 x Computer Monitor",
+      "value": 200
+    },
+    {
+      "concept": "2 x Keyboard",
+      "value": 40
+    },
+    {
+      "concept": "1 x Mouse",
+      "value": 15
+    }
+  ],
+  "total": 255
+}
