@@ -13,7 +13,42 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
     }
     
     public Task<ReadBillDto> Handle(GetBillByOrderIdQuery request, CancellationToken cancellationToken) {
-        var id = request.Id;
-        return null;
+        //Recuperar el pedido
+        var order = _ordersRepository.GetById(request.Id).Result;
+        
+        //Recuperar los productos resumidos
+        var itemsAssociated = new Dictionary<Item,int>();
+        foreach (var item in order.Products) {
+            if (itemsAssociated.ContainsKey(item)) {
+                itemsAssociated[item] += 1;
+            }
+            else { 
+                itemsAssociated.Add(item,1);
+            }
+        }
+        //Crear el DTO
+        var bill = new ReadBillDto {
+            Company = "Computer Stuff Inc.",
+            CompanyAddress = "A company Address",
+            Customer = order.Customer,
+            CustomerAddress = order.Address,
+            Items = GetItemsAsList(itemsAssociated, out var total),
+            Total = total
+        };
+        return Task.FromResult(bill);
+    }
+
+    private IEnumerable<BillRow> GetItemsAsList(Dictionary<Item, int> itemsAssociated, out int total) {
+        var summarizedProducts = new List<BillRow>();
+        total = 0;
+        foreach (var item in itemsAssociated) {
+            var currentItemValue = item.Value * item.Key.Value;
+            summarizedProducts.Add(new BillRow {
+                Concept = item.Value + " x "+item.Key.Name+"",
+                Value = currentItemValue,
+            });
+            total += (int) currentItemValue;
+        }
+        return summarizedProducts;
     }
 }

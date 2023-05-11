@@ -17,12 +17,21 @@ public class GetBillByOrderIdQueryHandlerShould {
     }
 
     [Test]
-    public void RetrieveABillWithAnOrderId() {
+    public async Task RetrieveABillWithAnOrderId() {
         _ordersRepository.GetById(TestDefaultValues.OrderId).Returns(TestDefaultValues.AnOrder);
 
-        var receivedBillResponse = _handler.Handle(new GetBillByOrderIdQuery(TestDefaultValues.OrderId), default);
+        var receivedBillResponse = await _handler.Handle(new GetBillByOrderIdQuery(TestDefaultValues.OrderId), default);
 
-        var expectedBillResponse = new ReadBillDto { };
-        receivedBillResponse.Should().Be(expectedBillResponse);
+        var expectedBillResponse = new ReadBillDto {
+            Company = "Computer Stuff Inc.",
+            CompanyAddress = "A company Address",
+            Customer = TestDefaultValues.CustomerName,
+            CustomerAddress = TestDefaultValues.CustomerAddress,
+            Items = new List<BillRow> {
+                new() { Concept = "1 x Computer Monitor", Value = 100 }
+            },
+            Total = 100
+        };
+        receivedBillResponse.Should().BeEquivalentTo(expectedBillResponse);
     }
 }

@@ -17,7 +17,7 @@ public static class TestDefaultValues {
     public static readonly Item ComputerMonitor = new(ComputerMonitorId, ComputerMonitorName, ComputerMonitorValue);
 
     public const string KeyboardId = "PROD000002";
-    private const string KeyboardName = "Computer Monitor";
+    private const string KeyboardName = "Keyboard";
     private const int KeyboardValue = 20;
     public static readonly Item Keyboard = new(KeyboardId, KeyboardName, KeyboardValue);
 

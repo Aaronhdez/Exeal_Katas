@@ -26,7 +26,7 @@ public class GettingABillOfAnOrderFeature {
     
         var bill = await WhenUserRequestsItsBill(orderId);
     
-        ThenItIsRetrievedProperly(bill);
+        await ThenItIsRetrievedProperly(bill);
     }
     
     private async Task<string> GivenAStoredOrder() {
@@ -50,7 +50,7 @@ public class GettingABillOfAnOrderFeature {
         return bill;
     }
 
-    private static void ThenItIsRetrievedProperly(string bill) {
-        Verify(bill);
+    private async Task ThenItIsRetrievedProperly(string bill) {
+        await Verify(bill);
     }
 }

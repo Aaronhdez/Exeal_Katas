@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class BillsClient {
@@ -11,6 +13,7 @@ public class BillsClient {
         var getResponse = await _client.GetAsync($"/Bills/{orderId}");
         getResponse.EnsureSuccessStatusCode();
         var content = await getResponse.Content.ReadAsStringAsync();
-        return content;
+        var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
+        return json;
     }
 }
