@@ -2,7 +2,7 @@ using System.Text;
 using Newtonsoft.Json;
 using OrdersWebApi.Orders;
 
-namespace OrdersWebApi.Tests.Acceptance;
+namespace OrdersWebApi.Tests.Orders;
 
 public class OrdersClient {
     private readonly HttpClient _client;
@@ -19,7 +19,7 @@ public class OrdersClient {
     }
 
     public async Task PutAnOrder(string orderId, string addedItems) {
-        var putResponse = await _client.PutAsync($"/Orders/{orderId}/Products",
+        var putResponse = await _client.PutAsync($"/Orders/{orderId}",
             new StringContent(addedItems, Encoding.Default, "application/json"));
         putResponse.EnsureSuccessStatusCode();
     }
