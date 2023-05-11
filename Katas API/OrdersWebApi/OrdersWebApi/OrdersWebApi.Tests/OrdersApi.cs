@@ -4,9 +4,9 @@ using Microsoft.Extensions.Hosting;
 namespace OrdersWebApi.Tests;
 
 public class OrdersApi : WebApplicationFactory<Program> {
-    private readonly IClock _clock;
+    private readonly IClock? _clock;
 
-    public OrdersApi(IClock clock) {
+    public OrdersApi(IClock? clock) {
         _clock = clock;
     }
 

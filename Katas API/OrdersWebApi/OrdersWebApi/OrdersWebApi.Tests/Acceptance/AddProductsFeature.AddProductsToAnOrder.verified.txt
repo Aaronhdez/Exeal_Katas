@@ -1,8 +1,8 @@
 ﻿{
-  "id": "ORD123456",
+  "id": TestDefaultValues.OrderId,
   "creationDate": "27/04/2023",
-  "address": "A Simple Address, 123",
-  "customer": "John Doe",
+  "address": TestDefaultValues.CustomerAddress,
+  "customer": TestDefaultValues.CustomerName,
   "products": {
     "productsList": [
       {

@@ -6,8 +6,8 @@ namespace OrdersWebApi.Tests.Acceptance;
 
 public class AddProductsToOrderFeature {
     private IClock? _clock;
-    private OrdersApi _ordersApi;
-    private OrdersClient _ordersClient;
+    private OrdersApi? _ordersApi;
+    private OrdersClient? _ordersClient;
 
     [SetUp]
     public void SetUp() {

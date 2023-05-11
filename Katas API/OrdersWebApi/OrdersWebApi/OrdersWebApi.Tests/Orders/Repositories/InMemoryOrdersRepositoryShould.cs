@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Tests.Acceptance;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
@@ -14,30 +15,30 @@ public class InMemoryOrdersRepositoryShould {
 
     [Test]
     public void InsertNewOrderRegistryWhileRequested() {
-        var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new List<Item> { new("PROD000001", "computerMonitor", 70) });
+        var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
+            new List<Item> { TestDefaultValues.ComputerMonitor });
 
         _inMemoryOrdersRepository.Create(expectedOrder);
 
-        var retrievedOrder = _inMemoryOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _inMemoryOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
         retrievedOrder.Should().Be(expectedOrder);
     }
 
 
     [Test]
     public void UpdateAnOrderProductsListWhileRequested() {
-        var expectedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
-            new List<Item> { new("PROD000001", "computerMonitor", 70) });
-        var expectedUpdatedOrder = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
+        var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
+            new List<Item> { TestDefaultValues.ComputerMonitor });
+        var expectedUpdatedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
             new List<Item> {
-                new("PROD000001", "computerMonitor", 70),
-                new("PROD000001", "computerMonitor", 70)
+                TestDefaultValues.ComputerMonitor,
+                TestDefaultValues.ComputerMonitor
             });
 
         _inMemoryOrdersRepository.Create(expectedOrder);
         _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
 
-        var retrievedOrder = _inMemoryOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _inMemoryOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
         retrievedOrder.Should().Be(expectedUpdatedOrder);
     }
 }

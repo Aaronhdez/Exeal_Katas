@@ -2,6 +2,7 @@
 using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Tests.Acceptance;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
@@ -14,8 +15,8 @@ public class SQLiteOrdersRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _defaultItem = new Item("PROD000001", "Computer", 750);
-        _order = new Order("ORD123456", "24/04/2023", "John Doe", "A Simple Street, 123",
+        _defaultItem = TestDefaultValues.ComputerMonitor;
+        _order = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
             new List<Item>());
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
@@ -35,7 +36,7 @@ public class SQLiteOrdersRepositoryShould {
     public void RetrieveAnOrderWithoutProductsWhileRequested() {
         _testDBLoader.GivenAnOrderInDb(_order);
 
-        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }
@@ -44,7 +45,7 @@ public class SQLiteOrdersRepositoryShould {
     public void InsertNewOrderWithoutProductsWhileRequested() {
         _sqLiteOrdersRepository.Create(_order);
 
-        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }
@@ -54,24 +55,24 @@ public class SQLiteOrdersRepositoryShould {
         _order.Products = new List<Item> { _defaultItem };
         _testDBLoader.GivenAnOrderInDb(_order);
         _testDBLoader.GivenAProductInDb(_defaultItem);
-        _testDBLoader.GivenAProductAssignedToAnOrderInDb("PROD000001", _order.Id);
+        _testDBLoader.GivenAProductAssignedToAnOrderInDb(TestDefaultValues.ComputerMonitorId, _order.Id);
 
-        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }
 
     [Test]
     public void AddANewProductToAnExistentOrderWhileRequested() {
-        var product = new Item("PROD000003", "Computer_3", 750);
+        var product = TestDefaultValues.Keyboard;
         _order.Products = new List<Item> { _defaultItem, product };
         _testDBLoader.GivenAnOrderInDb(_order);
         _testDBLoader.GivenAProductInDb(product);
         _testDBLoader.GivenAProductInDb(_defaultItem);
-        _testDBLoader.GivenAProductAssignedToAnOrderInDb("PROD000001", _order.Id);
+        _testDBLoader.GivenAProductAssignedToAnOrderInDb(TestDefaultValues.ComputerMonitorId, _order.Id);
 
         _sqLiteOrdersRepository.Update(_order);
-        var retrievedOrder = _sqLiteOrdersRepository.GetById("ORD123456").Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }

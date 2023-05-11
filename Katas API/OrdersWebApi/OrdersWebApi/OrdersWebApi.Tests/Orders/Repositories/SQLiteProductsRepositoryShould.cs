@@ -2,6 +2,7 @@
 using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Tests.Acceptance;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
@@ -13,7 +14,7 @@ public class SQLiteProductsRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _item = new Item("PROD000001", "Computer", 150);
+        _item = TestDefaultValues.ComputerMonitor;
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);
@@ -41,7 +42,7 @@ public class SQLiteProductsRepositoryShould {
     public void InsertNewProductWhileRequested() {
         _sqLiteProductsRepository.Create(_item);
 
-        var retrievedOrder = _sqLiteProductsRepository.GetById("PROD000001").Result;
+        var retrievedOrder = _sqLiteProductsRepository.GetById(TestDefaultValues.ComputerMonitorId).Result;
 
         retrievedOrder.Should().Be(_item);
     }
