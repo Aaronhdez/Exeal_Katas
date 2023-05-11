@@ -15,7 +15,7 @@ public class CreateOrderCommandHandlerShould {
     public void SetUp() {
         _orderRepository = Substitute.For<IOrderRepository>();
         _clock = Substitute.For<IClock>();
-        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+        _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
         _createOrderCommandHandler = new CreateOrderCommandHandler(_orderRepository, _clock);
     }
 

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Tests.Orders;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -12,7 +13,7 @@ public class AddProductsToOrderFeature {
     [SetUp]
     public void SetUp() {
         _clock = Substitute.For<IClock>();
-        _clock.Timestamp().Returns(new DateTime(2023, 04, 24));
+        _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
         _ordersApi = new OrdersApi(_clock);
         _ordersClient = new OrdersClient(_ordersApi.CreateClient());
     }
