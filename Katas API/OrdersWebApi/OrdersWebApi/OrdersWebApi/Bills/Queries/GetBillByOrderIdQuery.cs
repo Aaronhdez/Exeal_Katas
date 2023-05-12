@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace OrdersWebApi.Bills;
+namespace OrdersWebApi.Bills.Queries;
 
 public class GetBillByOrderIdQuery : IRequest<ReadBillDto> {
     public string Id { get; }

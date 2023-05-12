@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using OrdersWebApi.Bills.Queries;
 
 namespace OrdersWebApi.Bills; 
 

@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using OrdersWebApi.Orders;
-using OrdersWebApi.Orders.Queries;
 
-namespace OrdersWebApi.Bills; 
+namespace OrdersWebApi.Bills.Queries; 
 
 public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuery, ReadBillDto> {
     

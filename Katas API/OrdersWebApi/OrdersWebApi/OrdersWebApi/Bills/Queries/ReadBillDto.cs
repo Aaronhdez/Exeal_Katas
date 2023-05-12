@@ -1,4 +1,4 @@
-namespace OrdersWebApi.Bills;
+namespace OrdersWebApi.Bills.Queries;
 
 public class ReadBillDto {
     public string Company { get; set; }

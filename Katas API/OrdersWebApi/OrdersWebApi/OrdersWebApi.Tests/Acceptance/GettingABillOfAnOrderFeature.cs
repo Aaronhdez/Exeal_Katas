@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Tests.Bills;
 using OrdersWebApi.Tests.Orders;
 
 namespace OrdersWebApi.Tests.Acceptance;

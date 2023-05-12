@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace OrdersWebApi.Tests.Acceptance;
+namespace OrdersWebApi.Tests.Bills;
 
 public class BillsClient {
     private readonly HttpClient _client;
