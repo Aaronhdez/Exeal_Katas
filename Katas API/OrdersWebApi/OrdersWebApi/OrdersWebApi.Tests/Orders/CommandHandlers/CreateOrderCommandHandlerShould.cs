@@ -22,26 +22,42 @@ public class CreateOrderCommandHandlerShould {
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
         var createOrderCommand = new CreateOrderCommand(
-            TestDefaultValues.OrderId, new CreateOrderDto(TestDefaultValues.CustomerName, "A Simple Street, 123", new Item[] { }));
+            TestDefaultValues.OrderId, 
+            new CreateOrderDto(
+                TestDefaultValues.CustomerName, 
+                TestDefaultValues.CustomerAddress, 
+                Array.Empty<Item>()));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
-        var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, "A Simple Street, 123",
+        var expectedOrderModel = new Order(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CreationDate, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress,
             new List<Item>());
 
-        _orderRepository.Received().Create(expectedOrderModel);
+        await _orderRepository.Received().Create(expectedOrderModel);
     }
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
-        var createOrderCommand = new CreateOrderCommand(TestDefaultValues.OrderId, new CreateOrderDto(TestDefaultValues.CustomerName,
-            "A Simple Street, 123", new Item[] { new(TestDefaultValues.ComputerMonitorId, "computerMonitor", 70) }));
+        var createOrderCommand = new CreateOrderCommand(
+            TestDefaultValues.OrderId, 
+            new CreateOrderDto(
+                TestDefaultValues.CustomerName,
+                TestDefaultValues.CustomerAddress, 
+                new[] { TestDefaultValues.ComputerMonitor }));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
-        var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, "A Simple Street, 123",
-            new List<Item> { new(TestDefaultValues.ComputerMonitorId, "computerMonitor", 70) });
+        var expectedOrderModel = new Order(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CreationDate, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress,
+            new List<Item> { TestDefaultValues.ComputerMonitor });
 
-        _orderRepository.Received(1).Create(expectedOrderModel);
+        await _orderRepository.Received(1).Create(expectedOrderModel);
     }
 }

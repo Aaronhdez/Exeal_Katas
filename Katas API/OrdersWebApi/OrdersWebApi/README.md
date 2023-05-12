@@ -65,3 +65,14 @@ Our API should be able to:
 >-  **]**
 >- **Total:** 335
 
+###ID Generation
+- Having any entity record data to be created
+- When the user requests to create it
+- That orders id generated as a Guid:
+>- **ID**: xxxx-xxx-xxxxx-xxxxxxx
+>- **Customer**: John Doe
+>- **Address**: A Simple Street, 123
+>- **Products: [**
+>  - { Name: Computer Monitor, Price: 100€ },
+>  - { Name: Keyboard, Price: 30€ }
+>-  **]**
