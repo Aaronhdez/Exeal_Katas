@@ -1,6 +1,7 @@
 using System.Data.SQLite;
 using Dapper;
 using OrdersWebApi;
+using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 

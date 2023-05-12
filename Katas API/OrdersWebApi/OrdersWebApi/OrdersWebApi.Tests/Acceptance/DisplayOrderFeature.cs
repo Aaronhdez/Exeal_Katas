@@ -1,11 +1,12 @@
 ﻿using Newtonsoft.Json;
 using NSubstitute;
+using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Tests.Orders;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
-public class DisplayFeature {
+public class DisplayOrderFeature {
     private IClock? _clock;
     private OrdersApi _ordersApi;
     private OrdersClient _ordersClient;

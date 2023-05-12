@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi;
+﻿namespace OrdersWebApi.Infrastructure;
 
 class GuidGenerator : IGuidGenerator {
     public Guid NewId() {

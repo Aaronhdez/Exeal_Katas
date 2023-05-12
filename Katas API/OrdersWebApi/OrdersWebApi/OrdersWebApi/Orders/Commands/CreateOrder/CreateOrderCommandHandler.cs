@@ -1,4 +1,5 @@
 using MediatR;
+using OrdersWebApi.Infrastructure;
 
 namespace OrdersWebApi.Orders.Commands.CreateOrder;
 

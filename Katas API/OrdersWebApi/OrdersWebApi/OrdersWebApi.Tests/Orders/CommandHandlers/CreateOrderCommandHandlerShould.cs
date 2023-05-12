@@ -1,5 +1,6 @@
 ﻿using Castle.Components.DictionaryAdapter;
 using NSubstitute;
+using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Tests.Acceptance;
