@@ -11,12 +11,15 @@ public class GettingABillOfAnOrderFeature {
     private IClock _clock;
     private OrdersClient _ordersClient;
     private HttpClient _client;
+    private IGuidGenerator _idGenerator;
 
     [SetUp]
     public void SetUp() {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _client = new OrdersApi(_clock).CreateClient();
+        _idGenerator = Substitute.For<IGuidGenerator>();
+        _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
+        _client = new OrdersApi(_clock, _idGenerator).CreateClient();
         _ordersClient = new OrdersClient(_client);
         _billsClient = new BillsClient(_client);
     }

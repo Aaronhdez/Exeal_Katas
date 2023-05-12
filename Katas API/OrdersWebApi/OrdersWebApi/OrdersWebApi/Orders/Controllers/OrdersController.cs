@@ -13,16 +13,18 @@ namespace OrdersWebApi.Orders.Controllers;
 [Route("[controller]")]
 public class OrdersController : ControllerBase {
     private readonly ISender _sender;
+    private readonly IGuidGenerator _guidGenerator;
 
-    public OrdersController(ISender sender) {
+    public OrdersController(ISender sender, IGuidGenerator guidGenerator) {
         _sender = sender;
+        _guidGenerator = guidGenerator;
     }
 
     [HttpPost]
     public async Task<string> Post(CreateOrderRequest request) {
-        await _sender.Send(new CreateOrderCommand(new CreateOrderDto(request.Customer,
-            request.Address, request.Products)));
-        return await Task.FromResult(request.Id);
+        var id = _guidGenerator.NewId().ToString();
+        await _sender.Send(new CreateOrderCommand(new CreateOrderDto(id, request.Customer, request.Address, request.Products)));
+        return await Task.FromResult(id);
     }
 
     [HttpPut("{id}")]

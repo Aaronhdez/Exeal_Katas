@@ -9,12 +9,15 @@ public class AddProductsToOrderFeature {
     private IClock? _clock;
     private OrdersApi? _ordersApi;
     private OrdersClient? _ordersClient;
+    private IGuidGenerator _idGenerator;
 
     [SetUp]
     public void SetUp() {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _ordersApi = new OrdersApi(_clock);
+        _idGenerator = Substitute.For<IGuidGenerator>();
+        _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
+        _ordersApi = new OrdersApi(_clock, _idGenerator);
         _ordersClient = new OrdersClient(_ordersApi.CreateClient());
     }
 

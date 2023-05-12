@@ -20,6 +20,7 @@ CreateDatabase();
 builder.Services.AddMediatR(configuration =>
     configuration.RegisterServicesFromAssembly(typeof(OrdersWebApi.Program).Assembly));
 builder.Services.AddSingleton<IClock, SystemClock>();
+builder.Services.AddSingleton<IGuidGenerator, GuidGenerator>();
 builder.Services.AddScoped(_ => new SQLiteConnection("Data Source=./Orders.db"));
 builder.Services.AddTransient<IOrderRepository, SQLiteOrdersRepository>();
 builder.Services.AddTransient<IProductsRepository, SQLiteProductsRepository>();
@@ -60,15 +61,15 @@ void CreateDatabase() {
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        "VALUES('PROD000001','Computer Monitor',100)");
+        "VALUES('1c93009e-101f-4f4b-bf6b-a1c1d486dd03','Computer Monitor',100)");
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        "VALUES('PROD000002','Keyboard',20)");
+        "VALUES('08083948-2d0d-4808-b0a8-fbd9d6ad4388','Keyboard',20)");
     sqLiteConnection.ExecuteAsync(
         "INSERT INTO " +
         "Products(ID, Name, Value) " +
-        "VALUES('PROD000003','Mouse',15)");
+        "VALUES('5e0b445b-1eeb-41c0-86cb-dd097c27d41e','Mouse',15)");
 
     sqLiteConnection.Close();
     sqLiteConnection.Dispose();

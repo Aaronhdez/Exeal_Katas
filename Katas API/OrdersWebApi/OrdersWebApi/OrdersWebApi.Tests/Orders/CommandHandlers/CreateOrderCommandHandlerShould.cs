@@ -11,24 +11,18 @@ public class CreateOrderCommandHandlerShould {
     private CreateOrderCommand _createOrderCommand;
     private CreateOrderCommandHandler _createOrderCommandHandler;
     private IOrderRepository _orderRepository;
-    private IGuidGenerator _idGenerator;
 
     [SetUp]
     public void SetUp() {
         _orderRepository = Substitute.For<IOrderRepository>();
-        _idGenerator = Substitute.For<IGuidGenerator>();
-        _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _createOrderCommandHandler = new CreateOrderCommandHandler(_orderRepository, _clock, _idGenerator);
+        _createOrderCommandHandler = new CreateOrderCommandHandler(_orderRepository, _clock);
     }
 
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
-                TestDefaultValues.CustomerName, 
-                TestDefaultValues.CustomerAddress, 
-                Array.Empty<Item>()));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<Item>()));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
@@ -44,10 +38,7 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
-                TestDefaultValues.CustomerName,
-                TestDefaultValues.CustomerAddress, 
-                new[] { TestDefaultValues.ComputerMonitor }));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, new[] { TestDefaultValues.ComputerMonitor }));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 

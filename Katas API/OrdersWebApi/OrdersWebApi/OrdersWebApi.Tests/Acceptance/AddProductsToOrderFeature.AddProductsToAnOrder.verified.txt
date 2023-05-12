@@ -1,21 +1,21 @@
 ﻿{
-  "id": "ORD123456",
-  "creationDate": "12/05/2023",
+  "id": "b323d8aa-2af3-4bbb-89e8-521d993cafee",
+  "creationDate": "24/04/2023",
   "customer": "John Doe",
   "address": "A Simple Address, 123",
   "products": [
     {
-      "id": "PROD000001",
+      "id": "1c93009e-101f-4f4b-bf6b-a1c1d486dd03",
       "name": "Computer Monitor",
       "value": 100
     },
     {
-      "id": "PROD000002",
+      "id": "08083948-2d0d-4808-b0a8-fbd9d6ad4388",
       "name": "Keyboard",
       "value": 20
     },
     {
-      "id": "PROD000003",
+      "id": "5e0b445b-1eeb-41c0-86cb-dd097c27d41e",
       "name": "Mouse",
       "value": 15
     }
