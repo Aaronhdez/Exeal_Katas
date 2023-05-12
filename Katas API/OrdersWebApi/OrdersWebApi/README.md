@@ -65,14 +65,45 @@ Our API should be able to:
 >-  **]**
 >- **Total:** 335
 
-###ID Generation
+### ID Generation
 - Having any entity record data to be created
 - When the user requests to create it
 - That orders id generated as a Guid:
->- **ID**: xxxx-xxx-xxxxx-xxxxxxx
+>- **ID**: **XXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX**
 >- **Customer**: John Doe
 >- **Address**: A Simple Street, 123
 >- **Products: [**
 >  - { Name: Computer Monitor, Price: 100€ },
 >  - { Name: Keyboard, Price: 30€ }
 >-  **]**
+
+### Products Display
+- Having a product data to be created
+>- **Type:** MON
+>- **Name:** Computer Monitor
+>- **Description:** Monitor
+>- **Manufacturer:** Manufacturer
+>- **Manufacturer Reference:** A Reference
+>- **Price:** 100€
+- When the user requests to create it
+- That product is displayed as it shown:
+>- **ProductID**: XXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+>- **ProductReference**: <PREFIX><REF_number[XXXXXXXX]>
+>- **Name:** Computer Monitor
+>- **Description:** Monitor
+>- **Price:** 100€
+
+ Note: The product reference should be auto generated. 
+ According to customer, these are the available products prefixes:
+> - **MON** for monitors
+> - **KEY** for keyboards
+> - **MOU** for mouses
+> - **CPU** for cpus
+> - **GPU** for graphic cards
+> - **COO** for fans and cooling systems
+> - **RAM** for memory sticks
+> - **PSU** for power supply units
+> - **HDD** for hard disks drives
+> - **SSD** for solid-state drives
+> - **CBL** for cables
+> - **OTH** for other stuff
