@@ -79,7 +79,7 @@ Our API should be able to:
 
 ### Products Display
 - Having a product data to be created
->- **Type:** MON
+>- **Type:** <PREFIX>
 >- **Name:** Computer Monitor
 >- **Description:** Monitor
 >- **Manufacturer:** Manufacturer
@@ -91,6 +91,8 @@ Our API should be able to:
 >- **ProductReference**: <PREFIX><REF_number[XXXXXXXX]>
 >- **Name:** Computer Monitor
 >- **Description:** Monitor
+>- **Manufacturer:** Manufacturer
+>- **Manufacturer Reference:** A Reference
 >- **Price:** 100€
 
  Note: The product reference should be auto generated. 

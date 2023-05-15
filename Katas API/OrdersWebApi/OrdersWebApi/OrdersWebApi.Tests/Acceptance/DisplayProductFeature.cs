@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
-using OrdersWebApi.Tests.Orders;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -33,13 +32,14 @@ public class DisplayProductFeature {
     }
 
     private string GivenAProductCreationDto() {
-        var productCreationDto = new CreateProductDto("MON",
-            "Computer Monitor",
-            "A description",
-            "A Manufacturer",
-            "A Reference",
-            100);
-        return JsonConvert.SerializeObject(productCreationDto);
+        var productCreationRequest = new CreateProductRequest {
+            Type = "MON",
+            Name = "Computer Monitor",
+            Description = "A description",
+            Manufacturer ="A Manufacturer",
+            ManufacturerReference = "A Reference",
+            Value = 100};
+        return JsonConvert.SerializeObject(productCreationRequest);
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string createProductDto) {

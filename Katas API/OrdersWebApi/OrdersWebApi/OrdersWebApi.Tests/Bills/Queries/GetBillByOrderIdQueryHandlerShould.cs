@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using OrdersWebApi.Bills;
 using OrdersWebApi.Bills.Queries;
 using OrdersWebApi.Orders;
-using OrdersWebApi.Tests.Acceptance;
 
 namespace OrdersWebApi.Tests.Bills.Queries;
 

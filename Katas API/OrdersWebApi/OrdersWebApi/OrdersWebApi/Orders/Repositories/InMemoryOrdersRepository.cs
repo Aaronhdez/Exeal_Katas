@@ -1,5 +1,3 @@
-using OrdersWebApi.Orders.Queries;
-
 namespace OrdersWebApi.Orders.Repositories;
 
 public class InMemoryOrdersRepository : IOrderRepository {

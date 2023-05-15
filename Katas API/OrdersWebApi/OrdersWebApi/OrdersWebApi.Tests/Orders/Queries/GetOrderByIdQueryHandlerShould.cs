@@ -2,7 +2,6 @@
 using NSubstitute;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Queries;
-using OrdersWebApi.Tests.Acceptance;
 
 namespace OrdersWebApi.Tests.Orders.Queries;
 

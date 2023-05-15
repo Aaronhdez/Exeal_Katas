@@ -1,10 +1,11 @@
 ﻿namespace OrdersWebApi.Products;
 
 public record CreateProductDto(
-    string type,
-    string name,
-    string decription,
-    string manufacturer,
-    string manufacturerReference,
-    int value
+    string Id,
+    string Type,
+    string Name,
+    string Description,
+    string Manufacturer,
+    string ManufacturerReference,
+    int Value
 );

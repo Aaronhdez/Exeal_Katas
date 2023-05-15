@@ -1,5 +1,6 @@
 using System.Data.SQLite;
 using Dapper;
+using OrdersWebApi.Tests.Products;
 
 namespace OrdersWebApi.Orders.Repositories;
 
@@ -19,5 +20,9 @@ public class SQLiteProductsRepository : IProductsRepository {
             "INSERT INTO " +
             "Products(ID, Name, Value) " +
             $"VALUES('{item.Id}','{item.Name}',{item.Value})");
+    }
+
+    public Task<ProductReadDto> GetReadDtoById(string productId) {
+        return _connection.QueryFirstOrDefaultAsync<ProductReadDto>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 }

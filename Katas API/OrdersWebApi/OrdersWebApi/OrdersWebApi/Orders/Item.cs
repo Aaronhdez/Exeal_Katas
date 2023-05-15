@@ -8,8 +8,22 @@ public class Item {
         Value = value;
     }
 
+    public Item(string id, string type, string name, string description, string manufacturer, string manufacturerReference, int value) {
+        Id = id;
+        Type = type;
+        Name = name;
+        Description = description;
+        Manufacturer = manufacturer;
+        ManufacturerReference = manufacturerReference;
+        Value = value;
+    }
+
     public string Id { get; }
+    public string Type { get; }
     public string Name { get; }
+    public string Description { get; }
+    public string Manufacturer { get; }
+    public string ManufacturerReference { get; }
     public long Value { get; }
 
     private bool Equals(Item other) {

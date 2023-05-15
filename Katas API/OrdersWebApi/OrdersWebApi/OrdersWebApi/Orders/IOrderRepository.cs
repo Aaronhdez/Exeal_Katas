@@ -1,5 +1,3 @@
-using OrdersWebApi.Orders.Queries;
-
 namespace OrdersWebApi.Orders;
 
 #pragma warning disable CS8602
