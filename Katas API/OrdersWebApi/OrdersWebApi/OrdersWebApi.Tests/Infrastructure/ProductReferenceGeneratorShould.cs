@@ -18,4 +18,15 @@ public class ProductReferenceGeneratorShould {
         var expectedReference = "MON000001";
         reference.Should().Be(expectedReference);
     }
+    
+    [Test]
+    public void GenerateAnIdForSecondOccurenceInARepository() {
+        _repository = new InMemoryProductsRepository();
+        _referenceGenerator = new ProductReferenceGenerator(_repository);
+
+        var reference = _referenceGenerator.GenerateReferenceForTag("MON");
+
+        var expectedReference = "MON000002";
+        reference.Should().Be(expectedReference);
+    }
 }
