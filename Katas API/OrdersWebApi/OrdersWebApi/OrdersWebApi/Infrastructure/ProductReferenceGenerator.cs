@@ -9,7 +9,8 @@ public class ProductReferenceGenerator {
         _repository = repository;
     }
 
-    public string GenerateReferenceForTag(string tag) {
-        return "MON000001";
+    public async Task<string> GenerateReferenceForTag(string tag) {
+        var taggedProducts = await _repository.GetAllProductsForTag(tag);
+        return !taggedProducts.Any() ? "MON000001" : "MON000002";
     }
 }

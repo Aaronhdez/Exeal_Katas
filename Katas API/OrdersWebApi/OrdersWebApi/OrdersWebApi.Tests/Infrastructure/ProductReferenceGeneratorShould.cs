@@ -9,22 +9,23 @@ public class ProductReferenceGeneratorShould {
     private ProductReferenceGenerator _referenceGenerator;
 
     [Test]
-    public void GenerateAnIdForFirstOccurenceInARepository() {
+    public async Task GenerateAnIdForFirstOccurenceInARepository() {
         _repository = new InMemoryProductsRepository();
         _referenceGenerator = new ProductReferenceGenerator(_repository);
 
-        var reference = _referenceGenerator.GenerateReferenceForTag("MON");
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 
         var expectedReference = "MON000001";
         reference.Should().Be(expectedReference);
     }
     
     [Test]
-    public void GenerateAnIdForSecondOccurenceInARepository() {
+    public async Task GenerateAnIdForSecondOccurenceInARepository() {
         _repository = new InMemoryProductsRepository();
         _referenceGenerator = new ProductReferenceGenerator(_repository);
+        await _repository.Create(TestDefaultValues.ComputerMonitor);
 
-        var reference = _referenceGenerator.GenerateReferenceForTag("MON");
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 
         var expectedReference = "MON000002";
         reference.Should().Be(expectedReference);
