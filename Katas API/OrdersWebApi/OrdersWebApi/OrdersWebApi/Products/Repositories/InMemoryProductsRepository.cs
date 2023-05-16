@@ -21,6 +21,10 @@ public class InMemoryProductsRepository : IProductsRepository {
             0));
     }
 
+    public IEnumerable<Product> GetAllProductsForTag(string tag) {
+        throw new NotImplementedException();
+    }
+
     public Task Create(Product product) {
         _dictionary.Add(product.Id, product);
         return Task.CompletedTask;

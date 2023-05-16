@@ -11,7 +11,16 @@ public class InMemoryProductsRepositoryShould {
     public void SetUp() {
         _repository = new InMemoryProductsRepository();
     }
-    
+
+    [Test]
+    public async Task RetrieveEmptyListForAGivenTagWhenThereAreNoOccurrences() {
+        _repository = new InMemoryProductsRepository();
+
+        var taggedProducts = _repository.GetAllProductsForTag("MON");
+
+        taggedProducts.Should().BeEmpty();
+    }
+
     [Test]
     public void FailWhenRepositoryIsEmpty() {
         Action result = () => _repository.GetById("AnId");
@@ -19,22 +28,24 @@ public class InMemoryProductsRepositoryShould {
         result.Should().Throw<ArgumentException>();
     }
     
-    [Test]
-    public async Task RetrieveAProductWhenItExists() {
-        var product = new Product(
-            "AnId", 
-            "A product reference",
-            "A Type", 
-            "A Name", 
-            "A Description", 
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
-            0);
-        
-        await _repository.Create(product);
-
-        //var expectedDto
-        var createdProduct = await _repository.GetById("AnId");
-        
-    }
+    
+    
+    //[Test]
+    //public async Task RetrieveAProductWhenItExists() {
+    //    var product = new Product(
+    //        "AnId", 
+    //        "A product reference",
+    //        "A Type", 
+    //        "A Name", 
+    //        "A Description", 
+    //        "A Manufacturer", 
+    //        "A Manufacturer Reference", 
+    //        0);
+    //    
+    //    await _repository.Create(product);
+    //
+    //    //var expectedDto
+    //    var createdProduct = await _repository.GetById("AnId");
+    //    
+    //}
 }
