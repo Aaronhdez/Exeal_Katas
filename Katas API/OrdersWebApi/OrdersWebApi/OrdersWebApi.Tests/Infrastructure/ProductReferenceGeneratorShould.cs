@@ -30,4 +30,17 @@ public class ProductReferenceGeneratorShould {
         var expectedReference = "MON000002";
         reference.Should().Be(expectedReference);
     }
+    
+    [Test]
+    public async Task GenerateAnIdForThirdOccurenceInARepository() {
+        _repository = new InMemoryProductsRepository();
+        _referenceGenerator = new ProductReferenceGenerator(_repository);
+        await _repository.Create(TestDefaultValues.ComputerMonitor);
+        await _repository.Create(TestDefaultValues.ComputerMonitor);
+
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
+
+        var expectedReference = "MON000003";
+        reference.Should().Be(expectedReference);
+    }
 }
