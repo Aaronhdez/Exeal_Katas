@@ -1,6 +1,7 @@
 using System.Text;
 using Newtonsoft.Json;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders;
 

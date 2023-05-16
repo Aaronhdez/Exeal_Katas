@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Products;
+﻿namespace OrdersWebApi.Products.Commands;
 
 public record CreateProductDto(
     string Id,

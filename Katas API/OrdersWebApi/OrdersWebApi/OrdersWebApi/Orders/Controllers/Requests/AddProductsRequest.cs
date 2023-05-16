@@ -1,4 +1,6 @@
-﻿namespace OrdersWebApi.Orders.Controllers.Requests;
+﻿using OrdersWebApi.Products;
+
+namespace OrdersWebApi.Orders.Controllers.Requests;
 
 #pragma warning disable CS8602
 public class AddProductsRequest {

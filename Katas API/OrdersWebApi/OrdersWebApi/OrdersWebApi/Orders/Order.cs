@@ -1,3 +1,5 @@
+using OrdersWebApi.Products;
+
 namespace OrdersWebApi.Orders;
 
 public class Order {

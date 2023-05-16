@@ -1,10 +1,9 @@
 ﻿using FluentAssertions;
-using NSubstitute.Core;
-using NSubstitute.ExceptionExtensions;
-using OrdersWebApi.Orders;
 using OrdersWebApi.Products;
+using OrdersWebApi.Products.Queries;
+using OrdersWebApi.Products.Repositories;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Tests.Products.QueryHandlers;
 
 public class GetProductByIdQueryHandlerShould {
     private GetProductByIdQuery _getOrderByIdQuery;

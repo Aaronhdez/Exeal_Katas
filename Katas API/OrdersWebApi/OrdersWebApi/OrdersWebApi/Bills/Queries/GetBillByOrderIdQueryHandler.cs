@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Bills.Queries; 
 

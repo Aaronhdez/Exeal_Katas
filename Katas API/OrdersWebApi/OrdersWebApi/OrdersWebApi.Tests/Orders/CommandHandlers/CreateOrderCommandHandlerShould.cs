@@ -2,6 +2,7 @@
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.CreateOrder;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;
 

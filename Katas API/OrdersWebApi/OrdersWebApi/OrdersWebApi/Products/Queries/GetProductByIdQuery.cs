@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Products.Queries;
 
 public class GetProductByIdQuery : IRequest<ProductReadDto> {
     public string Id { get; }

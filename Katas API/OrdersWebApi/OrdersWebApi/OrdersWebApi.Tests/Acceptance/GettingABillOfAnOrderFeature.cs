@@ -2,6 +2,7 @@
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Products;
 using OrdersWebApi.Tests.Bills;
 using OrdersWebApi.Tests.Orders;
 

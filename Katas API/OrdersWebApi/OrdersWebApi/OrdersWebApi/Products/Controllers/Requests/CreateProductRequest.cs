@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Products;
+﻿namespace OrdersWebApi.Products.Controllers.Requests;
 
 public class CreateProductRequest {
     public string Type;

@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using OrdersWebApi.Orders;
 
-namespace OrdersWebApi.Products;
+namespace OrdersWebApi.Products.Commands;
 
 public class CreateProductCommandHandler: IRequestHandler<CreateProductCommand> {
     private readonly IProductsRepository _repository;

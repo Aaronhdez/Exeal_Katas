@@ -1,10 +1,11 @@
 ﻿using System.Data.SQLite;
 using FluentAssertions;
-using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Products;
+using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Tests.Orders.Repositories;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Tests.Products.Repositories;
 
 public class SQLiteProductsRepositoryShould {
     private Product _product;

@@ -1,9 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Products.Commands;
+using OrdersWebApi.Products.Controllers.Requests;
+using OrdersWebApi.Products.Controllers.Responses;
+using OrdersWebApi.Products.Queries;
 
-namespace OrdersWebApi.Products;
+namespace OrdersWebApi.Products.Controllers;
 
 [ApiController]
 [Route("[controller]")]

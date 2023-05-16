@@ -1,3 +1,5 @@
+using OrdersWebApi.Products;
+
 namespace OrdersWebApi.Orders.Controllers.Responses;
 
 #pragma warning disable CS8602

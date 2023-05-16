@@ -1,6 +1,6 @@
-using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Products.Queries;
 
-namespace OrdersWebApi.Orders;
+namespace OrdersWebApi.Products;
 
 public interface IProductsRepository {
     //Task<Product> GetById(string productId);

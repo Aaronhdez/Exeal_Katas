@@ -3,6 +3,7 @@ using Dapper;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,7 @@
 using System.Data.SQLite;
 using Dapper;
-using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Products;
+using OrdersWebApi.Products.Queries;
 
 namespace OrdersWebApi.Orders.Repositories;
 

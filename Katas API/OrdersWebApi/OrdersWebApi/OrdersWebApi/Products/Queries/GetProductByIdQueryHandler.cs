@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using OrdersWebApi.Orders;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Products.Queries;
 
 public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductReadDto> {
     private readonly IProductsRepository _repository;

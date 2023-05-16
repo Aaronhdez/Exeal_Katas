@@ -1,11 +1,10 @@
 ﻿using FluentAssertions;
-using FluentAssertions.Common;
-using NSubstitute;
-using OrdersWebApi.Orders;
-using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
+using OrdersWebApi.Products.Commands;
+using OrdersWebApi.Products.Queries;
+using OrdersWebApi.Products.Repositories;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Tests.Products.CommandHandlers;
 
 public class CreateProductCommandHandlerShould {
     private CreateProductDto _createProductDto;

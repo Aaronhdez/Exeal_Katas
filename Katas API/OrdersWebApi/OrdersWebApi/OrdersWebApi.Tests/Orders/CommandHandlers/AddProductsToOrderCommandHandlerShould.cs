@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.AddProductsToOrder;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;
 

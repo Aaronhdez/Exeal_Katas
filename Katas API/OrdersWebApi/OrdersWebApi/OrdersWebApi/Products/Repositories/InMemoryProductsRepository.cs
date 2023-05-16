@@ -1,6 +1,6 @@
-﻿using OrdersWebApi.Orders;
+﻿using OrdersWebApi.Products.Queries;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Products.Repositories;
 
 public class InMemoryProductsRepository : IProductsRepository {
     private readonly Dictionary<string,Product> _dictionary;

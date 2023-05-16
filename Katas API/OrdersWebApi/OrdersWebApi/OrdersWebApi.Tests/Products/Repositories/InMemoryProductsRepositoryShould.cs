@@ -1,6 +1,7 @@
 using FluentAssertions;
+using OrdersWebApi.Products.Repositories;
 
-namespace OrdersWebApi.Tests.Products;
+namespace OrdersWebApi.Tests.Products.Repositories;
 
 public class InMemoryProductsRepositoryShould {
     private InMemoryProductsRepository _repository;

@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Tests.Products;
+﻿namespace OrdersWebApi.Products.Queries;
 
 public class ProductReadDto {
     public string Id { get; set; }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
+using OrdersWebApi.Products.Controllers.Requests;
 
 namespace OrdersWebApi.Tests.Acceptance;
 

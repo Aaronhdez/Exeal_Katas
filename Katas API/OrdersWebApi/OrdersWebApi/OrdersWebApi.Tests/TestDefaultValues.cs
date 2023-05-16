@@ -1,4 +1,5 @@
 using OrdersWebApi.Orders;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests;
 

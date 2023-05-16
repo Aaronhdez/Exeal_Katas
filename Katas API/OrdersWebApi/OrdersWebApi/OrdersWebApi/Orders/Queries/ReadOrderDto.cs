@@ -1,4 +1,6 @@
-﻿namespace OrdersWebApi.Orders.Queries;
+﻿using OrdersWebApi.Products;
+
+namespace OrdersWebApi.Orders.Queries;
 
 public record ReadOrderDto(
     string Id,
