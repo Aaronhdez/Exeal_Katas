@@ -26,13 +26,14 @@ public class CreateProductCommandHandlerShould {
 
         await _handler.Handle(new CreateProductCommand(_createProductDto), default);
 
-        var product = new ProductReadDto("An Id", 
-            "MON", 
-            "A Name", 
-            "A Description",
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
-            0);
+        var product = new ProductReadDto{
+            Id = "An Id", 
+            ProductReference = "MON", 
+            Name = "A Name", 
+            Description = "A Description",
+            Manufacturer = "A Manufacturer", 
+            ManufacturerReference = "A Manufacturer Reference", 
+            Value = 0};
         var expectedProduct = await _repository.GetReadDtoById("An Id");
         expectedProduct.Should().Be(product);
     }

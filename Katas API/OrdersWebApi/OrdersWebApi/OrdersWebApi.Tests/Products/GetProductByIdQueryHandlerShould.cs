@@ -27,14 +27,14 @@ public class GetProductByIdQueryHandlerShould {
         var productQuery = new GetProductByIdQuery(productId);
         var result = await _handler.Handle(productQuery, default);
         
-        var expectedDto = new ProductReadDto(
-            productId, 
-            "MON", 
-            "A Name", 
-            "A Description",
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
-            0);
+        var expectedDto = new ProductReadDto{
+            Id = "An Id", 
+            ProductReference = "MON", 
+            Name = "A Name", 
+            Description = "A Description",
+            Manufacturer = "A Manufacturer", 
+            ManufacturerReference = "A Manufacturer Reference", 
+            Value = 0};
         result.Should().BeEquivalentTo(expectedDto);
     }
 
