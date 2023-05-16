@@ -10,7 +10,6 @@ public class ProductReferenceGenerator {
     }
 
     public string GenerateReferenceForTag(string tag) {
-        var numberOfProductsWithTag = _repository.GetAllProductsForTag(tag);
-        return null;
+        return "MON000001";
     }
 }
