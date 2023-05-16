@@ -11,7 +11,7 @@ public class CreateProductCommandHandler: IRequestHandler<CreateProductCommand> 
     }
 
     public Task Handle(CreateProductCommand command, CancellationToken cancellationToken) {
-        var item = new Item(
+        var item = new Product(
             command.ProductDto.Id,
             command.ProductDto.Type,
             command.ProductDto.Name,

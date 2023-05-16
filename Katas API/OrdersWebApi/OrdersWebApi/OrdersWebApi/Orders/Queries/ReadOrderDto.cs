@@ -5,5 +5,5 @@ public record ReadOrderDto(
     string CreationDate,
     string Customer,
     string Address,
-    List<Item> Products
+    List<Product> Products
 );

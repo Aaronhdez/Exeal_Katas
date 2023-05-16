@@ -2,7 +2,7 @@ namespace OrdersWebApi.Orders.Commands.CreateOrder;
 
 #pragma warning disable CS8602
 public class CreateOrderDto {
-    public CreateOrderDto(string id, string customer, string address, Item[] products) {
+    public CreateOrderDto(string id, string customer, string address, Product[] products) {
         Id = id;
         Customer = customer;
         Address = address;
@@ -12,5 +12,5 @@ public class CreateOrderDto {
     public string Id { get; }
     public string Customer { get; }
     public string Address { get; }
-    public Item[] Products { get; }
+    public Product[] Products { get; }
 }

@@ -32,8 +32,8 @@ public class SQLiteOrdersRepository : IOrderRepository {
             $"SELECT * FROM Orders WHERE ID = '{orderId}'").Result;
     }
 
-    private List<Item?> ProductsAssociated(string orderId) {
-        return _connection.QueryAsync<Item?>(
+    private List<Product?> ProductsAssociated(string orderId) {
+        return _connection.QueryAsync<Product?>(
                 "SELECT Products.Id as [id], Products.Name as name, Products.Value as [value] FROM Products " +
                 "JOIN OrdersProducts ON Products.ID = OrdersProducts.ProductID " +
                 $"WHERE OrdersProducts.OrderID = '{orderId}'")
@@ -56,7 +56,7 @@ public class SQLiteOrdersRepository : IOrderRepository {
         return Task.CompletedTask;
     }
 
-    private static Order RetrievedOrder(dynamic? orderFound, List<Item?> productsAssociated) {
+    private static Order RetrievedOrder(dynamic? orderFound, List<Product?> productsAssociated) {
         return new Order(orderFound.ID, orderFound.CreationDate, orderFound.Customer, orderFound.Address,
             productsAssociated);
     }

@@ -17,9 +17,9 @@ public class TestDBLoader {
             $"INSERT INTO OrdersProducts(OrderID, ProductID) VALUES('{expectedOrderId}','{productId}')");
     }
 
-    public void GivenAProductInDb(Item item) {
+    public void GivenAProductInDb(Product product) {
         _sqLiteConnection.ExecuteAsync(
-            $"INSERT INTO Products(ID, [Name], [Value]) VALUES('{item.Id}', '{item.Name}','{item.Value}')");
+            $"INSERT INTO Products(ID, [Name], [Value]) VALUES('{product.Id}', '{product.Name}','{product.Value}')");
     }
 
     public void GivenAnOrderInDb(Order expectedOrder) {

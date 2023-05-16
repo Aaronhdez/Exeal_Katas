@@ -12,23 +12,23 @@ public class SQLiteProductsRepository : IProductsRepository {
     }
 
     public async Task<ProductReadDto> GetById(string productId) {
-        var item = await _connection.QueryFirstOrDefaultAsync<Item>($"SELECT * FROM Products WHERE ID = '{productId}'");
+        var product = await _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
         return new ProductReadDto {
-            Id = item.Id,
+            Id = product.Id,
             ProductReference = "MON",
-            Name = item.Name,
-            Description = item.Description,
-            Manufacturer = item.Manufacturer,
-            ManufacturerReference = item.ManufacturerReference,
-            Value = (int) item.Value
+            Name = product.Name,
+            Description = product.Description,
+            Manufacturer = product.Manufacturer,
+            ManufacturerReference = product.ManufacturerReference,
+            Value = (int) product.Value
         };
     }
 
-    public Task Create(Item item) {
+    public Task Create(Product product) {
         return _connection.ExecuteAsync(
             "INSERT INTO " +
             "Products(ID, Name, Value) " +
-            $"VALUES('{item.Id}','{item.Name}',{item.Value})");
+            $"VALUES('{product.Id}','{product.Name}',{product.Value})");
     }
 
 }

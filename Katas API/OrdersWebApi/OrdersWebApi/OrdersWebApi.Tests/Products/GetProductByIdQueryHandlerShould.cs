@@ -20,7 +20,7 @@ public class GetProductByIdQueryHandlerShould {
     [Test]
     public async Task GetAProductDtoFromExistingRecord() {
         var productId = "An Id";
-        var product = new Item(productId, "MON", "A Name", "A Description",
+        var product = new Product(productId, "MON", "A Name", "A Description",
             "A Manufacturer", "A Manufacturer Reference", 0);
         await _repository.Create(product);
 

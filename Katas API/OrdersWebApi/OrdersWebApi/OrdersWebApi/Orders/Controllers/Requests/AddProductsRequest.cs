@@ -2,9 +2,9 @@
 
 #pragma warning disable CS8602
 public class AddProductsRequest {
-    public AddProductsRequest(Item[] products) {
+    public AddProductsRequest(Product[] products) {
         Products = products;
     }
 
-    public Item[] Products { get; }
+    public Product[] Products { get; }
 }

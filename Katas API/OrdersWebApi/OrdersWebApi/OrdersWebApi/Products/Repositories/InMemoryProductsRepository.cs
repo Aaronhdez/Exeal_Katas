@@ -3,12 +3,12 @@
 namespace OrdersWebApi.Tests.Products;
 
 public class InMemoryProductsRepository : IProductsRepository {
-    private readonly Dictionary<string,Item> _dictionary;
+    private readonly Dictionary<string,Product> _dictionary;
     public InMemoryProductsRepository() {
-        _dictionary = new Dictionary<string, Item>();
+        _dictionary = new Dictionary<string, Product>();
     }
 
-   // public Task<Item> GetById(string productId) {
+   // public Task<Product> GetById(string productId) {
    //     return Task.FromResult(_dictionary[productId]);
    // }
     
@@ -24,8 +24,8 @@ public class InMemoryProductsRepository : IProductsRepository {
             Value = 0});
     }
 
-    public Task Create(Item item) {
-        _dictionary.Add(item.Id, item);
+    public Task Create(Product product) {
+        _dictionary.Add(product.Id, product);
         return Task.CompletedTask;
     }
 }

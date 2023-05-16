@@ -39,7 +39,7 @@ public class GettingABillOfAnOrderFeature {
             id = TestDefaultValues.OrderId,
             customer = TestDefaultValues.CustomerName,
             address = TestDefaultValues.CustomerAddress,
-            products = new List<Item> {
+            products = new List<Product> {
                 TestDefaultValues.ComputerMonitor,
                 TestDefaultValues.ComputerMonitor,
                 TestDefaultValues.Keyboard,

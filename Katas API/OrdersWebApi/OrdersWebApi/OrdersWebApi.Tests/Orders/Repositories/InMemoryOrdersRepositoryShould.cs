@@ -15,7 +15,7 @@ public class InMemoryOrdersRepositoryShould {
     [Test]
     public void InsertNewOrderRegistryWhileRequested() {
         var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Item> { TestDefaultValues.ComputerMonitor });
+            new List<Product> { TestDefaultValues.ComputerMonitor });
 
         _inMemoryOrdersRepository.Create(expectedOrder);
 
@@ -27,9 +27,9 @@ public class InMemoryOrdersRepositoryShould {
     [Test]
     public void UpdateAnOrderProductsListWhileRequested() {
         var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Item> { TestDefaultValues.ComputerMonitor });
+            new List<Product> { TestDefaultValues.ComputerMonitor });
         var expectedUpdatedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Item> {
+            new List<Product> {
                 TestDefaultValues.ComputerMonitor,
                 TestDefaultValues.ComputerMonitor
             });

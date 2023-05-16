@@ -11,5 +11,5 @@ public class AddProductsToOrderCommand : IRequest {
     }
 
     public string Id { get; }
-    public List<Item> Products { get; }
+    public List<Product> Products { get; }
 }

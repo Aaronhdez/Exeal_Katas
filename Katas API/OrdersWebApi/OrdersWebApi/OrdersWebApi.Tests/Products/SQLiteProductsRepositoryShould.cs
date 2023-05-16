@@ -2,18 +2,28 @@
 using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
+using OrdersWebApi.Tests.Orders.Repositories;
 
-namespace OrdersWebApi.Tests.Orders.Repositories;
+namespace OrdersWebApi.Tests.Products;
 
 public class SQLiteProductsRepositoryShould {
-    private Item _item;
+    private Product _product;
     private SQLiteConnection _sqLiteConnection;
     private SQLiteProductsRepository _sqLiteProductsRepository;
     private TestDBLoader _testDBLoader;
+    private ProductReadDto _productDto;
 
     [SetUp]
     public async Task SetUp() {
-        _item = TestDefaultValues.ComputerMonitor;
+        _product = TestDefaultValues.ComputerMonitor;
+        _productDto = new ProductReadDto{
+            Id = TestDefaultValues.ComputerMonitorId, 
+            ProductReference = "MON", 
+            Name = TestDefaultValues.ComputerMonitor.Name, 
+            Description = null,
+            Manufacturer = null, 
+            ManufacturerReference = null, 
+            Value = (int) TestDefaultValues.ComputerMonitor.Value};
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);
@@ -30,19 +40,19 @@ public class SQLiteProductsRepositoryShould {
 
     [Test]
     public void RetrieveAProductWhileRequested() {
-        _testDBLoader.GivenAProductInDb(_item);
+        _testDBLoader.GivenAProductInDb(_product);
 
-        var retrievedOrder = _sqLiteProductsRepository.GetById(_item.Id).Result;
+        var retrievedOrder = _sqLiteProductsRepository.GetById(_product.Id).Result;
 
-        retrievedOrder.Should().Be(_item);
+        retrievedOrder.Should().BeEquivalentTo(_productDto);
     }
 
     [Test]
     public void InsertNewProductWhileRequested() {
-        _sqLiteProductsRepository.Create(_item);
+        _sqLiteProductsRepository.Create(_product);
 
         var retrievedOrder = _sqLiteProductsRepository.GetById(TestDefaultValues.ComputerMonitorId).Result;
 
-        retrievedOrder.Should().Be(_item);
+        retrievedOrder.Should().BeEquivalentTo(_productDto);
     }
 }

@@ -18,13 +18,13 @@ public class AddProductsToOrderCommandHandlerShould {
             TestDefaultValues.CreationDate,
             TestDefaultValues.CustomerName,
             TestDefaultValues.CustomerAddress,
-            new List<Item>());
+            new List<Product>());
     }
 
     [Test]
     public async Task AddOneProductToAnEmptySpecifiedOrder() {
         _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Item[] {
+        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Product[] {
             TestDefaultValues.ComputerMonitor
         });
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
@@ -33,7 +33,7 @@ public class AddProductsToOrderCommandHandlerShould {
 
         var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate,
             TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Item> {
+            new List<Product> {
                 TestDefaultValues.ComputerMonitor
             });
 
@@ -44,7 +44,7 @@ public class AddProductsToOrderCommandHandlerShould {
     [Test]
     public async Task AddTwoProductsToAnEmptySpecifiedOrder() {
         _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Item[] {
+        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Product[] {
             TestDefaultValues.ComputerMonitor,
             TestDefaultValues.ComputerMonitor
         });
@@ -54,7 +54,7 @@ public class AddProductsToOrderCommandHandlerShould {
 
         var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate,
             TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Item> {
+            new List<Product> {
                 TestDefaultValues.ComputerMonitor,
                 TestDefaultValues.ComputerMonitor
             });

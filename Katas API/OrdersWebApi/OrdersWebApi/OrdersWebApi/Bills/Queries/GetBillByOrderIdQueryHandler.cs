@@ -16,7 +16,7 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
         var order = _ordersRepository.GetById(request.Id).Result;
         
         //Recuperar los productos resumidos
-        var itemsAssociated = new Dictionary<Item,int>();
+        var itemsAssociated = new Dictionary<Product,int>();
         foreach (var item in order.Products) {
             if (itemsAssociated.ContainsKey(item)) {
                 itemsAssociated[item] += 1;
@@ -37,7 +37,7 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
         return Task.FromResult(bill);
     }
 
-    private IEnumerable<BillRow> GetItemsAsList(Dictionary<Item, int> itemsAssociated, out int total) {
+    private IEnumerable<BillRow> GetItemsAsList(Dictionary<Product, int> itemsAssociated, out int total) {
         var summarizedProducts = new List<BillRow>();
         total = 0;
         foreach (var item in itemsAssociated) {

@@ -6,5 +6,5 @@ public class OrderResponse {
     public string CreationDate { get; set; }
     public string Address { get; set; }
     public string Customer { get; set; }
-    public List<Item> Products { get; set; }
+    public List<Product> Products { get; set; }
 }

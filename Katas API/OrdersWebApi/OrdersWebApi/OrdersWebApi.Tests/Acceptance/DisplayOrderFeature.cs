@@ -36,7 +36,7 @@ public class DisplayOrderFeature {
             id = TestDefaultValues.OrderId,
             customer = TestDefaultValues.CustomerName,
             address = TestDefaultValues.CustomerAddress,
-            products = new List<Item> {
+            products = new List<Product> {
                 TestDefaultValues.ComputerMonitor
             }
         });

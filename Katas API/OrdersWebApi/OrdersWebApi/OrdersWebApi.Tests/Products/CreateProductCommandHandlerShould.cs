@@ -35,6 +35,6 @@ public class CreateProductCommandHandlerShould {
             ManufacturerReference = "A Manufacturer Reference", 
             Value = 0};
         var expectedProduct = await _repository.GetById("An Id");
-        expectedProduct.Should().Be(product);
+        expectedProduct.Should().BeEquivalentTo(product);
     }
 }

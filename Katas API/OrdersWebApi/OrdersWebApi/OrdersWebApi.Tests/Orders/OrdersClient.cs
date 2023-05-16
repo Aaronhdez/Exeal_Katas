@@ -11,7 +11,7 @@ public class OrdersClient {
         _client = client;
     }
 
-    public static string GenerateAListOfProducts(List<Item> items) {
+    public static string GenerateAListOfProducts(List<Product> items) {
         var newProducts = JsonConvert.SerializeObject(new {
             products = items
         });

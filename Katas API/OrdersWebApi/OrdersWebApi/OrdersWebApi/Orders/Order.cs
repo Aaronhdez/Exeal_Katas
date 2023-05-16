@@ -1,7 +1,7 @@
 namespace OrdersWebApi.Orders;
 
 public class Order {
-    public Order(string id, string creationDate, string customer, string address, List<Item> products) {
+    public Order(string id, string creationDate, string customer, string address, List<Product> products) {
         Id = id;
         CreationDate = creationDate;
         Customer = customer;
@@ -13,7 +13,7 @@ public class Order {
     public string CreationDate { get; }
     public string Customer { get; set; }
     public string Address { get; set; }
-    public List<Item> Products { get; set; }
+    public List<Product> Products { get; set; }
 
     private bool Equals(Order other) {
         return Id == other.Id && CreationDate == other.CreationDate && Customer == other.Customer &&
@@ -31,7 +31,7 @@ public class Order {
         return HashCode.Combine(Id, CreationDate, Customer, Address, Products);
     }
 
-    public void AddProducts(List<Item> newProducts) {
+    public void AddProducts(List<Product> newProducts) {
         foreach (var newProduct in newProducts) Products.Add(newProduct);
     }
 }

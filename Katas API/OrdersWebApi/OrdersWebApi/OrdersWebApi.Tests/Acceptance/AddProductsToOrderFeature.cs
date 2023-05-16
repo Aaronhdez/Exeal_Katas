@@ -36,7 +36,7 @@ public class AddProductsToOrderFeature {
             id = TestDefaultValues.OrderId,
             customer = TestDefaultValues.CustomerName,
             address = TestDefaultValues.CustomerAddress,
-            products = new List<Item> {
+            products = new List<Product> {
                 TestDefaultValues.ComputerMonitor
             }
         });
@@ -44,7 +44,7 @@ public class AddProductsToOrderFeature {
     }
 
     private async Task<string> WhenUserAddsANewProductsToIt(string orderId) {
-        var addedItems = OrdersClient.GenerateAListOfProducts(new List<Item> {
+        var addedItems = OrdersClient.GenerateAListOfProducts(new List<Product> {
             TestDefaultValues.Keyboard,
             TestDefaultValues.Mouse
         });
