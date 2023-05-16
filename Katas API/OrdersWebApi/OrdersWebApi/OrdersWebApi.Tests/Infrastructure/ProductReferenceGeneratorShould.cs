@@ -36,7 +36,7 @@ public class ProductReferenceGeneratorShould {
         _repository = new InMemoryProductsRepository();
         _referenceGenerator = new ProductReferenceGenerator(_repository);
         await _repository.Create(TestDefaultValues.ComputerMonitor);
-        await _repository.Create(TestDefaultValues.ComputerMonitor);
+        await _repository.Create(TestDefaultValues.AnotherComputerMonitor);
 
         var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 

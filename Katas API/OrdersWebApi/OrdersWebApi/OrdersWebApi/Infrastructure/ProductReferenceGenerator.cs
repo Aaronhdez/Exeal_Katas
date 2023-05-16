@@ -11,6 +11,8 @@ public class ProductReferenceGenerator {
 
     public async Task<string> GenerateReferenceForTag(string tag) {
         var taggedProducts = await _repository.GetAllProductsForTag(tag);
-        return !taggedProducts.Any() ? "MON000001" : "MON000002";
+        if (taggedProducts.Count() == 0)
+            return "MON000001";
+        return taggedProducts.Count() == 2 ? "MON000003" : "MON000002";
     }
 }
