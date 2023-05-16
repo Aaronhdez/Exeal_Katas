@@ -2,7 +2,10 @@ namespace OrdersWebApi.Products;
 
 #pragma warning disable CS8602
 public class Product {
-    
+
+    public Product() {
+        
+    }
     public Product(string id, string productReference, string type, string name, string description,
         string manufacturer, string manufacturerReference, int value) {
         Id = id;
