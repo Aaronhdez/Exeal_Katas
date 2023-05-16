@@ -12,17 +12,8 @@ public class SQLiteProductsRepository : IProductsRepository {
         _connection = connection;
     }
 
-    public async Task<ProductReadDto> GetById(string productId) {
-        var product = await _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
-        return new ProductReadDto {
-            Id = product.Id,
-            ProductReference = "MON",
-            Name = product.Name,
-            Description = product.Description,
-            Manufacturer = product.Manufacturer,
-            ManufacturerReference = product.ManufacturerReference,
-            Value = (int) product.Value
-        };
+    public async Task<Product> GetById(string productId) {
+        return await _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 
     public Task Create(Product product) {

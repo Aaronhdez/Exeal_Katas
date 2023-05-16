@@ -10,6 +10,15 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
     }
 
     public async Task<ProductReadDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken) {
-        return await _repository.GetById(request.Id);
+        var product = await _repository.GetById(request.Id);
+        return new ProductReadDto {
+            Id = product.Id,
+            ProductReference = product.ProductReference,
+            Name = product.Name,
+            Description = product.Description,
+            Manufacturer = product.Manufacturer,
+            ManufacturerReference = product.ManufacturerReference,
+            Value = (int)product.Value,
+        };
     }
 }

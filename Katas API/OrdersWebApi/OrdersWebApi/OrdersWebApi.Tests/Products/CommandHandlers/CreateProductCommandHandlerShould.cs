@@ -27,7 +27,7 @@ public class CreateProductCommandHandlerShould {
 
         var product = new ProductReadDto{
             Id = "An Id", 
-            ProductReference = "MON", 
+            ProductReference = "A product reference", 
             Name = "A Name", 
             Description = "A Description",
             Manufacturer = "A Manufacturer", 

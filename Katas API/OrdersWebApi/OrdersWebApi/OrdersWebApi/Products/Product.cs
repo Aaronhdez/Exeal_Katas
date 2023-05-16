@@ -10,6 +10,7 @@ public class Product {
 
     public Product(string id, string type, string name, string description, string manufacturer, string manufacturerReference, int value) {
         Id = id;
+        ProductReference = "A product reference";
         Type = type;
         Name = name;
         Description = description;
@@ -24,6 +25,7 @@ public class Product {
     public string Description { get; }
     public string Manufacturer { get; }
     public string ManufacturerReference { get; }
+    public string ProductReference { get; set; }
     public long Value { get; }
 
     private bool Equals(Product other) {

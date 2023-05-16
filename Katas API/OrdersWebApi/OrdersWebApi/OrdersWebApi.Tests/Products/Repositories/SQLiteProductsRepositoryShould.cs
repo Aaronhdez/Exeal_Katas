@@ -19,7 +19,7 @@ public class SQLiteProductsRepositoryShould {
         _product = TestDefaultValues.ComputerMonitor;
         _productDto = new ProductReadDto{
             Id = TestDefaultValues.ComputerMonitorId, 
-            ProductReference = "MON", 
+            ProductReference = null, 
             Name = TestDefaultValues.ComputerMonitor.Name, 
             Description = null,
             Manufacturer = null, 

@@ -7,21 +7,17 @@ public class InMemoryProductsRepository : IProductsRepository {
     public InMemoryProductsRepository() {
         _dictionary = new Dictionary<string, Product>();
     }
-
-   // public Task<Product> GetById(string productId) {
-   //     return Task.FromResult(_dictionary[productId]);
-   // }
     
-    public Task<ProductReadDto> GetById(string productId) {
+    public Task<Product> GetById(string productId) {
         if (!_dictionary.ContainsKey(productId)) throw new ArgumentException();
-        return Task.FromResult(new ProductReadDto{
-            Id = "An Id", 
-            ProductReference = "MON", 
-            Name = "A Name", 
-            Description = "A Description",
-            Manufacturer = "A Manufacturer", 
-            ManufacturerReference = "A Manufacturer Reference", 
-            Value = 0});
+        return Task.FromResult(new Product(
+            "An Id", 
+            "MON", 
+            "A Name", 
+            "A Description",
+            "A Manufacturer", 
+            "A Manufacturer Reference", 
+            0));
     }
 
     public Task Create(Product product) {
