@@ -21,7 +21,7 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<Item>()));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<Product>()));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
@@ -30,7 +30,7 @@ public class CreateOrderCommandHandlerShould {
             TestDefaultValues.CreationDate, 
             TestDefaultValues.CustomerName, 
             TestDefaultValues.CustomerAddress,
-            new List<Item>());
+            new List<Product>());
 
         await _orderRepository.Received().Create(expectedOrderModel);
     }
@@ -46,7 +46,7 @@ public class CreateOrderCommandHandlerShould {
             TestDefaultValues.CreationDate, 
             TestDefaultValues.CustomerName, 
             TestDefaultValues.CustomerAddress,
-            new List<Item> { TestDefaultValues.ComputerMonitor });
+            new List<Product> { TestDefaultValues.ComputerMonitor });
 
         await _orderRepository.Received(1).Create(expectedOrderModel);
     }
