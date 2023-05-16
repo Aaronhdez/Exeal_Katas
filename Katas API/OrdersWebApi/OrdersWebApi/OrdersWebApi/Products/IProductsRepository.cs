@@ -6,4 +6,5 @@ public interface IProductsRepository {
     //Task<Product> GetById(string productId);
     Task Create(Product product);
     Task<Product> GetById(string productId);
+    IEnumerable<Product> GetAllProductsForTag(string tag);
 }
