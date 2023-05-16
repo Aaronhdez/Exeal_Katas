@@ -1,4 +1,5 @@
-﻿using OrdersWebApi.Products.Queries;
+﻿using System.Collections.Immutable;
+using OrdersWebApi.Products.Queries;
 
 namespace OrdersWebApi.Products.Repositories;
 
@@ -22,7 +23,7 @@ public class InMemoryProductsRepository : IProductsRepository {
     }
 
     public IEnumerable<Product> GetAllProductsForTag(string tag) {
-        throw new NotImplementedException();
+        return new List<Product>();
     }
 
     public Task Create(Product product) {
