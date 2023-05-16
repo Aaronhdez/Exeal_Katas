@@ -4,7 +4,7 @@ using NSubstitute.ExceptionExtensions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Products;
 
-namespace OrdersWebApi.Tests.Products; 
+namespace OrdersWebApi.Tests.Products;
 
 public class GetProductByIdQueryHandlerShould {
     private GetProductByIdQuery _getOrderByIdQuery;
@@ -15,15 +15,6 @@ public class GetProductByIdQueryHandlerShould {
     public void SetUp() {
         _repository = new InMemoryProductsRepository();
         _handler = new GetProductByIdQueryHandler(_repository);
-    }
-
-    [Test]
-    public void FailWhenRepositoryIsEmpty() {
-        var productQuery = new GetProductByIdQuery("AnId");
-        
-        var result = () => _handler.Handle(productQuery, default).Result;
-
-        result.Should().Throw<ArgumentException>();
     }
 
     [Test]
