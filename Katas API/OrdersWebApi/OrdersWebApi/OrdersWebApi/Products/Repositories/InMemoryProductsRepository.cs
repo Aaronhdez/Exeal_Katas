@@ -23,10 +23,7 @@ public class InMemoryProductsRepository : IProductsRepository {
     }
 
     public Task<IEnumerable<Product>> GetAllProductsForTag(string tag) {
-        var taggedProducts = new List<Product>();
-        foreach (var product in _dictionary.Values) {
-            if(product.Type == tag) taggedProducts.Add(product);
-        }
+        var taggedProducts = _dictionary.Values.Where(product => product.Type == tag).ToList();
         return Task.FromResult<IEnumerable<Product>>(taggedProducts);
     }
 
