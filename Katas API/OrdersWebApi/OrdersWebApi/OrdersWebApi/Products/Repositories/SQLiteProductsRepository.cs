@@ -16,6 +16,10 @@ public class SQLiteProductsRepository : IProductsRepository {
         return await _connection.QueryFirstOrDefaultAsync<Product>($"SELECT * FROM Products WHERE ID = '{productId}'");
     }
 
+    public Task<IEnumerable<Product>> GetAllProductsForTag(string tag) {
+        throw new NotImplementedException();
+    }
+
     public Task Create(Product product) {
         return _connection.ExecuteAsync(
             "INSERT INTO " +

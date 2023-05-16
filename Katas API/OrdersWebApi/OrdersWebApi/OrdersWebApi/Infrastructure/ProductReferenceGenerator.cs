@@ -7,10 +7,10 @@ public class ProductReferenceGenerator {
 
     public ProductReferenceGenerator(IProductsRepository repository) {
         _repository = repository;
-        throw new NotImplementedException();
     }
 
     public string GenerateReferenceForTag(string tag) {
-        throw new NotImplementedException();
+        var numberOfProductsWithTag = _repository.GetAllProductsForTag(tag);
+        return null;
     }
 }

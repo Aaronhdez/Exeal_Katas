@@ -16,9 +16,19 @@ public class InMemoryProductsRepositoryShould {
     public async Task RetrieveEmptyListForAGivenTagWhenThereAreNoOccurrences() {
         _repository = new InMemoryProductsRepository();
 
-        var taggedProducts = _repository.GetAllProductsForTag("MON");
+        var taggedProducts = await _repository.GetAllProductsForTag("MON");
 
         taggedProducts.Should().BeEmpty();
+    }
+    
+    [Test]
+    public async Task RetrieveProductsForAGivenTagWhenThereAreOccurrences() {
+        _repository = new InMemoryProductsRepository();
+        await _repository.Create(TestDefaultValues.Keyboard);
+
+        var taggedProducts = await _repository.GetAllProductsForTag(TestDefaultValues.Keyboard.Type);
+
+        taggedProducts.Should().HaveCount(1);
     }
 
     [Test]

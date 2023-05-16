@@ -22,8 +22,8 @@ public class InMemoryProductsRepository : IProductsRepository {
             0));
     }
 
-    public IEnumerable<Product> GetAllProductsForTag(string tag) {
-        return new List<Product>();
+    public Task<IEnumerable<Product>> GetAllProductsForTag(string tag) {
+        return Task.FromResult<IEnumerable<Product>>(new List<Product>());
     }
 
     public Task Create(Product product) {
