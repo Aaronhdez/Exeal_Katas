@@ -11,8 +11,17 @@ public class SQLiteProductsRepository : IProductsRepository {
         _connection = connection;
     }
 
-    public Task<Item> GetById(string productId) {
-        return _connection.QueryFirstOrDefaultAsync<Item>($"SELECT * FROM Products WHERE ID = '{productId}'");
+    public async Task<ProductReadDto> GetById(string productId) {
+        var item = await _connection.QueryFirstOrDefaultAsync<Item>($"SELECT * FROM Products WHERE ID = '{productId}'");
+        return new ProductReadDto {
+            Id = item.Id,
+            ProductReference = "MON",
+            Name = item.Name,
+            Description = item.Description,
+            Manufacturer = item.Manufacturer,
+            ManufacturerReference = item.ManufacturerReference,
+            Value = (int) item.Value
+        };
     }
 
     public Task Create(Item item) {
@@ -22,7 +31,4 @@ public class SQLiteProductsRepository : IProductsRepository {
             $"VALUES('{item.Id}','{item.Name}',{item.Value})");
     }
 
-    public Task<ProductReadDto> GetReadDtoById(string productId) {
-        return _connection.QueryFirstOrDefaultAsync<ProductReadDto>($"SELECT * FROM Products WHERE ID = '{productId}'");
-    }
 }

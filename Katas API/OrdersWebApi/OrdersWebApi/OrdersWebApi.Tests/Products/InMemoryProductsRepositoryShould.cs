@@ -12,7 +12,7 @@ public class InMemoryProductsRepositoryShould {
     
     [Test]
     public void FailWhenRepositoryIsEmpty() {
-        var result = () => _repository.GetReadDtoById("AnId").Result;
+        var result = () => _repository.GetById("AnId").Result;
 
         result.Should().Throw<ArgumentException>();
     }
