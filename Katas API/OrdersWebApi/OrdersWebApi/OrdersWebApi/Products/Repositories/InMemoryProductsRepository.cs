@@ -12,6 +12,7 @@ public class InMemoryProductsRepository : IProductsRepository {
         if (!_dictionary.ContainsKey(productId)) throw new ArgumentException();
         return Task.FromResult(new Product(
             "An Id", 
+            "A product reference",
             "MON", 
             "A Name", 
             "A Description",

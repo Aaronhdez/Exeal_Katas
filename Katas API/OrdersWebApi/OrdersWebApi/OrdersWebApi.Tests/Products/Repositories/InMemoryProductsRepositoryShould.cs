@@ -23,6 +23,7 @@ public class InMemoryProductsRepositoryShould {
     public async Task RetrieveAProductWhenItExists() {
         var product = new Product(
             "AnId", 
+            "A product reference",
             "A Type", 
             "A Name", 
             "A Description", 
