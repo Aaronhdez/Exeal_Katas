@@ -24,4 +24,6 @@ public class GetProductByIdQueryHandlerShould {
 
         result.Should().Throw<ArgumentException>();
     }
+    
+    
 }

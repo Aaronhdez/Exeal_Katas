@@ -13,7 +13,7 @@ public class InMemoryProductsRepository : IProductsRepository {
     }
     
     public Task<ProductReadDto> GetReadDtoById(string productId) {
-        var item = _dictionary[productId];
+        if (!_dictionary.ContainsKey(productId)) throw new ArgumentException();
         return Task.FromResult(new ProductReadDto("An Id", 
             "MON", 
             "A Name", 

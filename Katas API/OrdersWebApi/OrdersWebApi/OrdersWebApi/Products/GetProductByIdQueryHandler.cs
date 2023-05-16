@@ -4,13 +4,13 @@ using OrdersWebApi.Orders;
 namespace OrdersWebApi.Tests.Products;
 
 public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductReadDto> {
-    private readonly IProductsRepository _productsRepository;
+    private readonly IProductsRepository _repository;
 
-    public GetProductByIdQueryHandler(IProductsRepository productsRepository) {
-        _productsRepository = productsRepository;
+    public GetProductByIdQueryHandler(IProductsRepository repository) {
+        _repository = repository;
     }
 
-    public Task<ProductReadDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken) {
-        throw new NotImplementedException();
+    public async Task<ProductReadDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken) {
+        return await _repository.GetReadDtoById(request.Id);
     }
 }
