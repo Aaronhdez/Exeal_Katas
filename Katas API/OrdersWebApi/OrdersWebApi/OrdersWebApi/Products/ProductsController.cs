@@ -31,18 +31,18 @@ public class ProductsController : ControllerBase {
     }
     
     
-    [HttpPost]
-    public async Task<ProductQueryResponse> Post(CreateProductRequest request) {
-        var productReadDto = _guidGenerator.NewId().ToString();
-        await _sender.Send(new CreateProductCommand(
-            new CreateProductDto(
-                id,
-                request.Type, 
-                request.Name, 
-                request.Description,
-                request.Manufacturer, 
-                request.ManufacturerReference, 
-                request.Value)));
-        return await Task.FromResult(id);
-    }
+    //[HttpGet("{id}")]
+    //public async Task<ProductQueryResponse> GetById(CreateProductRequest request) {
+    //    var productReadDto = _guidGenerator.NewId().ToString();
+    //    await _sender.Send(new CreateProductCommand(
+    //        new CreateProductDto(
+    //            id,
+    //            request.Type, 
+    //            request.Name, 
+    //            request.Description,
+    //            request.Manufacturer, 
+    //            request.ManufacturerReference, 
+    //            request.Value)));
+    //    return await Task.FromResult(id);
+    //}
 }
