@@ -16,11 +16,13 @@ public class ProductReferenceGenerator {
 
     private static string GetFormattedReference(string tag, IEnumerable<Product> taggedProducts) {
         var lastNumber = taggedProducts.Count()+1;
-        if(lastNumber >= 100000) return tag + lastNumber;
-        if(lastNumber >= 10000) return tag + "0" + lastNumber;
-        if(lastNumber >= 1000) return tag + "00" + lastNumber;
-        if(lastNumber >= 100) return tag + "000" + lastNumber;
-        if(lastNumber >= 10) return tag + "0000" + lastNumber;
-        return tag + "00000" + lastNumber;
+        return lastNumber switch {
+            >= 100000 => tag + lastNumber,
+            >= 10000 => tag + "0" + lastNumber,
+            >= 1000 => tag + "00" + lastNumber,
+            >= 100 => tag + "000" + lastNumber,
+            >= 10 => tag + "0000" + lastNumber,
+            _ => tag + "00000" + lastNumber
+        };
     }
 }
