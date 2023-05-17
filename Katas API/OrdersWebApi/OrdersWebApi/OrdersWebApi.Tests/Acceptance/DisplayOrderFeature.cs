@@ -4,6 +4,7 @@ using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Products;
+using OrdersWebApi.Products.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
 
 namespace OrdersWebApi.Tests.Acceptance;
@@ -14,6 +15,7 @@ public class DisplayOrderFeature {
     private OrdersClient _ordersClient;
     private IGuidGenerator _idGenerator;
     private ProductsClient _productsClient;
+    private ProductReferenceGenerator _productReferenceGenerator;
 
     [SetUp]
     public void SetUp() {
@@ -29,25 +31,25 @@ public class DisplayOrderFeature {
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
-        var order = GivenAnOrderToBeCreated();
+        var productId = await GivenAProductInDatabase();
+        var order = GivenAnOrderToBeCreated(productId);
 
         var createdOrder = await WhenUserRequestsToCreateIt(order);
 
         await ThenItIsCreatedProperly(createdOrder);
     }
 
-    private static string GivenAnOrderToBeCreated() {
+    private static string GivenAnOrderToBeCreated(string productId) {
         return JsonConvert.SerializeObject(new CreateOrderRequest(
             TestDefaultValues.CustomerName,
             TestDefaultValues.CustomerAddress,
             new [] {
-                TestDefaultValues.ComputerMonitorId
+                productId
             }
         ), Formatting.Indented);
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string order) {
-        
         var orderId = await _ordersClient.PostAnOrder(order);
         var createdOrder = await _ordersClient.GetAnOrder(orderId);
         return createdOrder;
@@ -55,5 +57,17 @@ public class DisplayOrderFeature {
 
     private static async Task ThenItIsCreatedProperly(string createdOrder) {
         await Verify(createdOrder);
+    }
+
+    private async Task<string> GivenAProductInDatabase() {
+        var productCreationRequest = JsonConvert.SerializeObject(new CreateProductRequest (
+            TestDefaultValues.ComputerMonitor.Type,
+            TestDefaultValues.ComputerMonitor.Name,
+            TestDefaultValues.ComputerMonitor.Description,
+            TestDefaultValues.ComputerMonitor.Manufacturer,
+            TestDefaultValues.ComputerMonitor.ManufacturerReference,
+            (int)TestDefaultValues.ComputerMonitor.Value
+        ));
+        return await _productsClient.PostAProduct(productCreationRequest);
     }
 }

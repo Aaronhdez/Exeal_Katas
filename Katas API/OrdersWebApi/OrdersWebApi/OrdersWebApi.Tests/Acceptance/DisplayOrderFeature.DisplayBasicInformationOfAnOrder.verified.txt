@@ -5,8 +5,13 @@
   "address": "A Simple Address, 123",
   "products": [
     {
-      "id": "1c93009e-101f-4f4b-bf6b-a1c1d486dd03",
+      "id": "b323d8aa-2af3-4bbb-89e8-521d993cafee",
+      "type": "MON",
       "name": "Computer Monitor",
+      "description": "A DELL Computer Monitor",
+      "manufacturer": "DELL Inc.",
+      "manufacturerReference": "DLL123456789",
+      "productReference": "MON000001",
       "value": 100
     }
   ]

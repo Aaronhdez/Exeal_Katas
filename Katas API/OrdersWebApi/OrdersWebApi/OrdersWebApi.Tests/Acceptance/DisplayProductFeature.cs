@@ -25,29 +25,24 @@ public class DisplayProductFeature {
     [Test]
     public async Task DisplayACreatedProduct() {
         var createProductRequest = GivenAProductCreationRequest();
-        
+
         var id = await WhenUserRequestsToCreateIt(createProductRequest);
-        
+
         await ThenTheProductIsCreatedProperly(id);
     }
 
     private string GivenAProductCreationRequest() {
-        var productCreationRequest = new CreateProductRequest {
-            Type = "MON",
-            Name = "Computer Monitor",
-            Description = "A description",
-            Manufacturer ="A Manufacturer",
-            ManufacturerReference = "A Reference",
-            Value = 100};
+        var productCreationRequest = new CreateProductRequest("MON", "Computer Monitor", "A description",
+            "A Manufacturer", "A Reference", 100);
         return JsonConvert.SerializeObject(productCreationRequest);
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string createProductDto) {
-        return await _productsClient.PostAProduct(_ordersApi.CreateClient(), createProductDto);
+        return await _productsClient.PostAProduct(createProductDto);
     }
 
     private async Task ThenTheProductIsCreatedProperly(string id) {
-        var json = await _productsClient.GetAProductById(_ordersApi.CreateClient(), id);
+        var json = await _productsClient.GetAProductById(id);
         Verify(json);
     }
 }
