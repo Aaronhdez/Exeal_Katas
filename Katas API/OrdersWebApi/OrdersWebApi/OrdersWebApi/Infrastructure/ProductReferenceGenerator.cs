@@ -11,12 +11,11 @@ public class ProductReferenceGenerator {
 
     public async Task<string> GenerateReferenceForTag(string tag) {
         var taggedProducts = await _repository.GetAllProductsForTag(tag);
-        return GetFormattedReference(taggedProducts);
+        return GetFormattedReference(tag, taggedProducts);
     }
 
-    private static string GetFormattedReference(IEnumerable<Product> taggedProducts) {
-        if (taggedProducts.Count() == 0)
-            return "MON000001";
-        return taggedProducts.Count() == 2 ? "MON000003" : "MON000002";
+    private static string GetFormattedReference(string tag, IEnumerable<Product> taggedProducts) {
+        var lastNumber = taggedProducts.Count()+1;
+        return tag + "00000" + lastNumber;
     }
 }
