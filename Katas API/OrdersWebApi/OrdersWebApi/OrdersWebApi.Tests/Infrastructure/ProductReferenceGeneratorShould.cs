@@ -1,11 +1,13 @@
 ﻿using FluentAssertions;
+using NSubstitute;
 using OrdersWebApi.Infrastructure;
+using OrdersWebApi.Products;
 using OrdersWebApi.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Infrastructure; 
 
 public class ProductReferenceGeneratorShould {
-    private InMemoryProductsRepository _repository;
+    private IProductsRepository _repository;
     private ProductReferenceGenerator _referenceGenerator;
 
     [Test]
@@ -41,6 +43,19 @@ public class ProductReferenceGeneratorShould {
         var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 
         var expectedReference = "MON000003";
+        reference.Should().Be(expectedReference);
+    }
+
+    [Test]
+    public async Task GenerateAnIdFor10currences() {
+        _repository = Substitute.For<IProductsRepository>();
+        _referenceGenerator = new ProductReferenceGenerator(_repository);
+        _repository.GetAllProductsForTag(Arg.Any<string>()).Returns(new List<Product> {
+            new(), new(), new(), new(), new(), new(), new(), new(), new(),
+        });
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
+
+        var expectedReference = "MON000010";
         reference.Should().Be(expectedReference);
     }
 }
