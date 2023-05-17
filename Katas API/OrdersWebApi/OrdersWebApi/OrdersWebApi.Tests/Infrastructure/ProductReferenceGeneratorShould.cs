@@ -63,4 +63,13 @@ public class ProductReferenceGeneratorShould {
 
         reference.Should().Be("MON000100");
     }
+
+    [Test]
+    public async Task GenerateAnIdFor1000Ocurrences() {
+        _dummyList.Count().Returns(999);
+
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
+
+        reference.Should().Be("MON001000");
+    }
 }
