@@ -11,18 +11,20 @@ public class CreateOrderCommandHandlerShould {
     private CreateOrderCommand _createOrderCommand;
     private CreateOrderCommandHandler _createOrderCommandHandler;
     private IOrderRepository _orderRepository;
+    private IProductsRepository _productsRepository;
 
     [SetUp]
     public void SetUp() {
         _orderRepository = Substitute.For<IOrderRepository>();
+        _productsRepository = Substitute.For<IProductsRepository>();
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _createOrderCommandHandler = new CreateOrderCommandHandler(_orderRepository, _clock);
+        _createOrderCommandHandler = new CreateOrderCommandHandler(_orderRepository, _productsRepository, _clock);
     }
 
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<Product>()));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<string>()));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
@@ -38,7 +40,8 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, new[] { TestDefaultValues.ComputerMonitor }));
+        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, new[] { TestDefaultValues.ComputerMonitorId }));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 

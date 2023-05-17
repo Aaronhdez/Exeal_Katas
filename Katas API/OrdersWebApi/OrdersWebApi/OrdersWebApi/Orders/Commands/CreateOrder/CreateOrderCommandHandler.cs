@@ -1,5 +1,6 @@
 using MediatR;
 using OrdersWebApi.Infrastructure;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Orders.Commands.CreateOrder;
 
@@ -7,9 +8,12 @@ namespace OrdersWebApi.Orders.Commands.CreateOrder;
 public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand> {
     private readonly IClock _clock;
     private readonly IOrderRepository _orderRepository;
+    private readonly IProductsRepository _productsRepository;
 
-    public CreateOrderCommandHandler(IOrderRepository orderRepository, IClock clock) {
+    public CreateOrderCommandHandler(IOrderRepository orderRepository, IProductsRepository productsRepository,
+        IClock clock) {
         _orderRepository = orderRepository;
+        _productsRepository = productsRepository;
         _clock = clock;
     }
 
@@ -19,6 +23,10 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand> {
             _clock.Timestamp().ToString("dd/MM/yyyy"),
             request.OrderData.Customer,
             request.OrderData.Address,
-            request.OrderData.Products.ToList()));
+            GetProductsAssigned(request.OrderData.Products)));
+    }
+
+    private List<Product> GetProductsAssigned(IEnumerable<string> productIds) {
+        return productIds.Select(productId => _productsRepository.GetById(productId).Result).ToList();
     }
 }
