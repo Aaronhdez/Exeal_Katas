@@ -2,7 +2,6 @@
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
-using OrdersWebApi.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Infrastructure;
 
@@ -19,75 +18,19 @@ public class ProductReferenceGeneratorShould {
         _referenceGenerator = new ProductReferenceGenerator(_repository);
     }
 
-    [Test]
-    public async Task GenerateAnIdForFirstOccurenceInARepository() {
-        _dummyList.Count().Returns(0);
+    [TestCase(0, "MON", "MON000001")]
+    [TestCase(1, "MON", "MON000002")]
+    [TestCase(2, "MON", "MON000003")]
+    [TestCase(9, "MON", "MON000010")]
+    [TestCase(99, "MON", "MON000100")]
+    [TestCase(999, "MON", "MON001000")]
+    [TestCase(9999, "MON", "MON010000")]
+    [TestCase(99999, "MON", "MON100000")]
+    public async Task GenerateIdForDifferentOccurrences(int occurrences, string tag, string expectedReference) {
+        _dummyList.Count.Returns(occurrences);
 
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
+        var reference = await _referenceGenerator.GenerateReferenceForTag(tag);
 
-        reference.Should().Be("MON000001");
-    }
-
-    [Test]
-    public async Task GenerateAnIdForSecondOccurenceInARepository() {
-        _dummyList.Count().Returns(1);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON000002");
-    }
-
-    [Test]
-    public async Task GenerateAnIdForThirdOccurenceInARepository() {
-        _dummyList.Count().Returns(2);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON000003");
-    }
-
-    [Test]
-    public async Task GenerateAnIdFor10Ocurrences() {
-        _dummyList.Count().Returns(9);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON000010");
-    }
-
-    [Test]
-    public async Task GenerateAnIdFor100Ocurrences() {
-        _dummyList.Count().Returns(99);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON000100");
-    }
-
-    [Test]
-    public async Task GenerateAnIdFor1000Ocurrences() {
-        _dummyList.Count().Returns(999);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON001000");
-    }
-    
-    [Test]
-    public async Task GenerateAnIdFor10000Ocurrences() {
-        _dummyList.Count().Returns(9999);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON010000");
-    }
-    
-    [Test]
-    public async Task GenerateAnIdFor100000Ocurrences() {
-        _dummyList.Count().Returns(99999);
-
-        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
-
-        reference.Should().Be("MON100000");
+        reference.Should().Be(expectedReference);
     }
 }
