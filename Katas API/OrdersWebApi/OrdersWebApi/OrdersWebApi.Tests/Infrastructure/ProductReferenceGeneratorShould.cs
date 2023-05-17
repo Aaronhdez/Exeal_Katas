@@ -62,8 +62,9 @@ public class ProductReferenceGeneratorShould {
     [Test]
     public async Task GenerateAnIdFor100Ocurrences() {
         _repository = Substitute.For<IProductsRepository>();
-        var dummyList = Substitute.For<IEnumerable<Product>>();
+        var dummyList = Substitute.For<ICollection<Product>>();
         dummyList.Count().Returns(99);
+        _repository.GetAllProductsForTag(Arg.Any<string>()).Returns(dummyList);
         _referenceGenerator = new ProductReferenceGenerator(_repository);
         
         var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
