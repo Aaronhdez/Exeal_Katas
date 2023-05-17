@@ -75,7 +75,7 @@ public class ProductReferenceGeneratorShould {
     
     [Test]
     public async Task GenerateAnIdFor10000Ocurrences() {
-        _dummyList.Count().Returns(999);
+        _dummyList.Count().Returns(9999);
 
         var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 
