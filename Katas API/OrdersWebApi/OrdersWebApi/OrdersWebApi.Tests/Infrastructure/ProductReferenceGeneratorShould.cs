@@ -47,7 +47,7 @@ public class ProductReferenceGeneratorShould {
     }
 
     [Test]
-    public async Task GenerateAnIdFor10currences() {
+    public async Task GenerateAnIdFor10Ocurrences() {
         _repository = Substitute.For<IProductsRepository>();
         _referenceGenerator = new ProductReferenceGenerator(_repository);
         _repository.GetAllProductsForTag(Arg.Any<string>()).Returns(new List<Product> {
@@ -56,6 +56,19 @@ public class ProductReferenceGeneratorShould {
         var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
 
         var expectedReference = "MON000010";
+        reference.Should().Be(expectedReference);
+    }
+    
+    [Test]
+    public async Task GenerateAnIdFor100Ocurrences() {
+        _repository = Substitute.For<IProductsRepository>();
+        var dummyList = Substitute.For<IEnumerable<Product>>();
+        dummyList.Count().Returns(99);
+        _referenceGenerator = new ProductReferenceGenerator(_repository);
+        
+        var reference = await _referenceGenerator.GenerateReferenceForTag("MON");
+
+        var expectedReference = "MON000100";
         reference.Should().Be(expectedReference);
     }
 }
