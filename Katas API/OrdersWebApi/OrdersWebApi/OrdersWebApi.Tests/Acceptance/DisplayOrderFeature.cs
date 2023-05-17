@@ -6,6 +6,8 @@ using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
+using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Tests.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -32,21 +34,11 @@ public class DisplayOrderFeature {
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
         var productId = await GivenAProductInDatabase();
-        var order = GivenAnOrderToBeCreated(productId);
+        var order = OrdersObjectMother.GivenAnOrderRequestWithAProductId(productId);
 
         var createdOrder = await WhenUserRequestsToCreateIt(order);
 
         await ThenItIsCreatedProperly(createdOrder);
-    }
-
-    private static string GivenAnOrderToBeCreated(string productId) {
-        return JsonConvert.SerializeObject(new CreateOrderRequest(
-            TestDefaultValues.CustomerName,
-            TestDefaultValues.CustomerAddress,
-            new [] {
-                productId
-            }
-        ), Formatting.Indented);
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string order) {

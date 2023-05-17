@@ -1,6 +1,8 @@
 ﻿using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
+using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Tests.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -34,7 +36,6 @@ public class DisplayProductFeature {
     }
 
     private async Task ThenTheProductIsCreatedProperly(string id) {
-        var json = await _productsClient.GetAProductById(id);
-        Verify(json);
+        Verify(await _productsClient.GetAProductById(id));
     }
 }
