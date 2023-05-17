@@ -28,7 +28,7 @@ public class Product {
     public int Value { get; }
 
     private bool Equals(Product other) {
-        return Id == other.Id && Name == other.Name && Value == other.Value;
+        return ProductReference == other.ProductReference;
     }
 
     public override bool Equals(object? obj) {

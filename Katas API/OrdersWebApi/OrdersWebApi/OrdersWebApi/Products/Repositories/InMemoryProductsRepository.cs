@@ -20,7 +20,8 @@ public class InMemoryProductsRepository : IProductsRepository {
     }
 
     public Task Create(Product product) {
-        _dictionary.Add(product.Id, product);
+        if(!_dictionary.ContainsValue(product))
+            _dictionary.Add(product.Id, product);
         return Task.CompletedTask;
     }
 }

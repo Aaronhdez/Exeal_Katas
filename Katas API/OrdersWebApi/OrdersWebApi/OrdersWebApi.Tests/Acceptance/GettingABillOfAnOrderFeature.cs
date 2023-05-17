@@ -29,23 +29,19 @@ public class GettingABillOfAnOrderFeature {
 
     [Test]
     public async Task GetABillForAnOrderStored() {
-        var orderId = await GivenAStoredOrder();
+        var orderId = await GivenAStoredOrderWithProductsAssigned();
     
         var bill = await WhenUserRequestsItsBill(orderId);
     
         await ThenItIsRetrievedProperly(bill);
     }
     
-    private async Task<string> GivenAStoredOrder() {
-        var products = new[] {
-            await _productsClient.PostAProduct(ProductsObjectMother.ComputerMonitorCreationRequest()),
-            await _productsClient.PostAProduct(ProductsObjectMother.ComputerMonitorCreationRequest()),
-            await _productsClient.PostAProduct(ProductsObjectMother.KeyboardCreationRequest()),
-            await _productsClient.PostAProduct(ProductsObjectMother.KeyboardCreationRequest()),
-            await _productsClient.PostAProduct(ProductsObjectMother.MouseCreationRequest())
-        };
-        var createOrderRequest = OrdersObjectMother.GivenAnOrderRequestWithProductsAssigned(products);
-        return await _ordersClient.PostAnOrder(createOrderRequest);
+    private async Task<string> GivenAStoredOrderWithProductsAssigned() {
+        var computerId = await _productsClient.PostAProduct(ProductsObjectMother.ComputerMonitorCreationRequest());
+        var keyboardId = await _productsClient.PostAProduct(ProductsObjectMother.KeyboardCreationRequest());
+        var mouseId = await _productsClient.PostAProduct(ProductsObjectMother.MouseCreationRequest());
+        return await _ordersClient.PostAnOrder(OrdersObjectMother.GivenAnOrderRequestWithProductsAssigned(
+            new[] { computerId, computerId, keyboardId, keyboardId, mouseId }));
     }
 
     private async Task<string> WhenUserRequestsItsBill(string orderId) {

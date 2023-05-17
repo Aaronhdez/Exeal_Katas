@@ -26,6 +26,7 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
                 itemsAssociated.Add(item,1);
             }
         }
+        
         //Crear el DTO
         var bill = new ReadBillDto {
             Company = "Computer Stuff Inc.",
@@ -47,7 +48,7 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
                 Concept = item.Value + " x "+item.Key.Name+"",
                 Value = currentItemValue,
             });
-            total += (int) currentItemValue;
+            total += currentItemValue;
         }
         return summarizedProducts;
     }
