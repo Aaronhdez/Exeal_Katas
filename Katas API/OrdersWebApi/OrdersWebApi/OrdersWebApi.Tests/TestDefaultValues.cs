@@ -28,16 +28,6 @@ public static class TestDefaultValues {
         "DELL Inc.",
         "DLL123456789",
         ComputerMonitorValue);
-    
-    public static readonly Product AnotherComputerMonitor = new(
-        "Another Id",
-        "MON0000001",
-        "MON",
-        ComputerMonitorName,
-        "A DELL Computer Monitor",
-        "DELL Inc.",
-        "DLL123456789",
-        ComputerMonitorValue);
 
     public static Guid KeyboardGuid = Guid.Parse("08083948-2d0d-4808-b0a8-fbd9d6ad4388");
     public const string KeyboardId = "08083948-2d0d-4808-b0a8-fbd9d6ad4388";

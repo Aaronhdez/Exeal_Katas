@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using NSubstitute;
+﻿using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
-using OrdersWebApi.Products.Controllers.Requests;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -24,17 +22,11 @@ public class DisplayProductFeature {
 
     [Test]
     public async Task DisplayACreatedProduct() {
-        var createProductRequest = GivenAProductCreationRequest();
+        var createProductRequest = ProductsObjectMother.ComputerMonitorCreationRequest();
 
         var id = await WhenUserRequestsToCreateIt(createProductRequest);
 
         await ThenTheProductIsCreatedProperly(id);
-    }
-
-    private string GivenAProductCreationRequest() {
-        var productCreationRequest = new CreateProductRequest("MON", "Computer Monitor", "A description",
-            "A Manufacturer", "A Reference", 100);
-        return JsonConvert.SerializeObject(productCreationRequest);
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string createProductDto) {

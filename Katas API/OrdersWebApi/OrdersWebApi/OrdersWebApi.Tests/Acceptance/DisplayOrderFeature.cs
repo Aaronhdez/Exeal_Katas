@@ -60,14 +60,7 @@ public class DisplayOrderFeature {
     }
 
     private async Task<string> GivenAProductInDatabase() {
-        var productCreationRequest = JsonConvert.SerializeObject(new CreateProductRequest (
-            TestDefaultValues.ComputerMonitor.Type,
-            TestDefaultValues.ComputerMonitor.Name,
-            TestDefaultValues.ComputerMonitor.Description,
-            TestDefaultValues.ComputerMonitor.Manufacturer,
-            TestDefaultValues.ComputerMonitor.ManufacturerReference,
-            (int)TestDefaultValues.ComputerMonitor.Value
-        ));
+        var productCreationRequest = ProductsObjectMother.ComputerMonitorCreationRequest();
         return await _productsClient.PostAProduct(productCreationRequest);
     }
 }

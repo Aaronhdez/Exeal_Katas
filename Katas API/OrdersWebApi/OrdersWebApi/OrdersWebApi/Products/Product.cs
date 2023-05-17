@@ -25,7 +25,7 @@ public class Product {
     public string Manufacturer { get; }
     public string ManufacturerReference { get; }
     public string ProductReference { get; set; }
-    public long Value { get; }
+    public int Value { get; }
 
     private bool Equals(Product other) {
         return Id == other.Id && Name == other.Name && Value == other.Value;
