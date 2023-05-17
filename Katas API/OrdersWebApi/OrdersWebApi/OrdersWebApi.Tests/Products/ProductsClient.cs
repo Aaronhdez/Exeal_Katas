@@ -10,7 +10,7 @@ public class ProductsClient {
         _client = client;
     }
 
-    public async Task<string> PostAProduct(HttpClient httpClient, string createProductDto) {
+    public async Task<string> PostAProduct(string createProductDto) {
         var postResponse = await _client.PostAsync("/Products",
             new StringContent(createProductDto, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
@@ -18,7 +18,7 @@ public class ProductsClient {
         return content;
     }
 
-    public async Task<string> GetAProductById(HttpClient httpClient, string id) {
+    public async Task<string> GetAProductById(string id) {
         var getResponse = await _client.GetAsync($"/Products/{id}");
         getResponse.EnsureSuccessStatusCode();
         var content = await getResponse.Content.ReadAsStringAsync();
