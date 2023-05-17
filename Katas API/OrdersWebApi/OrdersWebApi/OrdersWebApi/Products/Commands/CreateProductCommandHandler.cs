@@ -1,25 +1,28 @@
 ﻿using MediatR;
+using OrdersWebApi.Infrastructure;
 
 namespace OrdersWebApi.Products.Commands;
 
 public class CreateProductCommandHandler: IRequestHandler<CreateProductCommand> {
     private readonly IProductsRepository _repository;
+    private readonly ProductReferenceGenerator _productReferenceGenerator;
 
-    public CreateProductCommandHandler(IProductsRepository repository) {
+    public CreateProductCommandHandler(IProductsRepository repository,
+        ProductReferenceGenerator productReferenceGenerator) {
         _repository = repository;
+        _productReferenceGenerator = productReferenceGenerator;
     }
 
-    public Task Handle(CreateProductCommand command, CancellationToken cancellationToken) {
+    public async Task Handle(CreateProductCommand command, CancellationToken cancellationToken) {
         var item = new Product(
             command.ProductDto.Id,
-            "A product Reference",
+            await _productReferenceGenerator.GenerateReferenceForTag(command.ProductDto.Type),
             command.ProductDto.Type,
             command.ProductDto.Name,
             command.ProductDto.Description,
             command.ProductDto.Manufacturer,
             command.ProductDto.ManufacturerReference,
             command.ProductDto.Value);
-        _repository.Create(item);
-        return Task.CompletedTask;
+        await _repository.Create(item);
     }
 }

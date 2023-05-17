@@ -11,15 +11,7 @@ public class InMemoryProductsRepository : IProductsRepository {
     
     public Task<Product> GetById(string productId) {
         if (!_dictionary.ContainsKey(productId)) throw new ArgumentException();
-        return Task.FromResult(new Product(
-            "An Id", 
-            "A product reference",
-            "MON", 
-            "A Name", 
-            "A Description",
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
-            0));
+        return Task.FromResult(_dictionary[productId]);
     }
 
     public Task<IEnumerable<Product>> GetAllProductsForTag(string tag) {

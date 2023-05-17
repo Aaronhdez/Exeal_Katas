@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Commands;
 using OrdersWebApi.Products.Queries;
@@ -11,23 +12,26 @@ public class CreateProductCommandHandlerShould {
     private CreateProductCommandHandler _handler;
     private IProductsRepository _repository;
     private CreateProductCommand _command;
+    private ProductReferenceGenerator _referenceGenerator;
 
     [SetUp]
     public void SetUp() {
         _repository = new InMemoryProductsRepository();
-        _handler = new CreateProductCommandHandler(_repository);
+        _referenceGenerator = new ProductReferenceGenerator(_repository);
+        _handler = new CreateProductCommandHandler(_repository, _referenceGenerator);
     }
 
     [Test]
     public async Task StoreAProductInRepository() {
-        _createProductDto = new CreateProductDto("An Id", "MON", "A Name", "A Description",
+        var tag = "MON";
+        _createProductDto = new CreateProductDto("An Id", tag, "A Name", "A Description",
             "A Manufacturer", "A Manufacturer Reference", 0);
 
         await _handler.Handle(new CreateProductCommand(_createProductDto), default);
 
         var product = new ProductReadDto{
             Id = "An Id", 
-            ProductReference = "A product reference", 
+            ProductReference = "MON000001", 
             Name = "A Name", 
             Description = "A Description",
             Manufacturer = "A Manufacturer", 
