@@ -4,6 +4,7 @@ using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
+using OrdersWebApi.Products.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,9 +23,10 @@ builder.Services.AddMediatR(configuration =>
     configuration.RegisterServicesFromAssembly(typeof(OrdersWebApi.Program).Assembly));
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddSingleton<IGuidGenerator, GuidGenerator>();
-builder.Services.AddScoped(_ => new SQLiteConnection("Data Source=./Orders.db"));
-builder.Services.AddTransient<IOrderRepository, SQLiteOrdersRepository>();
-builder.Services.AddTransient<IProductsRepository, SQLiteProductsRepository>();
+builder.Services.AddSingleton<ProductReferenceGenerator>();
+//builder.Services.AddScoped(_ => new SQLiteConnection("Data Source=./Orders.db"));
+builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
+builder.Services.AddSingleton<IProductsRepository, InMemoryProductsRepository>();
 
 var app = builder.Build();
 

@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
@@ -11,7 +10,7 @@ public class DisplayProductFeature {
     private IClock? _clock;
     private OrdersApi _ordersApi;
     private IGuidGenerator _idGenerator;
-    private HttpClient _client;
+    private ProductsClient _productsClient;
 
     [SetUp]
     public void SetUp() {
@@ -20,19 +19,19 @@ public class DisplayProductFeature {
         _idGenerator = Substitute.For<IGuidGenerator>();
         _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
-        _client = _ordersApi.CreateClient();
+        _productsClient = new ProductsClient(_ordersApi.CreateClient());
     }
 
     [Test]
     public async Task DisplayACreatedProduct() {
-        var createProductDto = GivenAProductCreationDto();
+        var createProductRequest = GivenAProductCreationRequest();
         
-        var id = await WhenUserRequestsToCreateIt(createProductDto);
+        var id = await WhenUserRequestsToCreateIt(createProductRequest);
         
         await ThenTheProductIsCreatedProperly(id);
     }
 
-    private string GivenAProductCreationDto() {
+    private string GivenAProductCreationRequest() {
         var productCreationRequest = new CreateProductRequest {
             Type = "MON",
             Name = "Computer Monitor",
@@ -44,17 +43,11 @@ public class DisplayProductFeature {
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string createProductDto) {
-        var postResponse = await _client.PostAsync("/Products", new StringContent(createProductDto, Encoding.Default, "application/json"));
-        postResponse.EnsureSuccessStatusCode();
-        var content = await postResponse.Content.ReadAsStringAsync();
-        return content;
+        return await _productsClient.PostAProduct(_ordersApi.CreateClient(), createProductDto);
     }
 
     private async Task ThenTheProductIsCreatedProperly(string id) {
-        var getResponse = await _client.GetAsync($"/Products/{id}");
-        getResponse.EnsureSuccessStatusCode();
-        var content = await getResponse.Content.ReadAsStringAsync();
-        var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
+        var json = await _productsClient.GetAProductById(_ordersApi.CreateClient(), id);
         Verify(json);
     }
 }
