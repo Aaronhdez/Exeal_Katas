@@ -1,9 +1,14 @@
 ﻿using Newtonsoft.Json;
+using OrdersWebApi.Products;
+using OrdersWebApi.Products.Commands;
 using OrdersWebApi.Products.Controllers.Requests;
+using OrdersWebApi.Products.Queries;
 
 namespace OrdersWebApi.Tests.Products;
 
 public static class ProductsMother {
+    
+    //REQUESTS
     public static string ComputerMonitorCreationRequest() {
         return JsonConvert.SerializeObject(new CreateProductRequest(
             TestDefaultValues.ComputerMonitor.Type,
@@ -32,5 +37,52 @@ public static class ProductsMother {
             TestDefaultValues.Mouse.Manufacturer,
             TestDefaultValues.Mouse.ManufacturerReference,
             TestDefaultValues.Mouse.Value));
+    }
+
+    //DTOs
+    public static ProductReadDto TestExpectedProductReadDto() {
+        return new ProductReadDto{
+            Id = "An Id", 
+            ProductReference = "MON000001", 
+            Name = "A Name", 
+            Description = "A Description",
+            Manufacturer = "A Manufacturer", 
+            ManufacturerReference = "A Manufacturer Reference", 
+            Value = 0};
+    }
+    
+    public static ProductReadDto TestProductReadDto() {
+        return new ProductReadDto{
+            Id = "An Id", 
+            ProductReference = "MON000001", 
+            Name = "A Name", 
+            Description = "A Description",
+            Manufacturer = "A Manufacturer", 
+            ManufacturerReference = "A Manufacturer Reference", 
+            Value = 0};
+    }
+    
+    public static CreateProductDto TestCreateProductDto(string tag) {
+        return new CreateProductDto(
+            "An Id", 
+            tag, 
+            "A Name", 
+            "A Description",
+            "A Manufacturer", 
+            "A Manufacturer Reference", 
+            0);
+    }
+    
+    //MODELS
+    public static Product ATestProduct(string productId) {
+        return new Product(
+            productId, 
+            "MON000001",
+            "MON", 
+            "A Name", 
+            "A Description",
+            "A Manufacturer", 
+            "A Manufacturer Reference", 
+            0);
     }
 }

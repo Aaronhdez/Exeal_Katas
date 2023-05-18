@@ -23,20 +23,11 @@ public class CreateProductCommandHandlerShould {
 
     [Test]
     public async Task StoreAProductInRepository() {
-        var tag = "MON";
-        _createProductDto = new CreateProductDto("An Id", tag, "A Name", "A Description",
-            "A Manufacturer", "A Manufacturer Reference", 0);
+        _createProductDto = ProductsMother.TestCreateProductDto("MON");
 
         await _handler.Handle(new CreateProductCommand(_createProductDto), default);
 
-        var product = new ProductReadDto{
-            Id = "An Id", 
-            ProductReference = "MON000001", 
-            Name = "A Name", 
-            Description = "A Description",
-            Manufacturer = "A Manufacturer", 
-            ManufacturerReference = "A Manufacturer Reference", 
-            Value = 0};
+        var product = ProductsMother.TestExpectedProductReadDto();
         var expectedProduct = await _repository.GetById("An Id");
         expectedProduct.Should().BeEquivalentTo(product);
     }

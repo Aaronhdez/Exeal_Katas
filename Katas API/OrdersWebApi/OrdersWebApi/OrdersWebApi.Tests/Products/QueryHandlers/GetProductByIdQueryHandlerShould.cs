@@ -19,23 +19,13 @@ public class GetProductByIdQueryHandlerShould {
     [Test]
     public async Task GetAProductDtoFromExistingRecord() {
         var productId = "An Id";
-        var product = new Product(productId, 
-            "A product reference","MON", "A Name", "A Description",
-            "A Manufacturer", "A Manufacturer Reference", 0);
+        var product = ProductsMother.ATestProduct(productId);
         await _repository.Create(product);
 
         var productQuery = new GetProductByIdQuery(productId);
         var result = await _handler.Handle(productQuery, default);
-        
-        var expectedDto = new ProductReadDto{
-            Id = "An Id", 
-            ProductReference = "A product reference", 
-            Name = "A Name", 
-            Description = "A Description",
-            Manufacturer = "A Manufacturer", 
-            ManufacturerReference = "A Manufacturer Reference", 
-            Value = 0};
+
+        var expectedDto = ProductsMother.TestProductReadDto();
         result.Should().BeEquivalentTo(expectedDto);
     }
-
 }
