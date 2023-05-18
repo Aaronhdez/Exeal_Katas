@@ -42,6 +42,11 @@ public class DisplayOrderFeature {
         await ThenItIsCreatedProperly(createdOrder);
     }
 
+    private async Task<string> GivenAProductInDatabase() {
+        var productCreationRequest = ProductsMother.ComputerMonitorCreationRequest();
+        return await _productsClient.PostAProduct(productCreationRequest);
+    }
+
     private async Task<string> WhenUserRequestsToCreateIt(string order) {
         var orderId = await _ordersClient.PostAnOrder(order);
         var createdOrder = await _ordersClient.GetAnOrder(orderId);
@@ -50,10 +55,5 @@ public class DisplayOrderFeature {
 
     private static async Task ThenItIsCreatedProperly(string createdOrder) {
         await Verify(createdOrder);
-    }
-
-    private async Task<string> GivenAProductInDatabase() {
-        var productCreationRequest = ProductsMother.ComputerMonitorCreationRequest();
-        return await _productsClient.PostAProduct(productCreationRequest);
     }
 }
