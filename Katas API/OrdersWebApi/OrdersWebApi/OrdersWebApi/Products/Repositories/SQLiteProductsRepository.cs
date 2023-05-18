@@ -1,9 +1,7 @@
 using System.Data.SQLite;
 using Dapper;
-using OrdersWebApi.Products;
-using OrdersWebApi.Products.Queries;
 
-namespace OrdersWebApi.Orders.Repositories;
+namespace OrdersWebApi.Products.Repositories;
 
 public class SQLiteProductsRepository : IProductsRepository {
     private readonly SQLiteConnection _connection;

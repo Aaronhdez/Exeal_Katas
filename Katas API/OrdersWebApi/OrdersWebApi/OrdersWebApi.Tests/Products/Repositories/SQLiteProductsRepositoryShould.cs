@@ -3,6 +3,7 @@ using FluentAssertions;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Queries;
+using OrdersWebApi.Products.Repositories;
 using OrdersWebApi.Tests.Orders.Repositories;
 
 namespace OrdersWebApi.Tests.Products.Repositories;
