@@ -14,31 +14,24 @@ public class InMemoryOrdersRepositoryShould {
     }
 
     [Test]
-    public void InsertNewOrderRegistryWhileRequested() {
-        var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Product> { TestDefaultValues.ComputerMonitor });
+    public async Task InsertNewOrderRegistryWhileRequested() {
+        var expectedOrder = OrdersMother.ATestOrder();
 
         _inMemoryOrdersRepository.Create(expectedOrder);
 
-        var retrievedOrder = _inMemoryOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
+        var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
         retrievedOrder.Should().Be(expectedOrder);
     }
-
-
+    
     [Test]
-    public void UpdateAnOrderProductsListWhileRequested() {
-        var expectedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Product> { TestDefaultValues.ComputerMonitor });
-        var expectedUpdatedOrder = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Product> {
-                TestDefaultValues.ComputerMonitor,
-                TestDefaultValues.ComputerMonitor
-            });
+    public async Task UpdateAnOrderProductsListWhileRequested() {
+        var expectedOrder = OrdersMother.ATestOrder();
+        var expectedUpdatedOrder = OrdersMother.AnUpdatedTestOrder();
 
         _inMemoryOrdersRepository.Create(expectedOrder);
         _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
 
-        var retrievedOrder = _inMemoryOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
+        var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
         retrievedOrder.Should().Be(expectedUpdatedOrder);
     }
 }

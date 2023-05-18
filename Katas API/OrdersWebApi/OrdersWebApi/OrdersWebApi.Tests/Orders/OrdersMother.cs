@@ -1,9 +1,13 @@
 ﻿using Newtonsoft.Json;
+using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Controllers.Requests;
+using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders;
 
 public static class OrdersMother {
+    
+    //REQUESTS
     public static string GivenAnOrderRequestWithProductsAssigned(string[] products) {
         return JsonConvert.SerializeObject(new CreateOrderRequest (
             TestDefaultValues.CustomerName,
@@ -20,5 +24,33 @@ public static class OrdersMother {
                 productId
             }
         ), Formatting.Indented);
+    }
+    
+    //DTOS
+    
+    
+    //MODELS
+    
+    public static Order ATestOrder() {
+        return new Order(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CreationDate, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress,
+            new List<Product> {
+                TestDefaultValues.ComputerMonitor
+            });
+    }
+
+    public static Order AnUpdatedTestOrder() {
+        return new Order(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CreationDate, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress,
+            new List<Product> {
+                TestDefaultValues.ComputerMonitor,
+                TestDefaultValues.ComputerMonitor
+            });
     }
 }
