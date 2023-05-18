@@ -9,11 +9,13 @@ public class AddProductsToOrderCommandHandlerShould {
     private AddProductsToOrderCommandHandler _addProductsCommandHandler;
     private Order _givenOrderModel;
     private IOrderRepository _orderRepository;
+    private IProductsRepository _productsRepository;
 
     [SetUp]
     public void SetUp() {
         _orderRepository = Substitute.For<IOrderRepository>();
-        _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository);
+        _productsRepository = Substitute.For<IProductsRepository>();
+        _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository, _productsRepository);
         _givenOrderModel = new Order(
             TestDefaultValues.OrderId,
             TestDefaultValues.CreationDate,
@@ -24,9 +26,10 @@ public class AddProductsToOrderCommandHandlerShould {
 
     [Test]
     public async Task AddOneProductToAnEmptySpecifiedOrder() {
+        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
         _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Product[] {
-            TestDefaultValues.ComputerMonitor
+        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new [] {
+            TestDefaultValues.ComputerMonitorId
         });
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 
@@ -44,10 +47,11 @@ public class AddProductsToOrderCommandHandlerShould {
 
     [Test]
     public async Task AddTwoProductsToAnEmptySpecifiedOrder() {
+        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
         _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new Product[] {
-            TestDefaultValues.ComputerMonitor,
-            TestDefaultValues.ComputerMonitor
+        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new [] {
+            TestDefaultValues.ComputerMonitorId,
+            TestDefaultValues.ComputerMonitorId
         });
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 

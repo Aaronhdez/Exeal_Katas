@@ -1,22 +1,33 @@
 ﻿{
-  "id": "b323d8aa-2af3-4bbb-89e8-521d993cafee",
   "creationDate": "24/04/2023",
   "customer": "John Doe",
   "address": "A Simple Address, 123",
   "products": [
     {
-      "id": "1c93009e-101f-4f4b-bf6b-a1c1d486dd03",
+      "type": "MON",
       "name": "Computer Monitor",
+      "description": "A DELL Computer Monitor",
+      "manufacturer": "DELL Inc.",
+      "manufacturerReference": "DLL123456789",
+      "productReference": "MON000001",
       "value": 100
     },
     {
-      "id": "08083948-2d0d-4808-b0a8-fbd9d6ad4388",
+      "type": "KEY",
       "name": "Keyboard",
+      "description": "A Razer keyboard",
+      "manufacturer": "Razer",
+      "manufacturerReference": "DLL123456789",
+      "productReference": "KEY000001",
       "value": 20
     },
     {
-      "id": "5e0b445b-1eeb-41c0-86cb-dd097c27d41e",
+      "type": "MOU",
       "name": "Mouse",
+      "description": "A Logitech Mouse",
+      "manufacturer": "Logitech Inc.",
+      "manufacturerReference": "DLL123456789",
+      "productReference": "MOU000001",
       "value": 15
     }
   ]

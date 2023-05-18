@@ -19,10 +19,11 @@ public class OrdersClient {
         return newProducts;
     }
 
-    public async Task PutAnOrder(string orderId, string addedItems) {
-        var putResponse = await _client.PutAsync($"/Orders/{orderId}",
-            new StringContent(addedItems, Encoding.Default, "application/json"));
-        putResponse.EnsureSuccessStatusCode();
+    public async Task<string> PostAnOrder(string order) {
+        var postResponse = await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+        postResponse.EnsureSuccessStatusCode();
+        var content = await postResponse.Content.ReadAsStringAsync();
+        return content;
     }
 
     public async Task<string> GetAnOrder(string orderId) {
@@ -32,10 +33,9 @@ public class OrdersClient {
         return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
     }
 
-    public async Task<string> PostAnOrder(string order) {
-        var postResponse = await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
-        postResponse.EnsureSuccessStatusCode();
-        var content = await postResponse.Content.ReadAsStringAsync();
-        return content;
+    public async Task PutAnOrder(string orderId, string addedItems) {
+        var putResponse = await _client.PutAsync($"/Orders/{orderId}",
+            new StringContent(addedItems, Encoding.Default, "application/json"));
+        putResponse.EnsureSuccessStatusCode();
     }
 }
