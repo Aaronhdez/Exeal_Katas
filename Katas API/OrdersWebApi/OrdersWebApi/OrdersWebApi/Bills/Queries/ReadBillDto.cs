@@ -8,8 +8,3 @@ public class ReadBillDto {
     public IEnumerable<BillRow> Items { get; set; }
     public int Total { get; set; }
 }
-
-public class BillRow {
-    public string Concept { get; set; }
-    public long Value { get; set; }
-}
