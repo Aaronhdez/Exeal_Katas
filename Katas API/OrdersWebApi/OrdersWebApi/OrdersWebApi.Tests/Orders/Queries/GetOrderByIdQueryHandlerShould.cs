@@ -18,9 +18,11 @@ public class GetOrderByIdQueryHandlerShould {
 
     [Test]
     public async Task RetrieveAnOrderByItsIdWhileRequested() {
-        _ordersRepository.GetById(TestDefaultValues.OrderId).Returns(new Order(TestDefaultValues.OrderId, null, null, null, null));
+        _ordersRepository.GetById(TestDefaultValues.OrderId).Returns(
+            new Order(TestDefaultValues.OrderId, null, null, null, null));
 
-        var receivedOrderResponse = _handler.Handle(new GetOrderByIdQuery(TestDefaultValues.OrderId), default);
+        var receivedOrderResponse = _handler.Handle(
+            new GetOrderByIdQuery(TestDefaultValues.OrderId), default);
 
         receivedOrderResponse.Should().NotBeNull();
     }

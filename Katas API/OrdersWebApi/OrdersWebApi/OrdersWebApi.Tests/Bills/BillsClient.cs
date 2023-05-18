@@ -13,7 +13,6 @@ public class BillsClient {
         var getResponse = await _client.GetAsync($"/Bills/{orderId}");
         getResponse.EnsureSuccessStatusCode();
         var content = await getResponse.Content.ReadAsStringAsync();
-        var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
-        return json;
+        return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
     }
 }

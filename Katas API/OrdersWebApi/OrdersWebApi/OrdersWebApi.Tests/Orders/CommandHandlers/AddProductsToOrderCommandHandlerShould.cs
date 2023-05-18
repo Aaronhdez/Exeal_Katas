@@ -40,7 +40,6 @@ public class AddProductsToOrderCommandHandlerShould {
             new List<Product> {
                 TestDefaultValues.ComputerMonitor
             });
-
         await _orderRepository.Received().GetById(TestDefaultValues.OrderId);
         await _orderRepository.Received().Update(expectedOrderModel);
     }
@@ -63,7 +62,6 @@ public class AddProductsToOrderCommandHandlerShould {
                 TestDefaultValues.ComputerMonitor,
                 TestDefaultValues.ComputerMonitor
             });
-
         await _orderRepository.Received().GetById(TestDefaultValues.OrderId);
         await _orderRepository.Received().Update(expectedOrderModel);
     }

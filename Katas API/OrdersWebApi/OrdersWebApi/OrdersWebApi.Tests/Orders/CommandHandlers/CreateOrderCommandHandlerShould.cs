@@ -24,7 +24,11 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, Array.Empty<string>()));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress, 
+            Array.Empty<string>()));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
@@ -34,14 +38,19 @@ public class CreateOrderCommandHandlerShould {
             TestDefaultValues.CustomerName, 
             TestDefaultValues.CustomerAddress,
             new List<Product>());
-
         await _orderRepository.Received().Create(expectedOrderModel);
     }
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
         _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(TestDefaultValues.OrderId, TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress, new[] { TestDefaultValues.ComputerMonitorId }));
+        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
+            TestDefaultValues.OrderId,
+            TestDefaultValues.CustomerName,
+            TestDefaultValues.CustomerAddress,
+            new[] {
+                TestDefaultValues.ComputerMonitorId
+            }));
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
@@ -51,7 +60,6 @@ public class CreateOrderCommandHandlerShould {
             TestDefaultValues.CustomerName, 
             TestDefaultValues.CustomerAddress,
             new List<Product> { TestDefaultValues.ComputerMonitor });
-
         await _orderRepository.Received(1).Create(expectedOrderModel);
     }
 }
