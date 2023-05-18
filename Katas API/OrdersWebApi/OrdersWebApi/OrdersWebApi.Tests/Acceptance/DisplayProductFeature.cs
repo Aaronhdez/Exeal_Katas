@@ -24,7 +24,7 @@ public class DisplayProductFeature {
 
     [Test]
     public async Task DisplayACreatedProduct() {
-        var createProductRequest = ProductsObjectMother.ComputerMonitorCreationRequest();
+        var createProductRequest = ProductsMother.ComputerMonitorCreationRequest();
 
         var id = await WhenUserRequestsToCreateIt(createProductRequest);
 

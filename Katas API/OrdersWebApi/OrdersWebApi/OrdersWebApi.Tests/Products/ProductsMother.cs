@@ -3,7 +3,7 @@ using OrdersWebApi.Products.Controllers.Requests;
 
 namespace OrdersWebApi.Tests.Products;
 
-public static class ProductsObjectMother {
+public static class ProductsMother {
     public static string ComputerMonitorCreationRequest() {
         return JsonConvert.SerializeObject(new CreateProductRequest(
             TestDefaultValues.ComputerMonitor.Type,

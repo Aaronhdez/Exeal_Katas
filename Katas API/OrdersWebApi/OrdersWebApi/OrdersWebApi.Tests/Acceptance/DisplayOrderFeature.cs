@@ -35,7 +35,7 @@ public class DisplayOrderFeature {
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
         var productId = await GivenAProductInDatabase();
-        var order = OrdersObjectMother.GivenAnOrderRequestWithAProductId(productId);
+        var order = OrdersMother.GivenAnOrderRequestWithAProductId(productId);
 
         var createdOrder = await WhenUserRequestsToCreateIt(order);
 
@@ -53,7 +53,7 @@ public class DisplayOrderFeature {
     }
 
     private async Task<string> GivenAProductInDatabase() {
-        var productCreationRequest = ProductsObjectMother.ComputerMonitorCreationRequest();
+        var productCreationRequest = ProductsMother.ComputerMonitorCreationRequest();
         return await _productsClient.PostAProduct(productCreationRequest);
     }
 }

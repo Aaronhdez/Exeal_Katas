@@ -37,10 +37,10 @@ public class GettingABillOfAnOrderFeature {
     }
     
     private async Task<string> GivenAStoredOrderWithProductsAssigned() {
-        var computerId = await _productsClient.PostAProduct(ProductsObjectMother.ComputerMonitorCreationRequest());
-        var keyboardId = await _productsClient.PostAProduct(ProductsObjectMother.KeyboardCreationRequest());
-        var mouseId = await _productsClient.PostAProduct(ProductsObjectMother.MouseCreationRequest());
-        return await _ordersClient.PostAnOrder(OrdersObjectMother.GivenAnOrderRequestWithProductsAssigned(
+        var computerId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
+        var keyboardId = await _productsClient.PostAProduct(ProductsMother.KeyboardCreationRequest());
+        var mouseId = await _productsClient.PostAProduct(ProductsMother.MouseCreationRequest());
+        return await _ordersClient.PostAnOrder(OrdersMother.GivenAnOrderRequestWithProductsAssigned(
             new[] { computerId, computerId, keyboardId, keyboardId, mouseId }));
     }
 
