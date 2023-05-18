@@ -24,11 +24,15 @@ public class DisplayProductFeature {
 
     [Test]
     public async Task DisplayACreatedProduct() {
-        var createProductRequest = ProductsMother.ComputerMonitorCreationRequest();
+        var createProductRequest = GivenAStoredProduct();
 
         var id = await WhenUserRequestsToCreateIt(createProductRequest);
 
         await ThenTheProductIsCreatedProperly(id);
+    }
+
+    private static string GivenAStoredProduct() {
+        return ProductsMother.ComputerMonitorCreationRequest();
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string createProductDto) {
