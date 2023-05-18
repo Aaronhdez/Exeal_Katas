@@ -18,6 +18,7 @@ public class DisplayOrderFeature {
     private IGuidGenerator _idGenerator;
     private ProductsClient _productsClient;
     private ProductReferenceGenerator _productReferenceGenerator;
+    private HttpClient _client;
 
     [SetUp]
     public void SetUp() {
@@ -26,9 +27,9 @@ public class DisplayOrderFeature {
         _idGenerator = Substitute.For<IGuidGenerator>();
         _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
-        var client = _ordersApi.CreateClient();
-        _ordersClient = new OrdersClient(client);
-        _productsClient = new ProductsClient(client);
+        _client = _ordersApi.CreateClient();
+        _ordersClient = new OrdersClient(_client);
+        _productsClient = new ProductsClient(_client);
     }
 
     [Test]
