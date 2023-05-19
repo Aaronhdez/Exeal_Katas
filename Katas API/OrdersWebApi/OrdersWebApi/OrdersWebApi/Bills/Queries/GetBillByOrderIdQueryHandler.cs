@@ -28,14 +28,14 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
         }
         
         //Crear el DTO
-        var bill = new ReadBillDto {
-            Company = "Computer Stuff Inc.",
-            CompanyAddress = "A company Address",
-            Customer = order.Customer,
-            CustomerAddress = order.Address,
-            Items = GetItemsAsList(itemsAssociated, out var total),
-            Total = total
-        };
+        var bill = new ReadBillDto (
+            "Computer Stuff Inc.",
+            "A company Address",
+            order.Customer,
+            order.Address,
+            GetItemsAsList(itemsAssociated, out var total),
+            total
+        );
         return Task.FromResult(bill);
     }
 
@@ -44,10 +44,10 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
         total = 0;
         foreach (var item in itemsAssociated) {
             var currentItemValue = item.Value * item.Key.Value;
-            summarizedProducts.Add(new BillRow {
-                Concept = item.Value + " x "+item.Key.Name+"",
-                Value = currentItemValue,
-            });
+            summarizedProducts.Add(new BillRow (
+                item.Value + " x "+item.Key.Name+"",
+                currentItemValue
+            ));
             total += currentItemValue;
         }
         return summarizedProducts;

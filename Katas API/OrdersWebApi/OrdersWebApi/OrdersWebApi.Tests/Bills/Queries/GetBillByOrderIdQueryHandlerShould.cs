@@ -21,16 +21,7 @@ public class GetBillByOrderIdQueryHandlerShould {
 
         var receivedBillResponse = await _handler.Handle(new GetBillByOrderIdQuery(TestDefaultValues.OrderId), default);
 
-        var expectedBillResponse = new ReadBillDto {
-            Company = TestDefaultValues.CompanyName,
-            CompanyAddress = TestDefaultValues.CompanyAddress,
-            Customer = TestDefaultValues.CustomerName,
-            CustomerAddress = TestDefaultValues.CustomerAddress,
-            Items = new List<BillRow> {
-                new() { Concept = "1 x Computer Monitor", Value = 100 }
-            },
-            Total = 100
-        };
+        var expectedBillResponse = BillsMother.ATestBill();
         receivedBillResponse.Should().BeEquivalentTo(expectedBillResponse);
     }
 }
