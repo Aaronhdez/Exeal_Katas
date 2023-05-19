@@ -1,7 +1,8 @@
-﻿using OrdersWebApi.Orders;
+﻿using OrdersWebApi.Bills.Queries;
+using OrdersWebApi.Orders;
 using OrdersWebApi.Products;
 
-namespace OrdersWebApi.Bills.Queries;
+namespace OrdersWebApi.Bills;
 
 public class Bill {
     private string Company { get; }
@@ -16,24 +17,12 @@ public class Bill {
         CompanyAddress = "A company Address";
         Customer = order.Customer;
         CustomerAddress = order.Address;
-        Items = GetItemsAsList(GetItemsAssociated(order), out var total);
+        Items = GetItemsAsList(order.GetProductsAssociated(), out var total);
         Total = total;
     }
 
     public ReadBillDto ToReadDto() {
         return new ReadBillDto(Company, CompanyAddress, Customer, CustomerAddress, Items, Total);
-    }
-
-    private static Dictionary<Product, int> GetItemsAssociated(Order order) {
-        var itemsAssociated = new Dictionary<Product, int>();
-        foreach (var item in order.Products) {
-            if (itemsAssociated.ContainsKey(item)) {
-                itemsAssociated[item] += 1;
-            } else {
-                itemsAssociated.Add(item, 1);
-            }
-        }
-        return itemsAssociated;
     }
 
     private IEnumerable<BillRow> GetItemsAsList(Dictionary<Product, int> itemsAssociated, out int total) {

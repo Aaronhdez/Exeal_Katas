@@ -1,4 +1,5 @@
-﻿using OrdersWebApi.Bills.Queries;
+﻿using OrdersWebApi.Bills;
+using OrdersWebApi.Bills.Queries;
 
 namespace OrdersWebApi.Tests.Bills;
 

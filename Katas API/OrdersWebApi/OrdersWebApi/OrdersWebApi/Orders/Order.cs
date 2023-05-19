@@ -3,6 +3,12 @@ using OrdersWebApi.Products;
 namespace OrdersWebApi.Orders;
 
 public class Order {
+    public string Id { get; }
+    public string CreationDate { get; }
+    public string Customer { get; }
+    public string Address { get; }
+    public List<Product> Products { get; }
+    
     public Order(string id, string creationDate, string customer, string address, List<Product> products) {
         Id = id;
         CreationDate = creationDate;
@@ -11,11 +17,21 @@ public class Order {
         Products = products;
     }
 
-    public string Id { get; }
-    public string CreationDate { get; }
-    public string Customer { get; set; }
-    public string Address { get; set; }
-    public List<Product> Products { get; set; }
+    public void AddProduct(Product newProduct) {
+        Products.Add(newProduct);
+    }
+
+    public Dictionary<Product, int> GetProductsAssociated() {
+        var itemsAssociated = new Dictionary<Product, int>();
+        foreach (var item in Products) {
+            if (itemsAssociated.ContainsKey(item)) {
+                itemsAssociated[item] += 1;
+            } else {
+                itemsAssociated.Add(item, 1);
+            }
+        }
+        return itemsAssociated;
+    }
 
     private bool Equals(Order other) {
         return Id == other.Id && CreationDate == other.CreationDate && Customer == other.Customer &&
@@ -31,9 +47,5 @@ public class Order {
 
     public override int GetHashCode() {
         return HashCode.Combine(Id, CreationDate, Customer, Address, Products);
-    }
-
-    public void AddProducts(List<Product> newProducts) {
-        foreach (var newProduct in newProducts) Products.Add(newProduct);
     }
 }
