@@ -15,9 +15,9 @@ public class InMemoryOrdersRepositoryShould {
 
     [Test]
     public async Task InsertNewOrderRegistryWhileRequested() {
-        var expectedOrder = OrdersMother.ATestOrder();
+        var expectedOrder = OrdersMother.ATestOrderWithAProduct();
 
-        _inMemoryOrdersRepository.Create(expectedOrder);
+        await _inMemoryOrdersRepository.Create(expectedOrder);
 
         var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
         retrievedOrder.Should().Be(expectedOrder);
@@ -25,11 +25,11 @@ public class InMemoryOrdersRepositoryShould {
     
     [Test]
     public async Task UpdateAnOrderProductsListWhileRequested() {
-        var expectedOrder = OrdersMother.ATestOrder();
-        var expectedUpdatedOrder = OrdersMother.AnUpdatedTestOrder();
+        var expectedOrder = OrdersMother.ATestOrderWithAProduct();
+        var expectedUpdatedOrder = OrdersMother.AnUpdatedTestOrderWithTwoProducts();
 
-        _inMemoryOrdersRepository.Create(expectedOrder);
-        _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
+        await _inMemoryOrdersRepository.Create(expectedOrder);
+        await _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
 
         var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
         retrievedOrder.Should().Be(expectedUpdatedOrder);
