@@ -3,9 +3,9 @@ using OrdersWebApi.Infrastructure;
 
 namespace OrdersWebApi.Products.Commands;
 
-public class CreateProductCommandHandler: IRequestHandler<CreateProductCommand> {
-    private readonly IProductsRepository _repository;
+public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand> {
     private readonly ProductReferenceGenerator _productReferenceGenerator;
+    private readonly IProductsRepository _repository;
 
     public CreateProductCommandHandler(IProductsRepository repository,
         ProductReferenceGenerator productReferenceGenerator) {

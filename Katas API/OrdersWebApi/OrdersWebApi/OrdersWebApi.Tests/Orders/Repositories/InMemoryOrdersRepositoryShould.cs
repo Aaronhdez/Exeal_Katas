@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
-using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
-using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
 
@@ -22,7 +20,7 @@ public class InMemoryOrdersRepositoryShould {
         var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
         retrievedOrder.Should().Be(expectedOrder);
     }
-    
+
     [Test]
     public async Task UpdateAnOrderProductsListWhileRequested() {
         var expectedOrder = OrdersMother.ATestOrderWithAProduct();

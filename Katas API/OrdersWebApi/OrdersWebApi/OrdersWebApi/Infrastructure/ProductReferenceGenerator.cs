@@ -15,7 +15,7 @@ public class ProductReferenceGenerator {
     }
 
     private static string GetFormattedReference(string tag, IEnumerable<Product> taggedProducts) {
-        var lastNumber = taggedProducts.Count()+1;
+        var lastNumber = taggedProducts.Count() + 1;
         return lastNumber switch {
             >= 100000 => tag + lastNumber,
             >= 10000 => tag + "0" + lastNumber,

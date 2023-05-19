@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Controllers.Requests;
-using OrdersWebApi.Products;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
 
@@ -11,9 +9,9 @@ namespace OrdersWebApi.Tests.Acceptance;
 
 public class AddProductsToOrderFeature {
     private IClock? _clock;
+    private IGuidGenerator _idGenerator;
     private OrdersApi? _ordersApi;
     private OrdersClient? _ordersClient;
-    private IGuidGenerator _idGenerator;
     private ProductsClient _productsClient;
 
     [SetUp]
@@ -39,12 +37,12 @@ public class AddProductsToOrderFeature {
     private async Task<string> GivenAStoredOrder() {
         var monitorId = await _productsClient.PostAProduct(
             ProductsMother.ComputerMonitorCreationRequest());
-        var order = OrdersMother.GivenAnOrderRequestWithProductsAssigned(new [] { monitorId });
+        var order = OrdersMother.GivenAnOrderRequestWithProductsAssigned(new[] { monitorId });
         return await _ordersClient.PostAnOrder(order);
     }
 
     private async Task<string> WhenUserAddsANewProductsToIt(string orderId) {
-        var addedItems = JsonConvert.SerializeObject(new AddProductsRequest( new[] {
+        var addedItems = JsonConvert.SerializeObject(new AddProductsRequest(new[] {
             await _productsClient.PostAProduct(ProductsMother.KeyboardCreationRequest()),
             await _productsClient.PostAProduct(ProductsMother.MouseCreationRequest())
         }));

@@ -6,9 +6,9 @@ using OrdersWebApi.Products;
 namespace OrdersWebApi.Tests.Infrastructure;
 
 public class ProductReferenceGeneratorShould {
-    private IProductsRepository _repository;
-    private ProductReferenceGenerator _referenceGenerator;
     private ICollection<Product> _dummyList;
+    private ProductReferenceGenerator _referenceGenerator;
+    private IProductsRepository _repository;
 
     [SetUp]
     public void SetUp() {

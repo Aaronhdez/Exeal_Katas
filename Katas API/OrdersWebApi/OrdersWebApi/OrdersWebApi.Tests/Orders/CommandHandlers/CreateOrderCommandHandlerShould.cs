@@ -38,7 +38,8 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
-        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId).Returns(ProductDefaultValues.ComputerMonitor);
+        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId)
+            .Returns(ProductDefaultValues.ComputerMonitor);
         var testOrder = OrdersMother.ACreateOrderDtoWithProducts();
         var createOrderCommand = new CreateOrderCommand(testOrder);
 

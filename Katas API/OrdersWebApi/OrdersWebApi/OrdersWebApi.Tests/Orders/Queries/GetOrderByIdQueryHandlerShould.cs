@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using NSubstitute;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Queries;
 using OrdersWebApi.Orders.Repositories;

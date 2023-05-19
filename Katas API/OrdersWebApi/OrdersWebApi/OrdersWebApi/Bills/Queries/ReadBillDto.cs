@@ -1,6 +1,6 @@
 namespace OrdersWebApi.Bills.Queries;
 
-public record ReadBillDto (
+public record ReadBillDto(
     string Company,
     string CompanyAddress,
     string Customer,

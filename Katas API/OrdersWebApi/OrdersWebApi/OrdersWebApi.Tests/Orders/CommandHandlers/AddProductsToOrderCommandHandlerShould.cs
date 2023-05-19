@@ -18,7 +18,8 @@ public class AddProductsToOrderCommandHandlerShould {
     public void SetUp() {
         _orderRepository = new InMemoryOrdersRepository();
         _productsRepository = Substitute.For<IProductsRepository>();
-        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId).Returns(ProductDefaultValues.ComputerMonitor);
+        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId)
+            .Returns(ProductDefaultValues.ComputerMonitor);
         _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository, _productsRepository);
         _givenOrderModel = OrdersMother.ATestOrderWithoutProducts();
     }

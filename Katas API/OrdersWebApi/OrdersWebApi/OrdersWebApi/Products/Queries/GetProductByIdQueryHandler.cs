@@ -18,7 +18,7 @@ public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, P
             Description = product.Description,
             Manufacturer = product.Manufacturer,
             ManufacturerReference = product.ManufacturerReference,
-            Value = (int)product.Value,
+            Value = product.Value
         };
     }
 }

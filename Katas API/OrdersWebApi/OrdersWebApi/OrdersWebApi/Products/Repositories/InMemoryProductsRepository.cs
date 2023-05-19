@@ -1,14 +1,12 @@
-﻿using System.Collections.Immutable;
-using OrdersWebApi.Products.Queries;
-
-namespace OrdersWebApi.Products.Repositories;
+﻿namespace OrdersWebApi.Products.Repositories;
 
 public class InMemoryProductsRepository : IProductsRepository {
-    private readonly Dictionary<string,Product> _dictionary;
+    private readonly Dictionary<string, Product> _dictionary;
+
     public InMemoryProductsRepository() {
         _dictionary = new Dictionary<string, Product>();
     }
-    
+
     public Task<Product> GetById(string productId) {
         if (!_dictionary.ContainsKey(productId)) throw new ArgumentException();
         return Task.FromResult(_dictionary[productId]);
@@ -20,7 +18,7 @@ public class InMemoryProductsRepository : IProductsRepository {
     }
 
     public Task Create(Product product) {
-        if(!_dictionary.ContainsValue(product))
+        if (!_dictionary.ContainsValue(product))
             _dictionary.Add(product.Id, product);
         return Task.CompletedTask;
     }

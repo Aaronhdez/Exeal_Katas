@@ -1,24 +1,18 @@
-﻿using Newtonsoft.Json;
-using NSubstitute;
+﻿using NSubstitute;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Orders;
-using OrdersWebApi.Orders.Controllers.Requests;
-using OrdersWebApi.Products;
-using OrdersWebApi.Products.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
-using OrdersWebApi.Tests.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class DisplayOrderFeature {
+    private HttpClient _client;
     private IClock? _clock;
+    private IGuidGenerator _idGenerator;
     private OrdersApi _ordersApi;
     private OrdersClient _ordersClient;
-    private IGuidGenerator _idGenerator;
-    private ProductsClient _productsClient;
     private ProductReferenceGenerator _productReferenceGenerator;
-    private HttpClient _client;
+    private ProductsClient _productsClient;
 
     [SetUp]
     public void SetUp() {

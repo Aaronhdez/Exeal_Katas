@@ -1,5 +1,4 @@
 using FluentAssertions;
-using OrdersWebApi.Products;
 using OrdersWebApi.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Products.Repositories;
@@ -20,7 +19,7 @@ public class InMemoryProductsRepositoryShould {
 
         taggedProducts.Should().BeEmpty();
     }
-    
+
     [Test]
     public async Task RetrieveProductsForAGivenTagWhenThereAreOccurrences() {
         _repository = new InMemoryProductsRepository();
@@ -37,9 +36,8 @@ public class InMemoryProductsRepositoryShould {
 
         result.Should().Throw<ArgumentException>();
     }
-    
-    
-    
+
+
     //[Test]
     //public async Task RetrieveAProductWhenItExists() {
     //    var product = new Product(

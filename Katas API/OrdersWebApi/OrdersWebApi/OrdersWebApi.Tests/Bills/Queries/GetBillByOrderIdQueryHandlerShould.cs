@@ -7,8 +7,8 @@ using OrdersWebApi.Tests.Orders;
 namespace OrdersWebApi.Tests.Bills.Queries;
 
 public class GetBillByOrderIdQueryHandlerShould {
-    private IOrderRepository _ordersRepository;
     private GetBillByOrderIdQueryHandler _handler;
+    private IOrderRepository _ordersRepository;
 
     [SetUp]
     public void SetUp() {
@@ -20,7 +20,8 @@ public class GetBillByOrderIdQueryHandlerShould {
     public async Task RetrieveABillWithAnOrderId() {
         _ordersRepository.GetById(OrderDefaultValues.OrderId).Returns(OrdersMother.ATestOrderWithAProduct());
 
-        var receivedBillResponse = await _handler.Handle(new GetBillByOrderIdQuery(OrderDefaultValues.OrderId), default);
+        var receivedBillResponse =
+            await _handler.Handle(new GetBillByOrderIdQuery(OrderDefaultValues.OrderId), default);
 
         var expectedBillResponse = BillsMother.ATestBill();
         receivedBillResponse.Should().BeEquivalentTo(expectedBillResponse);

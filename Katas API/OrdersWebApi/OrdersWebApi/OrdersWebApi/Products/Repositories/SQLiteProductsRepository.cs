@@ -24,5 +24,4 @@ public class SQLiteProductsRepository : IProductsRepository {
             "Products(ID, Name, Value) " +
             $"VALUES('{product.Id}','{product.Name}',{product.Value})");
     }
-
 }

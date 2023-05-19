@@ -8,10 +8,9 @@ using OrdersWebApi.Products;
 namespace OrdersWebApi.Tests.Orders;
 
 public static class OrdersMother {
-    
     //REQUESTS
     public static string GivenAnOrderRequestWithProductsAssigned(string[] products) {
-        return JsonConvert.SerializeObject(new CreateOrderRequest (
+        return JsonConvert.SerializeObject(new CreateOrderRequest(
             UserDefaultValues.CustomerName,
             UserDefaultValues.CustomerAddress,
             products
@@ -22,19 +21,19 @@ public static class OrdersMother {
         return JsonConvert.SerializeObject(new CreateOrderRequest(
             UserDefaultValues.CustomerName,
             UserDefaultValues.CustomerAddress,
-            new [] {
+            new[] {
                 productId
             }
         ), Formatting.Indented);
     }
-    
+
     //DTOS
 
     public static CreateOrderDto ACreatOrderDtoWithoutProducts() {
         return new CreateOrderDto(
-            OrderDefaultValues.OrderId, 
-            UserDefaultValues.CustomerName, 
-            UserDefaultValues.CustomerAddress, 
+            OrderDefaultValues.OrderId,
+            UserDefaultValues.CustomerName,
+            UserDefaultValues.CustomerAddress,
             Array.Empty<string>());
     }
 
@@ -58,7 +57,7 @@ public static class OrdersMother {
     }
 
     //MODELS
-    
+
     public static Order ATestOrderWithoutProducts() {
         return new Order(
             OrderDefaultValues.OrderId,
@@ -70,9 +69,9 @@ public static class OrdersMother {
 
     public static Order ATestOrderWithAProduct() {
         return new Order(
-            OrderDefaultValues.OrderId, 
-            TestDefaultValues.CreationDate, 
-            UserDefaultValues.CustomerName, 
+            OrderDefaultValues.OrderId,
+            TestDefaultValues.CreationDate,
+            UserDefaultValues.CustomerName,
             UserDefaultValues.CustomerAddress,
             new List<Product> {
                 ProductDefaultValues.ComputerMonitor
@@ -81,9 +80,9 @@ public static class OrdersMother {
 
     public static Order AnUpdatedTestOrderWithTwoProducts() {
         return new Order(
-            OrderDefaultValues.OrderId, 
-            TestDefaultValues.CreationDate, 
-            UserDefaultValues.CustomerName, 
+            OrderDefaultValues.OrderId,
+            TestDefaultValues.CreationDate,
+            UserDefaultValues.CustomerName,
             UserDefaultValues.CustomerAddress,
             new List<Product> {
                 ProductDefaultValues.ComputerMonitor,

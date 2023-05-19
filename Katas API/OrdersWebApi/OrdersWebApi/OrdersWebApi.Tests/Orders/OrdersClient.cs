@@ -1,6 +1,5 @@
 using System.Text;
 using Newtonsoft.Json;
-using OrdersWebApi.Orders;
 using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders;
@@ -20,7 +19,8 @@ public class OrdersClient {
     }
 
     public async Task<string> PostAnOrder(string order) {
-        var postResponse = await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
+        var postResponse =
+            await _client.PostAsync("/Orders", new StringContent(order, Encoding.Default, "application/json"));
         postResponse.EnsureSuccessStatusCode();
         var content = await postResponse.Content.ReadAsStringAsync();
         return content;

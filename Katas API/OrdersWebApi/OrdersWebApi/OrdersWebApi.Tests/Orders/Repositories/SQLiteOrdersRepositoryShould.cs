@@ -17,9 +17,9 @@ public class SQLiteOrdersRepositoryShould {
     public async Task SetUp() {
         _defaultProduct = ProductDefaultValues.ComputerMonitor;
         _order = new Order(
-            OrderDefaultValues.OrderId, 
-            TestDefaultValues.CreationDate, 
-            UserDefaultValues.CustomerName, 
+            OrderDefaultValues.OrderId,
+            TestDefaultValues.CreationDate,
+            UserDefaultValues.CustomerName,
             UserDefaultValues.CustomerAddress,
             new List<Product>());
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");

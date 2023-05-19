@@ -1,6 +1,5 @@
 ﻿using System.Data.SQLite;
 using FluentAssertions;
-using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Products.Repositories;
@@ -10,22 +9,23 @@ namespace OrdersWebApi.Tests.Products.Repositories;
 
 public class SQLiteProductsRepositoryShould {
     private Product _product;
+    private ProductReadDto _productDto;
     private SQLiteConnection _sqLiteConnection;
     private SQLiteProductsRepository _sqLiteProductsRepository;
     private TestDBLoader _testDBLoader;
-    private ProductReadDto _productDto;
 
     [SetUp]
     public async Task SetUp() {
         _product = ProductDefaultValues.ComputerMonitor;
-        _productDto = new ProductReadDto{
-            Id = ProductDefaultValues.ComputerMonitorId, 
-            ProductReference = null, 
-            Name = ProductDefaultValues.ComputerMonitor.Name, 
+        _productDto = new ProductReadDto {
+            Id = ProductDefaultValues.ComputerMonitorId,
+            ProductReference = null,
+            Name = ProductDefaultValues.ComputerMonitor.Name,
             Description = null,
-            Manufacturer = null, 
-            ManufacturerReference = null, 
-            Value = (int) ProductDefaultValues.ComputerMonitor.Value};
+            Manufacturer = null,
+            ManufacturerReference = null,
+            Value = ProductDefaultValues.ComputerMonitor.Value
+        };
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);

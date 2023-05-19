@@ -8,7 +8,6 @@ using OrdersWebApi.Products.Queries;
 namespace OrdersWebApi.Tests.Products;
 
 public static class ProductsMother {
-    
     //REQUESTS
     public static string ComputerMonitorCreationRequest() {
         return JsonConvert.SerializeObject(new CreateProductRequest(
@@ -22,12 +21,12 @@ public static class ProductsMother {
 
     public static string KeyboardCreationRequest() {
         return JsonConvert.SerializeObject(new CreateProductRequest(
-        ProductDefaultValues.Keyboard.Type,
-        ProductDefaultValues.Keyboard.Name,
-        ProductDefaultValues.Keyboard.Description,
-        ProductDefaultValues.Keyboard.Manufacturer,
-        ProductDefaultValues.Keyboard.ManufacturerReference,
-        ProductDefaultValues.Keyboard.Value));
+            ProductDefaultValues.Keyboard.Type,
+            ProductDefaultValues.Keyboard.Name,
+            ProductDefaultValues.Keyboard.Description,
+            ProductDefaultValues.Keyboard.Manufacturer,
+            ProductDefaultValues.Keyboard.ManufacturerReference,
+            ProductDefaultValues.Keyboard.Value));
     }
 
     public static string MouseCreationRequest() {
@@ -43,61 +42,63 @@ public static class ProductsMother {
     //DTOs
 
     public static AddProductsDto AddAProductDto() {
-        return new AddProductsDto(OrderDefaultValues.OrderId, new [] {
+        return new AddProductsDto(OrderDefaultValues.OrderId, new[] {
             ProductDefaultValues.ComputerMonitorId
         });
     }
 
     public static AddProductsDto AddTwoProductsDto() {
-        return new AddProductsDto(OrderDefaultValues.OrderId, new [] {
+        return new AddProductsDto(OrderDefaultValues.OrderId, new[] {
             ProductDefaultValues.ComputerMonitorId,
             ProductDefaultValues.ComputerMonitorId
         });
     }
-    
+
     public static ProductReadDto TestExpectedProductReadDto() {
-        return new ProductReadDto{
-            Id = "An Id", 
-            ProductReference = "MON000001", 
-            Name = "A Name", 
+        return new ProductReadDto {
+            Id = "An Id",
+            ProductReference = "MON000001",
+            Name = "A Name",
             Description = "A Description",
-            Manufacturer = "A Manufacturer", 
-            ManufacturerReference = "A Manufacturer Reference", 
-            Value = 0};
+            Manufacturer = "A Manufacturer",
+            ManufacturerReference = "A Manufacturer Reference",
+            Value = 0
+        };
     }
-    
+
     public static ProductReadDto TestProductReadDto() {
-        return new ProductReadDto{
-            Id = "An Id", 
-            ProductReference = "MON000001", 
-            Name = "A Name", 
+        return new ProductReadDto {
+            Id = "An Id",
+            ProductReference = "MON000001",
+            Name = "A Name",
             Description = "A Description",
-            Manufacturer = "A Manufacturer", 
-            ManufacturerReference = "A Manufacturer Reference", 
-            Value = 0};
+            Manufacturer = "A Manufacturer",
+            ManufacturerReference = "A Manufacturer Reference",
+            Value = 0
+        };
     }
-    
+
     public static CreateProductDto TestCreateProductDto(string tag) {
         return new CreateProductDto(
-            "An Id", 
-            tag, 
-            "A Name", 
+            "An Id",
+            tag,
+            "A Name",
             "A Description",
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
+            "A Manufacturer",
+            "A Manufacturer Reference",
             0);
     }
-    
+
     //MODELS
     public static Product ATestProduct(string productId) {
         return new Product(
-            productId, 
+            productId,
             "MON000001",
-            "MON", 
-            "A Name", 
+            "MON",
+            "A Name",
             "A Description",
-            "A Manufacturer", 
-            "A Manufacturer Reference", 
+            "A Manufacturer",
+            "A Manufacturer Reference",
             0);
     }
 }

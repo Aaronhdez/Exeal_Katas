@@ -8,10 +8,10 @@ namespace OrdersWebApi.Tests.Acceptance;
 
 public class GettingABillOfAnOrderFeature {
     private BillsClient _billsClient;
-    private IClock _clock;
-    private OrdersClient _ordersClient;
     private HttpClient _client;
+    private IClock _clock;
     private IGuidGenerator _idGenerator;
+    private OrdersClient _ordersClient;
     private ProductsClient _productsClient;
 
     [SetUp]
@@ -28,12 +28,12 @@ public class GettingABillOfAnOrderFeature {
     [Test]
     public async Task GetABillForAnOrderStored() {
         var orderId = await GivenAStoredOrderWithProductsAssigned();
-    
+
         var bill = await WhenUserRequestsItsBill(orderId);
-    
+
         await ThenItIsRetrievedProperly(bill);
     }
-    
+
     private async Task<string> GivenAStoredOrderWithProductsAssigned() {
         var computerId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
         var keyboardId = await _productsClient.PostAProduct(ProductsMother.KeyboardCreationRequest());

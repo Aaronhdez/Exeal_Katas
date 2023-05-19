@@ -3,12 +3,6 @@ using OrdersWebApi.Products;
 namespace OrdersWebApi.Orders;
 
 public class Order {
-    public string Id { get; }
-    public string CreationDate { get; }
-    public string Customer { get; }
-    public string Address { get; }
-    public List<Product> Products { get; }
-    
     public Order(string id, string creationDate, string customer, string address, List<Product> products) {
         Id = id;
         CreationDate = creationDate;
@@ -17,19 +11,23 @@ public class Order {
         Products = products;
     }
 
+    public string Id { get; }
+    public string CreationDate { get; }
+    public string Customer { get; }
+    public string Address { get; }
+    public List<Product> Products { get; }
+
     public void AddProduct(Product newProduct) {
         Products.Add(newProduct);
     }
 
     public Dictionary<Product, int> GetProductsAssociated() {
         var itemsAssociated = new Dictionary<Product, int>();
-        foreach (var item in Products) {
-            if (itemsAssociated.ContainsKey(item)) {
+        foreach (var item in Products)
+            if (itemsAssociated.ContainsKey(item))
                 itemsAssociated[item] += 1;
-            } else {
+            else
                 itemsAssociated.Add(item, 1);
-            }
-        }
         return itemsAssociated;
     }
 

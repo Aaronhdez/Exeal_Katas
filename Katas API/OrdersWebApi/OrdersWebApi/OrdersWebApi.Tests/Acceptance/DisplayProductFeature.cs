@@ -1,15 +1,13 @@
 ﻿using NSubstitute;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Products;
 using OrdersWebApi.Tests.Products;
-using OrdersWebApi.Tests.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class DisplayProductFeature {
     private IClock? _clock;
-    private OrdersApi _ordersApi;
     private IGuidGenerator _idGenerator;
+    private OrdersApi _ordersApi;
     private ProductsClient _productsClient;
 
     [SetUp]

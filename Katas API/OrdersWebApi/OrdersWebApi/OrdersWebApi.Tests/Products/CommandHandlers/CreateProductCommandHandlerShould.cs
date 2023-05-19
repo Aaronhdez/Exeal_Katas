@@ -2,17 +2,16 @@
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Commands;
-using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Products.CommandHandlers;
 
 public class CreateProductCommandHandlerShould {
+    private CreateProductCommand _command;
     private CreateProductDto _createProductDto;
     private CreateProductCommandHandler _handler;
-    private IProductsRepository _repository;
-    private CreateProductCommand _command;
     private ProductReferenceGenerator _referenceGenerator;
+    private IProductsRepository _repository;
 
     [SetUp]
     public void SetUp() {

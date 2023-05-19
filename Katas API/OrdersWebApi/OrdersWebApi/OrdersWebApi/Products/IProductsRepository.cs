@@ -1,5 +1,3 @@
-using OrdersWebApi.Products.Queries;
-
 namespace OrdersWebApi.Products;
 
 public interface IProductsRepository {
