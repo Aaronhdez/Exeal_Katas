@@ -2,6 +2,7 @@
 using NSubstitute;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Queries;
+using OrdersWebApi.Orders.Repositories;
 
 namespace OrdersWebApi.Tests.Orders.Queries;
 
@@ -12,18 +13,19 @@ public class GetOrderByIdQueryHandlerShould {
 
     [SetUp]
     public void SetUp() {
-        _ordersRepository = Substitute.For<IOrderRepository>();
+        _ordersRepository = new InMemoryOrdersRepository();
         _handler = new GetOrderByIdQueryHandler(_ordersRepository);
     }
 
     [Test]
     public async Task RetrieveAnOrderByItsIdWhileRequested() {
-        _ordersRepository.GetById(TestDefaultValues.OrderId).Returns(
-            new Order(TestDefaultValues.OrderId, null, null, null, null));
+        var testOrder = OrdersMother.ATestOrderWithoutProducts();
+        await _ordersRepository.Create(testOrder);
 
-        var receivedOrderResponse = _handler.Handle(
-            new GetOrderByIdQuery(TestDefaultValues.OrderId), default);
+        var receivedOrderResponse = await _handler.Handle(
+            new GetOrderByIdQuery(testOrder.Id), default);
 
-        receivedOrderResponse.Should().NotBeNull();
+        var expectedOrder = OrdersMother.TestOrderReadDto();
+        receivedOrderResponse.Should().BeEquivalentTo(expectedOrder);
     }
 }

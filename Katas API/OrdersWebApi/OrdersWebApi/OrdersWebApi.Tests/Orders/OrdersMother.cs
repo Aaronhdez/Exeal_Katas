@@ -2,6 +2,7 @@
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
+using OrdersWebApi.Orders.Queries;
 using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders;
@@ -45,6 +46,15 @@ public static class OrdersMother {
             new[] {
                 TestDefaultValues.ComputerMonitorId
             });
+    }
+
+    public static ReadOrderDto TestOrderReadDto() {
+        return new ReadOrderDto(
+            TestDefaultValues.OrderId,
+            TestDefaultValues.CreationDate,
+            TestDefaultValues.CustomerName,
+            TestDefaultValues.CustomerAddress,
+            new List<Product>());
     }
 
     //MODELS
