@@ -1,7 +1,10 @@
-﻿using NSubstitute;
+﻿using FluentAssertions;
+using NSubstitute;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.AddProductsToOrder;
+using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
+using OrdersWebApi.Tests.Products;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;
 
@@ -13,56 +16,36 @@ public class AddProductsToOrderCommandHandlerShould {
 
     [SetUp]
     public void SetUp() {
-        _orderRepository = Substitute.For<IOrderRepository>();
+        _orderRepository = new InMemoryOrdersRepository();
         _productsRepository = Substitute.For<IProductsRepository>();
+        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
         _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository, _productsRepository);
-        _givenOrderModel = new Order(
-            TestDefaultValues.OrderId,
-            TestDefaultValues.CreationDate,
-            TestDefaultValues.CustomerName,
-            TestDefaultValues.CustomerAddress,
-            new List<Product>());
+        _givenOrderModel = OrdersMother.ATestOrderWithoutProducts();
     }
 
     [Test]
     public async Task AddOneProductToAnEmptySpecifiedOrder() {
-        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
-        _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new [] {
-            TestDefaultValues.ComputerMonitorId
-        });
+        await _orderRepository.Create(_givenOrderModel);
+        var givenAddProductsDto = ProductsMother.AddAProductDto();
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
 
-        var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate,
-            TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Product> {
-                TestDefaultValues.ComputerMonitor
-            });
-        await _orderRepository.Received().GetById(TestDefaultValues.OrderId);
-        await _orderRepository.Received().Update(expectedOrderModel);
+        var expectedOrderModel = OrdersMother.ATestOrderWithAProduct();
+        var updatedOrder = await _orderRepository.GetById(TestDefaultValues.OrderId);
+        updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
     }
 
     [Test]
     public async Task AddTwoProductsToAnEmptySpecifiedOrder() {
-        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
-        _orderRepository.GetById(TestDefaultValues.OrderId).Returns(_givenOrderModel);
-        var givenAddProductsDto = new AddProductsDto(TestDefaultValues.OrderId, new [] {
-            TestDefaultValues.ComputerMonitorId,
-            TestDefaultValues.ComputerMonitorId
-        });
+        await _orderRepository.Create(_givenOrderModel);
+        var givenAddProductsDto = ProductsMother.AddTwoProductsDto();
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
 
-        var expectedOrderModel = new Order(TestDefaultValues.OrderId, TestDefaultValues.CreationDate,
-            TestDefaultValues.CustomerName, TestDefaultValues.CustomerAddress,
-            new List<Product> {
-                TestDefaultValues.ComputerMonitor,
-                TestDefaultValues.ComputerMonitor
-            });
-        await _orderRepository.Received().GetById(TestDefaultValues.OrderId);
-        await _orderRepository.Received().Update(expectedOrderModel);
+        var expectedOrderModel = OrdersMother.AnUpdatedTestOrderWithTwoProducts();
+        var updatedOrder = await _orderRepository.GetById(TestDefaultValues.OrderId);
+        updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
     }
 }

@@ -31,7 +31,16 @@ public static class OrdersMother {
     
     //MODELS
     
-    public static Order ATestOrder() {
+    public static Order ATestOrderWithoutProducts() {
+        return new Order(
+            TestDefaultValues.OrderId,
+            TestDefaultValues.CreationDate,
+            TestDefaultValues.CustomerName,
+            TestDefaultValues.CustomerAddress,
+            new List<Product>());
+    }
+    
+    public static Order ATestOrderWithAProduct() {
         return new Order(
             TestDefaultValues.OrderId, 
             TestDefaultValues.CreationDate, 
@@ -42,7 +51,7 @@ public static class OrdersMother {
             });
     }
 
-    public static Order AnUpdatedTestOrder() {
+    public static Order AnUpdatedTestOrderWithTwoProducts() {
         return new Order(
             TestDefaultValues.OrderId, 
             TestDefaultValues.CreationDate, 

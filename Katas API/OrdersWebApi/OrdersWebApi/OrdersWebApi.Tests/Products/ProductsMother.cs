@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OrdersWebApi.Orders.Commands.AddProductsToOrder;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Commands;
 using OrdersWebApi.Products.Controllers.Requests;
@@ -40,6 +41,20 @@ public static class ProductsMother {
     }
 
     //DTOs
+
+    public static AddProductsDto AddAProductDto() {
+        return new AddProductsDto(TestDefaultValues.OrderId, new [] {
+            TestDefaultValues.ComputerMonitorId
+        });
+    }
+
+    public static AddProductsDto AddTwoProductsDto() {
+        return new AddProductsDto(TestDefaultValues.OrderId, new [] {
+            TestDefaultValues.ComputerMonitorId,
+            TestDefaultValues.ComputerMonitorId
+        });
+    }
+    
     public static ProductReadDto TestExpectedProductReadDto() {
         return new ProductReadDto{
             Id = "An Id", 
