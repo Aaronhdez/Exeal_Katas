@@ -13,22 +13,25 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
     }
     
     public Task<ReadBillDto> Handle(GetBillByOrderIdQuery request, CancellationToken cancellationToken) {
-        //Recuperar el pedido
         var order = _ordersRepository.GetById(request.Id).Result;
-        
-        //Recuperar los productos resumidos
-        var itemsAssociated = new Dictionary<Product,int>();
+        var itemsAssociated = GetItemsAssociated(order);
+        return Task.FromResult(CreateReadBillDto(order, itemsAssociated));
+    }
+
+    private static Dictionary<Product, int> GetItemsAssociated(Order order) {
+        var itemsAssociated = new Dictionary<Product, int>();
         foreach (var item in order.Products) {
             if (itemsAssociated.ContainsKey(item)) {
                 itemsAssociated[item] += 1;
-            }
-            else { 
-                itemsAssociated.Add(item,1);
+            } else {
+                itemsAssociated.Add(item, 1);
             }
         }
-        
-        //Crear el DTO
-        var bill = new ReadBillDto (
+        return itemsAssociated;
+    }
+
+    private ReadBillDto CreateReadBillDto(Order order, Dictionary<Product, int> itemsAssociated) {
+        return new ReadBillDto(
             "Computer Stuff Inc.",
             "A company Address",
             order.Customer,
@@ -36,7 +39,6 @@ public class GetBillByOrderIdQueryHandler : IRequestHandler<GetBillByOrderIdQuer
             GetItemsAsList(itemsAssociated, out var total),
             total
         );
-        return Task.FromResult(bill);
     }
 
     private IEnumerable<BillRow> GetItemsAsList(Dictionary<Product, int> itemsAssociated, out int total) {
