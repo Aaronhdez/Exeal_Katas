@@ -15,12 +15,12 @@ public class SQLiteOrdersRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _defaultProduct = TestDefaultValues.ComputerMonitor;
+        _defaultProduct = ProductDefaultValues.ComputerMonitor;
         _order = new Order(
-            TestDefaultValues.OrderId, 
+            OrderDefaultValues.OrderId, 
             TestDefaultValues.CreationDate, 
-            TestDefaultValues.CustomerName, 
-            TestDefaultValues.CustomerAddress,
+            UserDefaultValues.CustomerName, 
+            UserDefaultValues.CustomerAddress,
             new List<Product>());
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
@@ -40,7 +40,7 @@ public class SQLiteOrdersRepositoryShould {
     public void RetrieveAnOrderWithoutProductsWhileRequested() {
         _testDBLoader.GivenAnOrderInDb(_order);
 
-        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }
@@ -49,7 +49,7 @@ public class SQLiteOrdersRepositoryShould {
     public void InsertNewOrderWithoutProductsWhileRequested() {
         _sqLiteOrdersRepository.Create(_order);
 
-        var retrievedOrder = _sqLiteOrdersRepository.GetById(TestDefaultValues.OrderId).Result;
+        var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
 
         retrievedOrder.Should().Be(_order);
     }

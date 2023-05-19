@@ -17,7 +17,7 @@ public class DisplayProductFeature {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
         _idGenerator = Substitute.For<IGuidGenerator>();
-        _idGenerator.NewId().Returns(TestDefaultValues.OrderGuid);
+        _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
         _productsClient = new ProductsClient(_ordersApi.CreateClient());
     }

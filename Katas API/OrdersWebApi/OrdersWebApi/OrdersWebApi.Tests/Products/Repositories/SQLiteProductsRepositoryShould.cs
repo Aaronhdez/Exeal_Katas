@@ -17,15 +17,15 @@ public class SQLiteProductsRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _product = TestDefaultValues.ComputerMonitor;
+        _product = ProductDefaultValues.ComputerMonitor;
         _productDto = new ProductReadDto{
-            Id = TestDefaultValues.ComputerMonitorId, 
+            Id = ProductDefaultValues.ComputerMonitorId, 
             ProductReference = null, 
-            Name = TestDefaultValues.ComputerMonitor.Name, 
+            Name = ProductDefaultValues.ComputerMonitor.Name, 
             Description = null,
             Manufacturer = null, 
             ManufacturerReference = null, 
-            Value = (int) TestDefaultValues.ComputerMonitor.Value};
+            Value = (int) ProductDefaultValues.ComputerMonitor.Value};
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);
         _sqLiteProductsRepository = new SQLiteProductsRepository(_sqLiteConnection);
@@ -53,7 +53,7 @@ public class SQLiteProductsRepositoryShould {
     public void InsertNewProductWhileRequested() {
         _sqLiteProductsRepository.Create(_product);
 
-        var retrievedOrder = _sqLiteProductsRepository.GetById(TestDefaultValues.ComputerMonitorId).Result;
+        var retrievedOrder = _sqLiteProductsRepository.GetById(ProductDefaultValues.ComputerMonitorId).Result;
 
         retrievedOrder.Should().BeEquivalentTo(_productDto);
     }

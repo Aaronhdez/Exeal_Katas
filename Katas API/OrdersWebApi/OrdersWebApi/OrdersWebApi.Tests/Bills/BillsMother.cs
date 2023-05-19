@@ -6,10 +6,10 @@ namespace OrdersWebApi.Tests.Bills;
 public class BillsMother {
     public static ReadBillDto ATestBill() {
         return new ReadBillDto (
-            TestDefaultValues.CompanyName,
-            TestDefaultValues.CompanyAddress,
-            TestDefaultValues.CustomerName,
-            TestDefaultValues.CustomerAddress,
+            UserDefaultValues.CompanyName,
+            UserDefaultValues.CompanyAddress,
+            UserDefaultValues.CustomerName,
+            UserDefaultValues.CustomerAddress,
             new List<BillRow> {
                 new("1 x Computer Monitor", 100 )
             },

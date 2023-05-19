@@ -24,9 +24,9 @@ public class InMemoryProductsRepositoryShould {
     [Test]
     public async Task RetrieveProductsForAGivenTagWhenThereAreOccurrences() {
         _repository = new InMemoryProductsRepository();
-        await _repository.Create(TestDefaultValues.Keyboard);
+        await _repository.Create(ProductDefaultValues.Keyboard);
 
-        var taggedProducts = await _repository.GetAllProductsForTag(TestDefaultValues.Keyboard.Type);
+        var taggedProducts = await _repository.GetAllProductsForTag(ProductDefaultValues.Keyboard.Type);
 
         taggedProducts.Should().HaveCount(1);
     }

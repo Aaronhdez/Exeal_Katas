@@ -18,7 +18,7 @@ public class AddProductsToOrderCommandHandlerShould {
     public void SetUp() {
         _orderRepository = new InMemoryOrdersRepository();
         _productsRepository = Substitute.For<IProductsRepository>();
-        _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
+        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId).Returns(ProductDefaultValues.ComputerMonitor);
         _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository, _productsRepository);
         _givenOrderModel = OrdersMother.ATestOrderWithoutProducts();
     }
@@ -32,7 +32,7 @@ public class AddProductsToOrderCommandHandlerShould {
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
 
         var expectedOrderModel = OrdersMother.ATestOrderWithAProduct();
-        var updatedOrder = await _orderRepository.GetById(TestDefaultValues.OrderId);
+        var updatedOrder = await _orderRepository.GetById(OrderDefaultValues.OrderId);
         updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
     }
 
@@ -45,7 +45,7 @@ public class AddProductsToOrderCommandHandlerShould {
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
 
         var expectedOrderModel = OrdersMother.AnUpdatedTestOrderWithTwoProducts();
-        var updatedOrder = await _orderRepository.GetById(TestDefaultValues.OrderId);
+        var updatedOrder = await _orderRepository.GetById(OrderDefaultValues.OrderId);
         updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
     }
 }
