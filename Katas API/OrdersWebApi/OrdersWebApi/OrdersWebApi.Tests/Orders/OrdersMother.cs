@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OrdersWebApi.Orders;
+using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Products;
 
@@ -27,8 +28,25 @@ public static class OrdersMother {
     }
     
     //DTOS
-    
-    
+
+    public static CreateOrderDto ACreatOrderDtoWithoutProducts() {
+        return new CreateOrderDto(
+            TestDefaultValues.OrderId, 
+            TestDefaultValues.CustomerName, 
+            TestDefaultValues.CustomerAddress, 
+            Array.Empty<string>());
+    }
+
+    public static CreateOrderDto ACreateOrderDtoWithProducts() {
+        return new CreateOrderDto(
+            TestDefaultValues.OrderId,
+            TestDefaultValues.CustomerName,
+            TestDefaultValues.CustomerAddress,
+            new[] {
+                TestDefaultValues.ComputerMonitorId
+            });
+    }
+
     //MODELS
     
     public static Order ATestOrderWithoutProducts() {
@@ -39,7 +57,7 @@ public static class OrdersMother {
             TestDefaultValues.CustomerAddress,
             new List<Product>());
     }
-    
+
     public static Order ATestOrderWithAProduct() {
         return new Order(
             TestDefaultValues.OrderId, 

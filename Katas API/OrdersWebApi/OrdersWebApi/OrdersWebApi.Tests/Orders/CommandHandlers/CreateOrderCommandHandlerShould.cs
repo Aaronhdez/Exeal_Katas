@@ -1,7 +1,9 @@
-﻿using NSubstitute;
+﻿using FluentAssertions;
+using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.CreateOrder;
+using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;
@@ -15,7 +17,7 @@ public class CreateOrderCommandHandlerShould {
 
     [SetUp]
     public void SetUp() {
-        _orderRepository = Substitute.For<IOrderRepository>();
+        _orderRepository = new InMemoryOrdersRepository();
         _productsRepository = Substitute.For<IProductsRepository>();
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
@@ -24,42 +26,26 @@ public class CreateOrderCommandHandlerShould {
 
     [Test]
     public async Task CreateANewOrderWithoutProducts() {
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
-            TestDefaultValues.OrderId, 
-            TestDefaultValues.CustomerName, 
-            TestDefaultValues.CustomerAddress, 
-            Array.Empty<string>()));
+        var testOrder = OrdersMother.ACreatOrderDtoWithoutProducts();
+        var createOrderCommand = new CreateOrderCommand(testOrder);
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
-        var expectedOrderModel = new Order(
-            TestDefaultValues.OrderId, 
-            TestDefaultValues.CreationDate, 
-            TestDefaultValues.CustomerName, 
-            TestDefaultValues.CustomerAddress,
-            new List<Product>());
-        await _orderRepository.Received().Create(expectedOrderModel);
+        var expectedOrder = OrdersMother.ATestOrderWithoutProducts();
+        var createdOrder = await _orderRepository.GetById(testOrder.Id);
+        createdOrder.Should().BeEquivalentTo(expectedOrder);
     }
 
     [Test]
     public async Task CreateANewOrderWithProductList() {
         _productsRepository.GetById(TestDefaultValues.ComputerMonitorId).Returns(TestDefaultValues.ComputerMonitor);
-        var createOrderCommand = new CreateOrderCommand(new CreateOrderDto(
-            TestDefaultValues.OrderId,
-            TestDefaultValues.CustomerName,
-            TestDefaultValues.CustomerAddress,
-            new[] {
-                TestDefaultValues.ComputerMonitorId
-            }));
+        var testOrder = OrdersMother.ACreateOrderDtoWithProducts();
+        var createOrderCommand = new CreateOrderCommand(testOrder);
 
         await _createOrderCommandHandler.Handle(createOrderCommand, default);
 
-        var expectedOrderModel = new Order(
-            TestDefaultValues.OrderId, 
-            TestDefaultValues.CreationDate, 
-            TestDefaultValues.CustomerName, 
-            TestDefaultValues.CustomerAddress,
-            new List<Product> { TestDefaultValues.ComputerMonitor });
-        await _orderRepository.Received(1).Create(expectedOrderModel);
+        var expectedOrder = OrdersMother.ATestOrderWithAProduct();
+        var createdOrder = await _orderRepository.GetById(testOrder.Id);
+        createdOrder.Should().BeEquivalentTo(expectedOrder);
     }
 }
