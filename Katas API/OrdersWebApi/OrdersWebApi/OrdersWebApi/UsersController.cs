@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Orders.Commands.CreateOrder;
+using OrdersWebApi.Tests;
 
 namespace OrdersWebApi;
 
@@ -22,5 +22,10 @@ public class UsersController {
         var id = _guidGenerator.NewId().ToString();
         await _sender.Send(new CreateUserCommand(new CreateUserDto(id, request.Name, request.Address)));
         return await Task.FromResult(id);
+    }
+
+    [HttpGet("{id}")]
+    public Task<ReadUserDto> Get(string id) {
+        return _sender.Send(new GetUserByIdQuery(id));
     }
 }
