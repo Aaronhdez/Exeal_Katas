@@ -1,3 +1,3 @@
-﻿namespace OrdersWebApi.Tests.Acceptance;
+﻿namespace OrdersWebApi;
 
-public record CreateUserRequest (string name, string address);
+public record CreateUserRequest (string Name, string Address);
