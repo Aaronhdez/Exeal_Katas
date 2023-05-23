@@ -5,14 +5,6 @@ namespace OrdersWebApi.Tests;
 public class UsersRepositoryShould {
     private IUserRepository _usersRepository;
 
-    [Test]
-    public void RetrieveNullWhenAsUserDoesNotExist() {
-        _usersRepository = new InMemoryUsersRepository();
-        
-        var user = _usersRepository.GetById("AnId");
-        
-        user.Should().BeNull();
-    }
     
     [Test]
     public void RetrieveAUserIfExists() {
@@ -23,5 +15,14 @@ public class UsersRepositoryShould {
         var user = _usersRepository.GetById("AnId");
         
         user.Should().BeEquivalentTo(expectedUser);
+    }
+    
+    [Test]
+    public void FailWhenAsUserDoesNotExist() {
+        _usersRepository = new InMemoryUsersRepository();
+        
+        var action = () => _usersRepository.GetById("AnId");
+        
+        action.Should().Throw<ArgumentException>();
     }
 }

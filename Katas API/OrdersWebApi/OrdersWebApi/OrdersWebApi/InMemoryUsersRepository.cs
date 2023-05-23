@@ -8,8 +8,8 @@ public class InMemoryUsersRepository : IUserRepository {
     }
 
     public User GetById(string userId) {
-        if (_dictionary.ContainsKey(userId)) return _dictionary[userId];
-        return null;
+        if (!_dictionary.ContainsKey(userId)) throw new ArgumentException("User does not exists");
+        return _dictionary[userId];
     }
 
     public void Create(User user) {
