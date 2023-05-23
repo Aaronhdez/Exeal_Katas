@@ -8,11 +8,11 @@ public class InMemoryUsersRepository : IUserRepository {
     }
 
     public User GetById(string userId) {
+        if (_dictionary.ContainsKey(userId)) return _dictionary[userId];
         return null;
-        return _dictionary[userId];
     }
 
-    public string Create(User user) {
-        return string.Empty;
+    public void Create(User user) {
+        _dictionary.Add(user.Id, user);
     }
 }
