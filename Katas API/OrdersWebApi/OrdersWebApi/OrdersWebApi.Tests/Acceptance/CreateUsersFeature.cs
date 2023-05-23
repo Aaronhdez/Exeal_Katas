@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Tests.Orders;
+using OrdersWebApi.Tests.Users;
 using OrdersWebApi.Users.Controllers;
 
 namespace OrdersWebApi.Tests.Acceptance;
@@ -31,7 +32,7 @@ public class CreateUsersFeature {
     }
 
     private string GivenAUserCreationRequest() {
-        return JsonConvert.SerializeObject(new CreateUserRequest(string.Empty, string.Empty));
+        return JsonConvert.SerializeObject(UsersMother.TestCreateUserRequest());
     }
 
     private async Task<string> WhenItIsCreated(string createUserRequest) {

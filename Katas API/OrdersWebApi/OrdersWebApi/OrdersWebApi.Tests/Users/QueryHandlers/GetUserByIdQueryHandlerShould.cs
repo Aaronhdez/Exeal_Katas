@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Tests.Users.Repositories;
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Queries;
 using OrdersWebApi.Users.Repositories;
@@ -11,7 +12,7 @@ public class GetUserByIdQueryHandlerShould {
 
     [SetUp]
     public void SetUp() {
-        _existentUser = new User("An Id", "A Name", "An Address");
+        _existentUser = UsersMother.TestUser();
         _usersRepository = new InMemoryUsersRepository();
         _usersRepository.Create(_existentUser);
     }
@@ -22,7 +23,7 @@ public class GetUserByIdQueryHandlerShould {
 
         var retrievedUser = await handler.Handle(new GetUserByIdQuery(_existentUser.Id), default);
 
-        var expectedUser = new ReadUserDto(_existentUser.Id, _existentUser.Name, _existentUser.Address);
+        var expectedUser = UsersMother.TestReadUserDto();
         retrievedUser.Should().BeEquivalentTo(expectedUser);
     }
 }

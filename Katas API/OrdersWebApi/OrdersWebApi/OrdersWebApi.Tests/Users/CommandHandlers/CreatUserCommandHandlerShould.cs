@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Tests.Users.Repositories;
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Commands;
 using OrdersWebApi.Users.Repositories;
@@ -18,12 +19,12 @@ public class CreatUserCommandHandlerShould {
 
     [Test]
     public void CreateANonExistentUser() {
-        _userCreateDto = new CreateUserDto("An Id", "a Name", "An Address");
+        _userCreateDto = UsersMother.TestUserCreateDto();
         
         _handler.Handle(new CreateUserCommand(_userCreateDto), default);
 
         var expectedUser = new User(_userCreateDto.Id, _userCreateDto.Name, _userCreateDto.Address);
-        var retrievedUser = _usersRepository.GetById("An Id");
+        var retrievedUser = _usersRepository.GetById(UserDefaultValues.UserId);
         retrievedUser.Should().BeEquivalentTo(expectedUser);
     }
 }
