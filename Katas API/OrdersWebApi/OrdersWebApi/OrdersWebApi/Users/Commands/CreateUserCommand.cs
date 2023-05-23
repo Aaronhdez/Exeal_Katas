@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrdersWebApi;
+namespace OrdersWebApi.Users.Commands;
 
 public class CreateUserCommand : IRequest {
     public CreateUserDto UserData { get; }

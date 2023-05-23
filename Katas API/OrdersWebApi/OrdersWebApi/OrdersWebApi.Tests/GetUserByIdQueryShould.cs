@@ -1,5 +1,8 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Queries;
+using OrdersWebApi.Users.Repositories;
 
 namespace OrdersWebApi.Tests;
 

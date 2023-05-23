@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.Users.Queries;
 
 public class GetUserByIdQuery : IRequest<ReadUserDto> {
     public string Id { get; }

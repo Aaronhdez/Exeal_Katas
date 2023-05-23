@@ -1,10 +1,10 @@
-﻿
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Tests;
+using OrdersWebApi.Users.Commands;
+using OrdersWebApi.Users.Queries;
 
-namespace OrdersWebApi;
+namespace OrdersWebApi.Users.Controllers;
 
 [ApiController]
 [Route("[controller]")]

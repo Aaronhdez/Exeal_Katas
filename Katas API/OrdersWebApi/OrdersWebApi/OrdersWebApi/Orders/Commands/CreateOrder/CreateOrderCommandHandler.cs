@@ -1,6 +1,7 @@
 using MediatR;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
+using OrdersWebApi.Users;
 
 namespace OrdersWebApi.Orders.Commands.CreateOrder;
 

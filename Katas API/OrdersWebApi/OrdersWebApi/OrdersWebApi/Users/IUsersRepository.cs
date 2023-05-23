@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Tests;
+﻿namespace OrdersWebApi.Users;
 
 public interface IUsersRepository { 
     User GetById(string userId);

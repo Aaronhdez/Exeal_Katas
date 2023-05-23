@@ -1,4 +1,6 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Repositories;
 
 namespace OrdersWebApi.Tests; 
 

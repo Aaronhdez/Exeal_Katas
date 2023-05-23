@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.Users.Queries;
 
 public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, ReadUserDto> {
     private readonly IUsersRepository _usersRepository;

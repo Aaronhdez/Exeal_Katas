@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi;
+﻿namespace OrdersWebApi.Users;
 
 public class User {
     public User(string id, string name, string address) {

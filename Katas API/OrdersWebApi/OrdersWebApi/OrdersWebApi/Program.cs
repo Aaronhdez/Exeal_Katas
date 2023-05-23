@@ -5,7 +5,8 @@ using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Repositories;
-using OrdersWebApi.Tests;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

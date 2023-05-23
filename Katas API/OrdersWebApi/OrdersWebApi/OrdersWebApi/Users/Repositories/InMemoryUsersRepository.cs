@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.Tests;
+﻿namespace OrdersWebApi.Users.Repositories;
 
 public class InMemoryUsersRepository : IUsersRepository {
     private Dictionary<string, User> _dictionary;

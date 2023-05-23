@@ -1,6 +1,6 @@
 ﻿using OrdersWebApi.Products;
 
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.Tests.Products;
 
 public static class ProductDefaultValues {
     public const string ComputerMonitorId = "1c93009e-101f-4f4b-bf6b-a1c1d486dd03";

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.Users.Commands;
 
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand> {
     private readonly IUsersRepository _usersRepository;

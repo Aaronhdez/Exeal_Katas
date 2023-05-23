@@ -5,6 +5,7 @@ using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
+using OrdersWebApi.Tests.Products;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;
 

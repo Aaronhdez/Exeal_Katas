@@ -1,4 +1,7 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Commands;
+using OrdersWebApi.Users.Repositories;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace OrdersWebApi.Tests; 
