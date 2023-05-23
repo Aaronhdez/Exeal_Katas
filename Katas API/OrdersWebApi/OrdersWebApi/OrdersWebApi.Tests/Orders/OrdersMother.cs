@@ -59,34 +59,19 @@ public static class OrdersMother {
     //MODELS
 
     public static Order ATestOrderWithoutProducts() {
-        return new Order(
-            OrderDefaultValues.OrderId,
-            TestDefaultValues.CreationDate,
-            UserDefaultValues.CustomerName,
-            UserDefaultValues.CustomerAddress,
-            new List<Product>());
+        return new Order(OrderDefaultValues.OrderId, TestDefaultValues.CreationDate, new User(UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress), new List<Product>());
     }
 
     public static Order ATestOrderWithAProduct() {
-        return new Order(
-            OrderDefaultValues.OrderId,
-            TestDefaultValues.CreationDate,
-            UserDefaultValues.CustomerName,
-            UserDefaultValues.CustomerAddress,
-            new List<Product> {
-                ProductDefaultValues.ComputerMonitor
-            });
+        return new Order(OrderDefaultValues.OrderId, TestDefaultValues.CreationDate, new User(UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress), new List<Product> {
+            ProductDefaultValues.ComputerMonitor
+        });
     }
 
     public static Order AnUpdatedTestOrderWithTwoProducts() {
-        return new Order(
-            OrderDefaultValues.OrderId,
-            TestDefaultValues.CreationDate,
-            UserDefaultValues.CustomerName,
-            UserDefaultValues.CustomerAddress,
-            new List<Product> {
-                ProductDefaultValues.ComputerMonitor,
-                ProductDefaultValues.ComputerMonitor
-            });
+        return new Order(OrderDefaultValues.OrderId, TestDefaultValues.CreationDate, new User(UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress), new List<Product> {
+            ProductDefaultValues.ComputerMonitor,
+            ProductDefaultValues.ComputerMonitor
+        });
     }
 }

@@ -3,11 +3,11 @@ using OrdersWebApi.Products;
 namespace OrdersWebApi.Orders;
 
 public class Order {
-    public Order(string id, string creationDate, string customer, string address, List<Product> products) {
+    public Order(string id, string creationDate, User customer, List<Product> products) {
         Id = id;
         CreationDate = creationDate;
-        Customer = customer;
-        Address = address;
+        Customer = customer.Name;
+        Address = customer.Address;
         Products = products;
     }
 

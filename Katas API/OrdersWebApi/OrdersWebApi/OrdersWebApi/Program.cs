@@ -47,7 +47,7 @@ void CreateDatabase() {
         @"Create Table if not exists Orders(
                 ID VARCHAR(100),
                 CreationDate VARCHAR(100),
-                Customer VARCHAR(100),
+                Name VARCHAR(100),
                 Address VARCHAR(100))");
 
     sqLiteConnection.ExecuteAsync(

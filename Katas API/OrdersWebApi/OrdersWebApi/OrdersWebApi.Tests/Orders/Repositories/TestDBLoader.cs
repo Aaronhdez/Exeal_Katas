@@ -25,7 +25,7 @@ public class TestDBLoader {
 
     public void GivenAnOrderInDb(Order expectedOrder) {
         _sqLiteConnection.ExecuteAsync(
-            $"INSERT INTO Orders(ID, CreationDate, Customer, Address) VALUES('{expectedOrder.Id}','{expectedOrder.CreationDate}','{expectedOrder.Customer}','{expectedOrder.Address}')");
+            $"INSERT INTO Orders(ID, CreationDate, Name, Address) VALUES('{expectedOrder.Id}','{expectedOrder.CreationDate}','{expectedOrder.Customer}','{expectedOrder.Address}')");
     }
 
     public async Task LoadDatabase(IDbConnection sqLiteConnection) {
@@ -33,7 +33,7 @@ public class TestDBLoader {
             @"Create Table if not exists Orders(
                 ID VARCHAR(100),
                 CreationDate VARCHAR(100),
-                Customer VARCHAR(100),
+                Name VARCHAR(100),
                 Address VARCHAR(100))");
 
         await sqLiteConnection.ExecuteAsync(

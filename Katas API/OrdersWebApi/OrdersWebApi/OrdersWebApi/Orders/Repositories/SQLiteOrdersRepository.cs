@@ -15,7 +15,7 @@ public class SQLiteOrdersRepository : IOrderRepository {
         UpdateProducts(order);
         return _connection.ExecuteAsync(
             "INSERT INTO " +
-            "Orders(ID, CreationDate, Customer, Address) " +
+            "Orders(ID, CreationDate, Name, Address) " +
             $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
     }
 
@@ -43,7 +43,7 @@ public class SQLiteOrdersRepository : IOrderRepository {
 
     private void UpdateOrderData(Order updatedOrder) {
         _connection.ExecuteAsync(
-            $"UPDATE Orders SET Address = '{updatedOrder.Address}', Customer = '{updatedOrder.Customer}' " +
+            $"UPDATE Orders SET Address = '{updatedOrder.Address}', Name = '{updatedOrder.Customer}' " +
             $"WHERE Id = '{updatedOrder.Id}'");
     }
 
@@ -58,7 +58,6 @@ public class SQLiteOrdersRepository : IOrderRepository {
     }
 
     private static Order RetrievedOrder(dynamic? orderFound, List<Product?> productsAssociated) {
-        return new Order(orderFound.ID, orderFound.CreationDate, orderFound.Customer, orderFound.Address,
-            productsAssociated);
+        return new Order(orderFound.ID, orderFound.CreationDate, new User(orderFound.Customer, orderFound.Address), productsAssociated);
     }
 }
