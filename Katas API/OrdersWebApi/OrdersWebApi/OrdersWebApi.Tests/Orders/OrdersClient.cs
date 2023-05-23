@@ -1,6 +1,5 @@
 using System.Text;
 using Newtonsoft.Json;
-using OrdersWebApi.Products;
 
 namespace OrdersWebApi.Tests.Orders;
 
@@ -9,13 +8,6 @@ public class OrdersClient {
 
     public OrdersClient(HttpClient client) {
         _client = client;
-    }
-
-    public static string GenerateAListOfProducts(List<Product> items) {
-        var newProducts = JsonConvert.SerializeObject(new {
-            products = items
-        });
-        return newProducts;
     }
 
     public async Task<string> PostAnOrder(string order) {
