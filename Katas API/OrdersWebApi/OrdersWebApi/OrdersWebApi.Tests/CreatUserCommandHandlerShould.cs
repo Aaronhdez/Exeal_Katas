@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 namespace OrdersWebApi.Tests; 
 
 public class CreatUserCommandHandlerShould {
-    private IUserRepository _usersRepository;
+    private IUsersRepository _usersRepository;
     private CreateUserCommandHandler _handler;
     private CreateUserDto _userCreateDto;
 

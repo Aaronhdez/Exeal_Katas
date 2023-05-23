@@ -3,9 +3,9 @@
 namespace OrdersWebApi.Tests;
 
 public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, ReadUserDto> {
-    private readonly IUserRepository _usersRepository;
+    private readonly IUsersRepository _usersRepository;
 
-    public GetUserByIdQueryHandler(IUserRepository usersRepository) {
+    public GetUserByIdQueryHandler(IUsersRepository usersRepository) {
         _usersRepository = usersRepository;
     }
 

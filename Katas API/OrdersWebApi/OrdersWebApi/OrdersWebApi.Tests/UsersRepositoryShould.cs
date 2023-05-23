@@ -3,25 +3,25 @@
 namespace OrdersWebApi.Tests; 
 
 public class UsersRepositoryShould {
-    private IUserRepository _usersRepository;
+    private IUsersRepository _usersesRepository;
 
     
     [Test]
     public void RetrieveAUserIfExists() {
-        _usersRepository = new InMemoryUsersRepository();
+        _usersesRepository = new InMemoryUsersRepository();
         var expectedUser = new User("AnId", "A Name", "An Address");
-        _usersRepository.Create(expectedUser);
+        _usersesRepository.Create(expectedUser);
         
-        var user = _usersRepository.GetById("AnId");
+        var user = _usersesRepository.GetById("AnId");
         
         user.Should().BeEquivalentTo(expectedUser);
     }
     
     [Test]
     public void FailWhenAsUserDoesNotExist() {
-        _usersRepository = new InMemoryUsersRepository();
+        _usersesRepository = new InMemoryUsersRepository();
         
-        var action = () => _usersRepository.GetById("AnId");
+        var action = () => _usersesRepository.GetById("AnId");
         
         action.Should().Throw<ArgumentException>();
     }

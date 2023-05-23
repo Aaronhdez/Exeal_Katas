@@ -3,9 +3,9 @@
 namespace OrdersWebApi.Tests;
 
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand> {
-    private readonly IUserRepository _usersRepository;
+    private readonly IUsersRepository _usersRepository;
 
-    public CreateUserCommandHandler(IUserRepository usersRepository) {
+    public CreateUserCommandHandler(IUsersRepository usersRepository) {
         _usersRepository = usersRepository;
     }
 

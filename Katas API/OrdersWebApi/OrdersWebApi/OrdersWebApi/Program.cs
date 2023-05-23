@@ -5,6 +5,7 @@ using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Repositories;
+using OrdersWebApi.Tests;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ builder.Services.AddSingleton<ProductReferenceGenerator>();
 //builder.Services.AddScoped(_ => new SQLiteConnection("Data Source=./Orders.db"));
 builder.Services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
 builder.Services.AddSingleton<IProductsRepository, InMemoryProductsRepository>();
+builder.Services.AddSingleton<IUsersRepository, InMemoryUsersRepository>();
 
 var app = builder.Build();
 

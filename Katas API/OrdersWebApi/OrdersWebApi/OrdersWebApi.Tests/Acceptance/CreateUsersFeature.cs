@@ -19,6 +19,7 @@ public class CreateUsersFeature {
         _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
         _client = _ordersApi.CreateClient();
+        
         var createUserRequest = GivenAUserCreationRequest();
         var userId = await WhenItIsCreated(createUserRequest);
         ItIsDisplayedProperly(userId);
