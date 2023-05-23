@@ -5,16 +5,22 @@ namespace OrdersWebApi.Tests;
 
 public class CreatUserCommandHandlerShould {
     private IUserRepository _usersRepository;
+    private CreateUserCommandHandler _handler;
+    private CreateUserDto _userCreateDto;
+
+    [SetUp]
+    public void SetUp() {
+        _usersRepository = new InMemoryUsersRepository();
+        _handler = new CreateUserCommandHandler(_usersRepository);
+    }
 
     [Test]
     public void CreateANonExistentUser() {
-        _usersRepository = new InMemoryUsersRepository();
-        var handler = new CreateUserCommandHandler(_usersRepository);
-        var userCreateDto = new CreateUserDto("An Id", "a Name", "An Address");
+        _userCreateDto = new CreateUserDto("An Id", "a Name", "An Address");
+        
+        _handler.Handle(new CreateUserCommand(_userCreateDto), default);
 
-        handler.Handle(new CreateUserCommand(userCreateDto), default);
-
-        var expectedUser = new User(userCreateDto.Id, userCreateDto.Name, userCreateDto.Address);
+        var expectedUser = new User(_userCreateDto.Id, _userCreateDto.Name, _userCreateDto.Address);
         var retrievedUser = _usersRepository.GetById("An Id");
         retrievedUser.Should().BeEquivalentTo(expectedUser);
     }
