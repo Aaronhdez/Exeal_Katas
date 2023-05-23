@@ -2,9 +2,8 @@
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Commands;
 using OrdersWebApi.Users.Repositories;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace OrdersWebApi.Tests; 
+namespace OrdersWebApi.Tests.Users.CommandHandlers; 
 
 public class CreatUserCommandHandlerShould {
     private IUsersRepository _usersRepository;

@@ -1,12 +1,11 @@
 ﻿using FluentAssertions;
-using NSubstitute;
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Queries;
 using OrdersWebApi.Users.Repositories;
 
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.Tests.Users.QueryHandlers;
 
-public class GetUserByIdQueryShould {
+public class GetUserByIdQueryHandlerShould {
     private InMemoryUsersRepository _usersRepository;
     private User _existentUser;
 

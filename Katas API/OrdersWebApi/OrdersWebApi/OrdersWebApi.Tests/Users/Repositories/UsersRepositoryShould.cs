@@ -2,7 +2,7 @@
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Repositories;
 
-namespace OrdersWebApi.Tests; 
+namespace OrdersWebApi.Tests.Users.Repositories; 
 
 public class UsersRepositoryShould {
     private IUsersRepository _usersesRepository;

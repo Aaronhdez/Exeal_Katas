@@ -1,5 +1,6 @@
 ﻿using OrdersWebApi.Bills;
 using OrdersWebApi.Bills.Queries;
+using OrdersWebApi.Tests.Users;
 
 namespace OrdersWebApi.Tests.Bills;
 
