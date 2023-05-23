@@ -1,6 +1,7 @@
 ﻿namespace OrdersWebApi.Tests;
 
 public static class UserDefaultValues {
+    public const string UserId = "AnId";
     public const string CompanyName = "Computer Stuff Inc.";
     public const string CompanyAddress = "A company Address";
     public const string CustomerAddress = "A Simple Address, 123";

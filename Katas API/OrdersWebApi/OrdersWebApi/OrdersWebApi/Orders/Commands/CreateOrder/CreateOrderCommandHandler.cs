@@ -18,7 +18,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand> {
     }
 
     public Task Handle(CreateOrderCommand request, CancellationToken cancellationToken) {
-        return _orderRepository.Create(new Order(request.OrderData.Id, _clock.Timestamp().ToString("dd/MM/yyyy"), new User(request.OrderData.Customer, request.OrderData.Address), GetProductsAssigned(request.OrderData.Products)));
+        return _orderRepository.Create(new Order(request.OrderData.Id, _clock.Timestamp().ToString("dd/MM/yyyy"), new User("",request.OrderData.Customer, request.OrderData.Address), GetProductsAssigned(request.OrderData.Products)));
     }
 
     private List<Product> GetProductsAssigned(IEnumerable<string> productIds) {

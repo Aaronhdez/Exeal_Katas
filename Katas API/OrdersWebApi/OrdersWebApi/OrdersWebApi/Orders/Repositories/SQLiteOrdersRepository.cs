@@ -58,6 +58,6 @@ public class SQLiteOrdersRepository : IOrderRepository {
     }
 
     private static Order RetrievedOrder(dynamic? orderFound, List<Product?> productsAssociated) {
-        return new Order(orderFound.ID, orderFound.CreationDate, new User(orderFound.Customer, orderFound.Address), productsAssociated);
+        return new Order(orderFound.ID, orderFound.CreationDate, new User("",orderFound.Customer, orderFound.Address), productsAssociated);
     }
 }

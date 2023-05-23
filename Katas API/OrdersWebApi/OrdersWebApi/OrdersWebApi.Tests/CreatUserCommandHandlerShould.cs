@@ -14,7 +14,7 @@ public class CreatUserCommandHandlerShould {
 
         handler.Handle(new CreateUserCommand(userCreateDto), default);
 
-        var expectedUser = new User(userCreateDto.Name, userCreateDto.Address);
+        var expectedUser = new User(userCreateDto.Id, userCreateDto.Name, userCreateDto.Address);
         var retrievedUser = _usersRepository.GetById("An Id");
         retrievedUser.Should().BeEquivalentTo(expectedUser);
     }
