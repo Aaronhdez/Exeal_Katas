@@ -5,25 +5,24 @@ using OrdersWebApi.Users.Repositories;
 namespace OrdersWebApi.Tests.Users.Repositories;
 
 public class UsersRepositoryShould {
-    private IUsersRepository _usersesRepository;
+    private IUsersRepository _usersRepository;
 
-    
     [Test]
     public void RetrieveAUserIfExists() {
-        _usersesRepository = new InMemoryUsersRepository();
+        _usersRepository = new InMemoryUsersRepository();
         var expectedUser = UsersMother.TestUser();
-        _usersesRepository.Create(expectedUser);
+        _usersRepository.Create(expectedUser);
         
-        var user = _usersesRepository.GetById("AnId");
+        var user = _usersRepository.GetById("AnId");
         
         user.Should().BeEquivalentTo(expectedUser);
     }
 
     [Test]
     public void FailWhenAsUserDoesNotExist() {
-        _usersesRepository = new InMemoryUsersRepository();
+        _usersRepository = new InMemoryUsersRepository();
         
-        var action = () => _usersesRepository.GetById(UserDefaultValues.UserId);
+        var action = () => _usersRepository.GetById(UserDefaultValues.UserId);
         
         action.Should().Throw<ArgumentException>();
     }

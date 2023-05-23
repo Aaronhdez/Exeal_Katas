@@ -3,7 +3,6 @@ using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Users;
-using OrdersWebApi.Users.Controllers;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
