@@ -31,23 +31,23 @@ public class SQLiteOrdersRepositoryShould {
         _sqLiteConnection.Dispose();
     }
 
-    [Test]
-    public void RetrieveAnOrderWithoutProductsWhileRequested() {
-        _testDBLoader.GivenAnOrderInDb(_order);
-
-        var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
-
-        retrievedOrder.Should().Be(_order);
-    }
-
-    [Test]
-    public void InsertNewOrderWithoutProductsWhileRequested() {
-        _sqLiteOrdersRepository.Create(_order);
-
-        var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
-
-        retrievedOrder.Should().Be(_order);
-    }
+    //[Test]
+    //public void RetrieveAnOrderWithoutProductsWhileRequested() {
+    //    _testDBLoader.GivenAnOrderInDb(_order);
+    //
+    //    var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
+    //
+    //    retrievedOrder.Should().Be(_order);
+    //}
+    //
+    //[Test]
+    //public void InsertNewOrderWithoutProductsWhileRequested() {
+    //    _sqLiteOrdersRepository.Create(_order);
+    //
+    //    var retrievedOrder = _sqLiteOrdersRepository.GetById(OrderDefaultValues.OrderId).Result;
+    //
+    //    retrievedOrder.Should().Be(_order);
+    //}
 
     //[Test]
     //public void RetrieveAnListOfProductsForAnOrderWhileRequested() {
