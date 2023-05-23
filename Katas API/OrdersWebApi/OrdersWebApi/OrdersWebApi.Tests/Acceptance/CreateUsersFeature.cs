@@ -11,15 +11,18 @@ public class CreateUsersFeature {
     private IGuidGenerator _idGenerator;
     private OrdersApi _ordersApi;
 
-    [Test]
-    public async Task DisplayProperInformationOfACreatedUser() {
+    [SetUp]
+    public void SetUp() {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
         _idGenerator = Substitute.For<IGuidGenerator>();
         _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
         _client = _ordersApi.CreateClient();
-        
+    }
+
+    [Test]
+    public async Task DisplayProperInformationOfACreatedUser() {
         var createUserRequest = GivenAUserCreationRequest();
         var userId = await WhenItIsCreated(createUserRequest);
         ItIsDisplayedProperly(userId);
