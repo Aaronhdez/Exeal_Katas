@@ -4,6 +4,7 @@ using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders.Commands.AddProductsToOrder;
 using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
+using OrdersWebApi.Orders.Controllers.Responses;
 using OrdersWebApi.Orders.Queries;
 
 #pragma warning disable CS8602
@@ -35,7 +36,8 @@ public class OrdersController : ControllerBase {
     }
 
     [HttpGet("{id}")]
-    public Task<ReadOrderDto> Get(string id) {
-        return _sender.Send(new GetOrderByIdQuery(id));
+    public async Task<OrderResponse> Get(string id) {
+        var readDto = await _sender.Send(new GetOrderByIdQuery(id));
+        return new OrderResponse(readDto.Id, readDto.CreationDate, readDto.Address, readDto.Customer, readDto.Products);
     }
 }

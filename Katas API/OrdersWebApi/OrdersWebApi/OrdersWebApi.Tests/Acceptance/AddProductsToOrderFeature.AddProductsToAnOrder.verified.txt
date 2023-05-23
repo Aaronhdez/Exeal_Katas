@@ -1,7 +1,7 @@
 ﻿{
   "creationDate": "24/04/2023",
-  "customer": "John Doe",
   "address": "A Simple Address, 123",
+  "customer": "John Doe",
   "products": [
     {
       "type": "MON",
