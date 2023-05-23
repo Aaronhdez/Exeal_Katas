@@ -25,7 +25,8 @@ public class UsersController {
     }
 
     [HttpGet("{id}")]
-    public Task<ReadUserDto> Get(string id) {
-        return _sender.Send(new GetUserByIdQuery(id));
+    public async Task<ReadUserResponse> Get(string id) {
+        var readDto = await _sender.Send(new GetUserByIdQuery(id));
+        return new ReadUserResponse(readDto.Id, readDto.Name, readDto.Address);
     }
 }
