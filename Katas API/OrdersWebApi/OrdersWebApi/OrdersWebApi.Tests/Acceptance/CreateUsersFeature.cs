@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using NSubstitute;
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Tests.Orders;
@@ -9,10 +8,10 @@ using OrdersWebApi.Users.Controllers;
 namespace OrdersWebApi.Tests.Acceptance;
 
 public class CreateUsersFeature {
-    private HttpClient _client;
     private IClock? _clock;
     private IGuidGenerator _idGenerator;
     private OrdersApi _ordersApi;
+    private UsersClient _client;
 
     [SetUp]
     public void SetUp() {
@@ -21,7 +20,7 @@ public class CreateUsersFeature {
         _idGenerator = Substitute.For<IGuidGenerator>();
         _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
         _ordersApi = new OrdersApi(_clock, _idGenerator);
-        _client = _ordersApi.CreateClient();
+        _client = new UsersClient(_ordersApi.CreateClient());
     }
 
     [Test]
@@ -36,17 +35,11 @@ public class CreateUsersFeature {
     }
 
     private async Task<string> WhenItIsCreated(string createUserRequest) {
-        var postResponse = await _client.PostAsync("/Users",
-            new StringContent(createUserRequest, Encoding.Default, "application/json"));
-        postResponse.EnsureSuccessStatusCode();
-        return await postResponse.Content.ReadAsStringAsync();
+        return await _client.PostAnUser(createUserRequest);
     }
 
     private async void ItIsDisplayedProperly(string userId) {
-        var getResponse = await _client.GetAsync($"/Users/{userId}");
-        getResponse.EnsureSuccessStatusCode();
-        var content = await getResponse.Content.ReadAsStringAsync();
-        var createdUser = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
+        var createdUser = await _client.GetAnUserById(userId, this);
         Verify(createdUser);
     }
 }
