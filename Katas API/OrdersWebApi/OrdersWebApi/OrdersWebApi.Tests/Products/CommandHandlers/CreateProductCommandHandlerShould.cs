@@ -22,12 +22,12 @@ public class CreateProductCommandHandlerShould {
 
     [Test]
     public async Task StoreAProductInRepository() {
-        _createProductDto = ProductsMother.TestCreateProductDto("MON");
+        _createProductDto = ProductsMother.TestCreateComputerMonitorDto("MON");
 
         await _handler.Handle(new CreateProductCommand(_createProductDto), default);
 
-        var product = ProductsMother.TestExpectedProductReadDto();
-        var expectedProduct = await _repository.GetById("An Id");
+        var product = ProductsMother.ComputerMonitorReadDto();
+        var expectedProduct = await _repository.GetById(_createProductDto.Id);
         expectedProduct.Should().BeEquivalentTo(product);
     }
 }

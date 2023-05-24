@@ -15,7 +15,7 @@ public static class ProductsMother {
 
     //REQUESTS
     public static string ComputerMonitorCreationRequest() {
-        var computerMonitor = ProductsMother.ComputerMonitor();
+        var computerMonitor = ComputerMonitor();
         return JsonConvert.SerializeObject(new CreateProductRequest(
             computerMonitor.Type,
             computerMonitor.Name,
@@ -26,7 +26,7 @@ public static class ProductsMother {
     }
 
     public static string KeyboardCreationRequest() {
-        var keyboard = ProductsMother.Keyboard();
+        var keyboard = Keyboard();
         return JsonConvert.SerializeObject(new CreateProductRequest(
             keyboard.Type,
             keyboard.Name,
@@ -37,7 +37,7 @@ public static class ProductsMother {
     }
 
     public static string MouseCreationRequest() {
-        var mouse = ProductsMother.Mouse();
+        var mouse = Mouse();
         return JsonConvert.SerializeObject(new CreateProductRequest(
             mouse.Type,
             mouse.Name,
@@ -48,7 +48,6 @@ public static class ProductsMother {
     }
 
     //DTOs
-
     public static AddProductsDto AddAProductDto() {
         return new AddProductsDto(OrderDefaultValues.OrderId, new[] {
             ProductDefaultValues.ComputerMonitorId
@@ -62,54 +61,30 @@ public static class ProductsMother {
         });
     }
 
-    public static ProductReadDto TestExpectedProductReadDto() {
+    public static ProductReadDto ComputerMonitorReadDto() {
         return new ProductReadDto {
-            Id = "An Id",
-            ProductReference = "MON000001",
-            Name = "A Name",
-            Description = "A Description",
-            Manufacturer = "A Manufacturer",
-            ManufacturerReference = "A Manufacturer Reference",
-            Value = 0
+            Id = ProductDefaultValues.ComputerMonitorId,
+            ProductReference = ProductDefaultValues.ComputerMonitorReference,
+            Name = ProductDefaultValues.ComputerMonitorName,
+            Description = ProductDefaultValues.ComputerMonitorDescription,
+            Manufacturer = ProductDefaultValues.ComputerMonitorManufacturer,
+            ManufacturerReference = ProductDefaultValues.ComputerMonitorManufacturerReference,
+            Value = ProductDefaultValues.ComputerMonitorValue
         };
     }
 
-    public static ProductReadDto TestProductReadDto() {
-        return new ProductReadDto {
-            Id = "An Id",
-            ProductReference = "MON000001",
-            Name = "A Name",
-            Description = "A Description",
-            Manufacturer = "A Manufacturer",
-            ManufacturerReference = "A Manufacturer Reference",
-            Value = 0
-        };
-    }
-
-    public static CreateProductDto TestCreateProductDto(string tag) {
+    public static CreateProductDto TestCreateComputerMonitorDto(string tag) {
         return new CreateProductDto(
-            "An Id",
+            ProductDefaultValues.ComputerMonitorId,
             tag,
-            "A Name",
-            "A Description",
-            "A Manufacturer",
-            "A Manufacturer Reference",
-            0);
+            ProductDefaultValues.ComputerMonitorName,
+            ProductDefaultValues.ComputerMonitorDescription,
+            ProductDefaultValues.ComputerMonitorManufacturer,
+            ProductDefaultValues.ComputerMonitorManufacturerReference,
+            ProductDefaultValues.ComputerMonitorValue);
     }
 
     //MODELS
-    public static Product ATestProduct(string productId) {
-        return new Product(
-            productId,
-            "MON000001",
-            "MON",
-            "A Name",
-            "A Description",
-            "A Manufacturer",
-            "A Manufacturer Reference",
-            0);
-    }
-
     public static Product ComputerMonitor() {
         return new Product(
             ProductDefaultValues.ComputerMonitorId,
