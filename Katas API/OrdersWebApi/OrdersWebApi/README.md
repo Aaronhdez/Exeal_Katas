@@ -109,3 +109,32 @@ Our API should be able to:
 > - **SSD** for solid-state drives
 > - **CBL** for cables
 > - **OTH** for other stuff
+
+### Clients Creation
+- Having user data creation
+- When the user requests to create it
+- The user Is properly created
+- When the user requests to display it
+- That user shall be generated as:
+>- **ID**: **XXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX**
+>- **Customer**: John Doe
+>- **Address**: A Simple Street, 123
+
+### Clients Order Display Creation
+- Having User as customer
+- Having another User as Vendor
+- Having an Order registered with Both users assigned
+- When the order is requestd to be displayed
+- That order shall be generated as:
+>- **ID**: **XXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX**
+>- **Vendor**: [
+ >  - Name: John Doe,
+ >  - Address: A Simple Street, 123, ]
+>- **Customer**: [
+ >  - Name: John Doe,
+ >  - Address: A Simple Street, 123, 
+ >  ]
+>- **Products: [**
+   >  - { Name: Computer Monitor, Price: 100€ },
+>  - { Name: Keyboard, Price: 30€ }
+>-  **]**
