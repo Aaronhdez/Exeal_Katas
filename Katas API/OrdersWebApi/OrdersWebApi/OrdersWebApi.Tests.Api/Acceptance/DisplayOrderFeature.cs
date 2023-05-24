@@ -34,19 +34,19 @@ public class DisplayOrderFeature {
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
-        var vendorId = await _usersClient.PostAnUser(UsersMother.TestCreateVendorRequest());
-        var customerId = await _usersClient.PostAnUser(UsersMother.TestCreateCustomerRequest());
-        var productId = await GivenAProductInDatabase();
-        var orderRequest = OrdersMother.GivenACreateOrderRequest(vendorId, customerId, new[] { productId });
+        var orderRequest = await GivenAnOrderRequest();
 
         var createdOrder = await WhenUserRequestsToCreateIt(orderRequest);
 
         await ThenItIsCreatedProperly(createdOrder);
     }
 
-    private async Task<string> GivenAProductInDatabase() {
-        var productCreationRequest = ProductsMother.ComputerMonitorCreationRequest();
-        return await _productsClient.PostAProduct(productCreationRequest);
+    private async Task<string> GivenAnOrderRequest() {
+        var vendorId = await _usersClient.PostAnUser(UsersMother.TestCreateVendorRequest());
+        var customerId = await _usersClient.PostAnUser(UsersMother.TestCreateCustomerRequest());
+        var productId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
+        var orderRequest = OrdersMother.GivenACreateOrderRequest(vendorId, customerId, new[] { productId });
+        return orderRequest;
     }
 
     private async Task<string> WhenUserRequestsToCreateIt(string order) {

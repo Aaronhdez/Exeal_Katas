@@ -2,13 +2,13 @@
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Products;
 using OrdersWebApi.Products.Commands;
+using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Products.Repositories;
 
 namespace OrdersWebApi.Tests.Products.CommandHandlers;
 
 public class CreateProductCommandHandlerShould {
     private CreateProductCommand _command;
-    private CreateProductDto _createProductDto;
     private CreateProductCommandHandler _handler;
     private ProductReferenceGenerator _referenceGenerator;
     private IProductsRepository _repository;
@@ -22,12 +22,11 @@ public class CreateProductCommandHandlerShould {
 
     [Test]
     public async Task StoreAProductInRepository() {
-        _createProductDto = ProductsMother.TestCreateComputerMonitorDto("MON");
+        var createProductDto = ProductsMother.TestCreateComputerMonitorDto("MON");
 
-        await _handler.Handle(new CreateProductCommand(_createProductDto), default);
+        await _handler.Handle(new CreateProductCommand(createProductDto), default);
 
-        var product = ProductsMother.ComputerMonitorReadDto();
-        var expectedProduct = await _repository.GetById(_createProductDto.Id);
-        expectedProduct.Should().BeEquivalentTo(product);
+        var expectedProduct = await _repository.GetById(createProductDto.Id);
+        expectedProduct.Should().BeEquivalentTo(ProductsMother.ComputerMonitorReadDto());
     }
 }

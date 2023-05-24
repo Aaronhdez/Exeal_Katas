@@ -18,8 +18,6 @@ public class OrdersApi : WebApplicationFactory<Program> {
         builder.ConfigureServices(services => {
             services.AddSingleton(_clock);
             services.AddSingleton(_idGenerator);
-            //services.AddSingleton<IOrderRepository, InMemoryOrdersRepository>();
-            //services.AddScoped<CreateOrderCommand>();
         });
 
         return base.CreateHost(builder);

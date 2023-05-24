@@ -19,7 +19,7 @@
       Description: A DELL Computer Monitor,
       Manufacturer: DELL Inc.,
       ManufacturerReference: DLL123456789,
-      ProductReference: MON0000001,
+      ProductReference: MON000001,
       Value: 100
     }
   ]

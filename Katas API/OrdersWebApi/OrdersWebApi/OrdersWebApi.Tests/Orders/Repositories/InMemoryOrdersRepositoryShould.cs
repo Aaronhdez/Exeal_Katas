@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 
 namespace OrdersWebApi.Tests.Orders.Repositories;
@@ -17,8 +18,7 @@ public class InMemoryOrdersRepositoryShould {
 
         await _inMemoryOrdersRepository.Create(expectedOrder);
 
-        var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
-        retrievedOrder.Should().Be(expectedOrder);
+        expectedOrder.Should().Be(await _inMemoryOrdersRepository.GetById(expectedOrder.Id));
     }
 
     [Test]
@@ -29,7 +29,6 @@ public class InMemoryOrdersRepositoryShould {
         await _inMemoryOrdersRepository.Create(expectedOrder);
         await _inMemoryOrdersRepository.Update(expectedUpdatedOrder);
 
-        var retrievedOrder = await _inMemoryOrdersRepository.GetById(expectedOrder.Id);
-        retrievedOrder.Should().Be(expectedUpdatedOrder);
+        expectedUpdatedOrder.Should().Be(await _inMemoryOrdersRepository.GetById(expectedOrder.Id));
     }
 }

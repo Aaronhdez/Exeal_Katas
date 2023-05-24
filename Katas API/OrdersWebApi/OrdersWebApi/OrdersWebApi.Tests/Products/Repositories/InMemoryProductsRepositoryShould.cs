@@ -13,8 +13,6 @@ public class InMemoryProductsRepositoryShould {
 
     [Test]
     public async Task RetrieveEmptyListForAGivenTagWhenThereAreNoOccurrences() {
-        _repository = new InMemoryProductsRepository();
-
         var taggedProducts = await _repository.GetAllProductsForTag("MON");
 
         taggedProducts.Should().BeEmpty();
@@ -22,7 +20,6 @@ public class InMemoryProductsRepositoryShould {
 
     [Test]
     public async Task RetrieveProductsForAGivenTagWhenThereAreOccurrences() {
-        _repository = new InMemoryProductsRepository();
         var keyboard = ProductsMother.Keyboard();
         await _repository.Create(keyboard);
 

@@ -18,13 +18,11 @@ public class GetProductByIdQueryHandlerShould {
 
     [Test]
     public async Task GetAProductDtoFromExistingRecord() {
-        var product = ProductsMother.ComputerMonitor();
-        await _repository.Create(product);
+        await _repository.Create(ProductsMother.ComputerMonitor());
 
-        var productQuery = new GetProductByIdQuery(product.Id);
+        var productQuery = new GetProductByIdQuery(ProductsMother.ComputerMonitor().Id);
         var result = await _handler.Handle(productQuery, default);
 
-        var expectedDto = ProductsMother.ComputerMonitorReadDto();
-        result.Should().BeEquivalentTo(expectedDto);
+        result.Should().BeEquivalentTo(ProductsMother.ComputerMonitorReadDto());
     }
 }

@@ -22,4 +22,10 @@
       <ProjectReference Include="..\OrdersWebApi.TestUtils\OrdersWebApi.TestUtils.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Acceptance\CreateUsersFeature.DisplayProperInformationOfACreatedUser.received.txt">
+        <DependentUpon>CreateUsersFeature.cs</DependentUpon>
+      </None>
+    </ItemGroup>
+
 </Project>

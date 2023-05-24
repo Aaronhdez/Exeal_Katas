@@ -11,20 +11,21 @@ namespace OrdersWebApi.Tests.Bills.Queries;
 public class GetBillByOrderIdQueryHandlerShould {
     private GetBillByOrderIdQueryHandler _handler;
     private IOrderRepository _ordersRepository;
+    private Order _aTestOrder;
 
     [SetUp]
     public void SetUp() {
         _ordersRepository = Substitute.For<IOrderRepository>();
         _handler = new GetBillByOrderIdQueryHandler(_ordersRepository);
-        _ordersRepository.GetById(OrderDefaultValues.OrderId).Returns(OrdersMother.ATestOrderWithAProduct());
+        _aTestOrder = OrdersMother.ATestOrderWithAProduct();
+        _ordersRepository.GetById(_aTestOrder.Id).Returns(_aTestOrder);
     }
 
     [Test]
     public async Task RetrieveABillWithAnOrderId() {
         var receivedBillResponse = await _handler.Handle(
-            new GetBillByOrderIdQuery(OrderDefaultValues.OrderId), default);
+            new GetBillByOrderIdQuery(_aTestOrder.Id), default);
 
-        var expectedBillResponse = BillsMother.ATestBill();
-        receivedBillResponse.Should().BeEquivalentTo(expectedBillResponse);
+        receivedBillResponse.Should().BeEquivalentTo(BillsMother.ATestBill());
     }
 }

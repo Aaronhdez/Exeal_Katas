@@ -18,8 +18,7 @@ public class CreateUsersFeature {
     public void SetUp() {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _idGenerator = Substitute.For<IGuidGenerator>();
-        _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
+        _idGenerator = new GuidGenerator();
         _ordersApi = new OrdersApi(_clock, _idGenerator);
         _client = new UsersClient(_ordersApi.CreateClient());
     }
@@ -40,6 +39,6 @@ public class CreateUsersFeature {
     }
 
     private async void ItIsDisplayedProperly(string userId) {
-        await Verify(await _client.GetAnUserById(userId));
+        await Verify(await _client.GetAnUserById(userId)).ScrubInlineGuids();
     }
 }
