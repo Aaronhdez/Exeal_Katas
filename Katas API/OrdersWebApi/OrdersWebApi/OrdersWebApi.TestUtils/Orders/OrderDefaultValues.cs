@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.TestUtils;
+﻿namespace OrdersWebApi.TestUtils.Orders;
 
 public static class OrderDefaultValues {
     public const string OrderId = "b323d8aa-2af3-4bbb-89e8-521d993cafee";

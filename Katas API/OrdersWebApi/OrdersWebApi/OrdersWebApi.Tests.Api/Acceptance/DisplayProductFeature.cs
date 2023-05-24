@@ -3,6 +3,8 @@ using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
 using OrdersWebApi.TestUtils;
+using OrdersWebApi.TestUtils.Orders;
+using OrdersWebApi.TestUtils.Products;
 
 namespace OrdersWebApi.Tests.Acceptance;
 

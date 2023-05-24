@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
 
-namespace OrdersWebApi.TestUtils;
+namespace OrdersWebApi.TestUtils.Users;
 
 public class UsersClient {
     private HttpClient _client;

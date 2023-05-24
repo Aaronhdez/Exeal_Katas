@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using OrdersWebApi.TestUtils;
+using OrdersWebApi.TestUtils.Users;
 using OrdersWebApi.Users;
 using OrdersWebApi.Users.Commands;
 using OrdersWebApi.Users.Repositories;

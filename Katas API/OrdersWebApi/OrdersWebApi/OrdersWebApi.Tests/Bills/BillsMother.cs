@@ -2,6 +2,7 @@
 using OrdersWebApi.Bills.Queries;
 using OrdersWebApi.Tests.Users;
 using OrdersWebApi.TestUtils;
+using OrdersWebApi.TestUtils.Users;
 using OrdersWebApi.Users.Queries;
 
 namespace OrdersWebApi.Tests.Bills;

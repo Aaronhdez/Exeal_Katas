@@ -1,4 +1,4 @@
-﻿namespace OrdersWebApi.TestUtils;
+﻿namespace OrdersWebApi.TestUtils.Users;
 
 public static class UserDefaultValues {
     public const string CustomerId = "AnId";

@@ -6,6 +6,7 @@ using OrdersWebApi.Products.Controllers.Requests;
 using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.TestUtils;
+using OrdersWebApi.TestUtils.Orders;
 
 namespace OrdersWebApi.Tests.Products;
 

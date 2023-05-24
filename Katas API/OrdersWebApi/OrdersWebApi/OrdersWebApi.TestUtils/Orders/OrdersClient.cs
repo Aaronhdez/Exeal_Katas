@@ -1,7 +1,7 @@
 using System.Text;
 using Newtonsoft.Json;
 
-namespace OrdersWebApi.TestUtils;
+namespace OrdersWebApi.TestUtils.Orders;
 
 public class OrdersClient {
     private readonly HttpClient _client;
