@@ -1,5 +1,4 @@
 using OrdersWebApi.Products;
-using OrdersWebApi.Users;
 using OrdersWebApi.Users.Controllers;
 
 namespace OrdersWebApi.Orders.Controllers.Responses;

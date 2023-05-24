@@ -1,5 +1,4 @@
 ﻿using System.Data.SQLite;
-using FluentAssertions;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;

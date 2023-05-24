@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-using NSubstitute;
+﻿using NSubstitute;
 using OrdersWebApi.Infrastructure;
-using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
 using OrdersWebApi.Tests.Users;

@@ -1,7 +1,6 @@
 using System.Data.SQLite;
 using Dapper;
 using OrdersWebApi.Products;
-using OrdersWebApi.Users;
 
 namespace OrdersWebApi.Orders.Repositories;
 
