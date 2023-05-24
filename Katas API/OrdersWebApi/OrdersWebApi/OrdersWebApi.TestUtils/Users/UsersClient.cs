@@ -1,8 +1,7 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
-using OrdersWebApi.Tests.Acceptance;
 
-namespace OrdersWebApi.Tests.Users;
+namespace OrdersWebApi.TestUtils;
 
 public class UsersClient {
     private HttpClient _client;
@@ -17,7 +16,7 @@ public class UsersClient {
         return await postResponse.Content.ReadAsStringAsync();
     }
 
-    public async Task<string> GetAnUserById(string userId, CreateUsersFeature createUsersFeature) {
+    public async Task<string> GetAnUserById(string userId) {
         var getResponse = await _client.GetAsync($"/Users/{userId}");
         getResponse.EnsureSuccessStatusCode();
         var content = await getResponse.Content.ReadAsStringAsync();

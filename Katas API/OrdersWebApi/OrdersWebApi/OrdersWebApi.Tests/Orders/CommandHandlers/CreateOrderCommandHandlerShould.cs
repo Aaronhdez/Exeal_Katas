@@ -6,6 +6,7 @@ using OrdersWebApi.Orders.Repositories;
 using OrdersWebApi.Products;
 using OrdersWebApi.Tests.Products;
 using OrdersWebApi.Tests.Users;
+using OrdersWebApi.TestUtils;
 using OrdersWebApi.Users;
 
 namespace OrdersWebApi.Tests.Orders.CommandHandlers;

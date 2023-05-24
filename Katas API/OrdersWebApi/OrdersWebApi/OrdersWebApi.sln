@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersWebApi", "OrdersWebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersWebApi.Tests", "OrdersWebApi.Tests\OrdersWebApi.Tests.csproj", "{B340C0F1-BE29-40CB-B3A5-B6AF4DD58855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersWebApi.TestUtils", "OrdersWebApi.TestUtils\OrdersWebApi.TestUtils.csproj", "{673C2607-2EAD-4138-AA66-E33F40DC5A5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A80D3960-3652-4284-B672-AB79963B9CF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersWebApi.Tests.Api", "OrdersWebApi.Tests.Api\OrdersWebApi.Tests.Api.csproj", "{289B68ED-ED7E-4389-B3ED-0A78498B9B65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,18 @@ Global
 		{B340C0F1-BE29-40CB-B3A5-B6AF4DD58855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B340C0F1-BE29-40CB-B3A5-B6AF4DD58855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B340C0F1-BE29-40CB-B3A5-B6AF4DD58855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673C2607-2EAD-4138-AA66-E33F40DC5A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673C2607-2EAD-4138-AA66-E33F40DC5A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673C2607-2EAD-4138-AA66-E33F40DC5A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673C2607-2EAD-4138-AA66-E33F40DC5A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{289B68ED-ED7E-4389-B3ED-0A78498B9B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289B68ED-ED7E-4389-B3ED-0A78498B9B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289B68ED-ED7E-4389-B3ED-0A78498B9B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289B68ED-ED7E-4389-B3ED-0A78498B9B65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{673C2607-2EAD-4138-AA66-E33F40DC5A5B} = {A80D3960-3652-4284-B672-AB79963B9CF6}
+		{B340C0F1-BE29-40CB-B3A5-B6AF4DD58855} = {A80D3960-3652-4284-B672-AB79963B9CF6}
+		{289B68ED-ED7E-4389-B3ED-0A78498B9B65} = {A80D3960-3652-4284-B672-AB79963B9CF6}
 	EndGlobalSection
 EndGlobal

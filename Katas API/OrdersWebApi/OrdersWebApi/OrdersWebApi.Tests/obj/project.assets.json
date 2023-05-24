@@ -1815,6 +1815,23 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "OrdersWebApi.TestUtils/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.NET.Test.Sdk": "17.5.0",
+          "NUnit": "3.13.3",
+          "NUnit.Analyzers": "3.6.1",
+          "NUnit3TestAdapter": "4.4.2",
+          "coverlet.collector": "3.2.0"
+        },
+        "compile": {
+          "bin/placeholder/OrdersWebApi.TestUtils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OrdersWebApi.TestUtils.dll": {}
+        }
       }
     }
   },
@@ -4944,6 +4961,11 @@
       "type": "project",
       "path": "../OrdersWebApi/OrdersWebApi.csproj",
       "msbuildProject": "../OrdersWebApi/OrdersWebApi.csproj"
+    },
+    "OrdersWebApi.TestUtils/1.0.0": {
+      "type": "project",
+      "path": "../OrdersWebApi.TestUtils/OrdersWebApi.TestUtils.csproj",
+      "msbuildProject": "../OrdersWebApi.TestUtils/OrdersWebApi.TestUtils.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4958,6 +4980,7 @@
       "NUnit.Analyzers >= 3.6.1",
       "NUnit3TestAdapter >= 4.4.2",
       "OrdersWebApi >= 1.0.0",
+      "OrdersWebApi.TestUtils >= 1.0.0",
       "System.Data.SQLite >= 1.0.117",
       "Verify.NUnit >= 19.13.0",
       "coverlet.collector >= 3.2.0"
@@ -4991,6 +5014,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.TestUtils\\OrdersWebApi.TestUtils.csproj": {
+              "projectPath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.TestUtils\\OrdersWebApi.TestUtils.csproj"
+            },
             "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.csproj": {
               "projectPath": "C:\\Users\\aahernandez\\source\\repos_formacion\\Exeal_Katas\\Katas API\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi\\OrdersWebApi.csproj"
             }

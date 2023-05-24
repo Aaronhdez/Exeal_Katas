@@ -3,6 +3,7 @@ using NSubstitute;
 using OrdersWebApi.Bills.Queries;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Tests.Orders;
+using OrdersWebApi.TestUtils;
 
 namespace OrdersWebApi.Tests.Bills.Queries;
 

@@ -25,6 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\OrdersWebApi.TestUtils\OrdersWebApi.TestUtils.csproj" />
         <ProjectReference Include="..\OrdersWebApi\OrdersWebApi.csproj" />
     </ItemGroup>
 
@@ -35,9 +36,6 @@
         </None>
         <None Update="Acceptance\DisplayProductFeature.DisplayACreatedProduct.received.txt">
           <DependentUpon>DisplayProductFeature.cs</DependentUpon>
-        </None>
-        <None Update="Acceptance\CreateUsersFeature.DisplayProperInformationOfACreatedUser.verified.txt">
-          <DependentUpon>CreateUsersFeature.cs</DependentUpon>
         </None>
         <None Update="Orders\CommandHandlers\CreateOrderCommandHandlerShould.CreateANewOrderWithoutProducts.received.txt">
           <DependentUpon>CreateOrderCommandHandlerShould.cs</DependentUpon>

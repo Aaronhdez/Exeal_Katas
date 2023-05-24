@@ -2,6 +2,7 @@
 using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Users;
+using OrdersWebApi.TestUtils;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -37,6 +38,6 @@ public class CreateUsersFeature {
     }
 
     private async void ItIsDisplayedProperly(string userId) {
-        await Verify(await _client.GetAnUserById(userId, this));
+        await Verify(await _client.GetAnUserById(userId));
     }
 }

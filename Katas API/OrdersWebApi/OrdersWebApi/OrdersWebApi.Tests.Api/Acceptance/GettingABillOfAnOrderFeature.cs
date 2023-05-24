@@ -4,6 +4,7 @@ using OrdersWebApi.Tests.Bills;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
 using OrdersWebApi.Tests.Users;
+using OrdersWebApi.TestUtils;
 
 namespace OrdersWebApi.Tests.Acceptance;
 

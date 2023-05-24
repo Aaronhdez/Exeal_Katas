@@ -1,4 +1,4 @@
-namespace OrdersWebApi.Tests;
+namespace OrdersWebApi.TestUtils;
 
 public static class TestDefaultValues {
     public static DateTime CreationDateTime = new(2023, 04, 24);
