@@ -4,6 +4,7 @@ using OrdersWebApi.Products;
 using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Products.Repositories;
 using OrdersWebApi.Tests.Orders.Repositories;
+using OrdersWebApi.TestUtils.Products;
 
 namespace OrdersWebApi.Tests.Products.Repositories;
 
@@ -16,15 +17,16 @@ public class SQLiteProductsRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _product = ProductDefaultValues.ComputerMonitor;
+        var computerMonitor = ProductsMother.ComputerMonitor();
+        _product = computerMonitor;
         _productDto = new ProductReadDto {
             Id = ProductDefaultValues.ComputerMonitorId,
             ProductReference = null,
-            Name = ProductDefaultValues.ComputerMonitor.Name,
+            Name = computerMonitor.Name,
             Description = null,
             Manufacturer = null,
             ManufacturerReference = null,
-            Value = ProductDefaultValues.ComputerMonitor.Value
+            Value = computerMonitor.Value
         };
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);

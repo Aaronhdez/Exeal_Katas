@@ -7,39 +7,43 @@ using OrdersWebApi.Products.Queries;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.TestUtils;
 using OrdersWebApi.TestUtils.Orders;
+using OrdersWebApi.TestUtils.Products;
 
 namespace OrdersWebApi.Tests.Products;
 
 public static class ProductsMother {
     //REQUESTS
     public static string ComputerMonitorCreationRequest() {
+        var computerMonitor = ProductsMother.ComputerMonitor();
         return JsonConvert.SerializeObject(new CreateProductRequest(
-            ProductDefaultValues.ComputerMonitor.Type,
-            ProductDefaultValues.ComputerMonitor.Name,
-            ProductDefaultValues.ComputerMonitor.Description,
-            ProductDefaultValues.ComputerMonitor.Manufacturer,
-            ProductDefaultValues.ComputerMonitor.ManufacturerReference,
-            ProductDefaultValues.ComputerMonitor.Value));
+            computerMonitor.Type,
+            computerMonitor.Name,
+            computerMonitor.Description,
+            computerMonitor.Manufacturer,
+            computerMonitor.ManufacturerReference,
+            computerMonitor.Value));
     }
 
     public static string KeyboardCreationRequest() {
+        var keyboard = ProductsMother.Keyboard();
         return JsonConvert.SerializeObject(new CreateProductRequest(
-            ProductDefaultValues.Keyboard.Type,
-            ProductDefaultValues.Keyboard.Name,
-            ProductDefaultValues.Keyboard.Description,
-            ProductDefaultValues.Keyboard.Manufacturer,
-            ProductDefaultValues.Keyboard.ManufacturerReference,
-            ProductDefaultValues.Keyboard.Value));
+            keyboard.Type,
+            keyboard.Name,
+            keyboard.Description,
+            keyboard.Manufacturer,
+            keyboard.ManufacturerReference,
+            keyboard.Value));
     }
 
     public static string MouseCreationRequest() {
+        var mouse = ProductsMother.Mouse();
         return JsonConvert.SerializeObject(new CreateProductRequest(
-            ProductDefaultValues.Mouse.Type,
-            ProductDefaultValues.Mouse.Name,
-            ProductDefaultValues.Mouse.Description,
-            ProductDefaultValues.Mouse.Manufacturer,
-            ProductDefaultValues.Mouse.ManufacturerReference,
-            ProductDefaultValues.Mouse.Value));
+            mouse.Type,
+            mouse.Name,
+            mouse.Description,
+            mouse.Manufacturer,
+            mouse.ManufacturerReference,
+            mouse.Value));
     }
 
     //DTOs
@@ -103,5 +107,41 @@ public static class ProductsMother {
             "A Manufacturer",
             "A Manufacturer Reference",
             0);
+    }
+
+    public static Product ComputerMonitor() {
+        return new(
+            ProductDefaultValues.ComputerMonitorId,
+            "MON0000001",
+            "MON",
+            ProductDefaultValues.ComputerMonitorName,
+            "A DELL Computer Monitor",
+            "DELL Inc.",
+            "DLL123456789",
+            ProductDefaultValues.ComputerMonitorValue);
+    }
+
+    public static Product Keyboard() {
+        return new(
+            ProductDefaultValues.KeyboardId,
+            "KEY0000001",
+            "KEY",
+            ProductDefaultValues.KeyboardName,
+            "A Razer keyboard",
+            "Razer",
+            "DLL123456789",
+            ProductDefaultValues.KeyboardValue);
+    }
+
+    public static Product Mouse() {
+        return new(
+            ProductDefaultValues.MouseId,
+            "MOU0000001",
+            "MOU",
+            ProductDefaultValues.MouseName,
+            "A Logitech Mouse",
+            "Logitech Inc.",
+            "DLL123456789",
+            ProductDefaultValues.MouseValue);
     }
 }

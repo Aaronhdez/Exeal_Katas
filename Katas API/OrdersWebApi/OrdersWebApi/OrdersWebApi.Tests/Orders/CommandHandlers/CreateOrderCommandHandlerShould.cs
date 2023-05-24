@@ -7,6 +7,7 @@ using OrdersWebApi.Products;
 using OrdersWebApi.Tests.Products;
 using OrdersWebApi.Tests.Users;
 using OrdersWebApi.TestUtils;
+using OrdersWebApi.TestUtils.Products;
 using OrdersWebApi.TestUtils.Users;
 using OrdersWebApi.Users;
 
@@ -45,7 +46,7 @@ public class CreateOrderCommandHandlerShould {
     [Test]
     public async Task CreateANewOrderWithProductList() {
         _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId)
-            .Returns(ProductDefaultValues.ComputerMonitor);
+            .Returns(ProductsMother.ComputerMonitor());
         var testOrder = OrdersMother.ACreateOrderDtoWithProducts();
         var createOrderCommand = new CreateOrderCommand(testOrder);
 

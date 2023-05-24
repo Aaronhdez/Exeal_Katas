@@ -15,7 +15,7 @@ public class SQLiteOrdersRepositoryShould {
 
     [SetUp]
     public async Task SetUp() {
-        _defaultProduct = ProductDefaultValues.ComputerMonitor;
+        _defaultProduct = ProductsMother.ComputerMonitor();
         _order = OrdersMother.ATestOrderWithoutProducts();
         _sqLiteConnection = new SQLiteConnection("Data Source=:memory:");
         _testDBLoader = new TestDBLoader(_sqLiteConnection);

@@ -8,6 +8,7 @@ using OrdersWebApi.Tests.Products;
 using OrdersWebApi.Tests.Users;
 using OrdersWebApi.TestUtils;
 using OrdersWebApi.TestUtils.Orders;
+using OrdersWebApi.TestUtils.Products;
 using OrdersWebApi.TestUtils.Users;
 
 namespace OrdersWebApi.Tests.Orders;
@@ -59,14 +60,15 @@ public static class OrdersMother {
 
     public static Order ATestOrderWithAProduct() {
         return new Order(OrderDefaultValues.OrderId, TestDefaultValues.CreationDate, UsersMother.TestVendor(),UsersMother.TestUser(), new List<Product> {
-            ProductDefaultValues.ComputerMonitor
+            ProductsMother.ComputerMonitor()
         });
     }
 
     public static Order AnUpdatedTestOrderWithTwoProducts() {
+        var computerMonitor = ProductsMother.ComputerMonitor();
         return new Order(OrderDefaultValues.OrderId, TestDefaultValues.CreationDate, UsersMother.TestVendor(),UsersMother.TestUser(), new List<Product> {
-            ProductDefaultValues.ComputerMonitor,
-            ProductDefaultValues.ComputerMonitor
+            computerMonitor,
+            computerMonitor
         });
     }
 }
