@@ -12,6 +12,7 @@ using OrdersWebApi.TestUtils.Products;
 namespace OrdersWebApi.Tests.Products;
 
 public static class ProductsMother {
+
     //REQUESTS
     public static string ComputerMonitorCreationRequest() {
         var computerMonitor = ProductsMother.ComputerMonitor();
@@ -110,38 +111,38 @@ public static class ProductsMother {
     }
 
     public static Product ComputerMonitor() {
-        return new(
+        return new Product(
             ProductDefaultValues.ComputerMonitorId,
-            "MON0000001",
+            ProductDefaultValues.ComputerMonitorReference,
             "MON",
             ProductDefaultValues.ComputerMonitorName,
-            "A DELL Computer Monitor",
-            "DELL Inc.",
-            "DLL123456789",
+            ProductDefaultValues.ComputerMonitorDescription,
+            ProductDefaultValues.ComputerMonitorManufacturer,
+            ProductDefaultValues.ComputerMonitorManufacturerReference,
             ProductDefaultValues.ComputerMonitorValue);
     }
 
     public static Product Keyboard() {
-        return new(
+        return new Product(
             ProductDefaultValues.KeyboardId,
-            "KEY0000001",
+            ProductDefaultValues.KeyboardReference,
             "KEY",
             ProductDefaultValues.KeyboardName,
-            "A Razer keyboard",
-            "Razer",
-            "DLL123456789",
+            ProductDefaultValues.KeyboardDescription,
+            ProductDefaultValues.KeyboardManufacturer,
+            ProductDefaultValues.KeyboardManufacturerReference,
             ProductDefaultValues.KeyboardValue);
     }
 
     public static Product Mouse() {
-        return new(
+        return new Product(
             ProductDefaultValues.MouseId,
-            "MOU0000001",
+            ProductDefaultValues.MouseReference,
             "MOU",
             ProductDefaultValues.MouseName,
-            "A Logitech Mouse",
-            "Logitech Inc.",
-            "DLL123456789",
+            ProductDefaultValues.MouseDescription,
+            ProductDefaultValues.MouseManufacturer,
+            ProductDefaultValues.MouseManufacturerReference,
             ProductDefaultValues.MouseValue);
     }
 }

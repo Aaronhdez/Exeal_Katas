@@ -28,7 +28,7 @@
       "name": "Keyboard",
       "description": "A Razer keyboard",
       "manufacturer": "Razer",
-      "manufacturerReference": "DLL123456789",
+      "manufacturerReference": "RAZ123456789",
       "productReference": "KEY000001",
       "value": 20
     },
@@ -38,7 +38,7 @@
       "name": "Mouse",
       "description": "A Logitech Mouse",
       "manufacturer": "Logitech Inc.",
-      "manufacturerReference": "DLL123456789",
+      "manufacturerReference": "LOG123456789",
       "productReference": "MOU000001",
       "value": 15
     }
