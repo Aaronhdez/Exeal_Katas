@@ -14,14 +14,13 @@ public class GetBillByOrderIdQueryHandlerShould {
     public void SetUp() {
         _ordersRepository = Substitute.For<IOrderRepository>();
         _handler = new GetBillByOrderIdQueryHandler(_ordersRepository);
+        _ordersRepository.GetById(OrderDefaultValues.OrderId).Returns(OrdersMother.ATestOrderWithAProduct());
     }
 
     [Test]
     public async Task RetrieveABillWithAnOrderId() {
-        _ordersRepository.GetById(OrderDefaultValues.OrderId).Returns(OrdersMother.ATestOrderWithAProduct());
-
-        var receivedBillResponse =
-            await _handler.Handle(new GetBillByOrderIdQuery(OrderDefaultValues.OrderId), default);
+        var receivedBillResponse = await _handler.Handle(
+            new GetBillByOrderIdQuery(OrderDefaultValues.OrderId), default);
 
         var expectedBillResponse = BillsMother.ATestBill();
         receivedBillResponse.Should().BeEquivalentTo(expectedBillResponse);
