@@ -6,6 +6,7 @@ using OrdersWebApi.Orders.Commands.CreateOrder;
 using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Orders.Controllers.Responses;
 using OrdersWebApi.Orders.Queries;
+using OrdersWebApi.Users.Controllers;
 
 #pragma warning disable CS8602
 
@@ -26,7 +27,11 @@ public class OrdersController : ControllerBase {
     public async Task<string> Post(CreateOrderRequest request) {
         var id = _guidGenerator.NewId().ToString();
         await _sender.Send(
-            new CreateOrderCommand(new CreateOrderDto(id, request.Customer, request.Address, request.Products)));
+            new CreateOrderCommand(new CreateOrderDto(
+                id, 
+                request.VendorId, 
+                request.CustomerId, 
+                request.Products)));
         return await Task.FromResult(id);
     }
 
@@ -38,6 +43,11 @@ public class OrdersController : ControllerBase {
     [HttpGet("{id}")]
     public async Task<OrderResponse> Get(string id) {
         var readDto = await _sender.Send(new GetOrderByIdQuery(id));
-        return new OrderResponse(readDto.Id, readDto.CreationDate, readDto.Address, readDto.Customer, readDto.Products);
+        return new OrderResponse(
+            readDto.Id, 
+            readDto.CreationDate, 
+            new ReadUserResponse(readDto.Vendor.Id, readDto.Vendor.Name, readDto.Vendor.Address), 
+            new ReadUserResponse(readDto.Customer.Id, readDto.Customer.Name, readDto.Customer.Address), 
+            readDto.Products);
     }
 }

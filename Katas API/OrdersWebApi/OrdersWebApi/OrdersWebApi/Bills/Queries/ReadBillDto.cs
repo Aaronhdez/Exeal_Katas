@@ -1,10 +1,11 @@
+using OrdersWebApi.Users.Queries;
+
 namespace OrdersWebApi.Bills.Queries;
 
 public record ReadBillDto(
     string Company,
     string CompanyAddress,
-    string Customer,
-    string CustomerAddress,
+    ReadUserDto Customer,
     IEnumerable<BillRow> Items,
     int Total
 );

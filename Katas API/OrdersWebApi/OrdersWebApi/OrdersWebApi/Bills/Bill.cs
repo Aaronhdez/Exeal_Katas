@@ -1,6 +1,8 @@
 ﻿using OrdersWebApi.Bills.Queries;
 using OrdersWebApi.Orders;
 using OrdersWebApi.Products;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Queries;
 
 namespace OrdersWebApi.Bills;
 
@@ -9,20 +11,18 @@ public class Bill {
         Company = "Computer Stuff Inc.";
         CompanyAddress = "A company Address";
         Customer = order.Customer;
-        CustomerAddress = order.Address;
         Items = GetItemsAsList(order.GetProductsAssociated(), out var total);
         Total = total;
     }
 
     private string Company { get; }
     private string CompanyAddress { get; }
-    private string Customer { get; }
-    private string CustomerAddress { get; }
+    private User Customer { get; }
     private IEnumerable<BillRow> Items { get; }
     private int Total { get; }
 
     public ReadBillDto ToReadDto() {
-        return new ReadBillDto(Company, CompanyAddress, Customer, CustomerAddress, Items, Total);
+        return new ReadBillDto(Company, CompanyAddress, new ReadUserDto(Customer.Id, Customer.Name, Customer.Address), Items, Total);
     }
 
     private IEnumerable<BillRow> GetItemsAsList(Dictionary<Product, int> itemsAssociated, out int total) {

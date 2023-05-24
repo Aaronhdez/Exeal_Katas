@@ -1,11 +1,19 @@
 ﻿{
-  "id": "b323d8aa-2af3-4bbb-89e8-521d993cafee",
+  "id": "Guid_1",
   "creationDate": "24/04/2023",
-  "address": "A Simple Address, 123",
-  "customer": "John Doe",
+  "vendor": {
+    "id": "Guid_2",
+    "name": "Peter Pit",
+    "address": "A Complex Address, 321"
+  },
+  "customer": {
+    "id": "Guid_3",
+    "name": "John Doe",
+    "address": "A Simple Address, 123"
+  },
   "products": [
     {
-      "id": "b323d8aa-2af3-4bbb-89e8-521d993cafee",
+      "id": "Guid_4",
       "type": "MON",
       "name": "Computer Monitor",
       "description": "A DELL Computer Monitor",

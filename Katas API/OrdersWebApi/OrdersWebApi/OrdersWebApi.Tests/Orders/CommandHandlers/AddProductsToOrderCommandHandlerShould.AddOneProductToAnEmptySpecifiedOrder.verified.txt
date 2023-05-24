@@ -1,0 +1,26 @@
+﻿{
+  Id: Guid_1,
+  CreationDate: Date_1,
+  Vendor: {
+    Name: Peter Pit,
+    Address: A Complex Address, 321,
+    Id: AVendorId
+  },
+  Customer: {
+    Name: John Doe,
+    Address: A Simple Address, 123,
+    Id: AnId
+  },
+  Products: [
+    {
+      Id: Guid_2,
+      Type: MON,
+      Name: Computer Monitor,
+      Description: A DELL Computer Monitor,
+      Manufacturer: DELL Inc.,
+      ManufacturerReference: DLL123456789,
+      ProductReference: MON0000001,
+      Value: 100
+    }
+  ]
+}

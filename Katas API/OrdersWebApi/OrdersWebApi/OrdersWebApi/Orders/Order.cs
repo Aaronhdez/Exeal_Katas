@@ -4,18 +4,18 @@ using OrdersWebApi.Users;
 namespace OrdersWebApi.Orders;
 
 public class Order {
-    public Order(string id, string creationDate, User customer, List<Product> products) {
+    public Order(string id, string creationDate,User vendor, User customer, List<Product> products) {
         Id = id;
         CreationDate = creationDate;
-        Customer = customer.Name;
-        Address = customer.Address;
+        Vendor = vendor;
+        Customer = customer;
         Products = products;
     }
 
     public string Id { get; }
     public string CreationDate { get; }
-    public string Customer { get; }
-    public string Address { get; }
+    public User Vendor { get; }
+    public User Customer { get; }
     public List<Product> Products { get; }
 
     public void AddProduct(Product newProduct) {
@@ -33,8 +33,7 @@ public class Order {
     }
 
     private bool Equals(Order other) {
-        return Id == other.Id && CreationDate == other.CreationDate && Customer == other.Customer &&
-               Address == other.Address && Products.SequenceEqual(other.Products);
+        return Id == other.Id;
     }
 
     public override bool Equals(object? obj) {
@@ -45,6 +44,6 @@ public class Order {
     }
 
     public override int GetHashCode() {
-        return HashCode.Combine(Id, CreationDate, Customer, Address, Products);
+        return HashCode.Combine(Id, CreationDate, Customer, Products);
     }
 }

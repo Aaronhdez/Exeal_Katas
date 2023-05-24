@@ -1,7 +1,10 @@
-﻿using NSubstitute;
+﻿using Newtonsoft.Json;
+using NSubstitute;
 using OrdersWebApi.Infrastructure;
+using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Tests.Users;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -13,23 +16,32 @@ public class DisplayOrderFeature {
     private OrdersClient _ordersClient;
     private ProductReferenceGenerator _productReferenceGenerator;
     private ProductsClient _productsClient;
+    private UsersClient _usersClient;
 
     [SetUp]
     public void SetUp() {
         _clock = Substitute.For<IClock>();
         _clock.Timestamp().Returns(TestDefaultValues.CreationDateTime);
-        _idGenerator = Substitute.For<IGuidGenerator>();
-        _idGenerator.NewId().Returns(OrderDefaultValues.OrderGuid);
+        _idGenerator = new GuidGenerator();
         _ordersApi = new OrdersApi(_clock, _idGenerator);
         _client = _ordersApi.CreateClient();
         _ordersClient = new OrdersClient(_client);
         _productsClient = new ProductsClient(_client);
+        _usersClient = new UsersClient(_client);
     }
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
+        var vendorId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateVendorRequest()));
+        var customerId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest()));
         var productId = await GivenAProductInDatabase();
-        var order = OrdersMother.GivenAnOrderRequestWithAProductId(productId);
+        var order = JsonConvert.SerializeObject(new CreateOrderRequest(
+            vendorId,
+            customerId,
+            new[] {
+                productId
+            }
+        ));
 
         var createdOrder = await WhenUserRequestsToCreateIt(order);
 
@@ -48,6 +60,6 @@ public class DisplayOrderFeature {
     }
 
     private static async Task ThenItIsCreatedProperly(string createdOrder) {
-        await Verify(createdOrder);
+        await Verify(createdOrder).ScrubInlineGuids();
     }
 }

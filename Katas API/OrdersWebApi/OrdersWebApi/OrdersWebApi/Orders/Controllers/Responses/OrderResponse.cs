@@ -1,4 +1,6 @@
 using OrdersWebApi.Products;
+using OrdersWebApi.Users;
+using OrdersWebApi.Users.Controllers;
 
 namespace OrdersWebApi.Orders.Controllers.Responses;
 
@@ -6,6 +8,6 @@ namespace OrdersWebApi.Orders.Controllers.Responses;
 public record OrderResponse(
     string Id,
     string CreationDate,
-    string Address,
-    string Customer,
+    ReadUserResponse Vendor,
+    ReadUserResponse Customer,
     List<Product> Products);

@@ -1,9 +1,19 @@
 ﻿{
+  "id": "Guid_1",
   "creationDate": "24/04/2023",
-  "address": "A Simple Address, 123",
-  "customer": "John Doe",
+  "vendor": {
+    "id": "Guid_2",
+    "name": "Peter Pit",
+    "address": "A Complex Address, 321"
+  },
+  "customer": {
+    "id": "Guid_3",
+    "name": "John Doe",
+    "address": "A Simple Address, 123"
+  },
   "products": [
     {
+      "id": "Guid_4",
       "type": "MON",
       "name": "Computer Monitor",
       "description": "A DELL Computer Monitor",
@@ -13,6 +23,7 @@
       "value": 100
     },
     {
+      "id": "Guid_5",
       "type": "KEY",
       "name": "Keyboard",
       "description": "A Razer keyboard",
@@ -22,6 +33,7 @@
       "value": 20
     },
     {
+      "id": "Guid_6",
       "type": "MOU",
       "name": "Mouse",
       "description": "A Logitech Mouse",

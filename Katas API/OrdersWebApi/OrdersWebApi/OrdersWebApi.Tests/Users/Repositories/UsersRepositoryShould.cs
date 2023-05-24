@@ -22,7 +22,7 @@ public class UsersRepositoryShould {
     public void FailWhenAsUserDoesNotExist() {
         _usersRepository = new InMemoryUsersRepository();
         
-        var action = () => _usersRepository.GetById(UserDefaultValues.UserId);
+        var action = () => _usersRepository.GetById(UserDefaultValues.CustomerId);
         
         action.Should().Throw<ArgumentException>();
     }

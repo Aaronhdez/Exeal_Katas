@@ -1,11 +1,12 @@
 ﻿using OrdersWebApi.Products;
+using OrdersWebApi.Users.Queries;
 
 namespace OrdersWebApi.Orders.Queries;
 
 public record ReadOrderDto(
     string Id,
     string CreationDate,
-    string Customer,
-    string Address,
+    ReadUserDto Vendor,
+    ReadUserDto Customer,
     List<Product> Products
 );

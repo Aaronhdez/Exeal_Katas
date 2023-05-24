@@ -23,7 +23,7 @@ public class GetUserByIdQueryHandlerShould {
 
         var retrievedUser = await handler.Handle(new GetUserByIdQuery(_existentUser.Id), default);
 
-        var expectedUser = UsersMother.TestReadUserDto();
+        var expectedUser = UsersMother.TestReadCustomerDto();
         retrievedUser.Should().BeEquivalentTo(expectedUser);
     }
 }

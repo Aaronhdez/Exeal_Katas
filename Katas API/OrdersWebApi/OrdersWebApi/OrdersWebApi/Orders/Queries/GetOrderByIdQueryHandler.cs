@@ -1,4 +1,5 @@
 using MediatR;
+using OrdersWebApi.Users.Queries;
 
 namespace OrdersWebApi.Orders.Queries;
 
@@ -11,6 +12,11 @@ public class GetOrderByIdQueryHandler : IRequestHandler<GetOrderByIdQuery, ReadO
 
     public async Task<ReadOrderDto> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken) {
         var order = await _ordersRepository.GetById(request.OrderId);
-        return new ReadOrderDto(order.Id, order.CreationDate, order.Customer, order.Address, order.Products);
+        return new ReadOrderDto(
+            order.Id, 
+            order.CreationDate, 
+            new ReadUserDto(order.Vendor.Id, order.Vendor.Name, order.Vendor.Address), 
+            new ReadUserDto(order.Customer.Id, order.Customer.Name, order.Customer.Address), 
+            order.Products);
     }
 }

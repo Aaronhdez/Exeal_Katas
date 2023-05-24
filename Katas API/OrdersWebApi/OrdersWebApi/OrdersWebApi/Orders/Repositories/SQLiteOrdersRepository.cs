@@ -14,10 +14,11 @@ public class SQLiteOrdersRepository : IOrderRepository {
 
     public Task Create(Order order) {
         UpdateProducts(order);
-        return _connection.ExecuteAsync(
-            "INSERT INTO " +
-            "Orders(ID, CreationDate, Name, Address) " +
-            $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
+        //return _connection.ExecuteAsync(
+        //    "INSERT INTO " +
+        //    "Orders(ID, CreationDate, Name, Address) " +
+        //    $"VALUES('{order.Id}','{order.CreationDate}','{order.Customer}','{order.Address}')");
+        return null;
     }
 
     public Task<Order> GetById(string orderId) {
@@ -43,9 +44,9 @@ public class SQLiteOrdersRepository : IOrderRepository {
     }
 
     private void UpdateOrderData(Order updatedOrder) {
-        _connection.ExecuteAsync(
-            $"UPDATE Orders SET Address = '{updatedOrder.Address}', Name = '{updatedOrder.Customer}' " +
-            $"WHERE Id = '{updatedOrder.Id}'");
+        //_connection.ExecuteAsync(
+        //    $"UPDATE Orders SET Name = '{updatedOrder.Customer}' " +
+        //    $"WHERE Id = '{updatedOrder.Id}'");
     }
 
     private Task UpdateProducts(Order updatedOrder) {
@@ -59,6 +60,7 @@ public class SQLiteOrdersRepository : IOrderRepository {
     }
 
     private static Order RetrievedOrder(dynamic? orderFound, List<Product?> productsAssociated) {
-        return new Order(orderFound.ID, orderFound.CreationDate, new User("",orderFound.Customer, orderFound.Address), productsAssociated);
+        //return new Order(orderFound.ID, orderFound.CreationDate, new User("",orderFound.Customer, orderFound.Address), productsAssociated);
+        return null;
     }
 }

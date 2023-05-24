@@ -39,6 +39,27 @@
         <None Update="Acceptance\CreateUsersFeature.DisplayProperInformationOfACreatedUser.verified.txt">
           <DependentUpon>CreateUsersFeature.cs</DependentUpon>
         </None>
+        <None Update="Orders\CommandHandlers\CreateOrderCommandHandlerShould.CreateANewOrderWithoutProducts.received.txt">
+          <DependentUpon>CreateOrderCommandHandlerShould.cs</DependentUpon>
+        </None>
+        <None Update="Orders\CommandHandlers\CreateOrderCommandHandlerShould.CreateANewOrderWithProductList.received.txt">
+          <DependentUpon>CreateOrderCommandHandlerShould.cs</DependentUpon>
+        </None>
+        <None Update="Orders\CommandHandlers\AddProductsToOrderCommandHandlerShould.AddOneProductToAnEmptySpecifiedOrder.received.txt">
+          <DependentUpon>AddProductsToOrderCommandHandlerShould.cs</DependentUpon>
+        </None>
+        <None Update="Orders\CommandHandlers\AddProductsToOrderCommandHandlerShould.AddTwoProductsToAnEmptySpecifiedOrder.received.txt">
+          <DependentUpon>AddProductsToOrderCommandHandlerShould.cs</DependentUpon>
+        </None>
+        <None Update="Acceptance\DisplayOrderFeature.DisplayBasicInformationOfAnOrder.received.txt">
+          <DependentUpon>DisplayOrderFeature.cs</DependentUpon>
+        </None>
+        <None Update="Acceptance\AddProductsToOrderFeature.AddProductsToAnOrder.received.txt">
+          <DependentUpon>AddProductsToOrderFeature.cs</DependentUpon>
+        </None>
+        <None Update="Acceptance\GettingABillOfAnOrderFeature.GetABillForAnOrderStored.received.txt">
+          <DependentUpon>GettingABillOfAnOrderFeature.cs</DependentUpon>
+        </None>
     </ItemGroup>
 
 </Project>

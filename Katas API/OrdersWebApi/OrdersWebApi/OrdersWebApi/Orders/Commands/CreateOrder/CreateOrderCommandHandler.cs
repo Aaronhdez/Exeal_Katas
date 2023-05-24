@@ -10,16 +10,28 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand> {
     private readonly IClock _clock;
     private readonly IOrderRepository _orderRepository;
     private readonly IProductsRepository _productsRepository;
+    private IUsersRepository _usersRepository;
 
-    public CreateOrderCommandHandler(IOrderRepository orderRepository, IProductsRepository productsRepository,
+    public CreateOrderCommandHandler(
+        IOrderRepository orderRepository, 
+        IProductsRepository productsRepository,
+        IUsersRepository usersRepository,
         IClock clock) {
         _orderRepository = orderRepository;
         _productsRepository = productsRepository;
         _clock = clock;
+        _usersRepository = usersRepository;
     }
 
     public Task Handle(CreateOrderCommand request, CancellationToken cancellationToken) {
-        return _orderRepository.Create(new Order(request.OrderData.Id, _clock.Timestamp().ToString("dd/MM/yyyy"), new User("",request.OrderData.Customer, request.OrderData.Address), GetProductsAssigned(request.OrderData.Products)));
+        var vendor = _usersRepository.GetById(request.OrderData.VendorId);
+        var customer = _usersRepository.GetById(request.OrderData.CustomerId);
+        return _orderRepository.Create(new Order(
+            request.OrderData.Id, 
+            _clock.Timestamp().ToString("dd/MM/yyyy"), 
+            vendor, 
+            customer, 
+            GetProductsAssigned(request.OrderData.Products)));
     }
 
     private List<Product> GetProductsAssigned(IEnumerable<string> productIds) {

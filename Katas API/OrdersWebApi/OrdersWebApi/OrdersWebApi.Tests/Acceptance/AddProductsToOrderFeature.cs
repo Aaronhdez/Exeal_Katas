@@ -4,6 +4,7 @@ using OrdersWebApi.Infrastructure;
 using OrdersWebApi.Orders.Controllers.Requests;
 using OrdersWebApi.Tests.Orders;
 using OrdersWebApi.Tests.Products;
+using OrdersWebApi.Tests.Users;
 
 namespace OrdersWebApi.Tests.Acceptance;
 
@@ -13,6 +14,7 @@ public class AddProductsToOrderFeature {
     private OrdersApi? _ordersApi;
     private OrdersClient? _ordersClient;
     private ProductsClient _productsClient;
+    private UsersClient _usersClient;
 
     [SetUp]
     public void SetUp() {
@@ -23,6 +25,7 @@ public class AddProductsToOrderFeature {
         var client = _ordersApi.CreateClient();
         _ordersClient = new OrdersClient(client);
         _productsClient = new ProductsClient(client);
+        _usersClient = new UsersClient(client);
     }
 
     [Test]
@@ -35,9 +38,13 @@ public class AddProductsToOrderFeature {
     }
 
     private async Task<string> GivenAStoredOrder() {
-        var monitorId = await _productsClient.PostAProduct(
-            ProductsMother.ComputerMonitorCreationRequest());
-        var order = OrdersMother.GivenAnOrderRequestWithProductsAssigned(new[] { monitorId });
+        var vendorId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateVendorRequest()));
+        var customerId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest()));
+        var monitorId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
+        var order = JsonConvert.SerializeObject(new CreateOrderRequest(
+            vendorId,
+            customerId,
+            new[] { monitorId } ));
         return await _ordersClient.PostAnOrder(order);
     }
 
@@ -51,8 +58,6 @@ public class AddProductsToOrderFeature {
     }
 
     private static async Task ThenTheOrderItemsListIsUpdated(string editedOrder) {
-        var settings = new VerifySettings();
-        settings.ScrubLinesContaining("\"id\":");
-        await Verify(editedOrder, settings);
+        await Verify(editedOrder).ScrubInlineGuids();
     }
 }

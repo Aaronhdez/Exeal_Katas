@@ -15,38 +15,32 @@ public class AddProductsToOrderCommandHandlerShould {
     private IProductsRepository _productsRepository;
 
     [SetUp]
-    public void SetUp() {
+    public async Task SetUp() {
         _orderRepository = new InMemoryOrdersRepository();
         _productsRepository = Substitute.For<IProductsRepository>();
-        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId)
-            .Returns(ProductDefaultValues.ComputerMonitor);
+        _productsRepository.GetById(ProductDefaultValues.ComputerMonitorId).Returns(ProductDefaultValues.ComputerMonitor);
         _addProductsCommandHandler = new AddProductsToOrderCommandHandler(_orderRepository, _productsRepository);
         _givenOrderModel = OrdersMother.ATestOrderWithoutProducts();
+        await _orderRepository.Create(_givenOrderModel);
     }
 
     [Test]
     public async Task AddOneProductToAnEmptySpecifiedOrder() {
-        await _orderRepository.Create(_givenOrderModel);
         var givenAddProductsDto = ProductsMother.AddAProductDto();
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
-
-        var expectedOrderModel = OrdersMother.ATestOrderWithAProduct();
-        var updatedOrder = await _orderRepository.GetById(OrderDefaultValues.OrderId);
-        updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
+        
+        await Verify(await _orderRepository.GetById(_givenOrderModel.Id));
     }
 
     [Test]
     public async Task AddTwoProductsToAnEmptySpecifiedOrder() {
-        await _orderRepository.Create(_givenOrderModel);
         var givenAddProductsDto = ProductsMother.AddTwoProductsDto();
         var addProductsToOrderCommand = new AddProductsToOrderCommand(givenAddProductsDto);
 
         await _addProductsCommandHandler.Handle(addProductsToOrderCommand, default);
-
-        var expectedOrderModel = OrdersMother.AnUpdatedTestOrderWithTwoProducts();
-        var updatedOrder = await _orderRepository.GetById(OrderDefaultValues.OrderId);
-        updatedOrder.Should().BeEquivalentTo(expectedOrderModel);
+        
+        await Verify(await _orderRepository.GetById(_givenOrderModel.Id));
     }
 }

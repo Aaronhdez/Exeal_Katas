@@ -25,7 +25,7 @@ public class TestDBLoader {
 
     public void GivenAnOrderInDb(Order expectedOrder) {
         _sqLiteConnection.ExecuteAsync(
-            $"INSERT INTO Orders(ID, CreationDate, Name, Address) VALUES('{expectedOrder.Id}','{expectedOrder.CreationDate}','{expectedOrder.Customer}','{expectedOrder.Address}')");
+            $"INSERT INTO Orders(ID, CreationDate, Name, Address) VALUES('{expectedOrder.Id}','{expectedOrder.CreationDate}','{expectedOrder.Customer}')");
     }
 
     public async Task LoadDatabase(IDbConnection sqLiteConnection) {

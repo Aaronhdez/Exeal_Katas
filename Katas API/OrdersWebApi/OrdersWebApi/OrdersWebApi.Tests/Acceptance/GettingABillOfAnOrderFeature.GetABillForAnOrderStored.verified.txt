@@ -1,8 +1,11 @@
 ﻿{
   "company": "Computer Stuff Inc.",
   "companyAddress": "A company Address",
-  "customer": "John Doe",
-  "customerAddress": "A Simple Address, 123",
+  "customer": {
+    "id": "Guid_1",
+    "name": "John Doe",
+    "address": "A Simple Address, 123"
+  },
   "items": [
     {
       "concept": "2 x Computer Monitor",
