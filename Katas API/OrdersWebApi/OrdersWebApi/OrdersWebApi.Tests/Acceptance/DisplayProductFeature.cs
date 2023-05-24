@@ -39,6 +39,6 @@ public class DisplayProductFeature {
     }
 
     private async Task ThenTheProductIsCreatedProperly(string id) {
-        Verify(await _productsClient.GetAProductById(id));
+        await Verify(await _productsClient.GetAProductById(id));
     }
 }

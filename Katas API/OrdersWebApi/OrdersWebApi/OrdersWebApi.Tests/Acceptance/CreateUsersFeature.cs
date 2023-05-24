@@ -38,7 +38,6 @@ public class CreateUsersFeature {
     }
 
     private async void ItIsDisplayedProperly(string userId) {
-        var createdUser = await _client.GetAnUserById(userId, this);
-        Verify(createdUser);
+        await Verify(await _client.GetAnUserById(userId, this));
     }
 }
