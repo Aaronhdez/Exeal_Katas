@@ -19,7 +19,7 @@ public class CreatUserCommandHandlerShould {
 
     [Test]
     public void CreateANonExistentUser() {
-        _userCreateDto = UsersMother.TestUserCreateDto();
+        _userCreateDto = UsersMother.TestCreateCustomerDto();
         
         _handler.Handle(new CreateUserCommand(_userCreateDto), default);
 

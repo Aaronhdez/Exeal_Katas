@@ -1,4 +1,5 @@
-﻿using OrdersWebApi.Users;
+﻿using Newtonsoft.Json;
+using OrdersWebApi.Users;
 using OrdersWebApi.Users.Commands;
 using OrdersWebApi.Users.Controllers;
 using OrdersWebApi.Users.Queries;
@@ -8,15 +9,15 @@ namespace OrdersWebApi.Tests.Users;
 public class UsersMother {
     
     //REQUESTS & RESPONSES
-    public static CreateUserRequest TestCreateCustomerRequest() {
-        return new CreateUserRequest(UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress);
+    public static string TestCreateCustomerRequest() {
+        return JsonConvert.SerializeObject(new CreateUserRequest(UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress));
     }    
-    public static CreateUserRequest TestCreateVendorRequest() {
-        return new CreateUserRequest(UserDefaultValues.VendorName, UserDefaultValues.VendorAddress);
+    public static string TestCreateVendorRequest() {
+        return JsonConvert.SerializeObject(new CreateUserRequest(UserDefaultValues.VendorName, UserDefaultValues.VendorAddress));
     }
     
     //DTOS
-    public static CreateUserDto TestUserCreateDto() {
+    public static CreateUserDto TestCreateCustomerDto() {
         return new CreateUserDto(UserDefaultValues.CustomerId, UserDefaultValues.CustomerName, UserDefaultValues.CustomerAddress);
     }
 

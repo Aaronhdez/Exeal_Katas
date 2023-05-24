@@ -38,14 +38,11 @@ public class AddProductsToOrderFeature {
     }
 
     private async Task<string> GivenAStoredOrder() {
-        var vendorId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateVendorRequest()));
-        var customerId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest()));
+        var vendorId = await _usersClient.PostAnUser(UsersMother.TestCreateVendorRequest());
+        var customerId = await _usersClient.PostAnUser(UsersMother.TestCreateCustomerRequest());
         var monitorId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
-        var order = JsonConvert.SerializeObject(new CreateOrderRequest(
-            vendorId,
-            customerId,
-            new[] { monitorId } ));
-        return await _ordersClient.PostAnOrder(order);
+        var orderRequest = OrdersMother.GivenACreateOrderRequest(vendorId, customerId, new[] { monitorId });
+        return await _ordersClient.PostAnOrder(orderRequest);
     }
 
     private async Task<string> WhenUserAddsANewProductsToIt(string orderId) {

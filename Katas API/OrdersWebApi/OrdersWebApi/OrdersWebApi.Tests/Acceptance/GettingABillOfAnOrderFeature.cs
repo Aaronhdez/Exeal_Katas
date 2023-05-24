@@ -40,16 +40,13 @@ public class GettingABillOfAnOrderFeature {
     }
 
     private async Task<string> GivenAStoredOrderWithProductsAssigned() {
-        var vendorId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateVendorRequest()));
-        var customerId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest()));
+        var vendorId = await _usersClient.PostAnUser(UsersMother.TestCreateVendorRequest());
+        var customerId = await _usersClient.PostAnUser(UsersMother.TestCreateCustomerRequest());
         var computerId = await _productsClient.PostAProduct(ProductsMother.ComputerMonitorCreationRequest());
         var keyboardId = await _productsClient.PostAProduct(ProductsMother.KeyboardCreationRequest());
         var mouseId = await _productsClient.PostAProduct(ProductsMother.MouseCreationRequest());
-        var orderRequest = JsonConvert.SerializeObject(new CreateOrderRequest(
-            vendorId,
-            customerId,
-            new[] { computerId, computerId, keyboardId, keyboardId, mouseId }
-        ));
+        var orderRequest = OrdersMother.GivenACreateOrderRequest(vendorId, customerId, 
+            new[] { computerId, computerId, keyboardId, keyboardId, mouseId });
         return await _ordersClient.PostAnOrder(orderRequest);
     }
 

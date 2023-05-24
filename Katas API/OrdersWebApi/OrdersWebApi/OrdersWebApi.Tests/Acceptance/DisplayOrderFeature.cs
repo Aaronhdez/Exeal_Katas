@@ -32,18 +32,12 @@ public class DisplayOrderFeature {
 
     [Test]
     public async Task DisplayBasicInformationOfAnOrder() {
-        var vendorId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateVendorRequest()));
-        var customerId = await _usersClient.PostAnUser(JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest()));
+        var vendorId = await _usersClient.PostAnUser(UsersMother.TestCreateVendorRequest());
+        var customerId = await _usersClient.PostAnUser(UsersMother.TestCreateCustomerRequest());
         var productId = await GivenAProductInDatabase();
-        var order = JsonConvert.SerializeObject(new CreateOrderRequest(
-            vendorId,
-            customerId,
-            new[] {
-                productId
-            }
-        ));
+        var orderRequest = OrdersMother.GivenACreateOrderRequest(vendorId, customerId, new[] { productId });
 
-        var createdOrder = await WhenUserRequestsToCreateIt(order);
+        var createdOrder = await WhenUserRequestsToCreateIt(orderRequest);
 
         await ThenItIsCreatedProperly(createdOrder);
     }

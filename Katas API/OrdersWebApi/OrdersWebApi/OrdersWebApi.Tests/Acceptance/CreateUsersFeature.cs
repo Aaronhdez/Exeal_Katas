@@ -30,7 +30,7 @@ public class CreateUsersFeature {
     }
 
     private string GivenAUserCreationRequest() {
-        return JsonConvert.SerializeObject(UsersMother.TestCreateCustomerRequest());
+        return UsersMother.TestCreateCustomerRequest();
     }
 
     private async Task<string> WhenItIsCreated(string createUserRequest) {

@@ -12,22 +12,12 @@ namespace OrdersWebApi.Tests.Orders;
 
 public static class OrdersMother {
     //REQUESTS
-    public static string GivenAnOrderRequestWithProductsAssigned(string[] products) {
+    public static string GivenACreateOrderRequest(string vendorId, string customerId, string[] products) {
         return JsonConvert.SerializeObject(new CreateOrderRequest(
-            UserDefaultValues.VendorId,
-            UserDefaultValues.CustomerId,
+            vendorId,
+            customerId,
             products
         ));
-    }
-
-    public static string GivenAnOrderRequestWithAProductId(string productId) {
-        return JsonConvert.SerializeObject(new CreateOrderRequest(
-            UserDefaultValues.VendorId,
-            UserDefaultValues.CustomerId,
-            new[] {
-                productId
-            }
-        ), Formatting.Indented);
     }
 
     //DTOS
