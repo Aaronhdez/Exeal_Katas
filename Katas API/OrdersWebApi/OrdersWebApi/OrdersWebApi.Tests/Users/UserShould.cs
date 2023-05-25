@@ -5,6 +5,8 @@ using OrdersWebApi.Users;
 namespace OrdersWebApi.Tests.Users;
 
 public class UserShould {
+    private readonly UserDataShould _userDataShould = new UserDataShould();
+
     [Test]
     public void NotBeCreatedIfGuidIsNull() {
         var action = () => new User(null, new UserData(UserDefaultValues.CustomerName), UserDefaultValues.CustomerAddress);
@@ -15,20 +17,6 @@ public class UserShould {
     [Test]
     public void NotBeCreatedIfGuidIsEmpty() {
         var action = () => new User(string.Empty, new UserData(UserDefaultValues.CustomerName), UserDefaultValues.CustomerAddress);
-
-        action.Should().Throw<ArgumentException>();
-    }
-
-    [Test]
-    public void NotBeCreatedIfNameIsNull() {
-        var action = () => new User(UserDefaultValues.CustomerId, new UserData(null), UserDefaultValues.CustomerAddress);
-
-        action.Should().Throw<ArgumentException>();
-    }
-
-    [Test]
-    public void NotBeCreatedIfNameIsEmpty() {
-        var action = () => new User(UserDefaultValues.CustomerId, new UserData(string.Empty), UserDefaultValues.CustomerAddress);
 
         action.Should().Throw<ArgumentException>();
     }
