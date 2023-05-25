@@ -9,28 +9,28 @@ public class UserShould {
 
     [Test]
     public void NotBeCreatedIfGuidIsNull() {
-        var action = () => new User(null, new UserData(UserDefaultValues.CustomerName), UserDefaultValues.CustomerAddress);
+        var action = () => new User(null, new UserData(UserDefaultValues.CustomerName), new Address(UserDefaultValues.CustomerAddress));
 
         action.Should().Throw<ArgumentException>();
     }
 
     [Test]
     public void NotBeCreatedIfGuidIsEmpty() {
-        var action = () => new User(string.Empty, new UserData(UserDefaultValues.CustomerName), UserDefaultValues.CustomerAddress);
+        var action = () => new User(string.Empty, new UserData(UserDefaultValues.CustomerName), new Address(UserDefaultValues.CustomerAddress));
 
         action.Should().Throw<ArgumentException>();
     }
 
     [Test]
     public void NotBeCreatedIfAddressIsNull() {
-        var action = () => new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), null);
+        var action = () => new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), new Address(null));
 
         action.Should().Throw<ArgumentException>();
     }
 
     [Test]
     public void NotBeCreatedIfAddressIsEmpty() {
-        var action = () => new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), null);
+        var action = () => new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), new Address(null));
 
         action.Should().Throw<ArgumentException>();
     }

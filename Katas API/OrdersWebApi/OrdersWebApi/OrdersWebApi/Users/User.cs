@@ -2,12 +2,19 @@
 
 namespace OrdersWebApi.Users;
 
+public class Address {
+    public Address(string value) {
+        Value = value;
+    }
+    public string Value { get; }
+}
+
 public class User {
-    public User(string id, UserData userData, string address) {
-        ValidateData(id, userData.Name, address);
+    public User(string id, UserData userData, Address address) {
+        ValidateData(id, userData.Name, address.Value);
         Id = id;
         Name = userData.Name;
-        Address = address;
+        Address = address.Value;
     }
 
     private static void ValidateData(string id, string name, string address) {

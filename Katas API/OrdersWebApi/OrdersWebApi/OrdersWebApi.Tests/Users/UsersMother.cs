@@ -33,10 +33,10 @@ public class UsersMother {
 
     //MODELS
     public static User TestUser() {
-        return new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), UserDefaultValues.CustomerAddress);
+        return new User(UserDefaultValues.CustomerId, new UserData(UserDefaultValues.CustomerName), new Address(UserDefaultValues.CustomerAddress));
     }
 
     public static User TestVendor() {
-        return new User(UserDefaultValues.VendorId, new UserData(UserDefaultValues.VendorName), UserDefaultValues.VendorAddress);
+        return new User(UserDefaultValues.VendorId, new UserData(UserDefaultValues.VendorName), new Address(UserDefaultValues.VendorAddress));
     }
 }
