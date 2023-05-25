@@ -5,7 +5,7 @@ namespace OrdersWebApi.Users;
 public class User {
     public User(string id, string name, string address) {
         if (string.IsNullOrEmpty(id)) throw new ArgumentException();
-        if (name == null) throw new ArgumentException();
+        if (string.IsNullOrEmpty(name)) throw new ArgumentException();
         Id = id;
         Name = name;
         Address = address;
