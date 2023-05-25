@@ -1,8 +1,11 @@
-﻿namespace OrdersWebApi.Users;
+﻿using System.Security;
+
+namespace OrdersWebApi.Users;
 
 public class User {
     public User(string id, string name, string address) {
         if (string.IsNullOrEmpty(id)) throw new ArgumentException();
+        if (name == null) throw new ArgumentException();
         Id = id;
         Name = name;
         Address = address;
