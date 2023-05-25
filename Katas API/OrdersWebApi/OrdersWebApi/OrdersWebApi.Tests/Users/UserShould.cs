@@ -39,4 +39,11 @@ public class UserShould {
 
         action.Should().Throw<ArgumentException>();
     }
+
+    [Test]
+    public void NotBeCreatedIfAddressIsEmpty() {
+        var action = () => new User(UserDefaultValues.CustomerId, UserDefaultValues.CustomerName, null);
+
+        action.Should().Throw<ArgumentException>();
+    }
 }
