@@ -2,6 +2,7 @@
 
 public class User {
     public User(string id, string name, string address) {
+        if (id == null) throw new ArgumentException();
         Id = id;
         Name = name;
         Address = address;
