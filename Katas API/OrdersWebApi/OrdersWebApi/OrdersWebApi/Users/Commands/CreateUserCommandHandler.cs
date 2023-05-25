@@ -10,10 +10,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand> {
     }
 
     public Task Handle(CreateUserCommand request, CancellationToken cancellationToken) {
-        _usersRepository.Create(new User(
-            request.UserData.Id,
-            request.UserData.Name,
-            request.UserData.Address));
+        _usersRepository.Create(new User(request.UserData.Id, new UserData(request.UserData.Name), request.UserData.Address));
         return Task.CompletedTask;
     }
 }
