@@ -6,7 +6,7 @@ public class User {
     public User(string id, string name, string address) {
         if (string.IsNullOrEmpty(id)) throw new ArgumentException();
         if (string.IsNullOrEmpty(name)) throw new ArgumentException();
-        if (address == null) throw new ArgumentException();
+        if (string.IsNullOrEmpty(address)) throw new ArgumentException();
         Id = id;
         Name = name;
         Address = address;
